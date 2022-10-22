@@ -1,0 +1,107 @@
+@font-face {
+  font-family: "Aboreto";
+  src: url("../public/static/fonts/Aboreto-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/static/fonts/Poppins-Regular.ttf");
+}
+
+:root {
+--font-title: 'Aboreto';
+--color-grey: #818181;
+--color-pink: #C15959;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+*::selection {
+  color: #fff;
+  background-color: var(--color-pink);
+}
+
+* {
+  margin:0;
+  padding:0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Aboreto';
+}
+
+img {
+  object-fit: cover;
+}
+
+h2 {
+  font-weight: normal;
+  font-family: 'Aboreto';
+}
+
+.bnw {
+  filter: grayscale(100%);
+  transition: .5s all;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1), cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &:hover {
+      filter: grayscale(0%);
+  }
+}
+
+.app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw; 
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  background: #232323;
+  color: #fff;
+
+  .container {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      padding: 20px;
+      box-sizing: border-box;
+  }
+
+  @media(min-width: 600px) {
+      width: 100vh; 
+      height: 100vw;
+      transform-origin: top left;
+      transform: rotate(-90deg) translateX(-100vh);
+
+      .container {
+          width: fit-content;
+          flex-direction: row;
+          transform-origin: top left;
+          transform: rotate(90deg) translateY(-100vh);
+          padding: 0;
+          padding-top: 50px;
+          padding-bottom: 50px;
+          height: 100vh;
+      }
+  }
+}
+
+
+#musique-cursor {
+  position: fixed;
+  padding: 10px 20px;
+  background: salmon;
+  color: #fff;
+  z-index: 10;
+  font-size: 14px;
+  font-family: 'Poppins';
+  opacity: 0;
+  transition: .3s opacity;
+  white-space: nowrap;
+  pointer-events: none;
+}
