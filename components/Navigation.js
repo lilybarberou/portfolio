@@ -7,12 +7,16 @@ import { t } from '../contexts/Utils';
 
 const useStyle = createUseStyles({
     container: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        width: 85,
-        height: '100%',
+        display: 'none',
+
+        '@media (min-width: 600px)': {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            width: 85,
+            height: '100%',
+        }
     },
     links: {
         display: 'flex',
@@ -61,11 +65,11 @@ const useStyle = createUseStyles({
     lang: {
         display: 'flex',
         flexDirection: 'column',
-        gap: 30,
+        gap: 25,
         alignItems: 'center',
 
         '& > span': {
-            fontSize: 18,
+            fontSize: 16,
             cursor: 'pointer',
             color: '#fff',
             transition: '.3s',

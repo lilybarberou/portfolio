@@ -4,6 +4,7 @@ import { store } from 'store';
 import Navigation from '@components/Navigation';
 import HorizontalWrapper from '@components/HorizontalWrapper';
 import '@styles/globals.scss';
+import MobileHeader from '@components/MobileHeader';
 
 function MyApp({ Component, pageProps }) {
     // remove server side style from react jss
@@ -16,6 +17,7 @@ function MyApp({ Component, pageProps }) {
         <Provider store={store}>
             <HorizontalWrapper>
                 <Navigation />
+                <MobileHeader/>
                 <Component {...pageProps} />
             </HorizontalWrapper>
         </Provider>
