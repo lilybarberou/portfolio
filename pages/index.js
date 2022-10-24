@@ -123,7 +123,7 @@ const Home = () => {
             {/* ----- LILY PART --------------------------------------------------------- */}
             <span className={classes.hello}>HELLO</span>
             <h1 className={classes.lily}>
-                <span>I'm Lily</span>
+                <span>I&apos;m Lily</span>
                 Developer, designer
                 <br />
                 Based in France
@@ -135,7 +135,7 @@ const Home = () => {
             <h2 className={classes.works}>
                 SOME THINGS
                 <br />
-                I'VE BUILT
+                I&apos;VE BUILT
             </h2>
             <div className={classes.brushFrame}>
                 <p>
