@@ -56,7 +56,8 @@ h2 {
   top: 0;
   left: 0;
   width: 100vw; 
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-width: none;
