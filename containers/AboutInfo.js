@@ -655,7 +655,7 @@ const AboutInfo = ({ onClick }) => {
 
             {/* ----- FOOTER PART --------------------------------------------------------- */}
             <div className={classes.brushFrame}>
-                <p>Bah bien sûr qu'il y a le dev</p>
+                <p>Bah bien sûr qu&apos;il y a le dev</p>
                 <BrushFrame />
             </div>
             <button
@@ -665,7 +665,7 @@ const AboutInfo = ({ onClick }) => {
                     onClick('dev');
                 }}
             >
-                C'est ici que ça se passe <Arrow />
+                C&apos;est ici que ça se passe <Arrow />
             </button>
         </>
     );
