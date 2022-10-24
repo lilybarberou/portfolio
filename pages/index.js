@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Image from 'next/future/image';
-import { createUseStyles } from "react-jss";
+import { createUseStyles } from 'react-jss';
 import Button from '@components/Button';
 import Separation from '@components/Separation';
-import BrushFrame from '../public/static/svg/brushFrame.svg'
+import BrushFrame from '../public/static/svg/brushFrame.svg';
 
 const useStyle = createUseStyles({
     container: {
@@ -14,7 +14,7 @@ const useStyle = createUseStyles({
     },
     hello: {
         fontSize: 50,
-        marginBottom: 50
+        marginBottom: 50,
     },
     lily: {
         display: 'flex',
@@ -22,19 +22,19 @@ const useStyle = createUseStyles({
         alignItems: 'center',
         fontWeight: 'lighter',
         fontSize: 21,
-        gap: 15,
+        gap: 5,
         marginBottom: 50,
+        textAlign: 'center',
+        lineHeight: 1.6,
 
         '& > span:first-child': {
-            fontSize: 35
-        }
+            fontSize: 35,
+        },
     },
     works: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 15,
         fontSize: 30,
-        alignItems: 'center'
+        textAlign: 'center',
+        lineHeight: 1.5,
     },
     brushFrame: {
         display: 'flex',
@@ -49,7 +49,7 @@ const useStyle = createUseStyles({
 
         '& > svg': {
             position: 'absolute',
-        }
+        },
     },
     carouselContainer: {
         overflow: 'hidden',
@@ -67,7 +67,7 @@ const useStyle = createUseStyles({
     arrow: {
         width: 130,
         height: 0.5,
-        background: "#818181",
+        background: '#818181',
         margin: '25px 25px 40px 0',
         alignSelf: 'flex-end',
         position: 'relative',
@@ -84,36 +84,39 @@ const useStyle = createUseStyles({
             height: 5,
             borderRight: '0.7px solid #818181',
             borderBottom: '0.7px solid #818181',
-        }
+        },
     },
     contact: {
         fontSize: 32,
-        marginBottom: 30
-    }
-})
+        marginBottom: 30,
+    },
+});
 
 const Home = () => {
     const classes = useStyle();
 
     const works = [
-        { img: "https://raw.githubusercontent.com/Nahay/Assets/master/Charlemagne/Client/Accueil_Connecte.png", name: "Charlemagne", tech: "React, Node.js" },
-        { img: "https://raw.githubusercontent.com/Nahay/Assets/master/Quote%20Wars/banner.png", name: "Quote Wars", tech: "Next.js" },
-        { img: "https://raw.githubusercontent.com/Nahay/Assets/master/Chat/banner.png", name: "U Speak", tech: "React, Socket.io" },
-    ]
+        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Charlemagne/Client/Accueil_Connecte.png', name: 'Charlemagne', tech: 'React, Node.js' },
+        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Quote%20Wars/banner.png', name: 'Quote Wars', tech: 'Next.js' },
+        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Chat/banner.png', name: 'U Speak', tech: 'React, Socket.io' },
+    ];
 
     const handleScroll = () => {
         const carousel = document.querySelector('#home-carousel');
         carousel.scrollLeft = carousel.scrollLeft + 200;
-    }
+    };
 
     return (
         <div className={classes.container}>
             <Head>
                 <meta property="og:title" content="Lily Barberou | Développeuse web" />
-                <meta property="og:description" content="Présentation de mon autoportrait sous forme de site internet" />
-                <meta property="og:url" content="https://autoportrait.lilybarberou.fr/" />
+                <meta
+                    property="og:description"
+                    content="Bienvenue sur le portfolio de Lily Barberou, développeuse web full-stack spécialisée en React / Node.js."
+                />
+                <meta property="og:url" content="lilybarberou.fr/" />
 
-                <meta name="description" content="Portfolio de Lily Barberou, développeuse web Full-Stack. Spécialisée React et Node.Js" />
+                <meta name="description" content="Bienvenue sur le portfolio de Lily Barberou, développeuse web full-stack spécialisée en React / Node.js." />
                 <title>Lily Barberou | Développeuse web</title>
             </Head>
 
@@ -121,39 +124,44 @@ const Home = () => {
             <span className={classes.hello}>HELLO</span>
             <h1 className={classes.lily}>
                 <span>I'm Lily</span>
-                <span>Developer, designer</span>
-                <span>Based in France</span>
+                Developer, designer
+                <br />
+                Based in France
             </h1>
             <Button text="Know me more" link="/about" />
-            <Separation/>
+            <Separation />
 
             {/* ----- WORKS PART --------------------------------------------------------- */}
             <h2 className={classes.works}>
-                <span>SOME THINGS</span>
-                <span>I'VE BUILT</span>
+                SOME THINGS
+                <br />
+                I'VE BUILT
             </h2>
             <div className={classes.brushFrame}>
-                <p>Well, I love Javascript,<br/>I love React.</p>
-                <BrushFrame/>
+                <p>
+                    Well, I love Javascript,
+                    <br />I love React.
+                </p>
+                <BrushFrame />
             </div>
             <div className={classes.carouselContainer}>
                 <div className={classes.carousel} id="home-carousel">
-                    {works.map(e => 
+                    {works.map((e) => (
                         <div key={e.name}>
                             <Image src={e.img} width="200" height="120" alt={e.name} className="bnw" />
                         </div>
-                    )}
+                    ))}
                 </div>
             </div>
             <span onClick={handleScroll} className={classes.arrow}></span>
             <Button text="Show more" link="/works" />
-            <Separation/>
+            <Separation />
 
             {/* ----- CONTACT PART --------------------------------------------------------- */}
             <h2 className={classes.contact}>GET IN TOUCH</h2>
-            <Button text="Say Hello" link="/contact"/>
+            <Button text="Say Hello" link="/contact" />
         </div>
     );
-}
+};
 
 export default Home;
