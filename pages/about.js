@@ -1,10 +1,10 @@
+import { useEffect } from 'react';
 import Head from 'next/head';
 import { createUseStyles } from 'react-jss';
-import Separation from '@components/Separation';
-import BrushFrame from '../public/static/svg/brushFrame.svg';
-import Arrow from '../public/static/svg/arrow.svg';
+import { renderHtml, t } from '../contexts/Utils';
 import AboutDev from 'containers/AboutDev';
 import AboutInfo from 'containers/AboutInfo';
+import Arrow from '../public/static/svg/arrow.svg';
 
 const useStyle = createUseStyles({
     container: {
@@ -13,7 +13,7 @@ const useStyle = createUseStyles({
         alignItems: 'center',
 
         '& > h1': {
-            fontSize: 60,
+            fontSize: 'calc(11vw + 11px)',
             fontWeight: 'lighter',
             textAlign: 'center',
             lineHeight: 1.4,
@@ -70,8 +70,18 @@ const useStyle = createUseStyles({
     },
 });
 
-const Home = () => {
+const About = ({ lang }) => {
     const classes = useStyle();
+    const translations = t('about', lang);
+
+    // get translated html into innerHtml
+    useEffect(() => {
+        renderHtml('#about-title', translations.about);
+        renderHtml('#text1', translations.text1);
+        renderHtml('#text2', translations.text2);
+        renderHtml('#text3', translations.text3);
+        renderHtml('#about-info-title', translations.nutshell);
+    }, []);
 
     const handleClick = (el) => {
         if (document.querySelector('#dev').classList.contains('active') && el === 'dev') return;
@@ -98,32 +108,28 @@ const Home = () => {
             </Head>
 
             {/* ----- HEADER PART --------------------------------------------------------- */}
-            <h1>
-                ABOUT
-                <br />
-                LILY
-            </h1>
+            <h1 id="about-title"></h1>
 
             <div className={classes.switchBtn}>
                 <button className="active" id="dev-btn" onClick={() => handleClick('dev')}>
-                    Lily et le Dev <Arrow />
+                    {translations.lilyndev} <Arrow />
                 </button>
                 <button id="info-btn" onClick={() => handleClick('info')}>
-                    Qui est Lily ? <Arrow />
+                    {translations.whoislily} <Arrow />
                 </button>
             </div>
 
             {/* ----- DEV PART --------------------------------------------------------- */}
             <div className={`${classes.content} active`} id="dev">
-                <AboutDev onClick={handleClick} />
+                <AboutDev onClick={handleClick} translations={translations} lang={lang} />
             </div>
 
             {/* ----- INFO PART --------------------------------------------------------- */}
             <div className={classes.content} id="info">
-                <AboutInfo onClick={handleClick} />
+                <AboutInfo onClick={handleClick} translations={translations} />
             </div>
         </div>
     );
 };
 
-export default Home;
+export default About;

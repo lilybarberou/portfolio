@@ -1,6 +1,32 @@
 {
     "navigation": {
-        "aboutme": "A propos",
-        "works": "Réalisations"
+        "aboutme": "À propos",
+        "works": "Réalisations",
+        "test": "<p>test</p>"
+    },
+    "about": {
+        "about": "À PROPOS<br />DE LILY",
+        "lilyndev": "Lily et le Dev",
+        "whoislily": "Qui est Lily ?",
+        "front": "Du front",
+        "back": "Et du back",
+        "text1": "Mon intérêt pour le développement web a commencé à mes <span>13 ans</span>, lorsque j’ai surpris mon père en train de lire un cours sur le <span>HTML & CSS</span> (Hello Matthieu Nebra !).",
+        "text2": "Qui n’a pas envie de créer un site internet à son image ? Le <span>penser</span> et le <span>coder</span> - réellement - <span>de A à Z</span> ? (désolée Wordpress).",
+        "text3": "Adorant me casser la tête dans du pur développement, tout en les intégrant dans des <span>interfaces modernes, attractives et surtout dynamiques</span>, j’ai fini par me spécialiser dans le développement d’<span>application web en React</span> (désolée Angular).",
+        "experience": "Expérience",
+        "apartdev": "Et à part le dev, tu aimes quoi ?",
+        "comesee": "Viens voir !",
+        "nutshell": "LILY<br />EN UN MOT",
+        "bouba": "Bouba = meilleure peluche",
+        "melophile": "MUSICOPHILE",
+        "reggae": "Sauf du reggae",
+        "addict": "ADDICTE",
+        "justbad": "Au sport, enfin juste au badminton.",
+        "sporty": "LILY.SPORTIVE = 0",
+        "videogames": "Aux jeux vidéos, tous. Sauf les FPS.",
+        "artist": "ARTISTE",
+        "complicated": "Euh... On a tous eu des débuts compliqués.",
+        "theresdev": "Bah bien sûr qu'il y a le dev",
+        "whereithappens": "C'est ici que ça se passe"
     }
 }

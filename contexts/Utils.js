@@ -5,6 +5,10 @@ export const t = (key, lang = 'fr-FR') => {
     return lang === 'fr-FR' ? fr[key] : en[key];
 };
 
+export const renderHtml = (el, translation) => {
+    document.querySelector(el).innerHTML = translation;
+};
+
 export default class Parallax {
     constructor(data) {
         this.target = document.querySelector(data.target);

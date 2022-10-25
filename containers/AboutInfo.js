@@ -569,16 +569,12 @@ const useStyle = createUseStyles({
     },
 });
 
-const AboutInfo = ({ onClick }) => {
+const AboutInfo = ({ onClick, translations }) => {
     const classes = useStyle();
 
     return (
         <>
-            <h2>
-                LILY
-                <br />
-                IN A NUTSHELL
-            </h2>
+            <h2 id="about-info-title"></h2>
 
             {/* ----- GOURMET PART --------------------------------------------------------- */}
             <section className={classes.gourmetContainer} id="gourmet">
@@ -596,7 +592,7 @@ const AboutInfo = ({ onClick }) => {
                 <Image className="bnw" src={i.Bouba} alt="Bouba" width={270} height={360} />
                 <div className={classes.otakuText}>
                     <h2>OTAKU</h2>
-                    <Info text="Bouba = meilleure peluche" />
+                    <Info text={translations.bouba} />
                 </div>
             </section>
             <Separation />
@@ -604,8 +600,8 @@ const AboutInfo = ({ onClick }) => {
             {/* ----- MUSIC PART --------------------------------------------------------- */}
             <section className={classes.musicContainer} id="musique">
                 <div className={`${classes.musicText} title`}>
-                    <h2>MUSICOPHILE</h2>
-                    <p>Sauf du reggae</p>
+                    <h2>{translations.melophile}</h2>
+                    <p>{translations.reggae}</p>
                 </div>
                 <div className={classes.musicList}>
                     {songs.map((e, i) => (
@@ -617,9 +613,9 @@ const AboutInfo = ({ onClick }) => {
 
             {/* ----- BADMINTON PART --------------------------------------------------------- */}
             <section className={classes.badContainer} id="badminton">
-                <h2>ADDICTE</h2>
-                <Info text="Au sport, enfin juste au badminton." />
-                <Info text="LILY.SPORTIVE = 0" />
+                <h2>{translations.addict}</h2>
+                <Info text={translations.justbad} />
+                <Info text={translations.sporty} />
                 <Image className="bnw" src={i.Racket} alt="Racket" width={360} height={360} />
                 <Image className="bnw" src={i.Racket} alt="Racket" width={300} height={300} />
                 <Image className="bnw" src={i.Volant} alt="Volant" width={140} height={126} />
@@ -629,7 +625,7 @@ const AboutInfo = ({ onClick }) => {
             {/* ----- VIDEO GAMES PART --------------------------------------------------------- */}
             <section className={classes.gamesContainer} id="jeux-videos">
                 <div className={classes.gamesText}>
-                    <Info text="Aux jeux vidéos, tous. Sauf les FPS." />
+                    <Info text={translations.videogames} />
                     <Info text="LILY.GEEK = 100" />
                 </div>
                 <Image className="bnw" src={i.EldenRing} alt="Elden Ring" width={1236} height={928} />
@@ -639,9 +635,9 @@ const AboutInfo = ({ onClick }) => {
 
             {/* ----- ARTIST PART --------------------------------------------------------- */}
             <section className={classes.drawingsContainer} id="artiste">
-                <h2>ARTISTE</h2>
+                <h2>{translations.artist}</h2>
                 <div className={classes.drawings} id="drawings">
-                    <Info text="Euh... On a tous eu des débuts compliqués." />
+                    <Info text={translations.complicated} />
                     <Image className="bnw" src={i.Dessin1} width={1236} height={1684} alt="Dessin" />
                     <Image className="bnw" src={i.Dessin2} width={1328} height={1740} alt="Dessin" />
                     <Image className="bnw" src={i.Dessin3} width={500} height={196} alt="Dessin" />
@@ -655,7 +651,7 @@ const AboutInfo = ({ onClick }) => {
 
             {/* ----- FOOTER PART --------------------------------------------------------- */}
             <div className={classes.brushFrame}>
-                <p>Bah bien sûr qu&apos;il y a le dev</p>
+                <p>{translations.theresdev}</p>
                 <BrushFrame />
             </div>
             <button
@@ -665,7 +661,7 @@ const AboutInfo = ({ onClick }) => {
                     onClick('dev');
                 }}
             >
-                C&apos;est ici que ça se passe <Arrow />
+                {translations.whereithappens} <Arrow />
             </button>
         </>
     );

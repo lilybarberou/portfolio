@@ -135,22 +135,40 @@ const useStyle = createUseStyles({
     },
 });
 
-const AboutDev = ({ onClick }) => {
+const AboutDev = ({ onClick, translations, lang }) => {
     const classes = useStyle();
 
-    const experience = [
+    const frExperience = [
+        { company: 'Olwe Développement', desc: 'web dev full-stack react/node.js - designer', duration: 'Now' },
+        { company: 'Lycée Charles Pointet', desc: 'web dev full-stack react/node.js', duration: '2 mois' },
+        { company: 'ITDM', desc: 'web dev front - Wordpress', duration: '2 mois' },
+        { company: 'Rainbow Studio', desc: 'web dev front', duration: '1 mois' },
+    ];
+
+    const enExperience = [
         { company: 'Olwe Développement', desc: 'web dev full-stack react/node.js - designer', duration: 'Now' },
         { company: 'Lycée Charles Pointet', desc: 'web dev full-stack react/node.js', duration: '2 months' },
         { company: 'ITDM', desc: 'web dev front - Wordpress', duration: '2 months' },
         { company: 'Rainbow Studio', desc: 'web dev front', duration: '1 month' },
     ];
 
+    const renderExperiences = (obj) =>
+        obj.map((e, i) => (
+            <div key={i} className={`${classes.experience} ${i === obj.length - 1 ? 'last' : ''}`}>
+                <p>
+                    <span>{e.company}</span>
+                    <span>{e.duration}</span>
+                </p>
+                <p>{e.desc}</p>
+            </div>
+        ));
+
     return (
         <>
             <h2>
-                DU FRONT
+                {translations.front}
                 <br />
-                ET DU BACK
+                {translations.back}
             </h2>
             <div className={classes.devDesign}>
                 <div>
@@ -244,38 +262,20 @@ const AboutDev = ({ onClick }) => {
 
             {/* ----- TEXT PART --------------------------------------------------------- */}
             <div className={classes.text}>
-                <p>
-                    Mon intérêt pour le développement web a commencé à mes <span>13 ans</span>, lorsque j’ai surpris mon père en train de lire un
-                    cours sur le <span>HTML & CSS</span> (Hello Matthieu Nebra !).
-                </p>
-                <p>
-                    Qui n’a pas envie de créer un site internet à son image ? Le <span>penser</span> et le <span>coder</span> - réellement -{' '}
-                    <span>de A à Z</span> ? (désolée Wordpress).
-                </p>
-                <p>
-                    Adorant me casser la tête dans du pur développement, tout en les intégrant dans des{' '}
-                    <span>interfaces modernes, attractives et surtout dynamiques</span>, j’ai fini par me spécialiser dans le développement d’
-                    <span>application web en React</span> (désolée Angular).
-                </p>
+                <p id="text1"></p>
+                <p id="text2"></p>
+                <p id="text3"></p>
             </div>
             <Separation />
 
             {/* ----- EXPERIENCE PART --------------------------------------------------------- */}
-            <h2 className={classes.experienceTitle}>EXPERIENCE</h2>
-            {experience.map((e, i) => (
-                <div key={i} className={`${classes.experience} ${i === experience.length - 1 ? 'last' : ''}`}>
-                    <p>
-                        <span>{e.company}</span>
-                        <span>{e.duration}</span>
-                    </p>
-                    <p>{e.desc}</p>
-                </div>
-            ))}
+            <h2 className={classes.experienceTitle}>{translations.experience}</h2>
+            {renderExperiences(lang === 'fr-FR' ? frExperience : enExperience)}
             <Separation />
 
             {/* ----- FOOTER PART --------------------------------------------------------- */}
             <div className={classes.brushFrame}>
-                <p>Et à part le dev, tu aimes quoi ?</p>
+                <p>{translations.apartdev}</p>
                 <BrushFrame />
             </div>
             <button
@@ -285,7 +285,7 @@ const AboutDev = ({ onClick }) => {
                     onClick('info');
                 }}
             >
-                Viens voir ! <Arrow />
+                {translations.comesee} <Arrow />
             </button>
         </>
     );
