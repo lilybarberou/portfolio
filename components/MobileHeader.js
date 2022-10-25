@@ -1,4 +1,5 @@
-import { createUseStyles } from "react-jss";
+import Link from 'next/link';
+import { createUseStyles } from 'react-jss';
 
 const useStyle = createUseStyles({
     container: {
@@ -11,26 +12,26 @@ const useStyle = createUseStyles({
             display: 'none',
         },
         // logo
-        '& > span': {
+        '& > a': {
             padding: '0px 15px',
             transition: '.3s',
             fontSize: 40,
             color: '#fff',
             textDecoration: 'none',
-            background: '#262626'
-        }
+            background: '#262626',
+        },
     },
-})
+});
 
 const MobileHeader = () => {
     const classes = useStyle();
 
     return (
         <div className={classes.container}>
-            <span>L</span>
+            <Link href="/">L</Link>
             <p>Menu</p>
         </div>
-    )
-}
+    );
+};
 
 export default MobileHeader;
