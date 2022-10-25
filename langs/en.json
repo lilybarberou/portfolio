@@ -18,9 +18,9 @@
         "whoislily": "Who is Lily ?",
         "front": "Front",
         "back": "And Back",
-        "text1": "My interest in web development started when I was <span>13</span>, when I surprised my father reading a course on <span>HTML & CSS</span> (Hello Matthieu Nebra!).",
+        "text1": "My interest in web development started when I was <span>13</span>, when I saw my father reading a course on <span>HTML & CSS</span> (Hello Matthieu Nebra!).",
         "text2": "Who does not want to create a website in their image? <span>Think it</span> and <span>code it</span> - really - <span>from A to Z</span>? (sorry Wordpress).",
-        "text3": "Loving to break my head in pure development, while integrating them into <span>modern, attractive and above all dynamic interfaces</span>, I ended up specializing in the development of <span>web applications in React</span> (sorry Angular).",
+        "text3": "Loving to rack my brain about pure development, while integrating it into <span>modern, attractive and above all dynamic interfaces</span>, I ended up specializing in the development of <span>web applications in React</span> (sorry Angular).",
         "experience": "Experience",
         "apartdev": "Got the dev, what else?",
         "comesee": "Come see!",
@@ -29,12 +29,12 @@
         "melophile": "MELOPHILE",
         "reggae": "Except reggae",
         "addict": "ADDICT",
-        "justbad": "In sport, but just in badminton.",
+        "justbad": "To sport, well just badminton.",
         "sporty": "LILY.SPORTY = 0",
         "videogames": "Video games, all of them. Except FPS.",
         "artist": "ARTIST",
-        "complicated": "Uh... We all had complicated beginnings.",
+        "complicated": "Uh... We all had rocky start.",
         "theresdev": "Of course there's dev",
-        "whereithappens": "This is where it happens"
+        "whereithappens": "Check it out"
     }
 }
