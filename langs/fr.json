@@ -4,6 +4,15 @@
         "works": "Réalisations",
         "test": "<p>test</p>"
     },
+    "home": {
+        "title": "<span>Je suis Lily</span>Developer, designer<br />d'Alsace !",
+        "knowmemore": "En savoir plus sur moi",
+        "somethings": "DES CHOSES<br />QUE J'AI FAITES",
+        "lovejsreact": "Et bien, j'aime Javascript,<br />et j'aime React.",
+        "showmore": "Voir plus",
+        "getintouch": "ME CONTACTER",
+        "sayhello": "Dire bonjour"
+    },
     "about": {
         "about": "À PROPOS<br />DE LILY",
         "lilyndev": "Lily et le Dev",

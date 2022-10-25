@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/future/image';
 import { createUseStyles } from 'react-jss';
 import Button from '@components/Button';
 import Separation from '@components/Separation';
+import { renderHtml, t } from 'contexts/Utils';
 import BrushFrame from '../public/static/svg/brushFrame.svg';
 
 const useStyle = createUseStyles({
@@ -92,8 +94,16 @@ const useStyle = createUseStyles({
     },
 });
 
-const Home = () => {
+const Home = ({ lang }) => {
     const classes = useStyle();
+    const translations = t('home', lang);
+
+    // get translated html into innerHtml
+    useEffect(() => {
+        renderHtml('#home-title', translations.title);
+        renderHtml('#things-ive-built', translations.somethings);
+        renderHtml('#lovejsreact', translations.lovejsreact);
+    }, []);
 
     const works = [
         { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Charlemagne/Client/Accueil_Connecte.png', name: 'Charlemagne', tech: 'React, Node.js' },
@@ -122,26 +132,14 @@ const Home = () => {
 
             {/* ----- LILY PART --------------------------------------------------------- */}
             <span className={classes.hello}>HELLO</span>
-            <h1 className={classes.lily}>
-                <span>I&apos;m Lily</span>
-                Developer, designer
-                <br />
-                Based in France
-            </h1>
-            <Button text="Know me more" link="/about" />
+            <h1 className={classes.lily} id="home-title"></h1>
+            <Button text={translations.knowmemore} link="/about" />
             <Separation />
 
             {/* ----- WORKS PART --------------------------------------------------------- */}
-            <h2 className={classes.works}>
-                SOME THINGS
-                <br />
-                I&apos;VE BUILT
-            </h2>
+            <h2 className={classes.works} id="things-ive-built"></h2>
             <div className={classes.brushFrame}>
-                <p>
-                    Well, I love Javascript,
-                    <br />I love React.
-                </p>
+                <p id="lovejsreact"></p>
                 <BrushFrame />
             </div>
             <div className={classes.carouselContainer}>
@@ -154,12 +152,12 @@ const Home = () => {
                 </div>
             </div>
             <span onClick={handleScroll} className={classes.arrow}></span>
-            <Button text="Show more" link="/works" />
+            <Button text={translations.showmore} link="/works" />
             <Separation />
 
             {/* ----- CONTACT PART --------------------------------------------------------- */}
-            <h2 className={classes.contact}>GET IN TOUCH</h2>
-            <Button text="Say Hello" link="/contact" />
+            <h2 className={classes.contact}>{translations.getintouch}</h2>
+            <Button text={translations.sayhello} link="/contact" />
         </div>
     );
 };

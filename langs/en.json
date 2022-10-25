@@ -3,6 +3,15 @@
         "aboutme": "About me",
         "works": "Works"
     },
+    "home": {
+        "title": "<span>I'm Lily</span>Developer, designer<br />Based in France",
+        "knowmemore": "Know me more",
+        "somethings": "SOME THINGS<br />I&apos;VE BUILT",
+        "lovejsreact": "Well, I love Javascript,<br />I love React.",
+        "showmore": "Show more",
+        "getintouch": "GET IN TOUCH",
+        "sayhello": "Say Hello"
+    },
     "about": {
         "about": "ABOUT<br />LILY",
         "lilyndev": "Lily and Dev",
