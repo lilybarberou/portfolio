@@ -37,5 +37,16 @@
         "complicated": "Euh... On a tous eu des débuts compliqués.",
         "theresdev": "Bah bien sûr qu'il y a le dev",
         "whereithappens": "C'est ici que ça se passe"
+    },
+    "contact": {
+        "firstname": "Prénom",
+        "name": "Nom",
+        "subject": "Objet",
+        "sendit": "Envoyer",
+        "emailsent": "Email envoyé !",
+        "emailnotsent": "Le mail n'a pas pu être envoyé.",
+        "invalidmail": "Mail invalide !",
+        "wronganswer": "Mauvaise réponse !",
+        "discord": "Pseudo copié !"
     }
 }

@@ -36,5 +36,16 @@
         "complicated": "Uh... We all had rocky start.",
         "theresdev": "Of course there's dev",
         "whereithappens": "Check it out"
+    },
+    "contact": {
+        "firstname": "Firstname",
+        "name": "Name",
+        "subject": "Subject",
+        "sendit": "Send it",
+        "emailsent": "Email sent!",
+        "emailnotsent": "Mail could not be sent.",
+        "invalidmail": "Mail invalid!",
+        "wronganswer": "Wrong answer!",
+        "discord": "Pseudo copied!"
     }
 }

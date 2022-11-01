@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import emailjs from '@emailjs/browser';
 import { getFormData } from 'contexts/Utils';
 import Arrow from '../public/static/svg/arrow.svg';
+import { t } from 'contexts/Utils';
 
 const useStyle = createUseStyles({
     container: {
@@ -105,8 +106,9 @@ const useStyle = createUseStyles({
     },
 });
 
-const Contact = () => {
+const Contact = ({lang}) => {
     const classes = useStyle();
+    const translations = t('contact', lang);
     const captcha = [Math.floor(Math.random() * 10) + 1, Math.floor(Math.random() * 10) + 1];
     const [loading, setLoading] = useState(false);
 
@@ -116,23 +118,23 @@ const Contact = () => {
 
         // check email
         if (!data.email.match(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/))
-        return toast.error("Email invalide !");
+        return toast.error(translations.invalidmail);
 
         // check captcha
         const trueAnswer = captcha[0] + captcha[1] === parseInt(data.captcha); 
-        if (!trueAnswer) return toast.error("Mauvaise réponse !");
+        if (!trueAnswer) return toast.error(translations.wronganswer);
 
         // send mail
         setLoading(true);
         emailjs.sendForm('service_cxoxesr', 'TEMP', document.querySelector('#form'), 'user_YiCuJS7dEJZjxxcrfEK5I').then(
-            (res) => toast.success('Mail sent!'),
-            (err) => toast.error('Mail could not be sent.'))
+            (res) => toast.success(translations.emailsent),
+            (err) => toast.error(t(translations.emailnotsent, lang)))
             .then(() => setLoading(false));
     };
 
     const handleDiscordClick = () => {
         navigator.clipboard.writeText('Lily.#7476');
-        toast.success('Pseudo copié !')
+        toast.success(translations.discord)
     }
 
     return (
@@ -140,13 +142,13 @@ const Contact = () => {
             <h1>CONTACT</h1>
             <form className={classes.form} id="form" onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="firstname">Firstname *</label>
+                    <label htmlFor="firstname">{translations.firstname} *</label>
                     <input type="text" name="firstname" required={true} />
-                    <label htmlFor="name">Name *</label>
+                    <label htmlFor="name">{translations.name} *</label>
                     <input type="text" name="name" required={true} />
                     <label htmlFor="email">Email *</label>
                     <input type="email" name="email" required={true} />
-                    <label htmlFor="subject">Subject</label>
+                    <label htmlFor="subject">{translations.subject}</label>
                     <input type="text" name="subject" />
                 </div>
                 <div>
@@ -155,7 +157,7 @@ const Contact = () => {
                     <label htmlFor="subject">{captcha[0]} + {captcha[1]} *</label>
                     <input type="number" name="captcha" required={true} />
                     <button>
-                        SEND IT {loading ?
+                        {translations.sendit} {loading ?
                         <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
                             <defs>
                                 <linearGradient x1="8.042%" y1="0%" x2="65.682%" y2="23.865%" id="a">
