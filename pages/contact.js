@@ -59,6 +59,7 @@ const useStyle = createUseStyles({
             alignItems: 'center',
             justifyContent: 'center',
             gap: 15,
+            textTransform: 'uppercase',
 
             '& svg': {
                 maxWidth: 17
