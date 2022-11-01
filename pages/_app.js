@@ -6,6 +6,8 @@ import HorizontalWrapper from '@components/HorizontalWrapper';
 import '@styles/globals.scss';
 import MobileHeader from '@components/MobileHeader';
 import Head from 'next/head';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function MyApp({ Component, pageProps }) {
     // remove server side style from react jss
@@ -19,6 +21,16 @@ function MyApp({ Component, pageProps }) {
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
+            <ToastContainer
+                position="top-right"
+                autoClose={3500}
+                hideProgressBar={false}
+                closeOnClick={true}
+                pauseOnHover={true}
+                draggable={false}
+                progress={undefined}
+                theme="dark"
+            />
             <HorizontalWrapper>
                 <Navigation />
                 <MobileHeader />
