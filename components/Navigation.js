@@ -14,6 +14,10 @@ const useStyle = createUseStyles({
         '&.active': {
             height: '100vh',
         },
+        '@media (min-width: 600px)': {
+            height: '100%',
+            width: 85,
+        },
     },
     mobileNav: {
         display: 'flex',
@@ -45,13 +49,20 @@ const useStyle = createUseStyles({
         },
     },
     menu: {
-        flexDirection: 'column',
-        alignItems: 'center',
         width: '100%',
         background: '#1F1F1F',
         zIndex: 10,
         paddingLeft: 40,
         height: 'calc(100% - 188px)',
+
+        '@media (min-width: 600px)': {
+            height: '100%',
+            paddingLeft: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+        },
     },
     links: {
         display: 'flex',
@@ -93,10 +104,25 @@ const useStyle = createUseStyles({
                 display: 'none',
             },
         },
+        '@media (min-width: 600px)': {
+            marginTop: 0,
+            gap: 100,
+            alignItems: 'center',
+
+            '& > a:not(:first-child)': {
+                transform: 'rotate(-90deg)',
+                fontFamily: 'Poppins',
+                fontSize: 14,
+
+                '&.active::after': {
+                    transform: 'translateX(-50%) scale(0.8) !important',
+                },
+            },
+        },
     },
     logo: {
         '@media (min-width: 600px)': {
-            padding: '5px 19px',
+            padding: '3px 17px',
             transition: '.3s',
             fontSize: 40,
             color: '#fff',
@@ -122,6 +148,16 @@ const useStyle = createUseStyles({
 
             '&:hover': {
                 color: 'var(--color-pink)',
+            },
+        },
+        '@media (min-width: 600px)': {
+            cursor: 'pointer',
+            marginTop: 0,
+            fontFamily: 'Aboreto',
+            alignSelf: 'unset',
+            gap: 25,
+            '& > span': {
+                fontSize: 15,
             },
         },
     },
