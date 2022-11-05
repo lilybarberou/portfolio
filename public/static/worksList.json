@@ -2,9 +2,11 @@
     "list": [
         {
             "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Selfportrait/banner.png",
-            "title": "Autoportrait",
+            "frTitle": "Autoportrait",
+            "enTitle": "Selfportrait",
             "techs": ["Next.js"],
-            "desc": "Présentation de mon autoportrait sous forme de site internet",
+            "frDesc": "Présentation de mon autoportrait sous forme de site internet",
+            "enDesc": "Presentation of my selfportrait in the form of a website",
             "github": "https://github.com/Nahay/Selfportrait",
             "url": "https://autoportrait.lilybarberou.fr"
         },
@@ -12,7 +14,8 @@
             "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Chat/banner.png",
             "title": "Uspeak",
             "techs": ["React", "Socket.io"],
-            "desc": "Un chat en ligne pour parler avec des inconnus",
+            "frDesc": "Un chat en ligne pour parler avec des inconnus",
+            "enDesc": "An online chat to speak with unknown people",
             "github": "https://github.com/Nahay/Chat",
             "url": "https://uspeak.lilybarberou.fr"
         },
@@ -20,7 +23,8 @@
             "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Charlemagne/Client/Accueil_Connecte.png",
             "title": "Charlemagne",
             "techs": ["React", "Node.js", "MongoDB"],
-            "desc": "Site de vente à emporter pour le restaurant d'application Le Charlemagne du lycée Pointet de Thann",
+            "frDesc": "Site de vente à emporter pour le restaurant d'application Le Charlemagne du lycée Pointet de Thann",
+            "enDesc": "Takeaway website for Le Charlemagne training restaurant at Pointet High School located in Thann",
             "github": "https://github.com/Nahay/Charlemagne",
             "url": "https://le-charlemagne.netlify.app"
         },
@@ -28,7 +32,8 @@
             "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Quote%20Wars/banner.png",
             "title": "Quote Wars",
             "techs": ["Next.js", "Tailwind", "MongoDB"],
-            "desc": "API retournant des citations de séries et de films",
+            "frDesc": "API retournant des citations de séries et de films",
+            "enDesc": "Free API serving quality serie and movie quotes",
             "github": "https://github.com/Nahay/quoteWars",
             "url": "https://quotewars.lilybarberou.fr"
         },
@@ -36,7 +41,8 @@
             "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Scarlet/banner.png",
             "title": "The Scarlet",
             "techs": ["Next.js"],
-            "desc": "Site vitrine pour un restaurant",
+            "frDesc": "Site vitrine pour un restaurant",
+            "enDesc": "Showcase website for a restaurant",
             "github": "https://github.com/Nahay/Scarlet",
             "url": "https://thescarlet.lilybarberou.fr"
         },
@@ -44,7 +50,8 @@
             "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Portfolio/Portfolio_Home.png",
             "title": "Portfolio V2",
             "techs": ["React"],
-            "desc": "Ancienne version de mon portfolio",
+            "frDesc": "Ancienne version de mon portfolio",
+            "enDesc": "Old version of my portfolio",
             "github": "https://github.com/Nahay/Portfolio-v1",
             "url": "https://lilybarberou.fr"
         },
@@ -52,7 +59,8 @@
             "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Weeb%20Lampe/Accueil%20Weeb%20Lampe.png",
             "title": "Weeb Lampe",
             "techs": ["PHP", "MySQL"],
-            "desc": "Site marchand de lampes sur le thème des animés",
+            "frDesc": "Site marchand de lampes sur le thème des animés",
+            "enDesc": "Merchant website for anime-themed lamps",
             "github": "https://github.com/Nahay/WeebLampe",
             "url": "https://weeblampe.000webhostapp.com/"
         }
