@@ -1,13 +1,12 @@
+import Head from 'next/head';
 import { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { store } from 'store';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Navigation from '@components/Navigation';
 import HorizontalWrapper from '@components/HorizontalWrapper';
 import '@styles/globals.scss';
-import MobileHeader from '@components/MobileHeader';
-import Head from 'next/head';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 function MyApp({ Component, pageProps }) {
     // remove server side style from react jss
@@ -33,7 +32,6 @@ function MyApp({ Component, pageProps }) {
             />
             <HorizontalWrapper>
                 <Navigation />
-                <MobileHeader />
                 <Component {...pageProps} />
             </HorizontalWrapper>
         </Provider>
