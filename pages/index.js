@@ -151,7 +151,9 @@ const Home = ({ lang }) => {
                 <div className={classes.carousel} id="home-carousel">
                     {works.map((e) => (
                         <Link key={e.name} href={e.link}>
-                            <Image src={e.img} width="200" height="120" alt={e.name} className="bnw" />
+                            <a>
+                                <Image src={e.img} width="200" height="120" alt={e.name} className="bnw" />
+                            </a>
                         </Link>
                     ))}
                 </div>
