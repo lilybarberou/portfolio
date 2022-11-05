@@ -6,6 +6,7 @@ import Button from '@components/Button';
 import Separation from '@components/Separation';
 import { renderHtml, t } from 'contexts/Utils';
 import BrushFrame from '../public/static/svg/brushFrame.svg';
+import Link from 'next/link';
 
 const useStyle = createUseStyles({
     container: {
@@ -106,9 +107,13 @@ const Home = ({ lang }) => {
     }, []);
 
     const works = [
-        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Charlemagne/Client/Accueil_Connecte.png', name: 'Charlemagne', tech: 'React, Node.js' },
-        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Quote%20Wars/banner.png', name: 'Quote Wars', tech: 'Next.js' },
-        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Chat/banner.png', name: 'U Speak', tech: 'React, Socket.io' },
+        {
+            img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Charlemagne/Client/Accueil_Connecte.png',
+            name: 'Charlemagne',
+            link: '/works#charlemagne',
+        },
+        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Quote%20Wars/banner.png', name: 'Quote Wars', link: '/works#quotewars' },
+        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Chat/banner.png', name: 'U Speak', link: '/works#uspeak' },
     ];
 
     const handleScroll = () => {
@@ -145,9 +150,9 @@ const Home = ({ lang }) => {
             <div className={classes.carouselContainer}>
                 <div className={classes.carousel} id="home-carousel">
                     {works.map((e) => (
-                        <div key={e.name}>
+                        <Link key={e.name} href={e.link}>
                             <Image src={e.img} width="200" height="120" alt={e.name} className="bnw" />
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

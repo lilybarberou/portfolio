@@ -94,7 +94,7 @@ const Works = ({ lang }) => {
         const desc = language === 'fr' ? opt.frDesc : opt.enDesc;
 
         return (
-            <div className={classes.work}>
+            <div className={classes.work} id={title.toLowerCase().replace(/\s/g, '')}>
                 <Image src={opt.img} alt={title} width="200" height="120" className="bnw" />
                 <span>{title}</span>
                 <p>{desc}</p>
