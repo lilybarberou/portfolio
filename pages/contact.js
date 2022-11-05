@@ -62,8 +62,10 @@ const useStyle = createUseStyles({
             textTransform: 'uppercase',
 
             '& svg': {
-                maxWidth: 17
-            }
+                fill: '#fff',
+                height: 17,
+                maxWidth: 17,
+            },
         },
         '& > div > textarea': {
             padding: 10,
@@ -107,7 +109,7 @@ const useStyle = createUseStyles({
     },
 });
 
-const Contact = ({lang}) => {
+const Contact = ({ lang }) => {
     const classes = useStyle();
     const translations = t('contact', lang);
     const captcha = [Math.floor(Math.random() * 10) + 1, Math.floor(Math.random() * 10) + 1];
@@ -118,25 +120,27 @@ const Contact = ({lang}) => {
         const data = getFormData('#form');
 
         // check email
-        if (!data.email.match(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/))
-        return toast.error(translations.invalidmail);
+        if (!data.email.match(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/)) return toast.error(translations.invalidmail);
 
         // check captcha
-        const trueAnswer = captcha[0] + captcha[1] === parseInt(data.captcha); 
+        const trueAnswer = captcha[0] + captcha[1] === parseInt(data.captcha);
         if (!trueAnswer) return toast.error(translations.wronganswer);
 
         // send mail
         setLoading(true);
-        emailjs.sendForm('service_cxoxesr', 'TEMP', document.querySelector('#form'), 'user_YiCuJS7dEJZjxxcrfEK5I').then(
-            (res) => toast.success(translations.emailsent),
-            (err) => toast.error(t(translations.emailnotsent, lang)))
+        emailjs
+            .sendForm('service_cxoxesr', 'TEMP', document.querySelector('#form'), 'user_YiCuJS7dEJZjxxcrfEK5I')
+            .then(
+                (res) => toast.success(translations.emailsent),
+                (err) => toast.error(t(translations.emailnotsent, lang))
+            )
             .then(() => setLoading(false));
     };
 
     const handleDiscordClick = () => {
         navigator.clipboard.writeText('Lily.#7476');
-        toast.success(translations.discord)
-    }
+        toast.success(translations.discord);
+    };
 
     return (
         <div className={classes.container}>
@@ -155,30 +159,49 @@ const Contact = ({lang}) => {
                 <div>
                     <label htmlFor="subject">Message *</label>
                     <textarea name="message" required={true} />
-                    <label htmlFor="subject">{captcha[0]} + {captcha[1]} *</label>
+                    <label htmlFor="subject">
+                        {captcha[0]} + {captcha[1]} *
+                    </label>
                     <input type="number" name="captcha" required={true} />
                     <button>
-                        {translations.sendit} {loading ?
-                        <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
-                            <defs>
-                                <linearGradient x1="8.042%" y1="0%" x2="65.682%" y2="23.865%" id="a">
-                                    <stop stop-color="#fff" stop-opacity="0" offset="0%"/>
-                                    <stop stop-color="#fff" stop-opacity=".631" offset="63.146%"/>
-                                    <stop stop-color="#fff" offset="100%"/>
-                                </linearGradient>
-                            </defs>
-                            <g fill="none" fill-rule="evenodd">
-                                <g transform="translate(1 1)">
-                                    <path d="M36 18c0-9.94-8.06-18-18-18" id="Oval-2" stroke="url(#a)" stroke-width="2">
-                                        <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="0.9s" repeatCount="indefinite"/>
-                                    </path>
-                                    <circle fill="#fff" cx="36" cy="18" r="1">
-                                        <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="0.9s" repeatCount="indefinite"/>
-                                    </circle>
+                        {translations.sendit}{' '}
+                        {loading ? (
+                            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
+                                <defs>
+                                    <linearGradient x1="8.042%" y1="0%" x2="65.682%" y2="23.865%" id="a">
+                                        <stop stop-color="#fff" stop-opacity="0" offset="0%" />
+                                        <stop stop-color="#fff" stop-opacity=".631" offset="63.146%" />
+                                        <stop stop-color="#fff" offset="100%" />
+                                    </linearGradient>
+                                </defs>
+                                <g fill="none" fill-rule="evenodd">
+                                    <g transform="translate(1 1)">
+                                        <path d="M36 18c0-9.94-8.06-18-18-18" id="Oval-2" stroke="url(#a)" stroke-width="2">
+                                            <animateTransform
+                                                attributeName="transform"
+                                                type="rotate"
+                                                from="0 18 18"
+                                                to="360 18 18"
+                                                dur="0.9s"
+                                                repeatCount="indefinite"
+                                            />
+                                        </path>
+                                        <circle fill="#fff" cx="36" cy="18" r="1">
+                                            <animateTransform
+                                                attributeName="transform"
+                                                type="rotate"
+                                                from="0 18 18"
+                                                to="360 18 18"
+                                                dur="0.9s"
+                                                repeatCount="indefinite"
+                                            />
+                                        </circle>
+                                    </g>
                                 </g>
-                            </g>
-                        </svg>
-                        : <Arrow />}
+                            </svg>
+                        ) : (
+                            <Arrow />
+                        )}
                     </button>
                 </div>
             </form>

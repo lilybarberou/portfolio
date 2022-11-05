@@ -43,7 +43,8 @@ const useStyle = createUseStyles({
             minWidth: 90,
 
             '& > svg': {
-                transform: 'rotate(90deg)',
+                transform: 'rotate(90deg) scaleY(1.1)',
+                height: 16,
             },
             '&.active': {
                 background: 'none',

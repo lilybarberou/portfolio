@@ -1,6 +1,6 @@
-import { createUseStyles } from "react-jss";
-import Link from "next/link";
-import Arrow from '../public/static/svg/arrow.svg'
+import { createUseStyles } from 'react-jss';
+import Link from 'next/link';
+import Arrow from '../public/static/svg/arrow.svg';
 
 const useStyle = createUseStyles({
     container: {
@@ -12,26 +12,30 @@ const useStyle = createUseStyles({
         textDecoration: 'none',
         display: 'flex',
         alignItems: 'center',
-        padding: '13px 25px',
+        padding: '11px 25px',
         justifyContent: 'center',
         width: 'fit-content',
         gap: 10,
         lineHeight: 1,
         minWidth: 90,
-    }
-})
 
-const Button = ({text, link}) => {
+        '& > svg': {
+            height: 17,
+        },
+    },
+});
+
+const Button = ({ text, link }) => {
     const classes = useStyle();
 
     return (
         <Link href={link}>
             <a className={classes.container}>
                 {text}
-                <Arrow/>
+                <Arrow />
             </a>
         </Link>
-    )
-}
+    );
+};
 
 export default Button;

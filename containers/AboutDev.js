@@ -132,6 +132,10 @@ const useStyle = createUseStyles({
         alignSelf: 'flex-end',
         marginBottom: 40,
         marginRight: 20,
+
+        '& > svg': {
+            height: 17,
+        },
     },
 });
 
