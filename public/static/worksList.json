@@ -3,57 +3,57 @@
         {
             "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Selfportrait/banner.png",
             "title": "Autoportrait",
-            "techs": ["NextJs"],
-            "desc": "",
-            "github": "",
+            "techs": ["Next.js"],
+            "desc": "Présentation de mon autoportrait sous forme de site internet",
+            "github": "https://github.com/Nahay/Selfportrait",
             "url": "https://autoportrait.lilybarberou.fr"
-        },
-        {
-            "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Portfolio/Portfolio_Home.png",
-            "title": "Portfolio V2",
-            "techs": ["React"],
-            "desc": "",
-            "github": "",
-            "url": "https://lilybarberou.fr"
         },
         {
             "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Chat/banner.png",
             "title": "Uspeak",
-            "techs": ["React"],
-            "desc": "",
-            "github": "",
+            "techs": ["React", "Socket.io"],
+            "desc": "Un chat en ligne pour parler avec des inconnus",
+            "github": "https://github.com/Nahay/Chat",
             "url": "https://uspeak.lilybarberou.fr"
         },
         {
             "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Charlemagne/Client/Accueil_Connecte.png",
             "title": "Charlemagne",
-            "techs": ["React", "NodeJs", "MongoDB"],
-            "desc": "",
-            "github": "",
+            "techs": ["React", "Node.js", "MongoDB"],
+            "desc": "Site de vente à emporter pour le restaurant d'application Le Charlemagne du lycée Pointet de Thann",
+            "github": "https://github.com/Nahay/Charlemagne",
             "url": "https://le-charlemagne.netlify.app"
         },
         {
             "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Quote%20Wars/banner.png",
             "title": "Quote Wars",
-            "techs": ["NextJs"],
-            "desc": "",
-            "github": "",
+            "techs": ["Next.js", "Tailwind", "MongoDB"],
+            "desc": "API retournant des citations de séries et de films",
+            "github": "https://github.com/Nahay/quoteWars",
             "url": "https://quotewars.lilybarberou.fr"
         },
         {
             "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Scarlet/banner.png",
             "title": "The Scarlet",
-            "techs": ["NextJs"],
-            "desc": "",
-            "github": "",
+            "techs": ["Next.js"],
+            "desc": "Site vitrine pour un restaurant",
+            "github": "https://github.com/Nahay/Scarlet",
             "url": "https://thescarlet.lilybarberou.fr"
+        },
+        {
+            "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Portfolio/Portfolio_Home.png",
+            "title": "Portfolio V2",
+            "techs": ["React"],
+            "desc": "Ancienne version de mon portfolio",
+            "github": "https://github.com/Nahay/Portfolio-v1",
+            "url": "https://lilybarberou.fr"
         },
         {
             "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Weeb%20Lampe/Accueil%20Weeb%20Lampe.png",
             "title": "Weeb Lampe",
-            "techs": ["PHP"],
-            "desc": "",
-            "github": "",
+            "techs": ["PHP", "MySQL"],
+            "desc": "Site marchand de lampes sur le thème des animés",
+            "github": "https://github.com/Nahay/WeebLampe",
             "url": "https://weeblampe.000webhostapp.com/"
         }
     ]
