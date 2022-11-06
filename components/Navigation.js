@@ -17,6 +17,8 @@ const useStyle = createUseStyles({
         '@media (min-width: 600px)': {
             height: '100%',
             width: 85,
+            minWidth: 85,
+            maxWidth: 85,
         },
     },
     mobileNav: {
@@ -74,6 +76,7 @@ const useStyle = createUseStyles({
 
         '& > a': {
             zIndex: 2,
+            whiteSpace: 'nowrap',
         },
         '& > a:not(:first-child)': {
             color: '#fff',
