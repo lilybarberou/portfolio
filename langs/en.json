@@ -6,7 +6,7 @@
     "home": {
         "title": "<span>I'm Lily</span>Developer, designer<br />Based in France",
         "knowmemore": "Know me more",
-        "somethings": "SOME THINGS<br />I&apos;VE BUILT",
+        "somethings": "SOME THINGS<br /><span>I&apos;VE BUILT</span>",
         "lovejsreact": "Well, I love Javascript,<br />I love React.",
         "showmore": "Show more",
         "getintouch": "GET IN TOUCH",

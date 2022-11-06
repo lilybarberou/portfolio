@@ -22,6 +22,14 @@ const useStyle = createUseStyles({
         '& > svg': {
             height: 17,
         },
+        '@media (min-width: 600px)': {
+            fontSize: 13,
+            gap: 15,
+
+            '& > svg': {
+                height: 19,
+            },
+        },
     },
 });
 
@@ -30,7 +38,7 @@ const Button = ({ text, link }) => {
 
     return (
         <Link href={link}>
-            <a className={classes.container}>
+            <a className={`${classes.container} button`}>
                 {text}
                 <Arrow />
             </a>

@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import Image from 'next/future/image';
 import { createUseStyles } from 'react-jss';
 import Button from '@components/Button';
 import Separation from '@components/Separation';
 import { renderHtml, t } from 'contexts/Utils';
 import BrushFrame from '../public/static/svg/brushFrame.svg';
-import Link from 'next/link';
 
 const useStyle = createUseStyles({
     container: {
@@ -14,30 +14,82 @@ const useStyle = createUseStyles({
         flexDirection: 'column',
         alignItems: 'center',
         paddingBottom: 70,
+
+        '@media (min-width: 600px)': {
+            flexDirection: 'row',
+            paddingBottom: 0,
+        },
     },
     hello: {
         fontSize: 50,
         marginBottom: 50,
+
+        '@media (min-width: 600px)': {
+            fontSize: 150,
+            marginBottom: 0,
+            margin: '0 170px',
+        },
     },
     lily: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        fontWeight: 'lighter',
-        fontSize: 21,
-        gap: 5,
-        marginBottom: 50,
-        textAlign: 'center',
-        lineHeight: 1.6,
 
-        '& > span:first-child': {
-            fontSize: 35,
+        '& > h1': {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            fontWeight: 'lighter',
+            fontSize: 21,
+            gap: 5,
+            marginBottom: 50,
+            textAlign: 'center',
+            lineHeight: 1.6,
+
+            '& > span:first-child': {
+                fontSize: 35,
+            },
+        },
+        '@media (min-width: 600px)': {
+            alignItems: 'flex-start',
+
+            '& > h1': {
+                fontSize: 30,
+                marginBottom: 40,
+                marginRight: 50,
+                whiteSpace: 'nowrap',
+                alignItems: 'flex-start',
+
+                '& > span:first-child': {
+                    fontSize: '40px !important',
+                    marginBottom: 20,
+                },
+            },
         },
     },
     works: {
+        display: 'flex',
+        flexDirection: 'column',
+
+        '@media (min-width: 600px)': {
+            alignItems: 'flex-end',
+            marginRight: 250,
+        },
+    },
+    worksText: {
         fontSize: 30,
         textAlign: 'center',
         lineHeight: 1.5,
+
+        '@media (min-width: 600px)': {
+            fontSize: 40,
+            whiteSpace: 'nowrap',
+            textAlign: 'start',
+
+            '& > span': {
+                marginLeft: '50%',
+            },
+        },
     },
     brushFrame: {
         display: 'flex',
@@ -53,11 +105,43 @@ const useStyle = createUseStyles({
         '& > svg': {
             position: 'absolute',
         },
+        '@media (min-width: 600px)': {
+            fontSize: 13,
+
+            '& > svg': {
+                transform: 'scale(1.2)',
+            },
+        },
+    },
+    worksContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        width: '100%',
+        alignItems: 'center',
+
+        '@media (min-width: 600px)': {
+            position: 'relative',
+            justifyContent: 'space-between',
+
+            '& .button': {
+                width: '100%',
+                boxSizing: 'border-box',
+                padding: '14px 25px',
+            },
+        },
     },
     carouselContainer: {
         overflow: 'hidden',
         width: '100%',
         maxWidth: '100%',
+
+        '@media (min-width: 600px)': {
+            width: 'fit-content',
+            maxWidth: 'unset',
+            height: '100%',
+            marginBottom: 15,
+        },
     },
     carousel: {
         display: 'flex',
@@ -66,6 +150,43 @@ const useStyle = createUseStyles({
         scrollBehavior: 'smooth',
         height: 120,
         gap: 20,
+
+        '& img': {
+            width: 200,
+            height: 120,
+        },
+        '@media (min-width: 600px)': {
+            flexDirection: 'column',
+            overflowX: 'hidden',
+            overflowY: 'auto',
+            height: '100%',
+            gap: 10,
+
+            '& img': {
+                width: 400,
+                height: 220,
+            },
+        },
+    },
+    arrowContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'flex-end',
+
+        '@media (min-width: 600px)': {
+            width: 130,
+            height: 50,
+            flexDirection: 'column',
+            position: 'absolute',
+            cursor: 'pointer',
+            bottom: 0,
+            left: 0,
+            transformOrigin: 'bottom left',
+            transform: 'rotate(90deg) translate(-100%, 130%)',
+            marginBottom: 62,
+            marginRight: 20,
+        },
     },
     arrow: {
         width: 130,
@@ -74,7 +195,6 @@ const useStyle = createUseStyles({
         margin: '25px 25px 40px 0',
         alignSelf: 'flex-end',
         position: 'relative',
-        borderRadius: '0 20px 20px 0',
 
         '&::after': {
             content: '""',
@@ -88,10 +208,28 @@ const useStyle = createUseStyles({
             borderRight: '0.7px solid #818181',
             borderBottom: '0.7px solid #818181',
         },
+        '@media (min-width: 600px)': {
+            margin: 0,
+        },
     },
     contact: {
-        fontSize: 32,
-        marginBottom: 30,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+
+        '& > h2': {
+            fontSize: 32,
+            marginBottom: 30,
+        },
+        '@media (min-width: 600px)': {
+            marginRight: 80,
+
+            '& > h2': {
+                fontSize: 60,
+                whiteSpace: 'nowrap',
+                marginBottom: 40,
+            },
+        },
     },
 });
 
@@ -104,7 +242,7 @@ const Home = ({ lang }) => {
         renderHtml('#home-title', translations.title);
         renderHtml('#things-ive-built', translations.somethings);
         renderHtml('#lovejsreact', translations.lovejsreact);
-    }, []);
+    }, [lang]);
 
     const works = [
         {
@@ -118,7 +256,10 @@ const Home = ({ lang }) => {
 
     const handleScroll = () => {
         const carousel = document.querySelector('#home-carousel');
-        carousel.scrollLeft = carousel.scrollLeft + 200;
+
+        if (window.matchMedia('(max-width: 600px)').matches) {
+            carousel.scrollLeft = carousel.scrollLeft + 200;
+        } else carousel.scrollTop = carousel.scrollTop + 200;
     };
 
     return (
@@ -137,34 +278,44 @@ const Home = ({ lang }) => {
 
             {/* ----- LILY PART --------------------------------------------------------- */}
             <span className={classes.hello}>HELLO</span>
-            <h1 className={classes.lily} id="home-title"></h1>
-            <Button text={translations.knowmemore} link="/about" />
+            <div className={classes.lily}>
+                <h1 id="home-title"></h1>
+                <Button text={translations.knowmemore} link="/about" />
+            </div>
             <Separation />
 
             {/* ----- WORKS PART --------------------------------------------------------- */}
-            <h2 className={classes.works} id="things-ive-built"></h2>
-            <div className={classes.brushFrame}>
-                <p id="lovejsreact"></p>
-                <BrushFrame />
-            </div>
-            <div className={classes.carouselContainer}>
-                <div className={classes.carousel} id="home-carousel">
-                    {works.map((e) => (
-                        <Link key={e.name} href={e.link}>
-                            <a>
-                                <Image src={e.img} width="200" height="120" alt={e.name} className="bnw" />
-                            </a>
-                        </Link>
-                    ))}
+            <div className={classes.works}>
+                <h2 className={classes.worksText} id="things-ive-built"></h2>
+                <div className={classes.brushFrame}>
+                    <p id="lovejsreact"></p>
+                    <BrushFrame />
                 </div>
             </div>
-            <span onClick={handleScroll} className={classes.arrow}></span>
-            <Button text={translations.showmore} link="/works" />
+            <div className={classes.worksContainer}>
+                <div className={classes.carouselContainer}>
+                    <div className={classes.carousel} id="home-carousel">
+                        {works.map((e) => (
+                            <Link key={e.name} href={e.link}>
+                                <a>
+                                    <Image src={e.img} width="400" height="220" alt={e.name} className="bnw" />
+                                </a>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+                <span onClick={handleScroll} className={classes.arrowContainer}>
+                    <span className={classes.arrow}></span>
+                </span>
+                <Button text={translations.showmore} link="/works" />
+            </div>
             <Separation />
 
             {/* ----- CONTACT PART --------------------------------------------------------- */}
-            <h2 className={classes.contact}>{translations.getintouch}</h2>
-            <Button text={translations.sayhello} link="/contact" />
+            <div className={classes.contact}>
+                <h2>{translations.getintouch}</h2>
+                <Button text={translations.sayhello} link="/contact" />
+            </div>
         </div>
     );
 };
