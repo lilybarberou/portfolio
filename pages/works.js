@@ -3,6 +3,7 @@ import Image from 'next/future/image';
 import { createUseStyles } from 'react-jss';
 import Separation from '@components/Separation';
 import worksList from '../public/static/worksList.json';
+import BrushFrame from '../public/static/svg/brushFrame.svg';
 
 const useStyle = createUseStyles({
     container: {
@@ -10,10 +11,39 @@ const useStyle = createUseStyles({
         flexDirection: 'column',
         alignItems: 'center',
 
-        '& > h1': {
+        '& h1': {
             fontSize: 'calc(10vw + 9px)',
             fontWeight: 'lighter',
             marginBottom: 50,
+        },
+        '@media (min-width: 600px)': {
+            flexDirection: 'row',
+
+            '& h1': {
+                transform: 'rotate(-90deg)',
+                fontSize: 'calc(10vh + 9px)',
+                marginBottom: 0,
+
+                '&.en': {
+                    fontSize: 'calc(14vh + 9px)',
+                },
+            },
+        },
+    },
+    title: {
+        '& + .separation': {
+            display: 'none',
+        },
+
+        '@media (min-width: 600px)': {
+            width: 170,
+            display: 'flex',
+            justifyContent: 'center',
+            marginLeft: 80,
+
+            '& + .separation': {
+                display: 'block',
+            },
         },
     },
     work: {
@@ -40,6 +70,59 @@ const useStyle = createUseStyles({
         '&:last-child': {
             marginBottom: 30,
         },
+        '@media (min-width: 600px)': {
+            padding: '20px 0',
+            boxSizing: 'border-box',
+            width: 400,
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            margin: '0 10px',
+
+            '& > img': {
+                height: 240,
+            },
+            // title
+            '& > span': {
+                fontSize: 24,
+                marginTop: 35,
+                marginBottom: 15,
+            },
+            // desc
+            '& > p': {
+                fontSize: 13,
+            },
+            '&:last-child': {
+                marginBottom: 0,
+                marginRight: 100,
+            },
+        },
+    },
+    desktopTech: {
+        display: 'none',
+
+        '@media (min-width: 600px)': {
+            display: 'flex',
+            marginTop: 15,
+            gap: 5,
+
+            '& > div': {
+                position: 'relative',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: 100,
+                height: 40,
+
+                '& > svg': {
+                    position: 'absolute',
+                    transform: 'scale(0.5, 0.7)',
+                },
+                '& > span': {
+                    fontSize: 13,
+                },
+            },
+        },
     },
     workFooter: {
         display: 'flex',
@@ -56,6 +139,15 @@ const useStyle = createUseStyles({
                 height: 'fit-content',
                 fontSize: 12,
                 background: 'var(--color-pink)',
+            },
+        },
+        '@media (min-width: 600px)': {
+            justifyContent: 'flex-end',
+            marginTop: 'auto',
+
+            // techs
+            '& > div:first-child': {
+                display: 'none',
             },
         },
     },
@@ -82,6 +174,14 @@ const useStyle = createUseStyles({
                 padding: 0,
             },
         },
+        '@media (min-width: 600px)': {
+            gap: 15,
+
+            '& > a': {
+                height: 40,
+                width: 40,
+            },
+        },
     },
 });
 
@@ -95,7 +195,16 @@ const Works = ({ lang }) => {
 
         return (
             <div className={classes.work} id={title.toLowerCase().replace(/\s/g, '')}>
-                <Image src={opt.img} alt={title} width="200" height="120" className="bnw" />
+                <Image src={opt.img} alt={title} width="600" height="240" className="bnw" />
+                <div className={classes.desktopTech}>
+                    {opt.techs.map((e, i) => (
+                        <div key={i}>
+                            <BrushFrame />
+                            <span>{e}</span>
+                        </div>
+                    ))}
+                </div>
+
                 <span>{title}</span>
                 <p>{desc}</p>
                 <div className={classes.workFooter}>
@@ -123,7 +232,10 @@ const Works = ({ lang }) => {
 
     return (
         <div className={classes.container}>
-            <h1>{lang === 'fr-FR' ? 'RÉALISATIONS' : 'WORKS'}</h1>
+            <div className={classes.title}>
+                <h1 className={`${lang === 'fr-FR' ? '' : 'en'}`}>{lang === 'fr-FR' ? 'RÉALISATIONS' : 'WORKS'}</h1>
+            </div>
+            <Separation />
             {Object.values(worksList)[0].map((work, i) => (
                 <Fragment key={i}>
                     <Work opt={work} />
