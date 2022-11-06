@@ -21,7 +21,7 @@ const useStyle = createUseStyles({
 const Separation = () => {
     const classes = useStyle();
 
-    return <div className={classes.separation}></div>;
+    return <div className={`${classes.separation} separation`}></div>;
 };
 
 export default Separation;

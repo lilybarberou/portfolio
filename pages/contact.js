@@ -3,8 +3,9 @@ import { createUseStyles } from 'react-jss';
 import { toast } from 'react-toastify';
 import emailjs from '@emailjs/browser';
 import { getFormData } from 'contexts/Utils';
-import Arrow from '../public/static/svg/arrow.svg';
 import { t } from 'contexts/Utils';
+import Separation from '@components/Separation';
+import Arrow from '../public/static/svg/arrow.svg';
 
 const useStyle = createUseStyles({
     container: {
@@ -12,10 +13,35 @@ const useStyle = createUseStyles({
         flexDirection: 'column',
         alignItems: 'center',
 
-        '& > h1': {
+        '& h1': {
             fontSize: 'calc(10vw + 10px)',
             fontWeight: 'lighter',
             marginBottom: 50,
+        },
+        '@media (min-width: 600px)': {
+            flexDirection: 'row',
+
+            '& h1': {
+                transform: 'rotate(-90deg)',
+                fontSize: 'calc(14vh + 9px)',
+                marginBottom: 0,
+            },
+        },
+    },
+    title: {
+        '& + .separation': {
+            display: 'none',
+        },
+
+        '@media (min-width: 600px)': {
+            width: 170,
+            display: 'flex',
+            justifyContent: 'center',
+            marginLeft: 80,
+
+            '& + .separation': {
+                display: 'block',
+            },
         },
     },
     form: {
@@ -24,60 +50,118 @@ const useStyle = createUseStyles({
         width: '100%',
         alignItems: 'center',
 
+        // form left/right container
         '& > div': {
             display: 'flex',
             flexDirection: 'column',
             width: '90%',
             alignItems: 'center',
-        },
-        '& > div > input, & > div > textarea, & > div > button': {
-            border: '1px solid #818181',
-            background: 'none',
-            color: '#fff',
-            transition: '.3s',
-            height: 40,
-            width: '100%',
-            marginBottom: 20,
-            padding: '0 10px',
-            boxSizing: 'border-box',
-            fontFamily: 'Poppins',
 
-            '&:focus': {
-                borderColor: 'var(--color-pink)',
-                outline: 'none',
+            // container of label/input
+            '& > div': {
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100%',
+
+                '& > textarea': {
+                    padding: 10,
+                    minHeight: 150,
+                    fontWeight: 'lighter',
+                },
+                '& > label': {
+                    color: '#fff',
+                    fontSize: 12,
+                    fontFamily: 'Poppins',
+                    marginBottom: 3,
+                    width: '100%',
+                },
             },
-            '&[name="captcha"]': {
-                maxWidth: 100,
-                alignSelf: 'flex-start',
+            '& > div > input, & > div > textarea, & > button': {
+                border: '1px solid #818181',
+                background: 'none',
+                color: '#fff',
+                transition: '.3s',
+                height: 40,
+                width: '100%',
+                marginBottom: 20,
+                padding: '0 10px',
+                boxSizing: 'border-box',
+                fontFamily: 'Poppins',
+
+                '&:focus': {
+                    borderColor: 'var(--color-pink)',
+                    outline: 'none',
+                },
+                '&[name="captcha"]': {
+                    maxWidth: 100,
+                    alignSelf: 'flex-start',
+                },
+            },
+            '& > button': {
+                marginTop: 10,
+                background: 'var(--color-pink)',
+                border: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 15,
+                textTransform: 'uppercase',
+
+                '& svg': {
+                    fill: '#fff',
+                    height: 17,
+                    maxWidth: 17,
+                },
             },
         },
-        '& > div > button': {
-            marginTop: 10,
-            background: 'var(--color-pink)',
-            border: 'none',
-            display: 'flex',
-            alignItems: 'center',
+        '@media (min-width: 600px)': {
+            width: 760,
+            marginRight: 140,
+            flexWrap: 'wrap',
+            height: 450,
             justifyContent: 'center',
-            gap: 15,
-            textTransform: 'uppercase',
+            gap: 60,
+            marginLeft: 50,
 
-            '& svg': {
-                fill: '#fff',
-                height: 17,
-                maxWidth: 17,
+            // form left/right container
+            '& > div': {
+                width: 'unset',
+                height: '100%',
+                justifyContent: 'space-between',
+
+                // container of label/input
+                '& > div': {
+                    width: 'unset',
+
+                    '&.captcha': {
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-end',
+                        width: '100%',
+                    },
+                    '& > textarea': {
+                        maxWidth: 350,
+                        minWidth: 350,
+                        minHeight: '169px !important',
+                        maxHeight: 220,
+                    },
+                    '& > label[for="captcha"]': {
+                        alignSelf: 'flex-end',
+                        width: 100,
+                    },
+                },
+                '& > div > input, & > div > textarea, & > button': {
+                    height: '50px !important',
+                    width: '350px !important',
+
+                    '&[name="captcha"]': {
+                        alignSelf: 'flex-end !important',
+                    },
+                },
+                '& > button': {
+                    marginTop: 22,
+                },
             },
-        },
-        '& > div > textarea': {
-            padding: 10,
-            minHeight: 150,
-            fontWeight: 'lighter',
-        },
-        '& > div > label': {
-            color: '#fff',
-            fontSize: 12,
-            fontFamily: 'Poppins',
-            marginBottom: 3,
-            width: '100%',
         },
     },
     social: {
@@ -104,6 +188,19 @@ const useStyle = createUseStyles({
             '&:hover, &:focus': {
                 borderColor: 'var(--color-pink)',
                 background: 'var(--color-pink)',
+            },
+        },
+        '@media (min-width: 600px)': {
+            width: 'unset',
+            height: '90%',
+            justifyContent: 'space-around',
+            flexDirection: 'column',
+            marginRight: 70,
+            marginTop: 0,
+            marginBottom: 0,
+
+            '& > div': {
+                cursor: 'pointer',
             },
         },
     },
@@ -144,25 +241,40 @@ const Contact = ({ lang }) => {
 
     return (
         <div className={classes.container}>
-            <h1>CONTACT</h1>
+            <div className={classes.title}>
+                <h1>CONTACT</h1>
+            </div>
+            <Separation />
             <form className={classes.form} id="form" onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="firstname">{translations.firstname} *</label>
-                    <input type="text" name="firstname" required={true} />
-                    <label htmlFor="name">{translations.name} *</label>
-                    <input type="text" name="name" required={true} />
-                    <label htmlFor="email">Email *</label>
-                    <input type="email" name="email" required={true} />
-                    <label htmlFor="subject">{translations.subject}</label>
-                    <input type="text" name="subject" />
+                    <div>
+                        <label htmlFor="firstname">{translations.firstname} *</label>
+                        <input type="text" name="firstname" required={true} />
+                    </div>
+                    <div>
+                        <label htmlFor="name">{translations.name} *</label>
+                        <input type="text" name="name" required={true} />
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email *</label>
+                        <input type="email" name="email" required={true} />
+                    </div>
+                    <div>
+                        <label htmlFor="subject">{translations.subject}</label>
+                        <input type="text" name="subject" />
+                    </div>
                 </div>
                 <div>
-                    <label htmlFor="subject">Message *</label>
-                    <textarea name="message" required={true} />
-                    <label htmlFor="subject">
-                        {captcha[0]} + {captcha[1]} *
-                    </label>
-                    <input type="number" name="captcha" required={true} />
+                    <div>
+                        <label htmlFor="message">Message *</label>
+                        <textarea name="message" required={true} />
+                    </div>
+                    <div className="captcha">
+                        <label htmlFor="captcha">
+                            {captcha[0]} + {captcha[1]} *
+                        </label>
+                        <input type="number" name="captcha" required={true} />
+                    </div>
                     <button>
                         {translations.sendit}{' '}
                         {loading ? (
