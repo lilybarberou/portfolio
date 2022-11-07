@@ -14,7 +14,6 @@ const useStyle = createUseStyles({
         flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
-        marginTop: 40,
         padding: '0 20px',
         boxSizing: 'border-box',
 
@@ -37,8 +36,8 @@ const useStyle = createUseStyles({
             position: 'relative',
             flexDirection: 'row',
             width: 'unset',
-            marginRight: 650,
-            marginTop: '0',
+            marginRight: 300,
+            height: '100%',
 
             '& img': {
                 position: 'absolute',
@@ -46,19 +45,19 @@ const useStyle = createUseStyles({
 
             '& img:first-child': {
                 top: '0',
-                marginLeft: 110,
+                marginLeft: 80,
                 zIndex: '0',
                 order: 'unset',
-                width: 800,
-                height: 600,
+                width: 600,
+                height: 450,
             },
 
             '& img:nth-child(2)': {
-                width: 300,
-                height: 480,
+                width: 240,
+                height: 380,
                 zIndex: '1',
                 bottom: '0',
-                right: -222,
+                right: -100,
                 order: 'unset',
                 marginRight: '0',
                 alignSelf: 'unset',
@@ -73,7 +72,6 @@ const useStyle = createUseStyles({
         '& h2': {
             fontSize: 'calc(7vw + 11px)',
         },
-
         '& .info': {
             transform: 'translate(-20px, 360px)',
         },
@@ -82,7 +80,11 @@ const useStyle = createUseStyles({
             order: 'unset',
 
             '& h2': {
-                fontSize: 150,
+                fontSize: 120,
+            },
+            '& .info': {
+                transform: 'unset',
+                marginLeft: 20,
             },
         },
     },
@@ -114,9 +116,10 @@ const useStyle = createUseStyles({
             alignItems: 'center',
             flexDirection: 'row',
             justifyContent: 'flex-end',
-            marginRight: 140,
-            width: 940,
+            marginRight: 50,
+            width: 830,
             marginBottom: '0',
+            height: '100%',
 
             '& img': {
                 position: 'absolute',
@@ -132,9 +135,9 @@ const useStyle = createUseStyles({
             },
 
             '& img:nth-child(2)': {
-                width: 270,
-                height: 360,
-                bottom: 40,
+                width: 215,
+                height: 290,
+                bottom: 100,
                 left: '0',
                 zIndex: '1',
                 order: 'unset',
@@ -162,9 +165,8 @@ const useStyle = createUseStyles({
             alignItems: 'flex-end',
 
             '& h2': {
-                fontSize: 150,
+                fontSize: 120,
             },
-
             '& .info': {
                 alignSelf: 'unset',
                 transform: 'unset',
@@ -179,6 +181,7 @@ const useStyle = createUseStyles({
 
         '@media (min-width: 600px)': {
             flexDirection: 'row',
+            height: '100%',
         },
     },
     musicText: {
@@ -207,7 +210,7 @@ const useStyle = createUseStyles({
             marginBottom: '0',
 
             '& h2': {
-                fontSize: 120,
+                fontSize: 110,
                 writingMode: 'vertical-lr',
             },
 
@@ -243,6 +246,7 @@ const useStyle = createUseStyles({
         '& h2': {
             fontSize: 'calc(7vw + 11px)',
             color: '#fff',
+            zIndex: 10,
         },
         '& > .info': {
             position: 'absolute',
@@ -288,13 +292,13 @@ const useStyle = createUseStyles({
         '@media (min-width: 600px)': {
             alignItems: 'unset',
             justifyContent: 'center',
-            width: 1000,
+            width: 880,
             padding: '0 200px',
             marginBottom: '0',
-            height: 'unset',
+            height: '100%',
 
             '& h2': {
-                fontSize: 120,
+                fontSize: 100,
             },
 
             '& > .info': {
@@ -312,20 +316,22 @@ const useStyle = createUseStyles({
             '& > img:nth-child(4)': {
                 top: '0',
                 left: '0',
-                width: 360,
+                width: 260,
             },
 
             '& > img:nth-child(5)': {
                 display: 'block',
+                width: 220,
             },
 
             '& > img:nth-child(6)': {
                 display: 'block',
+                width: 110,
             },
 
             '& > img:nth-child(7)': {
                 top: '10%',
-                width: 195,
+                width: 140,
             },
         },
     },
@@ -352,17 +358,20 @@ const useStyle = createUseStyles({
 
         '@media (min-width: 600px)': {
             width: 'fit-content',
+            height: '100%',
+            flexDirection: 'row',
 
-            '& img': {
+            '& img:nth-child(2)': {
                 maxHeight: 'unset',
                 marginTop: '0',
                 width: 'fit-content',
                 height: '90%',
             },
 
-            '& img:nth-child(2)': {
-                display: 'block',
-                marginLeft: 150,
+            '& img:nth-child(3)': {
+                width: 450,
+                maxHeight: 'unset',
+                height: '90%',
             },
         },
     },
@@ -376,7 +385,11 @@ const useStyle = createUseStyles({
         marginBottom: 40,
 
         '@media (min-width: 600px)': {
+            transform: 'translateX(-70px)',
             gap: 15,
+            marginBottom: 0,
+            marginTop: 100,
+            position: 'absolute',
         },
     },
     drawingsContainer: {
@@ -399,12 +412,12 @@ const useStyle = createUseStyles({
         },
 
         '@media (min-width: 600px)': {
-            width: 3400,
+            width: 2715,
             display: 'block',
-            height: 'unset',
+            height: '100%',
 
             '& h2': {
-                fontSize: 150,
+                fontSize: 110,
                 position: 'absolute',
                 left: '0',
                 bottom: '10%',
@@ -473,60 +486,74 @@ const useStyle = createUseStyles({
         },
         '@media (min-width: 600px)': {
             '& img:nth-child(2)': {
-                width: 240,
+                width: 175,
                 height: 'fit-content',
                 top: '10%',
-                left: 650,
+                left: 490,
             },
             '& img:nth-child(3)': {
-                width: 240,
+                width: 175,
                 height: 'fit-content',
                 top: 'unset',
                 right: 'unset',
                 bottom: '10%',
-                left: 800,
+                left: 590,
             },
             '& img:nth-child(4)': {
-                width: 500,
-                height: 260,
+                width: 420,
+                height: 200,
                 right: 'unset',
                 top: '5%',
-                left: 1050,
+                left: 860,
             },
             '& img:nth-child(5)': {
-                height: 490,
-                width: 500,
+                width: 380,
+                height: 370,
                 zIndex: '5',
                 top: 'unset',
                 bottom: 0,
-                left: 1100,
+                left: 810,
             },
             '& img:nth-child(6)': {
-                width: 560,
+                width: 460,
                 height: 'auto',
                 maxHeight: '100%',
                 right: 'unset',
                 top: '0',
-                left: 1650,
+                left: 1240,
                 zIndex: '6',
             },
             '& img:nth-child(7)': {
-                width: 520,
+                width: 460,
                 height: 'auto',
                 maxHeight: '100%',
                 top: 'unset',
                 bottom: '0',
-                left: 2250,
+                left: 1740,
                 zIndex: '7',
             },
             '& img:nth-child(8)': {
-                width: 648,
-                height: 440,
+                width: 560,
+                height: 360,
                 right: 'unset',
                 top: '20%',
-                left: 2650,
+                left: 2130,
                 zIndex: '8',
             },
+        },
+    },
+    footer: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+
+        '@media (min-width: 600px)': {
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: 300,
+            gap: 40,
+            marginRight: 100,
+            marginLeft: 110,
         },
     },
     brushFrame: {
@@ -545,6 +572,17 @@ const useStyle = createUseStyles({
         '& > svg': {
             position: 'absolute',
             transform: 'scale(1.1, 1)',
+        },
+        '@media (min-width: 600px)': {
+            whiteSpace: 'nowrap',
+            margin: 0,
+            marginRight: 400,
+            fontSize: 14,
+
+            '& > svg': {
+                position: 'absolute',
+                transform: 'scaleX(1.4)',
+            },
         },
     },
     devBtn: {
@@ -570,8 +608,17 @@ const useStyle = createUseStyles({
         '& > svg': {
             height: 17,
         },
+        '@media (min-width: 600px)': {
+            alignSelf: 'flex-end',
+            fontSize: 14,
+            gap: 15,
+            minWidth: 215,
+            cursor: 'pointer',
+        },
     },
 });
+
+//hey, ce code est vraiment dingo
 
 const AboutInfo = ({ onClick, translations }) => {
     const classes = useStyle();
@@ -579,6 +626,7 @@ const AboutInfo = ({ onClick, translations }) => {
     return (
         <>
             <h2 id="about-info-title"></h2>
+            <Separation />
 
             {/* ----- GOURMET PART --------------------------------------------------------- */}
             <section className={classes.gourmetContainer} id="gourmet">
@@ -654,19 +702,21 @@ const AboutInfo = ({ onClick, translations }) => {
             <Separation />
 
             {/* ----- FOOTER PART --------------------------------------------------------- */}
-            <div className={classes.brushFrame}>
-                <p>{translations.theresdev}</p>
-                <BrushFrame />
+            <div className={classes.footer}>
+                <div className={classes.brushFrame}>
+                    <p>{translations.theresdev}</p>
+                    <BrushFrame />
+                </div>
+                <button
+                    className={classes.devBtn}
+                    onClick={() => {
+                        window.scrollTo(0, 0);
+                        onClick('dev');
+                    }}
+                >
+                    {translations.whereithappens} <Arrow />
+                </button>
             </div>
-            <button
-                className={classes.devBtn}
-                onClick={() => {
-                    window.scrollTo(0, 0);
-                    onClick('dev');
-                }}
-            >
-                {translations.whereithappens} <Arrow />
-            </button>
         </>
     );
 };

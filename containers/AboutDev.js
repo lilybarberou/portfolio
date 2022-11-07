@@ -16,13 +16,35 @@ const useStyle = createUseStyles({
             alignItems: 'center',
             gap: 10,
 
-            '& > span:first-child': {
-                color: 'var(--color-pink)',
-                marginBottom: 15,
+            '& > span': {
+                whiteSpace: 'nowrap',
+
+                '&:first-child': {
+                    color: 'var(--color-pink)',
+                    marginBottom: 15,
+                },
             },
         },
         '& > svg': {
             transform: 'scale(1, 1.1)',
+        },
+        '@media (min-width: 600px)': {
+            fontSize: 19,
+            alignItems: 'center',
+            gap: 80,
+            marginRight: 200,
+
+            '& > div': {
+                gap: 10,
+
+                '& > span:first-child': {
+                    marginBottom: '30px !important',
+                    fontSize: 22,
+                },
+            },
+            '& > svg': {
+                transform: 'scale(1.2, 1.5)',
+            },
         },
     },
     text: {
@@ -38,7 +60,6 @@ const useStyle = createUseStyles({
 
         '& > p': {
             maxWidth: 160,
-            // textAlign: 'justify',
 
             '& > span': {
                 color: 'var(--color-pink)',
@@ -47,10 +68,46 @@ const useStyle = createUseStyles({
                 alignSelf: 'flex-end',
             },
         },
+        '@media (min-width: 600px)': {
+            flexDirection: 'row',
+            gap: 100,
+            fontSize: 16,
+            marginTop: 0,
+            height: '50%',
+            width: 'fit-content',
+
+            '& > p': {
+                maxWidth: 220,
+                width: 220,
+            },
+        },
     },
     experienceTitle: {
-        fontSize: 40,
-        marginBottom: 15,
+        '& > h2': {
+            fontSize: 40,
+            marginBottom: 15,
+        },
+
+        '@media (min-width: 600px)': {
+            width: 110,
+            marginRight: 100,
+            display: 'flex',
+            justifyContent: 'center',
+
+            '& > h2': {
+                transform: 'rotate(-90deg)',
+                fontSize: 'calc(14vh - 9px)',
+            },
+        },
+    },
+    experiences: {
+        '@media (min-width: 600px)': {
+            marginRight: 260,
+
+            '& + .separation': {
+                display: 'none',
+            },
+        },
     },
     experience: {
         display: 'flex',
@@ -85,14 +142,38 @@ const useStyle = createUseStyles({
             backgroundColor: 'var(--color-grey)',
             width: 180,
         },
-        '&:first-child': {
-            paddingTop: 0,
-        },
         '&.last': {
             paddingBottom: 0,
             '&::after': {
                 display: 'none',
             },
+        },
+        '@media (min-width: 600px)': {
+            paddingBottom: 40,
+            paddingTop: 40,
+
+            '& > p:first-child': {
+                fontSize: 18,
+            },
+            '& > p:last-child': {
+                fontSize: 13,
+            },
+            '&:first-child': {
+                paddingTop: 0,
+            },
+        },
+    },
+    footer: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+
+        '@media (min-width: 600px)': {
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: 300,
+            gap: 40,
+            marginRight: 100,
         },
     },
     brushFrame: {
@@ -104,13 +185,22 @@ const useStyle = createUseStyles({
         fontFamily: 'Poppins',
         textAlign: 'center',
         fontWeight: 'lighter',
-        marginBottom: 50,
-        marginLeft: 40,
-        marginTop: 20,
+        margin: '20px 0 50px 40px',
 
         '& > svg': {
             position: 'absolute',
-            transform: 'scale(1.1, 1)',
+            transform: 'scaleX(1.1)',
+        },
+        '@media (min-width: 600px)': {
+            whiteSpace: 'nowrap',
+            margin: 0,
+            marginRight: 400,
+            fontSize: 14,
+
+            '& > svg': {
+                position: 'absolute',
+                transform: 'scaleX(1.4)',
+            },
         },
     },
     infoBtn: {
@@ -136,6 +226,13 @@ const useStyle = createUseStyles({
         '& > svg': {
             height: 17,
         },
+        '@media (min-width: 600px)': {
+            alignSelf: 'flex-end',
+            fontSize: 14,
+            gap: 15,
+            minWidth: 215,
+            cursor: 'pointer',
+        },
     },
 });
 
@@ -156,16 +253,19 @@ const AboutDev = ({ onClick, translations, lang }) => {
         { company: 'Rainbow Studio', desc: 'web dev front', duration: '1 month' },
     ];
 
-    const renderExperiences = (obj) =>
-        obj.map((e, i) => (
-            <div key={i} className={`${classes.experience} ${i === obj.length - 1 ? 'last' : ''}`}>
-                <p>
-                    <span>{e.company}</span>
-                    <span>{e.duration}</span>
-                </p>
-                <p>{e.desc}</p>
-            </div>
-        ));
+    const renderExperiences = (obj) => (
+        <div className={classes.experiences}>
+            {obj.map((e, i) => (
+                <div key={i} className={`${classes.experience} ${i === obj.length - 1 ? 'last' : ''}`}>
+                    <p>
+                        <span>{e.company}</span>
+                        <span>{e.duration}</span>
+                    </p>
+                    <p>{e.desc}</p>
+                </div>
+            ))}
+        </div>
+    );
 
     return (
         <>
@@ -261,6 +361,7 @@ const AboutDev = ({ onClick, translations, lang }) => {
                     <span>Figma</span>
                     <span>Photoshop</span>
                     <span>Illustrator</span>
+                    <span>Brain Ideas</span>
                 </div>
             </div>
 
@@ -273,24 +374,28 @@ const AboutDev = ({ onClick, translations, lang }) => {
             <Separation />
 
             {/* ----- EXPERIENCE PART --------------------------------------------------------- */}
-            <h2 className={classes.experienceTitle}>{translations.experience}</h2>
+            <div className={classes.experienceTitle}>
+                <h2>{translations.experience}</h2>
+            </div>
             {renderExperiences(lang === 'fr-FR' ? frExperience : enExperience)}
             <Separation />
 
             {/* ----- FOOTER PART --------------------------------------------------------- */}
-            <div className={classes.brushFrame}>
-                <p>{translations.apartdev}</p>
-                <BrushFrame />
+            <div className={classes.footer}>
+                <div className={classes.brushFrame}>
+                    <p>{translations.apartdev}</p>
+                    <BrushFrame />
+                </div>
+                <button
+                    className={classes.infoBtn}
+                    onClick={() => {
+                        window.scrollTo(0, 0);
+                        onClick('info');
+                    }}
+                >
+                    {translations.comesee} <Arrow />
+                </button>
             </div>
-            <button
-                className={classes.infoBtn}
-                onClick={() => {
-                    window.scrollTo(0, 0);
-                    onClick('info');
-                }}
-            >
-                {translations.comesee} <Arrow />
-            </button>
         </>
     );
 };

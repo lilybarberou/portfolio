@@ -10,10 +10,11 @@ const useStyle = createUseStyles({
         fontFamily: 'Poppins',
         fontSize: 12,
         transition: '.5s all',
+        zIndex: 10,
         transitionTimingFunction: 'cubic-bezier(0.165, 0.84, 0.44, 1), cubic-bezier(0.165, 0.84, 0.44, 1)',
 
         '@media (min-width: 600px)': {
-            fontSize: 20,
+            fontSize: 15,
         },
     },
 });

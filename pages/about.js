@@ -19,6 +19,17 @@ const useStyle = createUseStyles({
             lineHeight: 1.4,
             marginBottom: 75,
         },
+        '@media (min-width: 600px)': {
+            flexDirection: 'row',
+
+            '& > h1': {
+                fontSize: 130,
+                whiteSpace: 'nowrap',
+                marginBottom: 0,
+                marginLeft: 100,
+                marginRight: 200,
+            },
+        },
     },
     switchBtn: {
         display: 'flex',
@@ -50,6 +61,25 @@ const useStyle = createUseStyles({
                 background: 'none',
             },
         },
+        '@media (min-width: 600px)': {
+            flexDirection: 'column',
+            marginBottom: 0,
+            marginRight: 180,
+            gap: 100,
+
+            '& > button': {
+                whiteSpace: 'nowrap',
+                fontSize: 14,
+                minWidth: 180,
+                gap: 15,
+                cursor: 'pointer',
+
+                '& > svg': {
+                    transform: 'rotate(0deg) scaleY(1.1) !important',
+                    height: 16,
+                },
+            },
+        },
     },
     content: {
         display: 'none',
@@ -67,6 +97,24 @@ const useStyle = createUseStyles({
             textAlign: 'center',
             lineHeight: 1.5,
             marginBottom: 70,
+
+            '&[id="about-info-title"]': {
+                marginBottom: 0,
+            },
+        },
+        '@media (min-width: 600px)': {
+            height: '100%',
+
+            // front / back title
+            '&.active': {
+                flexDirection: 'row',
+            },
+            '& > h2:first-child': {
+                fontSize: 50,
+                marginBottom: 0,
+                marginRight: 150,
+                whiteSpace: 'nowrap',
+            },
         },
     },
 });
@@ -82,7 +130,7 @@ const About = ({ lang }) => {
         renderHtml('#text2', translations.text2);
         renderHtml('#text3', translations.text3);
         renderHtml('#about-info-title', translations.nutshell);
-    }, []);
+    }, [lang]);
 
     const handleClick = (el) => {
         if (document.querySelector('#dev').classList.contains('active') && el === 'dev') return;
@@ -92,6 +140,10 @@ const About = ({ lang }) => {
         document.querySelector('#info-btn').classList.toggle('active');
         document.querySelector('#dev').classList.toggle('active');
         document.querySelector('#info').classList.toggle('active');
+
+        // scroll to left on desktop
+        if (window.matchMedia('(max-width: 600px)').matches) return;
+        document.querySelector('.app').scrollTop = 1300;
     };
 
     return (
