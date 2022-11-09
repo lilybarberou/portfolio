@@ -20,6 +20,7 @@ const useStyle = createUseStyles({
         },
         '@media (min-width: 600px)': {
             flexDirection: 'row',
+            minWidth: 'calc(100vw - 85px)',
 
             '& h1': {
                 transform: 'rotate(-90deg)',
@@ -195,9 +196,7 @@ const useStyle = createUseStyles({
             height: '90%',
             justifyContent: 'space-around',
             flexDirection: 'column',
-            marginRight: 70,
-            marginTop: 0,
-            marginBottom: 0,
+            margin: '0 50px 0 auto',
 
             '& > div': {
                 cursor: 'pointer',
