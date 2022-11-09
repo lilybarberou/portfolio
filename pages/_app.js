@@ -30,6 +30,7 @@ function MyApp({ Component, pageProps }) {
                 progress={undefined}
                 theme="dark"
             />
+            <span id="musique-cursor">Clique sur une musique !</span>
             <HorizontalWrapper>
                 <Navigation />
                 <Component {...pageProps} />

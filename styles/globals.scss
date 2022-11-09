@@ -96,17 +96,22 @@ h2 {
 
 
 #musique-cursor {
-  position: fixed;
-  padding: 10px 20px;
-  background: salmon;
-  color: #fff;
-  z-index: 10;
-  font-size: 14px;
-  font-family: 'Poppins';
-  opacity: 0;
-  transition: .3s opacity;
-  white-space: nowrap;
-  pointer-events: none;
+  display: none;
+
+  @media(min-width: 600px) {
+    display: block;
+    position: fixed;
+    padding: 10px 20px;
+    background: salmon;
+    color: #fff;
+    z-index: 10;
+    font-size: 14px;
+    font-family: 'Poppins';
+    opacity: 0;
+    transition: .3s opacity;
+    white-space: nowrap;
+    pointer-events: none;
+  }
 }
 
 // toast overriding

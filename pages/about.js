@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Head from 'next/head';
 import { createUseStyles } from 'react-jss';
-import { renderHtml, t } from '../contexts/Utils';
+import Parallax, { renderHtml, t } from '../contexts/Utils';
 import AboutDev from 'containers/AboutDev';
 import AboutInfo from 'containers/AboutInfo';
 import Arrow from '../public/static/svg/arrow.svg';
@@ -91,6 +91,10 @@ const useStyle = createUseStyles({
             flexDirection: 'column',
             alignItems: 'center',
         },
+        '& > h2': {
+            display: 'flex',
+            flexDirection: 'column',
+        },
         // front / back title
         '& > h2:first-child': {
             fontSize: 35,
@@ -114,6 +118,7 @@ const useStyle = createUseStyles({
                 marginBottom: 0,
                 marginRight: 150,
                 whiteSpace: 'nowrap',
+                textAlign: 'left',
             },
         },
     },
@@ -125,12 +130,30 @@ const About = ({ lang }) => {
 
     // get translated html into innerHtml
     useEffect(() => {
+        // ─── TRANSLATIONS RENDER ─────────────────────────────────────────
         renderHtml('#about-title', translations.about);
         renderHtml('#text1', translations.text1);
         renderHtml('#text2', translations.text2);
         renderHtml('#text3', translations.text3);
         renderHtml('#about-info-title', translations.nutshell);
-    }, [lang]);
+
+        // ─── PARALLAX ─────────────────────────────────────────
+        new Parallax({
+            reference: '.dev-content',
+            target: '.dev-content > h2 > span:first-child',
+            styles: {
+                transform: 'translateX(${coef*100}px)',
+            },
+        });
+
+        new Parallax({
+            reference: '.info-content',
+            target: '.info-content > h2 > span:first-child',
+            styles: {
+                transform: 'translateX(${coef*50}px)',
+            },
+        });
+    }, [lang, translations]);
 
     const handleClick = (el) => {
         if (document.querySelector('#dev').classList.contains('active') && el === 'dev') return;
@@ -173,12 +196,12 @@ const About = ({ lang }) => {
             </div>
 
             {/* ----- DEV PART --------------------------------------------------------- */}
-            <div className={`${classes.content} active`} id="dev">
+            <div className={`${classes.content} active dev-content`} id="dev">
                 <AboutDev onClick={handleClick} translations={translations} lang={lang} />
             </div>
 
             {/* ----- INFO PART --------------------------------------------------------- */}
-            <div className={classes.content} id="info">
+            <div className={`${classes.content} info-content`} id="info">
                 <AboutInfo onClick={handleClick} translations={translations} />
             </div>
         </div>

@@ -7,6 +7,8 @@ import BrushFrame from '../public/static/svg/brushFrame.svg';
 import Arrow from '../public/static/svg/arrow.svg';
 import * as i from '../public/static/imagesIndex';
 import { songs } from '../public/static/songs';
+import Parallax from 'contexts/Utils';
+import { useEffect } from 'react';
 
 const useStyle = createUseStyles({
     gourmetContainer: {
@@ -210,13 +212,15 @@ const useStyle = createUseStyles({
             marginBottom: '0',
 
             '& h2': {
-                fontSize: 110,
+                fontSize: 92,
                 writingMode: 'vertical-lr',
+                pointerEvents: 'none',
             },
 
             '& p': {
                 fontSize: 20,
                 writingMode: 'vertical-lr',
+                pointerEvents: 'none',
             },
         },
     },
@@ -618,17 +622,175 @@ const useStyle = createUseStyles({
     },
 });
 
-//hey, ce code est vraiment dingo
-
 const AboutInfo = ({ onClick, translations }) => {
     const classes = useStyle();
+
+    useEffect(() => {
+        // ─── GOURMET ─────────────────────────────────────────
+        // pho
+        new Parallax({
+            reference: '#gourmet',
+            target: '#gourmet > img:first-child',
+            styles: {
+                transform: 'translateX(${-coef*50}px)',
+            },
+        });
+
+        // glace
+        new Parallax({
+            reference: '#gourmet',
+            target: '#gourmet > img:nth-child(2)',
+            styles: {
+                transform: 'translateX(${coef*50}px)',
+            },
+        });
+
+        // info
+        new Parallax({
+            reference: '#gourmet',
+            target: '#gourmet .info',
+            styles: {
+                transform: 'translateX(${coef*100}px)',
+            },
+        });
+
+        // ─── OTAKU ─────────────────────────────────────────
+        // totoro
+        new Parallax({
+            reference: '#otaku',
+            target: '#otaku > img:first-child',
+            styles: {
+                transform: 'translateX(${coef*50}px)',
+            },
+        });
+
+        // bouba
+        new Parallax({
+            reference: '#otaku',
+            target: '#otaku > img:nth-child(2)',
+            styles: {
+                transform: 'translateX(${-coef*30}px)',
+            },
+        });
+
+        // info
+        new Parallax({
+            reference: '#otaku',
+            target: '#otaku .info',
+            styles: {
+                transform: 'translateX(${coef*100}px)',
+            },
+        });
+
+        // ─── MUSIC ─────────────────────────────────────────
+        new Parallax({
+            reference: '#musique',
+            target: '#musique > .title',
+            styles: {
+                transform: 'rotate(-180deg) translateY(${coef*500-400}px)',
+            },
+        });
+
+        let container = document.querySelector('#musique');
+        let cursor = document.querySelector('#musique-cursor');
+
+        const onMouseMove = (e) => {
+            cursor.style.left = e.pageX + 20 + 'px';
+            cursor.style.top = e.pageY + 15 + 'px';
+        };
+
+        const toggleOpacity = (val) => (cursor.style.opacity = val);
+
+        container.addEventListener('mouseover', () => toggleOpacity(1));
+        container.addEventListener('mouseout', () => toggleOpacity(0));
+        container.addEventListener('mousemove', onMouseMove);
+
+        // ─── BADMINTON ─────────────────────────────────────────
+        new Parallax({
+            reference: '#badminton',
+            target: '#badminton > img:nth-child(4)',
+            styles: {
+                transform: 'rotate(${coef*100}deg)',
+            },
+        });
+        new Parallax({
+            reference: '#badminton',
+            target: '#badminton > img:nth-child(5)',
+            styles: {
+                transform: 'rotate(${coef*100-100}deg)',
+            },
+        });
+        new Parallax({
+            reference: '#badminton',
+            target: '#badminton > img:nth-child(6)',
+            styles: {
+                transform: 'translate(${-coef*100}px, ${-coef*100}px)',
+            },
+        });
+        new Parallax({
+            reference: '#badminton',
+            target: '#badminton > img:nth-child(7)',
+            styles: {
+                transform: 'rotate(${coef*100}deg) translate(${-coef*100}px, ${-coef*100}px)',
+            },
+        });
+        new Parallax({
+            reference: '#badminton',
+            target: '#badminton > .info:nth-child(2)',
+            styles: {
+                transform: 'translateX(${coef*50}px)',
+            },
+        });
+        new Parallax({
+            reference: '#badminton',
+            target: '#badminton > .info:nth-child(3)',
+            styles: {
+                transform: 'translateX(${coef*200}px)',
+            },
+        });
+
+        // ─── VIDEO GAMES ─────────────────────────────────────────
+        new Parallax({
+            reference: '#jeux-videos',
+            target: '#jeux-videos > div > .info:first-child',
+            styles: {
+                transform: 'translateX(${coef*150}px)',
+            },
+        });
+
+        new Parallax({
+            reference: '#jeux-videos',
+            target: '#jeux-videos > div > .info:last-child',
+            styles: {
+                transform: 'translateX(${-coef*100}px)',
+            },
+        });
+
+        // ─── ARTIST ─────────────────────────────────────────
+        // info
+        new Parallax({
+            reference: '#artiste',
+            target: '#artiste .info',
+            styles: {
+                transform: 'translateX(${coef*150}px)',
+            },
+        });
+
+        // last pic
+        new Parallax({
+            reference: '#footer',
+            target: '#artiste img:nth-child(8)',
+            styles: {
+                transform: 'translateX(${coef*100}px)',
+            },
+        });
+    }, []);
 
     return (
         <>
             <h2 id="about-info-title"></h2>
             <Separation />
-
-            {/* ----- GOURMET PART --------------------------------------------------------- */}
+            {/* ──── GOURMET PART ──────────────────────────────────────────────────────────── */}
             <section className={classes.gourmetContainer} id="gourmet">
                 <Image className="bnw" src={i.Pho} alt="Pho" width={800} height={600} />
                 <Image className="bnw" src={i.Glace} alt="Glace" width={300} height={480} />
@@ -637,8 +799,7 @@ const AboutInfo = ({ onClick, translations }) => {
                     <Info text="Phô > Couscous > all" />
                 </div>
             </section>
-
-            {/* ----- OTAKU PART --------------------------------------------------------- */}
+            {/* ──── OTAKU PART ──────────────────────────────────────────────────────────── */}
             <section className={classes.otakuContainer} id="otaku">
                 <Image className="bnw" src={i.Totoro} alt="Totoro" width={650} height={800} />
                 <Image className="bnw" src={i.Bouba} alt="Bouba" width={270} height={360} />
@@ -648,8 +809,7 @@ const AboutInfo = ({ onClick, translations }) => {
                 </div>
             </section>
             <Separation />
-
-            {/* ----- MUSIC PART --------------------------------------------------------- */}
+            {/* ──── MUSIC PART ──────────────────────────────────────────────────────────── */}
             <section className={classes.musicContainer} id="musique">
                 <div className={`${classes.musicText} title`}>
                     <h2>{translations.melophile}</h2>
@@ -662,8 +822,7 @@ const AboutInfo = ({ onClick, translations }) => {
                 </div>
             </section>
             <Separation />
-
-            {/* ----- BADMINTON PART --------------------------------------------------------- */}
+            {/* ──── BADMINTON PART ──────────────────────────────────────────────────────────── */}
             <section className={classes.badContainer} id="badminton">
                 <h2>{translations.addict}</h2>
                 <Info text={translations.justbad} />
@@ -673,8 +832,7 @@ const AboutInfo = ({ onClick, translations }) => {
                 <Image className="bnw" src={i.Volant} alt="Volant" width={140} height={126} />
                 <Image className="bnw" src={i.Volant2} alt="Volant" width={195} height={204} />
             </section>
-
-            {/* ----- VIDEO GAMES PART --------------------------------------------------------- */}
+            {/* ──── VIDEO GAMES PART ──────────────────────────────────────────────────────────── */}
             <section className={classes.gamesContainer} id="jeux-videos">
                 <div className={classes.gamesText}>
                     <Info text={translations.videogames} />
@@ -684,8 +842,7 @@ const AboutInfo = ({ onClick, translations }) => {
                 <Image className="bnw" src={i.HollowKnight} alt="Hollow Knight" width={1256} height={1440} />
             </section>
             <Separation />
-
-            {/* ----- ARTIST PART --------------------------------------------------------- */}
+            {/* ──── ARTIST PART ──────────────────────────────────────────────────────────── */}
             <section className={classes.drawingsContainer} id="artiste">
                 <h2>{translations.artist}</h2>
                 <div className={classes.drawings} id="drawings">
@@ -700,9 +857,8 @@ const AboutInfo = ({ onClick, translations }) => {
                 </div>
             </section>
             <Separation />
-
-            {/* ----- FOOTER PART --------------------------------------------------------- */}
-            <div className={classes.footer}>
+            {/* ──── FOOTER PART ──────────────────────────────────────────────────────────── */}
+            <div className={classes.footer} id="footer">
                 <div className={classes.brushFrame}>
                     <p>{translations.theresdev}</p>
                     <BrushFrame />
