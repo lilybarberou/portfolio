@@ -5,8 +5,8 @@ import Image from 'next/future/image';
 import { createUseStyles } from 'react-jss';
 import Button from '@components/Button';
 import Separation from '@components/Separation';
-import { renderHtml, t } from 'contexts/Utils';
-import BrushFrame from '../public/static/svg/brushFrame.svg';
+import Parallax, { renderHtml, t } from '@contexts/Utils';
+import BrushFrame from '@public/static/svg/brushFrame.svg';
 
 const useStyle = createUseStyles({
     container: {
@@ -85,10 +85,8 @@ const useStyle = createUseStyles({
             fontSize: 40,
             whiteSpace: 'nowrap',
             textAlign: 'start',
-
-            '& > span': {
-                marginLeft: '50%',
-            },
+            display: 'flex',
+            flexDirection: 'column',
         },
     },
     brushFrame: {
@@ -237,12 +235,31 @@ const Home = ({ lang }) => {
     const classes = useStyle();
     const translations = t('home', lang);
 
-    // get translated html into innerHtml
     useEffect(() => {
+        // ─── TRANSLATIONS RENDER ─────────────────────────────────────────
         renderHtml('#home-title', translations.title);
         renderHtml('#things-ive-built', translations.somethings);
         renderHtml('#lovejsreact', translations.lovejsreact);
-    }, [lang]);
+
+        // ─── PARALLAX ─────────────────────────────────────────
+        if (window.matchMedia('(min-width: 600px)').matches) {
+            new Parallax({
+                reference: '#separation',
+                target: '#home-title > span',
+                styles: {
+                    transform: 'translateX(${-coef*100}px)',
+                },
+            });
+
+            new Parallax({
+                reference: '#home-carousel',
+                target: '#things-ive-built > span',
+                styles: {
+                    transform: 'translateX(${coef*100}px)',
+                },
+            });
+        }
+    }, [lang, translations]);
 
     const works = [
         {
@@ -282,7 +299,7 @@ const Home = ({ lang }) => {
                 <h1 id="home-title"></h1>
                 <Button text={translations.knowmemore} link="/about" />
             </div>
-            <Separation />
+            <Separation id="separation" />
 
             {/* ----- WORKS PART --------------------------------------------------------- */}
             <div className={classes.works}>
