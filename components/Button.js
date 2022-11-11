@@ -1,6 +1,6 @@
 import { createUseStyles } from 'react-jss';
 import Link from 'next/link';
-import Arrow from '../public/static/svg/arrow.svg';
+import Arrow from '@public/static/svg/arrow.svg';
 
 const useStyle = createUseStyles({
     container: {

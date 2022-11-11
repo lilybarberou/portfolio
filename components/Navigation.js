@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { createUseStyles } from 'react-jss';
 import { useDispatch } from 'react-redux';
-import { switchLanguage } from 'slices/lang';
-import { t } from '../contexts/Utils';
+import { switchLanguage } from '@slices/lang';
+import { t } from '@contexts/Utils';
 
 const useStyle = createUseStyles({
     container: {

@@ -2,8 +2,8 @@ import { Fragment } from 'react';
 import Image from 'next/future/image';
 import { createUseStyles } from 'react-jss';
 import Separation from '@components/Separation';
-import worksList from '../public/static/worksList.json';
-import BrushFrame from '../public/static/svg/brushFrame.svg';
+import worksList from '@public/static/worksList.json';
+import BrushFrame from '@public/static/svg/brushFrame.svg';
 
 const useStyle = createUseStyles({
     container: {
@@ -81,6 +81,7 @@ const useStyle = createUseStyles({
 
             '& > img': {
                 height: 240,
+                width: 400,
             },
             // title
             '& > span': {
@@ -195,7 +196,7 @@ const Works = ({ lang }) => {
 
         return (
             <div className={classes.work} id={title.toLowerCase().replace(/\s/g, '')}>
-                <Image src={opt.img} alt={title} width="600" height="240" className="bnw" />
+                <Image src={opt.img} alt={title} width="560" height="240" className="bnw" />
                 <div className={classes.desktopTech}>
                     {opt.techs.map((e, i) => (
                         <div key={i}>

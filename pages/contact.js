@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { toast } from 'react-toastify';
 import emailjs from '@emailjs/browser';
-import { getFormData } from 'contexts/Utils';
-import { t } from 'contexts/Utils';
+import { getFormData, t } from '@contexts/Utils';
 import Separation from '@components/Separation';
-import Arrow from '../public/static/svg/arrow.svg';
+import Arrow from '@public/static/svg/arrow.svg';
 
 const useStyle = createUseStyles({
     container: {

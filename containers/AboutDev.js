@@ -1,9 +1,9 @@
-import { createUseStyles } from 'react-jss';
-import Separation from '@components/Separation';
-import BrushFrame from '../public/static/svg/brushFrame.svg';
-import Arrow from '../public/static/svg/arrow.svg';
 import { useEffect } from 'react';
-import Parallax from 'contexts/Utils';
+import { createUseStyles } from 'react-jss';
+import Parallax from '@contexts/Utils';
+import Separation from '@components/Separation';
+import BrushFrame from '@public/static/svg/brushFrame.svg';
+import Arrow from '@public/static/svg/arrow.svg';
 
 const useStyle = createUseStyles({
     title: {
@@ -248,37 +248,39 @@ const AboutDev = ({ onClick, translations, lang }) => {
     const classes = useStyle();
 
     useEffect(() => {
-        // brush
-        new Parallax({
-            reference: '.dev-content > h2 > span:first-child',
-            target: '#dev-design-brush',
-            styles: {
-                transform: 'scaleY(${coef*1.7})',
-            },
-        });
-
-        // texts
-        new Parallax({
-            reference: '#texts',
-            target: '#text1',
-            styles: {
-                transform: 'translateY(${coef*50}px)',
-            },
-        });
-        new Parallax({
-            reference: '#texts',
-            target: '#text2',
-            styles: {
-                transform: 'translateY(${-coef*50}px)',
-            },
-        });
-        new Parallax({
-            reference: '#texts',
-            target: '#text3',
-            styles: {
-                transform: 'translateY(${coef*50}px)',
-            },
-        });
+        // ─── PARALLAX ─────────────────────────────────────────
+        if (window.matchMedia('(min-width: 600px)').matches) {
+            // ─── BRUSH ─────────────────────────────────────────
+            new Parallax({
+                reference: '.dev-content > h2 > span:first-child',
+                target: '#dev-design-brush',
+                styles: {
+                    transform: 'scaleY(${coef*1.7})',
+                },
+            });
+            // ─── TEXTS ─────────────────────────────────────────
+            new Parallax({
+                reference: '#texts',
+                target: '#text1',
+                styles: {
+                    transform: 'translateY(${coef*50}px)',
+                },
+            });
+            new Parallax({
+                reference: '#texts',
+                target: '#text2',
+                styles: {
+                    transform: 'translateY(${-coef*50}px)',
+                },
+            });
+            new Parallax({
+                reference: '#texts',
+                target: '#text3',
+                styles: {
+                    transform: 'translateY(${coef*50}px)',
+                },
+            });
+        }
     }, []);
 
     const frExperience = [
@@ -406,7 +408,7 @@ const AboutDev = ({ onClick, translations, lang }) => {
                 </div>
             </div>
 
-            {/* ----- TEXT PART --------------------------------------------------------- */}
+            {/* ─── TEXTS ───────────────────────────────────────── */}
             <div className={classes.text} id="texts">
                 <p id="text1"></p>
                 <p id="text2"></p>
@@ -414,14 +416,14 @@ const AboutDev = ({ onClick, translations, lang }) => {
             </div>
             <Separation />
 
-            {/* ----- EXPERIENCE PART --------------------------------------------------------- */}
+            {/* ─── EXPERIENCE ───────────────────────────────────────── */}
             <div className={classes.experienceTitle}>
                 <h2>{translations.experience}</h2>
             </div>
             {renderExperiences(lang === 'fr-FR' ? frExperience : enExperience)}
             <Separation />
 
-            {/* ----- FOOTER PART --------------------------------------------------------- */}
+            {/* ─── FOOTER ───────────────────────────────────────── */}
             <div className={classes.footer}>
                 <div className={classes.brushFrame}>
                     <p>{translations.apartdev}</p>

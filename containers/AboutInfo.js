@@ -1,14 +1,14 @@
-import { createUseStyles } from 'react-jss';
+import { useEffect } from 'react';
 import Image from 'next/future/image';
+import { createUseStyles } from 'react-jss';
+import Parallax from '@contexts/Utils';
 import Separation from '@components/Separation';
 import Info from '@components/Info';
 import MusicPlayer from '@components/MusicPlayer';
-import BrushFrame from '../public/static/svg/brushFrame.svg';
-import Arrow from '../public/static/svg/arrow.svg';
-import * as i from '../public/static/imagesIndex';
-import { songs } from '../public/static/songs';
-import Parallax from 'contexts/Utils';
-import { useEffect } from 'react';
+import BrushFrame from '@public/static/svg/brushFrame.svg';
+import Arrow from '@public/static/svg/arrow.svg';
+import * as i from '@public/static/imagesIndex';
+import { songs } from '@public/static/songs';
 
 const useStyle = createUseStyles({
     gourmetContainer: {
@@ -626,164 +626,167 @@ const AboutInfo = ({ onClick, translations }) => {
     const classes = useStyle();
 
     useEffect(() => {
-        // ─── GOURMET ─────────────────────────────────────────
-        // pho
-        new Parallax({
-            reference: '#gourmet',
-            target: '#gourmet > img:first-child',
-            styles: {
-                transform: 'translateX(${-coef*50}px)',
-            },
-        });
+        // ─── PARALLAX ─────────────────────────────────────────
+        if (window.matchMedia('(min-width: 600px)').matches) {
+            // ─── GOURMET ─────────────────────────────────────────
+            // pho
+            new Parallax({
+                reference: '#gourmet',
+                target: '#gourmet > img:first-child',
+                styles: {
+                    transform: 'translateX(${-coef*50}px)',
+                },
+            });
 
-        // glace
-        new Parallax({
-            reference: '#gourmet',
-            target: '#gourmet > img:nth-child(2)',
-            styles: {
-                transform: 'translateX(${coef*50}px)',
-            },
-        });
+            // glace
+            new Parallax({
+                reference: '#gourmet',
+                target: '#gourmet > img:nth-child(2)',
+                styles: {
+                    transform: 'translateX(${coef*50}px)',
+                },
+            });
 
-        // info
-        new Parallax({
-            reference: '#gourmet',
-            target: '#gourmet .info',
-            styles: {
-                transform: 'translateX(${coef*100}px)',
-            },
-        });
+            // info
+            new Parallax({
+                reference: '#gourmet',
+                target: '#gourmet .info',
+                styles: {
+                    transform: 'translateX(${coef*100}px)',
+                },
+            });
 
-        // ─── OTAKU ─────────────────────────────────────────
-        // totoro
-        new Parallax({
-            reference: '#otaku',
-            target: '#otaku > img:first-child',
-            styles: {
-                transform: 'translateX(${coef*50}px)',
-            },
-        });
+            // ─── OTAKU ─────────────────────────────────────────
+            // totoro
+            new Parallax({
+                reference: '#otaku',
+                target: '#otaku > img:first-child',
+                styles: {
+                    transform: 'translateX(${coef*50}px)',
+                },
+            });
 
-        // bouba
-        new Parallax({
-            reference: '#otaku',
-            target: '#otaku > img:nth-child(2)',
-            styles: {
-                transform: 'translateX(${-coef*30}px)',
-            },
-        });
+            // bouba
+            new Parallax({
+                reference: '#otaku',
+                target: '#otaku > img:nth-child(2)',
+                styles: {
+                    transform: 'translateX(${-coef*30}px)',
+                },
+            });
 
-        // info
-        new Parallax({
-            reference: '#otaku',
-            target: '#otaku .info',
-            styles: {
-                transform: 'translateX(${coef*100}px)',
-            },
-        });
+            // info
+            new Parallax({
+                reference: '#otaku',
+                target: '#otaku .info',
+                styles: {
+                    transform: 'translateX(${coef*100}px)',
+                },
+            });
 
-        // ─── MUSIC ─────────────────────────────────────────
-        new Parallax({
-            reference: '#musique',
-            target: '#musique > .title',
-            styles: {
-                transform: 'rotate(-180deg) translateY(${coef*500-400}px)',
-            },
-        });
+            // ─── MUSIC ─────────────────────────────────────────
+            new Parallax({
+                reference: '#musique',
+                target: '#musique > .title',
+                styles: {
+                    transform: 'rotate(-180deg) translateY(${coef*500-400}px)',
+                },
+            });
 
-        let container = document.querySelector('#musique');
-        let cursor = document.querySelector('#musique-cursor');
+            let container = document.querySelector('#musique');
+            let cursor = document.querySelector('#musique-cursor');
 
-        const onMouseMove = (e) => {
-            cursor.style.left = e.pageX + 20 + 'px';
-            cursor.style.top = e.pageY + 15 + 'px';
-        };
+            const onMouseMove = (e) => {
+                cursor.style.left = e.pageX + 20 + 'px';
+                cursor.style.top = e.pageY + 15 + 'px';
+            };
 
-        const toggleOpacity = (val) => (cursor.style.opacity = val);
+            const toggleOpacity = (val) => (cursor.style.opacity = val);
 
-        container.addEventListener('mouseover', () => toggleOpacity(1));
-        container.addEventListener('mouseout', () => toggleOpacity(0));
-        container.addEventListener('mousemove', onMouseMove);
+            container.addEventListener('mouseover', () => toggleOpacity(1));
+            container.addEventListener('mouseout', () => toggleOpacity(0));
+            container.addEventListener('mousemove', onMouseMove);
 
-        // ─── BADMINTON ─────────────────────────────────────────
-        new Parallax({
-            reference: '#badminton',
-            target: '#badminton > img:nth-child(4)',
-            styles: {
-                transform: 'rotate(${coef*100}deg)',
-            },
-        });
-        new Parallax({
-            reference: '#badminton',
-            target: '#badminton > img:nth-child(5)',
-            styles: {
-                transform: 'rotate(${coef*100-100}deg)',
-            },
-        });
-        new Parallax({
-            reference: '#badminton',
-            target: '#badminton > img:nth-child(6)',
-            styles: {
-                transform: 'translate(${-coef*100}px, ${-coef*100}px)',
-            },
-        });
-        new Parallax({
-            reference: '#badminton',
-            target: '#badminton > img:nth-child(7)',
-            styles: {
-                transform: 'rotate(${coef*100}deg) translate(${-coef*100}px, ${-coef*100}px)',
-            },
-        });
-        new Parallax({
-            reference: '#badminton',
-            target: '#badminton > .info:nth-child(2)',
-            styles: {
-                transform: 'translateX(${coef*50}px)',
-            },
-        });
-        new Parallax({
-            reference: '#badminton',
-            target: '#badminton > .info:nth-child(3)',
-            styles: {
-                transform: 'translateX(${coef*200}px)',
-            },
-        });
+            // ─── BADMINTON ─────────────────────────────────────────
+            new Parallax({
+                reference: '#badminton',
+                target: '#badminton > img:nth-child(4)',
+                styles: {
+                    transform: 'rotate(${coef*100}deg)',
+                },
+            });
+            new Parallax({
+                reference: '#badminton',
+                target: '#badminton > img:nth-child(5)',
+                styles: {
+                    transform: 'rotate(${coef*100-100}deg)',
+                },
+            });
+            new Parallax({
+                reference: '#badminton',
+                target: '#badminton > img:nth-child(6)',
+                styles: {
+                    transform: 'translate(${-coef*100}px, ${-coef*100}px)',
+                },
+            });
+            new Parallax({
+                reference: '#badminton',
+                target: '#badminton > img:nth-child(7)',
+                styles: {
+                    transform: 'rotate(${coef*100}deg) translate(${-coef*100}px, ${-coef*100}px)',
+                },
+            });
+            new Parallax({
+                reference: '#badminton',
+                target: '#badminton > .info:nth-child(2)',
+                styles: {
+                    transform: 'translateX(${coef*50}px)',
+                },
+            });
+            new Parallax({
+                reference: '#badminton',
+                target: '#badminton > .info:nth-child(3)',
+                styles: {
+                    transform: 'translateX(${coef*200}px)',
+                },
+            });
 
-        // ─── VIDEO GAMES ─────────────────────────────────────────
-        new Parallax({
-            reference: '#jeux-videos',
-            target: '#jeux-videos > div > .info:first-child',
-            styles: {
-                transform: 'translateX(${coef*150}px)',
-            },
-        });
+            // ─── VIDEO GAMES ─────────────────────────────────────────
+            new Parallax({
+                reference: '#jeux-videos',
+                target: '#jeux-videos > div > .info:first-child',
+                styles: {
+                    transform: 'translateX(${coef*150}px)',
+                },
+            });
 
-        new Parallax({
-            reference: '#jeux-videos',
-            target: '#jeux-videos > div > .info:last-child',
-            styles: {
-                transform: 'translateX(${-coef*100}px)',
-            },
-        });
+            new Parallax({
+                reference: '#jeux-videos',
+                target: '#jeux-videos > div > .info:last-child',
+                styles: {
+                    transform: 'translateX(${-coef*100}px)',
+                },
+            });
 
-        // ─── ARTIST ─────────────────────────────────────────
-        // info
-        new Parallax({
-            reference: '#artiste',
-            target: '#artiste .info',
-            styles: {
-                transform: 'translateX(${coef*150}px)',
-            },
-        });
+            // ─── ARTIST ─────────────────────────────────────────
+            // info
+            new Parallax({
+                reference: '#artiste',
+                target: '#artiste .info',
+                styles: {
+                    transform: 'translateX(${coef*150}px)',
+                },
+            });
 
-        // last pic
-        new Parallax({
-            reference: '#footer',
-            target: '#artiste img:nth-child(8)',
-            styles: {
-                transform: 'translateX(${coef*100}px)',
-            },
-        });
+            // last pic
+            new Parallax({
+                reference: '#footer',
+                target: '#artiste img:nth-child(8)',
+                styles: {
+                    transform: 'translateX(${coef*100}px)',
+                },
+            });
+        }
     }, []);
 
     return (

@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import Head from 'next/head';
 import { createUseStyles } from 'react-jss';
-import Parallax, { renderHtml, t } from '../contexts/Utils';
-import AboutDev from 'containers/AboutDev';
-import AboutInfo from 'containers/AboutInfo';
-import Arrow from '../public/static/svg/arrow.svg';
+import Parallax, { renderHtml, t } from '@contexts/Utils';
+import AboutDev from '@containers/AboutDev';
+import AboutInfo from '@containers/AboutInfo';
+import Arrow from '@public/static/svg/arrow.svg';
 
 const useStyle = createUseStyles({
     container: {
@@ -128,7 +128,6 @@ const About = ({ lang }) => {
     const classes = useStyle();
     const translations = t('about', lang);
 
-    // get translated html into innerHtml
     useEffect(() => {
         // ─── TRANSLATIONS RENDER ─────────────────────────────────────────
         renderHtml('#about-title', translations.about);
@@ -138,21 +137,23 @@ const About = ({ lang }) => {
         renderHtml('#about-info-title', translations.nutshell);
 
         // ─── PARALLAX ─────────────────────────────────────────
-        new Parallax({
-            reference: '.dev-content',
-            target: '.dev-content > h2 > span:first-child',
-            styles: {
-                transform: 'translateX(${coef*100}px)',
-            },
-        });
+        if (window.matchMedia('(min-width: 600px)').matches) {
+            new Parallax({
+                reference: '.dev-content',
+                target: '.dev-content > h2 > span:first-child',
+                styles: {
+                    transform: 'translateX(${coef*100}px)',
+                },
+            });
 
-        new Parallax({
-            reference: '.info-content',
-            target: '.info-content > h2 > span:first-child',
-            styles: {
-                transform: 'translateX(${coef*50}px)',
-            },
-        });
+            new Parallax({
+                reference: '.info-content',
+                target: '.info-content > h2 > span:first-child',
+                styles: {
+                    transform: 'translateX(${coef*50}px)',
+                },
+            });
+        }
     }, [lang, translations]);
 
     const handleClick = (el) => {

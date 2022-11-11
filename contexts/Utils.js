@@ -1,5 +1,5 @@
-import fr from '../langs/fr.json';
-import en from '../langs/en.json';
+import fr from '@langs/fr.json';
+import en from '@langs/en.json';
 
 export const t = (key, lang = 'fr-FR') => {
     return lang === 'fr-FR' ? fr[key] : en[key];
@@ -35,14 +35,12 @@ export default class Parallax {
         );
     }
     applyStyles() {
-        if (window.matchMedia('(min-width: 600px)').matches) {
-            let coef = 1 - this.reference.getBoundingClientRect().left / window.innerWidth;
-            if (coef <= 0) coef = 0;
-            if (coef >= 1) coef = 1;
+        let coef = 1 - this.reference.getBoundingClientRect().left / window.innerWidth;
+        if (coef <= 0) coef = 0;
+        if (coef >= 1) coef = 1;
 
-            for (const key in this.styles) {
-                this.target.style.setProperty(key, eval('`' + this.styles[key] + '`'));
-            }
+        for (const key in this.styles) {
+            this.target.style.setProperty(key, eval('`' + this.styles[key] + '`'));
         }
     }
 }
