@@ -282,15 +282,9 @@ const Home = ({ lang }) => {
     return (
         <div className={classes.container}>
             <Head>
-                <meta property="og:title" content="Lily Barberou | Développeuse web" />
-                <meta
-                    property="og:description"
-                    content="Bienvenue sur le portfolio de Lily Barberou, développeuse web full-stack spécialisée en React / Node.js."
-                />
+                <meta property="og:title" content={`Lily Barberou | ${translations.webDev}`} />
                 <meta property="og:url" content="lilybarberou.fr/" />
-
-                <meta name="description" content="Bienvenue sur le portfolio de Lily Barberou, développeuse web full-stack spécialisée en React / Node.js." />
-                <title>Lily Barberou | Développeuse web</title>
+                <title>Lily Barberou | {translations.webDev}</title>
             </Head>
 
             {/* ----- LILY PART --------------------------------------------------------- */}

@@ -4,6 +4,7 @@
         "works": "Works"
     },
     "home": {
+        "webDev": "Web Developer",
         "title": "<span>I'm Lily</span>Developer, designer<br />Based in France",
         "knowmemore": "Know me more",
         "somethings": "SOME THINGS<br /><span>I&apos;VE BUILT</span>",
@@ -13,7 +14,8 @@
         "sayhello": "Say Hello"
     },
     "about": {
-        "about": "ABOUT<br />LILY",
+        "about": "About me",
+        "aboutLily": "ABOUT<br />LILY",
         "lilyndev": "Lily and Dev",
         "whoislily": "Who is Lily ?",
         "front": "Front",

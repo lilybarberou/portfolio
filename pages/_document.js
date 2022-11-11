@@ -40,6 +40,9 @@ class MyDocument extends Document {
 
                     <meta property="og:image" content="https://raw.githubusercontent.com/Nahay/Assets/master/Selfportrait/banner.png" />
                     <meta property="og:type" content="website" />
+
+                    <meta property="og:description" content="Portfolio de Lily Barberou, développeuse web full-stack spécialisée en React / Node.js." />
+                    <meta name="description" content="Portfolio de Lily Barberou, développeuse web full-stack spécialisée en React / Node.js." />
                 </Head>
                 <body>
                     <Main />

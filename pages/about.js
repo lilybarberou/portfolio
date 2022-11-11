@@ -130,7 +130,7 @@ const About = ({ lang }) => {
 
     useEffect(() => {
         // ─── TRANSLATIONS RENDER ─────────────────────────────────────────
-        renderHtml('#about-title', translations.about);
+        renderHtml('#about-title', translations.aboutLily);
         renderHtml('#text1', translations.text1);
         renderHtml('#text2', translations.text2);
         renderHtml('#text3', translations.text3);
@@ -173,15 +173,9 @@ const About = ({ lang }) => {
     return (
         <div className={classes.container} id="container">
             <Head>
-                <meta property="og:title" content="Lily Barberou | À propos" />
-                <meta
-                    property="og:description"
-                    content="À propos de Lily | Portfolio de Lily Barberou, développeuse web full-stack spécialisée en React / Node.js."
-                />
+                <meta property="og:title" content={`Lily Barberou | ${translations.about}`} />
                 <meta property="og:url" content="https://lilybarberou.fr/about" />
-
-                <meta name="description" content="À propos de Lily | Portfolio de Lily Barberou, développeuse web full-stack spécialisée en React / Node.js." />
-                <title>Lily Barberou | À propos</title>
+                <title>Lily Barberou | {translations.about}</title>
             </Head>
 
             {/* ----- HEADER PART --------------------------------------------------------- */}

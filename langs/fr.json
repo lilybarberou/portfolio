@@ -1,10 +1,10 @@
 {
     "navigation": {
         "aboutme": "À propos",
-        "works": "Réalisations",
-        "test": "<p>test</p>"
+        "works": "Réalisations"
     },
     "home": {
+        "webDev": "Développeuse web",
         "title": "<span>Je suis Lily</span>Developer, designer<br />d'Alsace !",
         "knowmemore": "En savoir plus sur moi",
         "somethings": "DES CHOSES<br /><span>QUE J'AI FAITES</span>",
@@ -14,7 +14,8 @@
         "sayhello": "Dire bonjour"
     },
     "about": {
-        "about": "À PROPOS<br />DE LILY",
+        "about": "À propos",
+        "aboutLily": "À PROPOS<br />DE LILY",
         "lilyndev": "Lily et le Dev",
         "whoislily": "Qui est Lily ?",
         "front": "Du front",

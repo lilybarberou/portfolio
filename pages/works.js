@@ -4,6 +4,8 @@ import { createUseStyles } from 'react-jss';
 import Separation from '@components/Separation';
 import worksList from '@public/static/worksList.json';
 import BrushFrame from '@public/static/svg/brushFrame.svg';
+import Head from 'next/head';
+import { t } from '@contexts/Utils';
 
 const useStyle = createUseStyles({
     container: {
@@ -188,6 +190,7 @@ const useStyle = createUseStyles({
 
 const Works = ({ lang }) => {
     const classes = useStyle();
+    const translations = t('navigation', lang);
 
     const Work = ({ opt }) => {
         const language = lang === 'fr-FR' ? 'fr' : 'en';
@@ -233,8 +236,13 @@ const Works = ({ lang }) => {
 
     return (
         <div className={classes.container}>
+            <Head>
+                <meta property="og:title" content={`Lily Barberou | ${translations.works}`} />
+                <meta property="og:url" content="lilybarberou.fr/works" />
+                <title>Lily Barberou | {translations.works}</title>
+            </Head>
             <div className={classes.title}>
-                <h1 className={`${lang === 'fr-FR' ? '' : 'en'}`}>{lang === 'fr-FR' ? 'RÉALISATIONS' : 'WORKS'}</h1>
+                <h1 className={`${lang === 'fr-FR' ? '' : 'en'}`}>{translations.works}</h1>
             </div>
             <Separation />
             {Object.values(worksList)[0].map((work, i) => (

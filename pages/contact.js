@@ -5,6 +5,7 @@ import emailjs from '@emailjs/browser';
 import { getFormData, t } from '@contexts/Utils';
 import Separation from '@components/Separation';
 import Arrow from '@public/static/svg/arrow.svg';
+import Head from 'next/head';
 
 const useStyle = createUseStyles({
     container: {
@@ -239,6 +240,11 @@ const Contact = ({ lang }) => {
 
     return (
         <div className={classes.container}>
+            <Head>
+                <meta property="og:title" content="Lily Barberou | Contact" />
+                <meta property="og:url" content="lilybarberou.fr/contact" />
+                <title>Lily Barberou | Contact</title>
+            </Head>
             <div className={classes.title}>
                 <h1>CONTACT</h1>
             </div>
