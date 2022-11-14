@@ -122,7 +122,7 @@ const useStyle = createUseStyles({
             height: 450,
             justifyContent: 'center',
             gap: 60,
-            marginLeft: 50,
+            marginLeft: 'auto',
 
             // form left/right container
             '& > div': {
