@@ -38,7 +38,7 @@ class MyDocument extends Document {
                     <link rel="icon" href="/favicon.ico" />
                     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
 
-                    <meta property="og:image" content="https://raw.githubusercontent.com/Nahay/Assets/master/Selfportrait/banner.png" />
+                    <meta property="og:image" content="https://raw.githubusercontent.com/Nahay/Assets/master/Portfolio/home.png" />
                     <meta property="og:type" content="website" />
 
                     <meta property="og:description" content="Portfolio de Lily Barberou, développeuse web full-stack spécialisée en React / Node.js." />
