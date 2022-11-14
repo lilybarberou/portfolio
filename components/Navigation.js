@@ -226,7 +226,7 @@ const Navigation = ({ lang }) => {
                 </div>
                 <div className={classes.lang}>
                     <span onClick={() => dispatch(switchLanguage('fr-FR'))}>FR</span>
-                    <span onClick={() => dispatch(switchLanguage('en-EN'))}>EN</span>
+                    <span onClick={() => dispatch(switchLanguage('en-US'))}>EN</span>
                 </div>
             </div>
         </div>

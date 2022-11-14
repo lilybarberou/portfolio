@@ -30,7 +30,7 @@ class MyDocument extends Document {
     }
     render() {
         return (
-            <Html>
+            <Html lang="fr-FR">
                 <Head>
                     <meta charSet="utf-8" />
                     <meta name="theme-color" content="#232323" />

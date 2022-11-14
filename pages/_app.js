@@ -13,6 +13,8 @@ function MyApp({ Component, pageProps }) {
     useEffect(() => {
         const jssStyles = document.querySelector('#server-side-styles');
         if (jssStyles) jssStyles.parentNode.removeChild(jssStyles);
+
+        document.documentElement.lang = ['fr-FR', 'fr'].includes(navigator.language) ? 'fr-FR' : 'en-US';
     }, []);
 
     return (
