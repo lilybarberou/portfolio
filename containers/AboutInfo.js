@@ -207,7 +207,6 @@ const useStyle = createUseStyles({
             width: 'fit-content',
             flexDirection: 'row-reverse',
             transition: '.5s all',
-            transitionTimingFunction: 'cubic-bezier(0.165, 0.84, 0.44, 1), cubic-bezier(0.165, 0.84, 0.44, 1)',
             transform: 'rotate(-180deg) translateY(-620px)',
             marginBottom: '0',
 

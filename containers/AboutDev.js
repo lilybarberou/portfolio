@@ -280,6 +280,14 @@ const AboutDev = ({ onClick, translations, lang }) => {
                     transform: 'translateY(${coef*50}px)',
                 },
             });
+            // ─── EXPERIENCES ─────────────────────────────────────────
+            new Parallax({
+                reference: '#experience',
+                target: '#experience > h2',
+                styles: {
+                    transform: 'rotate(-90deg) translateX(${coef*400-300}px)',
+                },
+            });
         }
     }, []);
 
@@ -417,7 +425,7 @@ const AboutDev = ({ onClick, translations, lang }) => {
             <Separation />
 
             {/* ─── EXPERIENCE ───────────────────────────────────────── */}
-            <div className={classes.experienceTitle}>
+            <div className={classes.experienceTitle} id="experience">
                 <h2>{translations.experience}</h2>
             </div>
             {renderExperiences(lang === 'fr-FR' ? frExperience : enExperience)}

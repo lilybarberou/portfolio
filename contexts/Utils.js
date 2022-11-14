@@ -26,6 +26,11 @@ export default class Parallax {
         if (!this.target) return;
         this.reference = document.querySelector(data.reference);
         this.styles = data.styles;
+
+        // set global transitions
+        this.target.style.transition = '.5s';
+        this.target.style.transitionTimingFunction = 'cubic-bezier(0.165, 0.84, 0.44, 1), cubic-bezier(0.165, 0.84, 0.44, 1)';
+
         document.querySelector('.app').addEventListener(
             'scroll',
             () => {
