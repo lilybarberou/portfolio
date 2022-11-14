@@ -1,7 +1,6 @@
 {
-    "name": "Lily Barberou | Développeuse web",
-    "start_url": "/",
     "short_name": "Lily B | Portfolio",
+    "name": "Lily Barberou | Développeuse web",
     "icons": [
         {
             "src": "favicon-16x16.png",
@@ -35,7 +34,8 @@
             "type": "image/png"
         }
     ],
+    "start_url": ".",
+    "display": "standalone",
     "theme_color": "#232323",
-    "background_color": "#232323",
-    "display": "standalone"
+    "background_color": "#232323"
 }
