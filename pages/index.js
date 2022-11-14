@@ -279,6 +279,8 @@ const Home = ({ lang }) => {
         } else carousel.scrollTop = carousel.scrollTop + 200;
     };
 
+    const handleWorksClick = () => (document.querySelector('.app').scrollTop = 0);
+
     return (
         <div className={classes.container}>
             <Head>
@@ -318,7 +320,7 @@ const Home = ({ lang }) => {
                 <span onClick={handleScroll} className={classes.arrowContainer}>
                     <span className={classes.arrow}></span>
                 </span>
-                <Button text={translations.showmore} link="/works" />
+                <Button text={translations.showmore} link="/works" onClick={handleWorksClick} />
             </div>
             <Separation />
 

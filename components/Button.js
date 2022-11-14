@@ -33,12 +33,12 @@ const useStyle = createUseStyles({
     },
 });
 
-const Button = ({ text, link }) => {
+const Button = ({ text, link, onClick }) => {
     const classes = useStyle();
 
     return (
         <Link href={link}>
-            <a className={`${classes.container} button`}>
+            <a onClick={onClick} className={`${classes.container} button`}>
                 {text}
                 <Arrow />
             </a>
