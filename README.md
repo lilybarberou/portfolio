@@ -6,7 +6,7 @@
   <p align="center">
     <samp>Lily Barberou's portfolio</samp>
     <br />
-    <a href="https://lilybarberou-autoportrait.vercel.app"><strong>Let's take a look »</strong></a>
+    <a href="https://lilybarberou.fr"><strong>Let's take a look »</strong></a>
   </p>
 </p>
 
