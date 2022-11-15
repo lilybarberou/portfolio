@@ -271,13 +271,13 @@ const Contact = ({ lang }) => {
                 <div>
                     <div>
                         <label htmlFor="message">Message *</label>
-                        <textarea name="message" required={true} />
+                        <textarea id="message" required={true} />
                     </div>
                     <div className="captcha">
                         <label htmlFor="captcha">
                             {captcha[0]} + {captcha[1]} *
                         </label>
-                        <input type="number" name="captcha" required={true} />
+                        <input type="number" id="captcha" required={true} />
                     </div>
                     <button>
                         {translations.sendit}{' '}
