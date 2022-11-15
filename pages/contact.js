@@ -253,19 +253,19 @@ const Contact = ({ lang }) => {
                 <div>
                     <div>
                         <label htmlFor="firstname">{translations.firstname} *</label>
-                        <input type="text" name="firstname" required={true} />
+                        <input type="text" id="firstname" required={true} />
                     </div>
                     <div>
                         <label htmlFor="name">{translations.name} *</label>
-                        <input type="text" name="name" required={true} />
+                        <input type="text" id="name" required={true} />
                     </div>
                     <div>
                         <label htmlFor="email">Email *</label>
-                        <input type="email" name="email" required={true} />
+                        <input type="email" id="email" required={true} />
                     </div>
                     <div>
                         <label htmlFor="subject">{translations.subject}</label>
-                        <input type="text" name="subject" />
+                        <input type="text" id="subject" />
                     </div>
                 </div>
                 <div>
