@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { toast } from 'react-toastify';
 import emailjs from '@emailjs/browser';
@@ -148,15 +148,16 @@ const useStyle = createUseStyles({
                     },
                     '& > label[for="captcha"]': {
                         alignSelf: 'flex-end',
-                        width: 100,
+                        width: 120,
                     },
                 },
                 '& > div > input, & > div > textarea, & > button': {
                     height: '50px !important',
                     width: '350px !important',
 
-                    '&[name="captcha"]': {
+                    '&[id="captcha"]': {
                         alignSelf: 'flex-end !important',
+                        width: '120px !important',
                     },
                 },
                 '& > button': {
@@ -208,8 +209,12 @@ const useStyle = createUseStyles({
 const Contact = ({ lang }) => {
     const classes = useStyle();
     const translations = t('contact', lang);
-    const captcha = [Math.floor(Math.random() * 10) + 1, Math.floor(Math.random() * 10) + 1];
     const [loading, setLoading] = useState(false);
+    const [captcha, setCaptcha] = useState([]);
+
+    useEffect(() => {
+        setCaptcha([Math.floor(Math.random() * 10) + 1, Math.floor(Math.random() * 10) + 1]);
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
