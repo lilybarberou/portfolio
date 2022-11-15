@@ -93,7 +93,7 @@ const useStyle = createUseStyles({
                     borderColor: 'var(--color-pink)',
                     outline: 'none',
                 },
-                '&[name="captcha"]': {
+                '&[id="captcha"]': {
                     maxWidth: 100,
                     alignSelf: 'flex-start',
                 },
