@@ -258,31 +258,31 @@ const Contact = ({ lang }) => {
                 <div>
                     <div>
                         <label htmlFor="firstname">{translations.firstname} *</label>
-                        <input type="text" id="firstname" required={true} />
+                        <input type="text" id="firstname" name="firstname" required={true} />
                     </div>
                     <div>
                         <label htmlFor="name">{translations.name} *</label>
-                        <input type="text" id="name" required={true} />
+                        <input type="text" id="name" name="name" required={true} />
                     </div>
                     <div>
                         <label htmlFor="email">Email *</label>
-                        <input type="email" id="email" required={true} />
+                        <input type="email" id="email" name="email" required={true} />
                     </div>
                     <div>
                         <label htmlFor="subject">{translations.subject}</label>
-                        <input type="text" id="subject" />
+                        <input type="text" id="subject" name="subject" />
                     </div>
                 </div>
                 <div>
                     <div>
                         <label htmlFor="message">Message *</label>
-                        <textarea id="message" required={true} />
+                        <textarea id="message" name="message" required={true} />
                     </div>
                     <div className="captcha">
                         <label htmlFor="captcha">
                             {captcha[0]} + {captcha[1]} *
                         </label>
-                        <input type="number" id="captcha" required={true} />
+                        <input type="number" id="captcha" name="captcha" required={true} />
                     </div>
                     <button>
                         {translations.sendit}{' '}
