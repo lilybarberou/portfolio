@@ -237,6 +237,7 @@ const Works = ({ lang }) => {
     return (
         <div className={classes.container}>
             <Head>
+                <link rel="canonical" href="https://lilybarberou.fr/works" />
                 <meta property="og:title" content={`Lily Barberou | ${translations.works}`} />
                 <meta property="og:url" content="lilybarberou.fr/works" />
                 <title>Lily Barberou | {translations.works}</title>
