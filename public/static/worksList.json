@@ -47,13 +47,13 @@
             "url": "https://thescarlet.lilybarberou.fr"
         },
         {
-            "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Portfolio/Portfolio_Home.png",
+            "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Old%20Portfolio/Portfolio_Home.png",
             "title": "Portfolio V2",
             "techs": ["React"],
             "frDesc": "Ancienne version de mon portfolio",
             "enDesc": "Old version of my portfolio",
             "github": "https://github.com/Nahay/Portfolio-v1",
-            "url": "https://lilybarberou.fr"
+            "url": "https://portfoliov2.lilybarberou.fr"
         },
         {
             "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Weeb%20Lampe/Accueil%20Weeb%20Lampe.png",
