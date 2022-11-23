@@ -157,7 +157,7 @@ const useStyle = createUseStyles({
 
                     '&[id="captcha"]': {
                         alignSelf: 'flex-end !important',
-                        width: '120px !important',
+                        maxWidth: '120px !important',
                     },
                 },
                 '& > button': {
