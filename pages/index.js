@@ -268,6 +268,7 @@ const Home = ({ lang }) => {
             link: '/works#charlemagne',
         },
         { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Quote%20Wars/banner.png', name: 'Quote Wars', link: '/works#quotewars' },
+        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/SpotYou/banner.png', name: 'SpotYou', link: '/works#spotyou' },
         { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Chat/banner.png', name: 'U Speak', link: '/works#uspeak' },
     ];
 
@@ -284,35 +285,35 @@ const Home = ({ lang }) => {
     return (
         <div className={classes.container}>
             <Head>
-                <link rel="canonical" href="https://lilybarberou.fr/" />
-                <meta property="og:title" content={`Lily Barberou | ${translations.webDev}`} />
-                <meta property="og:url" content="lilybarberou.fr/" />
+                <link rel='canonical' href='https://lilybarberou.fr/' />
+                <meta property='og:title' content={`Lily Barberou | ${translations.webDev}`} />
+                <meta property='og:url' content='lilybarberou.fr/' />
                 <title>Lily Barberou | {translations.webDev}</title>
             </Head>
 
             {/* ----- LILY PART --------------------------------------------------------- */}
             <span className={classes.hello}>HELLO</span>
             <div className={classes.lily}>
-                <h1 id="home-title"></h1>
-                <Button text={translations.knowmemore} link="/about" />
+                <h1 id='home-title'></h1>
+                <Button text={translations.knowmemore} link='/about' />
             </div>
-            <Separation id="separation" />
+            <Separation id='separation' />
 
             {/* ----- WORKS PART --------------------------------------------------------- */}
             <div className={classes.works}>
-                <h2 className={classes.worksText} id="things-ive-built"></h2>
+                <h2 className={classes.worksText} id='things-ive-built'></h2>
                 <div className={classes.brushFrame}>
-                    <p id="lovejsreact"></p>
+                    <p id='lovejsreact'></p>
                     <BrushFrame />
                 </div>
             </div>
             <div className={classes.worksContainer}>
                 <div className={classes.carouselContainer}>
-                    <div className={classes.carousel} id="home-carousel">
+                    <div className={classes.carousel} id='home-carousel'>
                         {works.map((e) => (
                             <Link key={e.name} href={e.link}>
                                 <a>
-                                    <Image src={e.img} width="400" height="220" alt={e.name} className="bnw" />
+                                    <Image src={e.img} width='400' height='220' alt={e.name} className='bnw' />
                                 </a>
                             </Link>
                         ))}
@@ -321,14 +322,14 @@ const Home = ({ lang }) => {
                 <span onClick={handleScroll} className={classes.arrowContainer}>
                     <span className={classes.arrow}></span>
                 </span>
-                <Button text={translations.showmore} link="/works" onClick={handleWorksClick} />
+                <Button text={translations.showmore} link='/works' onClick={handleWorksClick} />
             </div>
             <Separation />
 
             {/* ----- CONTACT PART --------------------------------------------------------- */}
             <div className={classes.contact}>
                 <h2>{translations.getintouch}</h2>
-                <Button text={translations.sayhello} link="/contact" />
+                <Button text={translations.sayhello} link='/contact' />
             </div>
         </div>
     );

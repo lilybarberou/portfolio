@@ -38,6 +38,15 @@
             "url": "https://quotewars.lilybarberou.fr"
         },
         {
+            "img": "https://raw.githubusercontent.com/Nahay/Assets/master/SpotYou/banner.png",
+            "title": "SpotYou",
+            "techs": ["Next.js", "Spotify API"],
+            "frDesc": "Récupérez vos musiques/artistes les plus écoutés sur votre compte Spotify",
+            "enDesc": "Get your most listened songs/artists and more from your Spotify account",
+            "github": "https://github.com/Nahay/spotify",
+            "url": "https://spotyou.lilybarberou.fr"
+        },
+        {
             "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Scarlet/banner.png",
             "title": "The Scarlet",
             "techs": ["Next.js"],
