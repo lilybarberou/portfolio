@@ -120,17 +120,42 @@ const useStyle = createUseStyles({
                 whiteSpace: 'nowrap',
                 textAlign: 'left',
             },
+            '& > h2[id="about-info-title"]': {
+                '& > span': {
+                    display: 'flex',
+                    gap: 10,
+
+                    '& .svg': {
+                        alignSelf: 'center',
+                        position: 'relative',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+
+                        '&::after': {
+                            content: 'url(/static/svg/activeMenu.svg)',
+                            position: 'absolute',
+                            top: '12%',
+                            zIndex: -1,
+                            transform: (props) => (props.fr ? 'scale(1.1, 1.2)' : 'scale(2.4, 1.2)'),
+                            transition: '.3s',
+                        },
+                    },
+                },
+            },
         },
     },
 });
 
 const About = ({ lang }) => {
-    const classes = useStyle();
+    const classes = useStyle({ fr: lang === 'fr-FR' });
     const translations = t('about', lang);
 
     useEffect(() => {
         // ─── TRANSLATIONS RENDER ─────────────────────────────────────────
         renderHtml('#about-title', translations.aboutLily);
+        renderHtml('#front', translations.front);
+        renderHtml('#back', translations.back);
         renderHtml('#text1', translations.text1);
         renderHtml('#text2', translations.text2);
         renderHtml('#text3', translations.text3);
@@ -171,33 +196,33 @@ const About = ({ lang }) => {
     };
 
     return (
-        <div className={classes.container} id="container">
+        <div className={classes.container} id='container'>
             <Head>
-                <link rel="canonical" href="https://lilybarberou.fr/about" />
-                <meta property="og:title" content={`Lily Barberou | ${translations.about}`} />
-                <meta property="og:url" content="https://lilybarberou.fr/about" />
+                <link rel='canonical' href='https://lilybarberou.fr/about' />
+                <meta property='og:title' content={`Lily Barberou | ${translations.about}`} />
+                <meta property='og:url' content='https://lilybarberou.fr/about' />
                 <title>Lily Barberou | {translations.about}</title>
             </Head>
 
             {/* ----- HEADER PART --------------------------------------------------------- */}
-            <h1 id="about-title"></h1>
+            <h1 id='about-title'></h1>
 
             <div className={classes.switchBtn}>
-                <button className="active" id="dev-btn" onClick={() => handleClick('dev')}>
+                <button className='active' id='dev-btn' onClick={() => handleClick('dev')}>
                     {translations.lilyndev} <Arrow />
                 </button>
-                <button id="info-btn" onClick={() => handleClick('info')}>
+                <button id='info-btn' onClick={() => handleClick('info')}>
                     {translations.whoislily} <Arrow />
                 </button>
             </div>
 
             {/* ----- DEV PART --------------------------------------------------------- */}
-            <div className={`${classes.content} active dev-content`} id="dev">
+            <div className={`${classes.content} active dev-content`} id='dev'>
                 <AboutDev onClick={handleClick} translations={translations} lang={lang} />
             </div>
 
             {/* ----- INFO PART --------------------------------------------------------- */}
-            <div className={`${classes.content} info-content`} id="info">
+            <div className={`${classes.content} info-content`} id='info'>
                 <AboutInfo onClick={handleClick} translations={translations} />
             </div>
         </div>

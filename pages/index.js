@@ -64,6 +64,27 @@ const useStyle = createUseStyles({
                     fontSize: '40px !important',
                     marginBottom: 20,
                 },
+                '& > span:last-child': {
+                    display: 'flex',
+                    gap: 10,
+                    alignSelf: 'center',
+                },
+                '& .svg': {
+                    alignSelf: 'center',
+                    position: 'relative',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+
+                    '&::after': {
+                        content: 'url(/static/svg/activeMenu.svg)',
+                        position: 'absolute',
+                        top: '20%',
+                        zIndex: -1,
+                        transform: (props) => (props.fr ? 'scale(1.5, 1)' : 'scale(1.1, 1)'),
+                        transition: '.3s',
+                    },
+                },
             },
         },
     },
@@ -232,7 +253,7 @@ const useStyle = createUseStyles({
 });
 
 const Home = ({ lang }) => {
-    const classes = useStyle();
+    const classes = useStyle({ fr: lang === 'fr-FR' });
     const translations = t('home', lang);
 
     useEffect(() => {
