@@ -76,7 +76,7 @@ const useStyle = createUseStyles({
                 height: '100%',
             },
             '&::after': {
-                content: 'url(/static/svg/cadreTop.svg)',
+                content: 'url(/static/svg/frameTop.svg)',
                 position: 'absolute',
                 zIndex: -1,
                 transform: 'scale(0.75, 0.75)',
@@ -172,7 +172,7 @@ const useStyle = createUseStyles({
                 width: '100%',
             },
             '&::after': {
-                content: 'url(/static/svg/cadreBottom.svg)',
+                content: 'url(/static/svg/frameBottom.svg)',
                 position: 'absolute',
                 zIndex: -1,
                 transform: 'scale(0.75, 0.75)',
