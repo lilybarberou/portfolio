@@ -19,13 +19,7 @@ const useStyle = createUseStyles({
         padding: '0 20px',
         boxSizing: 'border-box',
 
-        '& img:first-child': {
-            width: '100%',
-            height: 300,
-            order: '2',
-        },
-
-        '& img:nth-child(2)': {
+        '& > img': {
             width: 150,
             height: 200,
             alignSelf: 'flex-end',
@@ -41,20 +35,8 @@ const useStyle = createUseStyles({
             marginRight: 300,
             height: '100%',
 
-            '& img': {
+            '& > img': {
                 position: 'absolute',
-            },
-
-            '& img:first-child': {
-                top: '0',
-                marginLeft: 80,
-                zIndex: '0',
-                order: 'unset',
-                width: 600,
-                height: 450,
-            },
-
-            '& img:nth-child(2)': {
                 width: 240,
                 height: 380,
                 zIndex: '1',
@@ -64,6 +46,43 @@ const useStyle = createUseStyles({
                 marginRight: '0',
                 alignSelf: 'unset',
                 transform: 'unset',
+            },
+        },
+    },
+    gourmetImg: {
+        width: '100%',
+        height: 300,
+        order: '2',
+
+        '& > img': {
+            width: '100%',
+            height: '100%',
+        },
+        '@media (min-width: 600px)': {
+            width: 600,
+            height: 450,
+            top: '0',
+            marginLeft: 80,
+            zIndex: '0',
+            order: 'unset',
+            alignSelf: 'center',
+            position: 'absolute',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+
+            '& > img': {
+                width: '100%',
+                height: '100%',
+            },
+            '&::after': {
+                content: 'url(/static/svg/cadreTop.svg)',
+                position: 'absolute',
+                zIndex: -1,
+                transform: 'scale(0.75, 0.75)',
+                transition: '.3s',
+                right: '-21%',
+                top: '-20.5%',
             },
         },
     },
@@ -100,13 +119,7 @@ const useStyle = createUseStyles({
         padding: '0 20px',
         boxSizing: 'border-box',
 
-        '& img:first-child': {
-            order: '2',
-            width: 'fit-content',
-            height: 300,
-            alignSelf: 'flex-end',
-        },
-        '& img:nth-child(2)': {
+        '& > img': {
             order: '3',
             width: 120,
             height: 170,
@@ -123,26 +136,49 @@ const useStyle = createUseStyles({
             marginBottom: '0',
             height: '100%',
 
-            '& img': {
+            '& > img': {
                 position: 'absolute',
-            },
-
-            '& img:first-child': {
-                height: '100%',
-                width: 'auto',
-                right: 220,
-                zIndex: '0',
-                marginLeft: 110,
-                order: 'unset',
-            },
-
-            '& img:nth-child(2)': {
                 width: 215,
                 height: 290,
                 bottom: 100,
                 left: '0',
                 zIndex: '1',
                 order: 'unset',
+            },
+        },
+    },
+    otakuImg: {
+        height: 300,
+        width: 'fit-content',
+        alignSelf: 'flex-end',
+        order: '2',
+
+        '& > img': {
+            width: '100%',
+            height: '100%',
+        },
+
+        '@media (min-width: 600px)': {
+            position: 'absolute',
+            height: '100%',
+            width: 'auto',
+            right: 220,
+            marginLeft: 110,
+            zIndex: '0',
+            order: 'unset',
+
+            '& > img': {
+                height: '100%',
+                width: '100%',
+            },
+            '&::after': {
+                content: 'url(/static/svg/cadreBottom.svg)',
+                position: 'absolute',
+                zIndex: -1,
+                transform: 'scale(0.75, 0.75)',
+                transition: '.3s',
+                right: '-12%',
+                top: '-13.5%',
             },
         },
     },
@@ -790,21 +826,25 @@ const AboutInfo = ({ onClick, translations }) => {
 
     return (
         <>
-            <h2 id="about-info-title"></h2>
+            <h2 id='about-info-title'></h2>
             <Separation />
             {/* ──── GOURMET PART ──────────────────────────────────────────────────────────── */}
-            <section className={classes.gourmetContainer} id="gourmet">
-                <Image className="bnw" src={i.Pho} alt="Pho" width={800} height={600} />
-                <Image className="bnw" src={i.Glace} alt="Glace" width={300} height={480} />
+            <section className={classes.gourmetContainer} id='gourmet'>
+                <div className={classes.gourmetImg}>
+                    <Image className='bnw' src={i.Pho} alt='Pho' width={800} height={600} />
+                </div>
+                <Image className='bnw' src={i.Glace} alt='Glace' width={300} height={480} />
                 <div className={classes.gourmetText}>
                     <h2>GOURMET</h2>
-                    <Info text="Phô > Couscous > all" />
+                    <Info text='Phô > Couscous > all' />
                 </div>
             </section>
             {/* ──── OTAKU PART ──────────────────────────────────────────────────────────── */}
-            <section className={classes.otakuContainer} id="otaku">
-                <Image className="bnw" src={i.Totoro} alt="Totoro" width={650} height={800} />
-                <Image className="bnw" src={i.Bouba} alt="Bouba" width={270} height={360} />
+            <section className={classes.otakuContainer} id='otaku'>
+                <div className={classes.otakuImg}>
+                    <Image className='bnw' src={i.Totoro} alt='Totoro' width={650} height={800} />
+                </div>
+                <Image className='bnw' src={i.Bouba} alt='Bouba' width={270} height={360} />
                 <div className={classes.otakuText}>
                     <h2>OTAKU</h2>
                     <Info text={translations.bouba} />
@@ -812,7 +852,7 @@ const AboutInfo = ({ onClick, translations }) => {
             </section>
             <Separation />
             {/* ──── MUSIC PART ──────────────────────────────────────────────────────────── */}
-            <section className={classes.musicContainer} id="musique">
+            <section className={classes.musicContainer} id='musique'>
                 <div className={`${classes.musicText} title`}>
                     <h2>{translations.melophile}</h2>
                     <p>{translations.reggae}</p>
@@ -825,42 +865,42 @@ const AboutInfo = ({ onClick, translations }) => {
             </section>
             <Separation />
             {/* ──── BADMINTON PART ──────────────────────────────────────────────────────────── */}
-            <section className={classes.badContainer} id="badminton">
+            <section className={classes.badContainer} id='badminton'>
                 <h2>{translations.addict}</h2>
                 <Info text={translations.justbad} />
                 <Info text={translations.sporty} />
-                <Image className="bnw" src={i.Racket} alt="Racket" width={360} height={360} />
-                <Image className="bnw" src={i.Racket} alt="Racket" width={300} height={300} />
-                <Image className="bnw" src={i.Volant} alt="Volant" width={140} height={126} />
-                <Image className="bnw" src={i.Volant2} alt="Volant" width={195} height={204} />
+                <Image className='bnw' src={i.Racket} alt='Racket' width={360} height={360} />
+                <Image className='bnw' src={i.Racket} alt='Racket' width={300} height={300} />
+                <Image className='bnw' src={i.Volant} alt='Volant' width={140} height={126} />
+                <Image className='bnw' src={i.Volant2} alt='Volant' width={195} height={204} />
             </section>
             {/* ──── VIDEO GAMES PART ──────────────────────────────────────────────────────────── */}
-            <section className={classes.gamesContainer} id="jeux-videos">
+            <section className={classes.gamesContainer} id='jeux-videos'>
                 <div className={classes.gamesText}>
                     <Info text={translations.videogames} />
-                    <Info text="LILY.GEEK = 100" />
+                    <Info text='LILY.GEEK = 100' />
                 </div>
-                <Image className="bnw" src={i.EldenRing} alt="Elden Ring" width={1236} height={928} />
-                <Image className="bnw" src={i.HollowKnight} alt="Hollow Knight" width={1256} height={1440} />
+                <Image className='bnw' src={i.EldenRing} alt='Elden Ring' width={1236} height={928} />
+                <Image className='bnw' src={i.HollowKnight} alt='Hollow Knight' width={1256} height={1440} />
             </section>
             <Separation />
             {/* ──── ARTIST PART ──────────────────────────────────────────────────────────── */}
-            <section className={classes.drawingsContainer} id="artiste">
+            <section className={classes.drawingsContainer} id='artiste'>
                 <h2>{translations.artist}</h2>
-                <div className={classes.drawings} id="drawings">
+                <div className={classes.drawings} id='drawings'>
                     <Info text={translations.complicated} />
-                    <Image className="bnw" src={i.Dessin1} width={1236} height={1684} alt="Dessin" />
-                    <Image className="bnw" src={i.Dessin2} width={1328} height={1740} alt="Dessin" />
-                    <Image className="bnw" src={i.Dessin3} width={500} height={196} alt="Dessin" />
-                    <Image className="bnw" src={i.Dessin4} width={3000} height={3000} alt="Dessin" />
-                    <Image className="bnw" src={i.Dessin5} width={1920} height={2560} alt="Dessin" />
-                    <Image className="bnw" src={i.Dessin6} width={1920} height={2560} alt="Dessin" />
-                    <Image className="bnw" src={i.Dessin7} width={1402} height={944} alt="Dessin" />
+                    <Image className='bnw' src={i.Dessin1} width={1236} height={1684} alt='Dessin' />
+                    <Image className='bnw' src={i.Dessin2} width={1328} height={1740} alt='Dessin' />
+                    <Image className='bnw' src={i.Dessin3} width={500} height={196} alt='Dessin' />
+                    <Image className='bnw' src={i.Dessin4} width={3000} height={3000} alt='Dessin' />
+                    <Image className='bnw' src={i.Dessin5} width={1920} height={2560} alt='Dessin' />
+                    <Image className='bnw' src={i.Dessin6} width={1920} height={2560} alt='Dessin' />
+                    <Image className='bnw' src={i.Dessin7} width={1402} height={944} alt='Dessin' />
                 </div>
             </section>
             <Separation />
             {/* ──── FOOTER PART ──────────────────────────────────────────────────────────── */}
-            <div className={classes.footer} id="footer">
+            <div className={classes.footer} id='footer'>
                 <div className={classes.brushFrame}>
                     <p>{translations.theresdev}</p>
                     <BrushFrame />
