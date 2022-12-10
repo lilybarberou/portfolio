@@ -191,42 +191,45 @@ const Navigation = ({ lang }) => {
     };
 
     return (
-        <div className={classes.container} id="navigation">
+        <div className={classes.container} id='navigation'>
             <div className={classes.mobileNav}>
-                <Link href="/">
+                <Link href='/'>
                     <span onClick={(e) => handleMobileMenu(e, true)}>L</span>
                 </Link>
-                <svg id="close" onClick={handleMobileMenu} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                    <path d="M317.7 402.3c3.125 3.125 3.125 8.188 0 11.31c-3.127 3.127-8.186 3.127-11.31 0L160 267.3l-146.3 146.3c-3.127 3.127-8.186 3.127-11.31 0c-3.125-3.125-3.125-8.188 0-11.31L148.7 256L2.344 109.7c-3.125-3.125-3.125-8.188 0-11.31s8.188-3.125 11.31 0L160 244.7l146.3-146.3c3.125-3.125 8.188-3.125 11.31 0s3.125 8.188 0 11.31L171.3 256L317.7 402.3z" />
+                <svg id='close' onClick={handleMobileMenu} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'>
+                    <path d='M317.7 402.3c3.125 3.125 3.125 8.188 0 11.31c-3.127 3.127-8.186 3.127-11.31 0L160 267.3l-146.3 146.3c-3.127 3.127-8.186 3.127-11.31 0c-3.125-3.125-3.125-8.188 0-11.31L148.7 256L2.344 109.7c-3.125-3.125-3.125-8.188 0-11.31s8.188-3.125 11.31 0L160 244.7l146.3-146.3c3.125-3.125 8.188-3.125 11.31 0s3.125 8.188 0 11.31L171.3 256L317.7 402.3z' />
                 </svg>
-                <svg className="active" id="open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" onClick={handleMobileMenu}>
-                    <path d="M0 88C0 83.58 3.582 80 8 80H440C444.4 80 448 83.58 448 88C448 92.42 444.4 96 440 96H8C3.582 96 0 92.42 0 88zM0 248C0 243.6 3.582 240 8 240H440C444.4 240 448 243.6 448 248C448 252.4 444.4 256 440 256H8C3.582 256 0 252.4 0 248zM440 416H8C3.582 416 0 412.4 0 408C0 403.6 3.582 400 8 400H440C444.4 400 448 403.6 448 408C448 412.4 444.4 416 440 416z" />
+                <svg className='active' id='open' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' onClick={handleMobileMenu}>
+                    <path d='M0 88C0 83.58 3.582 80 8 80H440C444.4 80 448 83.58 448 88C448 92.42 444.4 96 440 96H8C3.582 96 0 92.42 0 88zM0 248C0 243.6 3.582 240 8 240H440C444.4 240 448 243.6 448 248C448 252.4 444.4 256 440 256H8C3.582 256 0 252.4 0 248zM440 416H8C3.582 416 0 412.4 0 408C0 403.6 3.582 400 8 400H440C444.4 400 448 403.6 448 408C448 412.4 444.4 416 440 416z' />
                 </svg>
             </div>
-            <div className={classes.menu} id="mobile-menu">
+            <div className={classes.menu} id='mobile-menu'>
                 <div className={classes.links}>
-                    <Link href="/">
+                    <Link href='/'>
                         <a className={`${classes.logo} ${router.pathname == '/' ? 'active' : ''}`}>L</a>
                     </Link>
-                    <Link href="/about">
+                    <Link href='/about'>
                         <a className={router.pathname == '/about' ? 'active' : ''} onClick={handleMobileMenu}>
                             {translations.aboutme}
                         </a>
                     </Link>
-                    <Link href="/works">
+                    <Link href='/works'>
                         <a className={router.pathname == '/works' ? 'active' : ''} onClick={handleMobileMenu}>
                             {translations.works}
                         </a>
                     </Link>
-                    <Link href="/contact">
+                    <Link href='/contact'>
                         <a className={router.pathname == '/contact' ? 'active' : ''} onClick={handleMobileMenu}>
                             CONTACT
                         </a>
                     </Link>
                 </div>
                 <div className={classes.lang}>
-                    <span onClick={() => dispatch(switchLanguage('fr-FR'))}>FR</span>
-                    <span onClick={() => dispatch(switchLanguage('en-US'))}>EN</span>
+                    {lang === 'fr-FR' ? (
+                        <span onClick={() => dispatch(switchLanguage('en-US'))}>EN</span>
+                    ) : (
+                        <span onClick={() => dispatch(switchLanguage('fr-FR'))}>FR</span>
+                    )}
                 </div>
             </div>
         </div>
