@@ -6,6 +6,7 @@ import worksList from '@public/static/worksList.json';
 import BrushFrame from '@public/static/svg/brushFrame.svg';
 import Head from 'next/head';
 import { t } from '@contexts/Utils';
+import Link from 'next/link';
 
 const useStyle = createUseStyles({
     container: {
@@ -53,11 +54,12 @@ const useStyle = createUseStyles({
         width: '100%',
         fontFamily: 'Poppins',
 
-        '& > img': {
+        '& > a > img': {
             width: '100%',
             height: 180,
             objectFit: 'cover',
             marginBottom: 5,
+            cursor: 'pointer',
         },
         // title
         '& > span': {
@@ -82,7 +84,7 @@ const useStyle = createUseStyles({
             flexDirection: 'column',
             margin: '0 10px',
 
-            '& > img': {
+            '& > a > img': {
                 height: 240,
                 width: 400,
             },
@@ -200,7 +202,9 @@ const Works = ({ lang }) => {
 
         return (
             <div className={classes.work} id={title.toLowerCase().replace(/\s/g, '')}>
-                <Image src={opt.img} alt={title} width='560' height='240' className='bnw' />
+                <a aria-label='Link to the website' href={opt.url} target='_blank' rel='noopener noreferrer'>
+                    <Image src={opt.img} alt={title} width='560' height='240' className='bnw' />
+                </a>
                 <div className={classes.desktopTech}>
                     {opt.techs.map((e, i) => (
                         <div key={i}>
