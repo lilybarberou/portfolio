@@ -7,6 +7,7 @@ import Button from '@components/Button';
 import Separation from '@components/Separation';
 import Parallax, { renderHtml, t } from '@contexts/Utils';
 import BrushFrame from '@public/static/svg/brushFrame.svg';
+import Download from '@public/static/svg/download.svg';
 
 const useStyle = createUseStyles({
     container: {
@@ -85,6 +86,35 @@ const useStyle = createUseStyles({
                         transition: '.3s',
                     },
                 },
+            },
+        },
+    },
+    buttons: {
+        display: 'flex',
+        gap: 10,
+    },
+    download: {
+        width: 'fit-content',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        border: '1px solid grey',
+        padding: '11px 25px',
+        fontFamily: 'Poppins',
+        fontSize: 13,
+        gap: 10,
+        cursor: 'pointer',
+        color: '#fff',
+        textDecoration: 'none',
+
+        '& > svg': {
+            width: 17,
+            height: 'auto',
+            filter: 'invert(1)',
+
+            '& > image': {
+                width: 17,
+                height: 'auto',
             },
         },
     },
@@ -255,6 +285,10 @@ const useStyle = createUseStyles({
 const Home = ({ lang }) => {
     const classes = useStyle({ fr: lang === 'fr-FR' });
     const translations = t('home', lang);
+    const cvLink =
+        lang === 'fr-FR'
+            ? 'https://drive.google.com/file/d/1P-zpMzR-ks_wHkVS_4tKbQGb-uz1vQS_/view?usp=share_link'
+            : 'https://drive.google.com/file/d/1Y1Zz3BuwuCP-DUf_gti52IAEGzjVVvr4/view?usp=share_link';
 
     useEffect(() => {
         // ─── TRANSLATIONS RENDER ─────────────────────────────────────────
@@ -316,7 +350,13 @@ const Home = ({ lang }) => {
             <span className={classes.hello}>HELLO</span>
             <div className={classes.lily}>
                 <h1 id='home-title'></h1>
-                <Button text={translations.knowmemore} link='/about' />
+                <div className={classes.buttons}>
+                    <a href={cvLink} target='_blank' rel='noopener noreferrer' className={classes.download}>
+                        <span>CV</span>
+                        <Download />
+                    </a>
+                    <Button text={translations.knowmemore} link='/about' />
+                </div>
             </div>
             <Separation id='separation' />
 
