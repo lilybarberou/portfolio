@@ -101,20 +101,35 @@ const useStyle = createUseStyles({
         border: '1px solid grey',
         padding: '11px 25px',
         fontFamily: 'Poppins',
-        fontSize: 13,
+        fontSize: 11,
         gap: 10,
         cursor: 'pointer',
         color: '#fff',
         textDecoration: 'none',
 
         '& > svg': {
-            width: 17,
+            width: 15,
             height: 'auto',
             filter: 'invert(1)',
 
             '& > image': {
-                width: 17,
+                width: 15,
                 height: 'auto',
+            },
+        },
+        '& > span': {
+            lineHeight: 1,
+        },
+
+        '@media (min-width: 600px)': {
+            fontSize: 13,
+
+            '& > svg': {
+                width: 17,
+
+                '& > image': {
+                    width: 17,
+                },
             },
         },
     },
