@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { Provider, useSelector } from 'react-redux';
 import { store } from 'store';
 import { ToastContainer } from 'react-toastify';
@@ -9,8 +10,11 @@ import HorizontalWrapper from '@components/HorizontalWrapper';
 import '@styles/globals.scss';
 import { t } from '@contexts/Utils';
 import Script from 'next/script';
+import * as gtag from '../lib/gtag';
 
 function MyApp({ Component, pageProps }) {
+    const router = useRouter();
+
     // remove server side style from react jss
     useEffect(() => {
         const jssStyles = document.querySelector('#server-side-styles');
@@ -18,6 +22,17 @@ function MyApp({ Component, pageProps }) {
 
         document.documentElement.lang = ['fr-FR', 'fr'].includes(navigator.language) ? 'fr-FR' : 'en-US';
     }, []);
+
+    // management for google analytics spa
+    useEffect(() => {
+        const handleRouteChange = (url) => {
+            gtag.pageview(url);
+        };
+        router.events.on('routeChangeComplete', handleRouteChange);
+        return () => {
+            router.events.off('routeChangeComplete', handleRouteChange);
+        };
+    }, [router.events]);
 
     // must be a component to get translation
     const MusicCursor = () => {
@@ -29,16 +44,21 @@ function MyApp({ Component, pageProps }) {
 
     return (
         <>
-            <Script async src='https://www.googletagmanager.com/gtag/js?id=G-17M60GEGB9'></Script>
-            <Script id='google-analytics'>
-                {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-
-                gtag('config', 'G-17M60GEGB9');
-                `}
-            </Script>
+            <Script strategy='afterInteractive' src='https://www.googletagmanager.com/gtag/js?id=G-17M60GEGB9'></Script>
+            <Script
+                id='google-analytics'
+                strategy='afterInteractive'
+                dangerouslySetInnerHTML={{
+                    __html: `
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'G-17M60GEGB9', {
+                        page_path: window.location.pathname,
+                    });
+                    `,
+                }}
+            />
 
             <Provider store={store}>
                 <Head>
