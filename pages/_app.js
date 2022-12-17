@@ -8,6 +8,7 @@ import Navigation from '@components/Navigation';
 import HorizontalWrapper from '@components/HorizontalWrapper';
 import '@styles/globals.scss';
 import { t } from '@contexts/Utils';
+import Script from 'next/script';
 
 function MyApp({ Component, pageProps }) {
     // remove server side style from react jss
@@ -27,26 +28,39 @@ function MyApp({ Component, pageProps }) {
     };
 
     return (
-        <Provider store={store}>
-            <Head>
-                <meta name='viewport' content='width=device-width, initial-scale=1' />
-            </Head>
-            <ToastContainer
-                position='top-right'
-                autoClose={3500}
-                hideProgressBar={false}
-                closeOnClick={true}
-                pauseOnHover={true}
-                draggable={false}
-                progress={undefined}
-                theme='dark'
-            />
-            <MusicCursor />
-            <HorizontalWrapper>
-                <Navigation />
-                <Component {...pageProps} />
-            </HorizontalWrapper>
-        </Provider>
+        <>
+            <Script async src='https://www.googletagmanager.com/gtag/js?id=G-17M60GEGB9'></Script>
+            <Script id='google-analytics'>
+                {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-17M60GEGB9');
+                `}
+            </Script>
+
+            <Provider store={store}>
+                <Head>
+                    <meta name='viewport' content='width=device-width, initial-scale=1' />
+                </Head>
+                <ToastContainer
+                    position='top-right'
+                    autoClose={3500}
+                    hideProgressBar={false}
+                    closeOnClick={true}
+                    pauseOnHover={true}
+                    draggable={false}
+                    progress={undefined}
+                    theme='dark'
+                />
+                <MusicCursor />
+                <HorizontalWrapper>
+                    <Navigation />
+                    <Component {...pageProps} />
+                </HorizontalWrapper>
+            </Provider>
+        </>
     );
 }
 
