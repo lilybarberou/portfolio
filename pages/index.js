@@ -356,9 +356,9 @@ const Home = ({ lang }) => {
         <div className={classes.container}>
             <Head>
                 <link rel='canonical' href='https://lilybarberou.fr/' />
-                <meta property='og:title' content={`Lily Barberou | ${translations.webDev}`} />
+                <meta property='og:title' content='Lily Barberou | Portfolio' />
                 <meta property='og:url' content='lilybarberou.fr/' />
-                <title>Lily Barberou | {translations.webDev}</title>
+                <title>Lily Barberou | Portfolio</title>
             </Head>
 
             {/* ----- LILY PART --------------------------------------------------------- */}
