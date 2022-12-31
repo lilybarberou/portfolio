@@ -300,10 +300,7 @@ const useStyle = createUseStyles({
 const Home = ({ lang }) => {
     const classes = useStyle({ fr: lang === 'fr-FR' });
     const translations = t('home', lang);
-    const cvLink =
-        lang === 'fr-FR'
-            ? 'https://drive.google.com/file/d/1P-zpMzR-ks_wHkVS_4tKbQGb-uz1vQS_/view?usp=share_link'
-            : 'https://drive.google.com/file/d/1Y1Zz3BuwuCP-DUf_gti52IAEGzjVVvr4/view?usp=share_link';
+    const cvLink = lang === 'fr-FR' ? process.env.CV_FR_LINK : process.env.CV_EN_LINK;
 
     useEffect(() => {
         // ─── TRANSLATIONS RENDER ─────────────────────────────────────────
@@ -355,41 +352,41 @@ const Home = ({ lang }) => {
     return (
         <div className={classes.container}>
             <Head>
-                <link rel='canonical' href='https://lilybarberou.fr/' />
-                <meta property='og:title' content='Lily Barberou | Portfolio' />
-                <meta property='og:url' content='lilybarberou.fr/' />
+                <link rel="canonical" href="https://lilybarberou.fr/" />
+                <meta property="og:title" content="Lily Barberou | Portfolio" />
+                <meta property="og:url" content="lilybarberou.fr/" />
                 <title>Lily Barberou | Portfolio</title>
             </Head>
 
             {/* ----- LILY PART --------------------------------------------------------- */}
             <span className={classes.hello}>HELLO</span>
             <div className={classes.lily}>
-                <h1 id='home-title'></h1>
+                <h1 id="home-title"></h1>
                 <div className={classes.buttons}>
-                    <a href={cvLink} target='_blank' rel='noopener noreferrer' className={classes.download}>
+                    <a href={cvLink} target="_blank" rel="noopener noreferrer" className={classes.download}>
                         <span>CV</span>
                         <Download />
                     </a>
-                    <Button text={translations.knowmemore} link='/about' />
+                    <Button text={translations.knowmemore} link="/about" />
                 </div>
             </div>
-            <Separation id='separation' />
+            <Separation id="separation" />
 
             {/* ----- WORKS PART --------------------------------------------------------- */}
             <div className={classes.works}>
-                <h2 className={classes.worksText} id='things-ive-built'></h2>
+                <h2 className={classes.worksText} id="things-ive-built"></h2>
                 <div className={classes.brushFrame}>
-                    <p id='lovejsreact'></p>
+                    <p id="lovejsreact"></p>
                     <BrushFrame />
                 </div>
             </div>
             <div className={classes.worksContainer}>
                 <div className={classes.carouselContainer}>
-                    <div className={classes.carousel} id='home-carousel'>
+                    <div className={classes.carousel} id="home-carousel">
                         {works.map((e) => (
                             <Link key={e.name} href={e.link}>
                                 <a>
-                                    <Image src={e.img} width='400' height='220' alt={e.name} className='bnw' />
+                                    <Image src={e.img} width="400" height="220" alt={e.name} className="bnw" />
                                 </a>
                             </Link>
                         ))}
@@ -398,14 +395,14 @@ const Home = ({ lang }) => {
                 <span onClick={handleScroll} className={classes.arrowContainer}>
                     <span className={classes.arrow}></span>
                 </span>
-                <Button text={translations.showmore} link='/works' onClick={handleWorksClick} />
+                <Button text={translations.showmore} link="/works" onClick={handleWorksClick} />
             </div>
             <Separation />
 
             {/* ----- CONTACT PART --------------------------------------------------------- */}
             <div className={classes.contact}>
                 <h2>{translations.getintouch}</h2>
-                <Button text={translations.sayhello} link='/contact' />
+                <Button text={translations.sayhello} link="/contact" />
             </div>
         </div>
     );
