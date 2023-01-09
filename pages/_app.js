@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }) {
 
     return (
         <>
-            <Script strategy='afterInteractive' src='https://www.googletagmanager.com/gtag/js?id=G-17M60GEGB9'></Script>
+            {/* <Script strategy='afterInteractive' src='https://www.googletagmanager.com/gtag/js?id=G-17M60GEGB9'></Script>
             <Script
                 id='google-analytics'
                 strategy='afterInteractive'
@@ -58,7 +58,7 @@ function MyApp({ Component, pageProps }) {
                     });
                     `,
                 }}
-            />
+            /> */}
 
             <Provider store={store}>
                 <Head>
