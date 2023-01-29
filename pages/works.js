@@ -244,7 +244,7 @@ const Works = ({ lang }) => {
             <Head>
                 <link rel='canonical' href='https://lilybarberou.fr/works' />
                 <meta property='og:title' content={`Lily Barberou | ${translations.works}`} />
-                <meta property='og:url' content='lilybarberou.fr/works' />
+                <meta property='og:url' content='https://lilybarberou.fr/works' />
                 <title>Lily Barberou | {translations.works}</title>
             </Head>
             <div className={classes.title}>

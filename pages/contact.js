@@ -249,7 +249,7 @@ const Contact = ({ lang }) => {
             <Head>
                 <link rel='canonical' href='https://lilybarberou.fr/contact' />
                 <meta property='og:title' content='Lily Barberou | Contact' />
-                <meta property='og:url' content='lilybarberou.fr/contact' />
+                <meta property='og:url' content='https://lilybarberou.fr/contact' />
                 <title>Lily Barberou | Contact</title>
             </Head>
             <div className={classes.title}>
