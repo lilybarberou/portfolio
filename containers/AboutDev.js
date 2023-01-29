@@ -347,8 +347,8 @@ const AboutDev = ({ onClick, translations, lang }) => {
     return (
         <>
             <h2 className={classes.title}>
-                <span id='front'></span>
-                <span id='back'></span>
+                <span dangerouslySetInnerHTML={{ __html: translations.front }}></span>
+                <span dangerouslySetInnerHTML={{ __html: translations.back }}></span>
             </h2>
             <div className={classes.devDesign}>
                 <div>
@@ -443,9 +443,9 @@ const AboutDev = ({ onClick, translations, lang }) => {
 
             {/* ─── TEXTS ───────────────────────────────────────── */}
             <div className={classes.text} id='texts'>
-                <p id='text1'></p>
-                <p id='text2'></p>
-                <p id='text3'></p>
+                <p id='text1' dangerouslySetInnerHTML={{ __html: translations.text1 }}></p>
+                <p id='text2' dangerouslySetInnerHTML={{ __html: translations.text2 }}></p>
+                <p id='text3' dangerouslySetInnerHTML={{ __html: translations.text3 }}></p>
             </div>
             <Separation />
 

@@ -5,7 +5,7 @@ import Image from 'next/future/image';
 import { createUseStyles } from 'react-jss';
 import Button from '@components/Button';
 import Separation from '@components/Separation';
-import Parallax, { renderHtml, t } from '@contexts/Utils';
+import Parallax, { t } from '@contexts/Utils';
 import BrushFrame from '@public/static/svg/brushFrame.svg';
 import Download from '@public/static/svg/download.svg';
 
@@ -303,11 +303,6 @@ const Home = ({ lang }) => {
     const cvLink = lang === 'fr-FR' ? process.env.CV_FR_LINK : process.env.CV_EN_LINK;
 
     useEffect(() => {
-        // ─── TRANSLATIONS RENDER ─────────────────────────────────────────
-        renderHtml('#home-title', translations.title);
-        renderHtml('#things-ive-built', translations.somethings);
-        renderHtml('#lovejsreact', translations.lovejsreact);
-
         // ─── PARALLAX ─────────────────────────────────────────
         if (window.matchMedia('(min-width: 600px)').matches) {
             new Parallax({
@@ -361,7 +356,7 @@ const Home = ({ lang }) => {
             {/* ----- LILY PART --------------------------------------------------------- */}
             <span className={classes.hello}>HELLO</span>
             <div className={classes.lily}>
-                <h1 id='home-title'></h1>
+                <h1 id='home-title' dangerouslySetInnerHTML={{ __html: translations.title }}></h1>
                 <div className={classes.buttons}>
                     <a href={cvLink} target='_blank' rel='noopener noreferrer' className={classes.download}>
                         <span>CV</span>
@@ -374,9 +369,9 @@ const Home = ({ lang }) => {
 
             {/* ----- WORKS PART --------------------------------------------------------- */}
             <div className={classes.works}>
-                <h2 className={classes.worksText} id='things-ive-built'></h2>
+                <h2 className={classes.worksText} id='things-ive-built' dangerouslySetInnerHTML={{ __html: translations.somethings }}></h2>
                 <div className={classes.brushFrame}>
-                    <p id='lovejsreact'></p>
+                    <p dangerouslySetInnerHTML={{ __html: translations.lovejsreact }}></p>
                     <BrushFrame />
                 </div>
             </div>

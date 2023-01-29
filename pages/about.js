@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Head from 'next/head';
 import { createUseStyles } from 'react-jss';
-import Parallax, { renderHtml, t } from '@contexts/Utils';
+import Parallax, { t } from '@contexts/Utils';
 import AboutDev from '@containers/AboutDev';
 import AboutInfo from '@containers/AboutInfo';
 import Arrow from '@public/static/svg/arrow.svg';
@@ -152,15 +152,6 @@ const About = ({ lang }) => {
     const translations = t('about', lang);
 
     useEffect(() => {
-        // ─── TRANSLATIONS RENDER ─────────────────────────────────────────
-        renderHtml('#about-title', translations.aboutLily);
-        renderHtml('#front', translations.front);
-        renderHtml('#back', translations.back);
-        renderHtml('#text1', translations.text1);
-        renderHtml('#text2', translations.text2);
-        renderHtml('#text3', translations.text3);
-        renderHtml('#about-info-title', translations.nutshell);
-
         // ─── PARALLAX ─────────────────────────────────────────
         if (window.matchMedia('(min-width: 600px)').matches) {
             new Parallax({
@@ -205,7 +196,7 @@ const About = ({ lang }) => {
             </Head>
 
             {/* ----- HEADER PART --------------------------------------------------------- */}
-            <h1 id='about-title'></h1>
+            <h1 dangerouslySetInnerHTML={{ __html: translations.aboutLily }}></h1>
 
             <div className={classes.switchBtn}>
                 <button className='active' id='dev-btn' onClick={() => handleClick('dev')}>

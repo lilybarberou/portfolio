@@ -5,10 +5,6 @@ export const t = (key, lang = 'fr-FR') => {
     return lang === 'fr-FR' ? fr[key] : en[key];
 };
 
-export const renderHtml = (el, translation) => {
-    document.querySelector(el).innerHTML = translation;
-};
-
 export const getFormData = (el) => {
     const form = document.querySelector(el);
     const data = new FormData(form);
