@@ -248,9 +248,17 @@ const Contact = ({ lang }) => {
         <div className={classes.container}>
             <Head>
                 <link rel='canonical' href='https://lilybarberou.fr/contact' />
-                <meta property='og:title' content='Lily Barberou | Contact' />
+                <meta property='og:title' content='Contact | Lily Barberou' />
                 <meta property='og:url' content='https://lilybarberou.fr/contact' />
-                <title>Lily Barberou | Contact</title>
+                <meta
+                    property='og:description'
+                    content='Contactez Lily Barberou via le formulaire de contact, ou consultez ses réseaux sociaux Linkedin, Github et Discord.'
+                />
+                <meta
+                    name='description'
+                    content='Contactez Lily Barberou via le formulaire de contact, ou consultez ses réseaux sociaux Linkedin, Github et Discord.'
+                />
+                <title>Contact | Lily Barberou</title>
             </Head>
             <div className={classes.title}>
                 <h1>CONTACT</h1>

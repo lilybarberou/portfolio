@@ -23,26 +23,23 @@ class MyDocument extends Document {
             styles: (
                 <>
                     {initialProps.styles}
-                    <style id="server-side-styles">{registry.toString()}</style>
+                    <style id='server-side-styles'>{registry.toString()}</style>
                 </>
             ),
         };
     }
     render() {
         return (
-            <Html lang="fr-FR">
+            <Html lang='fr-FR'>
                 <Head>
-                    <meta charSet="utf-8" />
-                    <meta name="theme-color" content="#232323" />
-                    <link rel="manifest" href="/manifest.json" />
-                    <link rel="icon" href="/favicon.ico" />
-                    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+                    <meta charSet='utf-8' />
+                    <meta name='theme-color' content='#232323' />
+                    <link rel='manifest' href='/manifest.json' />
+                    <link rel='icon' href='/favicon.ico' />
+                    <link rel='apple-touch-icon' href='./apple-touch-icon.png' />
 
-                    <meta property="og:image" content="https://raw.githubusercontent.com/Nahay/Assets/master/Portfolio/home.png" />
-                    <meta property="og:type" content="website" />
-
-                    <meta property="og:description" content="Portfolio de Lily Barberou, développeuse web full-stack spécialisée en React / Node.js." />
-                    <meta name="description" content="Portfolio de Lily Barberou, développeuse web full-stack spécialisée en React / Node.js." />
+                    <meta property='og:image' content='https://raw.githubusercontent.com/Nahay/Assets/master/Portfolio/home.png' />
+                    <meta property='og:type' content='website' />
                 </Head>
                 <body>
                     <Main />

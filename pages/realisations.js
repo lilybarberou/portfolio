@@ -6,7 +6,6 @@ import worksList from '@public/static/worksList.json';
 import BrushFrame from '@public/static/svg/brushFrame.svg';
 import Head from 'next/head';
 import { t } from '@contexts/Utils';
-import Link from 'next/link';
 
 const useStyle = createUseStyles({
     container: {
@@ -242,10 +241,18 @@ const Works = ({ lang }) => {
     return (
         <div className={classes.container}>
             <Head>
-                <link rel='canonical' href='https://lilybarberou.fr/works' />
-                <meta property='og:title' content={`Lily Barberou | ${translations.works}`} />
-                <meta property='og:url' content='https://lilybarberou.fr/works' />
-                <title>Lily Barberou | {translations.works}</title>
+                <link rel='canonical' href='https://lilybarberou.fr/realisations' />
+                <meta property='og:title' content={`${translations.works} | Lily Barberou`} />
+                <meta property='og:url' content='https://lilybarberou.fr/realisations' />
+                <meta
+                    property='og:description'
+                    content='Découvrez les réalisations web de Lily Barberou, de son autoportrait au chat uspeak, plateforme de vente Charlemagne, API QuoteWars, etc...'
+                />
+                <meta
+                    name='description'
+                    content='Découvrez les réalisations web de Lily Barberou, de son autoportrait au chat uspeak, plateforme de vente Charlemagne, API QuoteWars, etc...'
+                />
+                <title>{translations.works} | Lily Barberou</title>
             </Head>
             <div className={classes.title}>
                 <h1 className={`${lang === 'fr-FR' ? '' : 'en'}`}>{translations.works}</h1>

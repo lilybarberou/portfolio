@@ -189,10 +189,18 @@ const About = ({ lang }) => {
     return (
         <div className={classes.container} id='container'>
             <Head>
-                <link rel='canonical' href='https://lilybarberou.fr/about' />
-                <meta property='og:title' content={`Lily Barberou | ${translations.about}`} />
-                <meta property='og:url' content='https://lilybarberou.fr/about' />
-                <title>Lily Barberou | {translations.about}</title>
+                <link rel='canonical' href='https://lilybarberou.fr/a-propos-de-lily' />
+                <meta property='og:title' content={`${translations.about} | Lily Barberou`} />
+                <meta property='og:url' content='https://lilybarberou.fr/a-propos-de-lily' />
+                <meta
+                    property='og:description'
+                    content='Apprenez-en plus sur Lily Barberou, que ce soit dans sa vie de développeuse web, ou encore ses passions, tout en un mot.'
+                />
+                <meta
+                    name='description'
+                    content='Apprenez-en plus sur Lily Barberou, que ce soit dans sa vie de développeuse web, ou encore ses passions, tout en un mot.'
+                />
+                <title>{translations.about} | Lily Barberou</title>
             </Head>
 
             {/* ----- HEADER PART --------------------------------------------------------- */}

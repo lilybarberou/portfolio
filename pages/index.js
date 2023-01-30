@@ -327,11 +327,11 @@ const Home = ({ lang }) => {
         {
             img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Charlemagne/Client/Accueil_Connecte.png',
             name: 'Charlemagne',
-            link: '/works#charlemagne',
+            link: '/realisations#charlemagne',
         },
-        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Quote%20Wars/banner.png', name: 'Quote Wars', link: '/works#quotewars' },
-        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/SpotYou/banner.png', name: 'SpotYou', link: '/works#spotyou' },
-        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Chat/banner.png', name: 'U Speak', link: '/works#uspeak' },
+        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Quote%20Wars/banner.png', name: 'Quote Wars', link: '/realisations#quotewars' },
+        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/SpotYou/banner.png', name: 'SpotYou', link: '/realisations#spotyou' },
+        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Chat/banner.png', name: 'U Speak', link: '/realisations#uspeak' },
     ];
 
     const handleScroll = () => {
@@ -350,6 +350,14 @@ const Home = ({ lang }) => {
                 <link rel='canonical' href='https://lilybarberou.fr/' />
                 <meta property='og:title' content='Lily Barberou | Portfolio' />
                 <meta property='og:url' content='https://lilybarberou.fr/' />
+                <meta
+                    property='og:description'
+                    content='Découvrez le portfolio de Lily Barberou, développeuse web full-stack spécialisée en React / Node.js. Réalisations et train de vie vous y attendent.'
+                />
+                <meta
+                    name='description'
+                    content='Découvrez le portfolio de Lily Barberou, développeuse web full-stack spécialisée en React / Node.js. Réalisations et train de vie vous y attendent.'
+                />
                 <title>Lily Barberou | Portfolio</title>
             </Head>
 
@@ -362,7 +370,7 @@ const Home = ({ lang }) => {
                         <span>CV</span>
                         <Download />
                     </a>
-                    <Button text={translations.knowmemore} link='/about' />
+                    <Button text={translations.knowmemore} link='/a-propos-de-lily' />
                 </div>
             </div>
             <Separation id='separation' />
@@ -390,7 +398,7 @@ const Home = ({ lang }) => {
                 <span onClick={handleScroll} className={classes.arrowContainer}>
                     <span className={classes.arrow}></span>
                 </span>
-                <Button text={translations.showmore} link='/works' onClick={handleWorksClick} />
+                <Button text={translations.showmore} link='/realisations' onClick={handleWorksClick} />
             </div>
             <Separation />
 

@@ -208,13 +208,13 @@ const Navigation = ({ lang }) => {
                     <Link href='/'>
                         <a className={`${classes.logo} ${router.pathname == '/' ? 'active' : ''}`}>L</a>
                     </Link>
-                    <Link href='/about'>
-                        <a className={router.pathname == '/about' ? 'active' : ''} onClick={handleMobileMenu}>
+                    <Link href='/a-propos-de-lily'>
+                        <a className={router.pathname == '/a-propos-de-lily' ? 'active' : ''} onClick={handleMobileMenu}>
                             {translations.aboutme}
                         </a>
                     </Link>
-                    <Link href='/works'>
-                        <a className={router.pathname == '/works' ? 'active' : ''} onClick={handleMobileMenu}>
+                    <Link href='/realisations'>
+                        <a className={router.pathname == '/realisations' ? 'active' : ''} onClick={handleMobileMenu}>
                             {translations.works}
                         </a>
                     </Link>
@@ -223,7 +223,7 @@ const Navigation = ({ lang }) => {
                             CONTACT
                         </a>
                     </Link>
-                    <a href='https://lilyscript.codes' target='_blank' rel='noreferrer'>
+                    <a href='https://blog.lilybarberou.fr' target='_blank' rel='noreferrer'>
                         Blog
                     </a>
                 </div>

@@ -63,15 +63,6 @@
             "enDesc": "Old version of my portfolio",
             "github": "https://github.com/Nahay/Portfolio-v1",
             "url": "https://portfoliov2.lilybarberou.fr"
-        },
-        {
-            "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Weeb%20Lampe/Accueil%20Weeb%20Lampe.png",
-            "title": "Weeb Lampe",
-            "techs": ["PHP", "MySQL"],
-            "frDesc": "Site marchand de lampes sur le thème des animés",
-            "enDesc": "Merchant website for anime-themed lamps",
-            "github": "https://github.com/Nahay/WeebLampe",
-            "url": "https://weeblampe.000webhostapp.com/"
         }
     ]
 }
