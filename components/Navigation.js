@@ -24,7 +24,7 @@ const useStyle = createUseStyles({
     mobileNav: {
         display: 'flex',
         justifyContent: 'space-between',
-        marginBottom: 120,
+        marginBottom: 100,
 
         // logo
         '& > span': {
@@ -144,7 +144,7 @@ const useStyle = createUseStyles({
         flexDirection: 'column',
         alignSelf: 'flex-start',
         gap: 15,
-        marginTop: 150,
+        marginTop: 110,
         fontFamily: 'Poppins',
 
         '& > span': {
@@ -223,6 +223,9 @@ const Navigation = ({ lang }) => {
                             CONTACT
                         </a>
                     </Link>
+                    <a href='https://lilyscript.codes' target='_blank' rel='noreferrer'>
+                        Blog
+                    </a>
                 </div>
                 <div className={classes.lang}>
                     {lang === 'fr-FR' ? (
