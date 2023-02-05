@@ -1,3 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
+sitemap: https://lilybarberou.fr/sitemap.xml
 User-agent: *
 Disallow:
