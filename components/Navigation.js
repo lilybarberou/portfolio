@@ -223,7 +223,7 @@ const Navigation = ({ lang }) => {
                             CONTACT
                         </a>
                     </Link>
-                    <a href='https://blog.lilybarberou.fr' target='_blank' rel='noreferrer'>
+                    <a href='https://lilyscript.fr' target='_blank' rel='noreferrer'>
                         Blog
                     </a>
                 </div>
