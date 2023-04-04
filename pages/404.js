@@ -30,10 +30,16 @@ const NotFound = () => {
         <div className={classes.container}>
             <span>404</span>
             <video muted autoPlay={true} loop={true}>
-                <source src="https://i.imgur.com/6NdzIG0.mp4" />
+                <source src='https://i.imgur.com/6NdzIG0.mp4' />
             </video>
         </div>
     );
 };
+
+export async function getStaticProps() {
+    return {
+        props: {},
+    };
+}
 
 export default NotFound;

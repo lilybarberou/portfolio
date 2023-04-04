@@ -362,4 +362,10 @@ const Contact = ({ lang }) => {
     );
 };
 
+export async function getStaticProps() {
+    return {
+        props: {},
+    };
+}
+
 export default Contact;

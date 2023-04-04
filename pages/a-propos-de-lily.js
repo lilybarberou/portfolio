@@ -228,4 +228,10 @@ const About = ({ lang }) => {
     );
 };
 
+export async function getStaticProps() {
+    return {
+        props: {},
+    };
+}
+
 export default About;

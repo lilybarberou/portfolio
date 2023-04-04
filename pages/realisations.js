@@ -268,4 +268,10 @@ const Works = ({ lang }) => {
     );
 };
 
+export async function getStaticProps() {
+    return {
+        props: {},
+    };
+}
+
 export default Works;
