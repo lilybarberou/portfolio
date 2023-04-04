@@ -325,12 +325,17 @@ const Home = ({ lang }) => {
 
     const works = [
         {
+            img: 'https://raw.githubusercontent.com/lilybarberou/Assets/master/Blog/banner.png',
+            name: 'LilyScript',
+            link: '/realisations#lilyscript',
+        },
+        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/SpotYou/banner.png', name: 'SpotYou', link: '/realisations#spotyou' },
+        {
             img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Charlemagne/Client/Accueil_Connecte.png',
             name: 'Charlemagne',
             link: '/realisations#charlemagne',
         },
         { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Quote%20Wars/banner.png', name: 'Quote Wars', link: '/realisations#quotewars' },
-        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/SpotYou/banner.png', name: 'SpotYou', link: '/realisations#spotyou' },
         { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Chat/banner.png', name: 'U Speak', link: '/realisations#uspeak' },
     ];
 

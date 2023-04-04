@@ -1,67 +1,77 @@
 {
     "list": [
         {
-            "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Selfportrait/banner.png",
+            "img": "https://raw.githubusercontent.com/lilybarberou/Assets/master/Blog/banner.png",
+            "frTitle": "LilyScript",
+            "enTitle": "LilyScript",
+            "techs": ["Next.js"],
+            "frDesc": "Un blog traitant de dev, pour les dev",
+            "enDesc": "A dev blog, for devs",
+            "github": "https://github.com/lilybarberou/blog-app",
+            "url": "https://lilyscript.fr"
+        },
+        {
+            "img": "https://raw.githubusercontent.com/lilybarberou/Assets/master/Selfportrait/banner.png",
             "frTitle": "Autoportrait",
             "enTitle": "Selfportrait",
             "techs": ["Next.js"],
             "frDesc": "Présentation de mon autoportrait sous forme de site internet",
             "enDesc": "Presentation of my selfportrait in the form of a website",
-            "github": "https://github.com/Nahay/Selfportrait",
+            "github": "https://github.com/lilybarberou/Selfportrait",
             "url": "https://autoportrait.lilybarberou.fr"
         },
         {
-            "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Chat/banner.png",
+            "img": "https://raw.githubusercontent.com/lilybarberou/Assets/master/Chat/banner.png",
             "title": "Uspeak",
             "techs": ["React", "Socket.io"],
             "frDesc": "Un chat en ligne pour parler avec des inconnus",
             "enDesc": "An online chat to speak with unknown people",
-            "github": "https://github.com/Nahay/Chat",
+            "github": "https://github.com/lilybarberou/Chat",
             "url": "https://uspeak.lilybarberou.fr"
         },
         {
-            "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Charlemagne/Client/Accueil_Connecte.png",
+            "img": "https://raw.githubusercontent.com/lilybarberou/Assets/master/Charlemagne/Client/Accueil_Connecte.png",
             "title": "Charlemagne",
             "techs": ["React", "Node.js", "MongoDB"],
             "frDesc": "Site de vente à emporter pour le restaurant d'application Le Charlemagne du lycée Pointet de Thann",
             "enDesc": "Takeaway website for Le Charlemagne training restaurant at Pointet High School located in Thann",
-            "github": "https://github.com/Nahay/Charlemagne",
+            "github": "https://github.com/lilybarberou/Charlemagne",
             "url": "https://le-charlemagne.netlify.app"
         },
         {
-            "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Quote%20Wars/banner.png",
+            "img": "https://raw.githubusercontent.com/lilybarberou/Assets/master/Quote%20Wars/banner.png",
             "title": "Quote Wars",
             "techs": ["Next.js", "Tailwind", "MongoDB"],
             "frDesc": "API retournant des citations de séries et de films",
             "enDesc": "Free API serving quality serie and movie quotes",
-            "github": "https://github.com/Nahay/quoteWars",
+            "github": "https://github.com/lilybarberou/quoteWars",
             "url": "https://quotewars.lilybarberou.fr"
         },
         {
-            "img": "https://raw.githubusercontent.com/Nahay/Assets/master/SpotYou/banner.png",
+            "img": "https://raw.githubusercontent.com/lilybarberou/Assets/master/SpotYou/banner.png",
             "title": "SpotYou",
             "techs": ["Next.js", "Spotify API"],
             "frDesc": "Récupérez vos musiques/artistes les plus écoutés sur votre compte Spotify",
             "enDesc": "Get your most listened songs/artists and more from your Spotify account",
-            "github": "https://github.com/Nahay/spotify",
+            "github": "https://github.com/lilybarberou/spotify",
             "url": "https://spotyou.lilybarberou.fr"
         },
         {
-            "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Scarlet/banner.png",
+            "img": "https://raw.githubusercontent.com/lilybarberou/Assets/master/Scarlet/banner.png",
             "title": "The Scarlet",
             "techs": ["Next.js"],
             "frDesc": "Site vitrine pour un restaurant",
             "enDesc": "Showcase website for a restaurant",
-            "github": "https://github.com/Nahay/Scarlet",
+            "github": "https://github.com/lilybarberou/Scarlet",
             "url": "https://thescarlet.lilybarberou.fr"
         },
         {
-            "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Old%20Portfolio/Portfolio_Home.png",
+            "img": "https://raw.githubusercontent.com/lilybarberou/Assets/master/Old%20Portfolio/Portfolio_Home.png",
             "title": "Portfolio V2",
             "techs": ["React"],
             "frDesc": "Ancienne version de mon portfolio",
             "enDesc": "Old version of my portfolio",
-            "github": "https://github.com/Nahay/Portfolio-v1",
+            "github": "https://github.com/lilybarberou/Portfolio-v1",
             "url": "https://portfoliov2.lilybarberou.fr"
         }
     ]
