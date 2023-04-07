@@ -2,303 +2,14 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/future/image';
-import { createUseStyles } from 'react-jss';
+import styled from 'styled-components';
 import Button from '@components/Button';
 import Separation from '@components/Separation';
 import Parallax, { t } from '@contexts/Utils';
 import BrushFrame from '@public/static/svg/brushFrame.svg';
 import Download from '@public/static/svg/download.svg';
 
-const useStyle = createUseStyles({
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        paddingBottom: 70,
-
-        '@media (min-width: 600px)': {
-            flexDirection: 'row',
-            paddingBottom: 0,
-        },
-    },
-    hello: {
-        fontSize: 50,
-        marginBottom: 50,
-
-        '@media (min-width: 600px)': {
-            fontSize: 150,
-            marginBottom: 0,
-            margin: '0 170px',
-        },
-    },
-    lily: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-
-        '& > h1': {
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            fontWeight: 'lighter',
-            fontSize: 21,
-            gap: 5,
-            marginBottom: 50,
-            textAlign: 'center',
-            lineHeight: 1.6,
-
-            '& > span:first-child': {
-                fontSize: 35,
-            },
-        },
-        '@media (min-width: 600px)': {
-            alignItems: 'flex-start',
-
-            '& > h1': {
-                fontSize: 30,
-                marginBottom: 40,
-                marginRight: 50,
-                whiteSpace: 'nowrap',
-                alignItems: 'flex-start',
-
-                '& > span:first-child': {
-                    fontSize: '40px !important',
-                    marginBottom: 20,
-                },
-                '& > span:last-child': {
-                    display: 'flex',
-                    gap: 10,
-                    alignSelf: 'center',
-                },
-                '& .svg': {
-                    alignSelf: 'center',
-                    position: 'relative',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-
-                    '&::after': {
-                        content: 'url(/static/svg/activeMenu.svg)',
-                        position: 'absolute',
-                        top: '20%',
-                        zIndex: -1,
-                        transform: (props) => (props.fr ? 'scale(1.5, 1)' : 'scale(1.1, 1)'),
-                        transition: '.3s',
-                    },
-                },
-            },
-        },
-    },
-    buttons: {
-        display: 'flex',
-        gap: 10,
-    },
-    download: {
-        width: 'fit-content',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        border: '1px solid grey',
-        padding: '11px 25px',
-        fontFamily: 'Poppins',
-        fontSize: 11,
-        gap: 10,
-        cursor: 'pointer',
-        color: '#fff',
-        textDecoration: 'none',
-
-        '& > svg': {
-            width: 15,
-            height: 'auto',
-            filter: 'invert(1)',
-
-            '& > image': {
-                width: 15,
-                height: 'auto',
-            },
-        },
-        '& > span': {
-            lineHeight: 1,
-        },
-
-        '@media (min-width: 600px)': {
-            fontSize: 13,
-
-            '& > svg': {
-                width: 17,
-
-                '& > image': {
-                    width: 17,
-                },
-            },
-        },
-    },
-    works: {
-        display: 'flex',
-        flexDirection: 'column',
-
-        '@media (min-width: 600px)': {
-            alignItems: 'flex-end',
-            marginRight: 250,
-        },
-    },
-    worksText: {
-        fontSize: 30,
-        textAlign: 'center',
-        lineHeight: 1.5,
-
-        '@media (min-width: 600px)': {
-            fontSize: 40,
-            whiteSpace: 'nowrap',
-            textAlign: 'start',
-            display: 'flex',
-            flexDirection: 'column',
-        },
-    },
-    brushFrame: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 11,
-        fontFamily: 'Poppins',
-        textAlign: 'center',
-        marginTop: 55,
-        fontWeight: 'lighter',
-        marginBottom: 70,
-
-        '& > svg': {
-            position: 'absolute',
-        },
-        '@media (min-width: 600px)': {
-            fontSize: 13,
-
-            '& > svg': {
-                transform: 'scale(1.2)',
-            },
-        },
-    },
-    worksContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-        width: '100%',
-        alignItems: 'center',
-
-        '@media (min-width: 600px)': {
-            position: 'relative',
-            justifyContent: 'space-between',
-
-            '& .button': {
-                width: '100%',
-                boxSizing: 'border-box',
-                padding: '14px 25px',
-            },
-        },
-    },
-    carouselContainer: {
-        overflow: 'hidden',
-        width: '100%',
-        maxWidth: '100%',
-
-        '@media (min-width: 600px)': {
-            width: 'fit-content',
-            maxWidth: 'unset',
-            height: '100%',
-            marginBottom: 15,
-        },
-    },
-    carousel: {
-        display: 'flex',
-        overflowX: 'auto',
-        overflowY: 'hidden',
-        scrollBehavior: 'smooth',
-        height: 120,
-        gap: 20,
-
-        '& img': {
-            width: 200,
-            height: 120,
-        },
-        '@media (min-width: 600px)': {
-            flexDirection: 'column',
-            overflowX: 'hidden',
-            overflowY: 'auto',
-            height: '100%',
-            gap: 10,
-
-            '& img': {
-                width: 400,
-                height: 220,
-            },
-        },
-    },
-    arrowContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'flex-end',
-
-        '@media (min-width: 600px)': {
-            width: 130,
-            height: 50,
-            flexDirection: 'column',
-            position: 'absolute',
-            cursor: 'pointer',
-            bottom: 0,
-            left: 0,
-            transformOrigin: 'bottom left',
-            transform: 'rotate(90deg) translate(-100%, 130%)',
-            marginBottom: 62,
-            marginRight: 20,
-        },
-    },
-    arrow: {
-        width: 130,
-        height: 0.5,
-        background: '#818181',
-        margin: '25px 25px 40px 0',
-        alignSelf: 'flex-end',
-        position: 'relative',
-
-        '&::after': {
-            content: '""',
-            position: 'absolute',
-            right: -0.5,
-            bottom: 0,
-            transformOrigin: 'right bottom',
-            transform: 'rotate(-45deg)',
-            width: 5,
-            height: 5,
-            borderRight: '0.7px solid #818181',
-            borderBottom: '0.7px solid #818181',
-        },
-        '@media (min-width: 600px)': {
-            margin: 0,
-        },
-    },
-    contact: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-
-        '& > h2': {
-            fontSize: 32,
-            marginBottom: 30,
-        },
-        '@media (min-width: 600px)': {
-            marginRight: 80,
-
-            '& > h2': {
-                fontSize: 60,
-                whiteSpace: 'nowrap',
-                marginBottom: 40,
-            },
-        },
-    },
-});
-
 const Home = ({ lang }) => {
-    const classes = useStyle({ fr: lang === 'fr-FR' });
     const translations = t('home', lang);
     const cvLink = lang === 'fr-FR' ? process.env.CV_FR_LINK : process.env.CV_EN_LINK;
 
@@ -350,7 +61,7 @@ const Home = ({ lang }) => {
     const handleWorksClick = () => (document.querySelector('.app').scrollTop = 0);
 
     return (
-        <div className={classes.container}>
+        <S.Container>
             <Head>
                 <link rel='canonical' href='https://lilybarberou.fr/' />
                 <meta property='og:title' content='Lily Barberou | Portfolio' />
@@ -367,30 +78,30 @@ const Home = ({ lang }) => {
             </Head>
 
             {/* ----- LILY PART --------------------------------------------------------- */}
-            <span className={classes.hello}>HELLO</span>
-            <div className={classes.lily}>
+            <S.Hello>HELLO</S.Hello>
+            <S.Lily lang={lang}>
                 <h1 id='home-title' dangerouslySetInnerHTML={{ __html: translations.title }}></h1>
-                <div className={classes.buttons}>
-                    <a href={cvLink} target='_blank' rel='noopener noreferrer' className={classes.download}>
+                <S.Buttons>
+                    <S.Download href={cvLink} target='_blank' rel='noopener noreferrer'>
                         <span>CV</span>
                         <Download />
-                    </a>
+                    </S.Download>
                     <Button text={translations.knowmemore} link='/a-propos-de-lily' />
-                </div>
-            </div>
+                </S.Buttons>
+            </S.Lily>
             <Separation id='separation' />
 
             {/* ----- WORKS PART --------------------------------------------------------- */}
-            <div className={classes.works}>
-                <h2 className={classes.worksText} id='things-ive-built' dangerouslySetInnerHTML={{ __html: translations.somethings }}></h2>
-                <div className={classes.brushFrame}>
+            <S.Works>
+                <S.WorksText id='things-ive-built' dangerouslySetInnerHTML={{ __html: translations.somethings }}></S.WorksText>
+                <S.BrushFrame>
                     <p dangerouslySetInnerHTML={{ __html: translations.lovejsreact }}></p>
                     <BrushFrame />
-                </div>
-            </div>
-            <div className={classes.worksContainer}>
-                <div className={classes.carouselContainer}>
-                    <div className={classes.carousel} id='home-carousel'>
+                </S.BrushFrame>
+            </S.Works>
+            <S.WorksContainer>
+                <S.CarouselContainer>
+                    <S.Carousel id='home-carousel'>
                         {works.map((e) => (
                             <Link key={e.name} href={e.link}>
                                 <a>
@@ -398,23 +109,331 @@ const Home = ({ lang }) => {
                                 </a>
                             </Link>
                         ))}
-                    </div>
-                </div>
-                <span onClick={handleScroll} className={classes.arrowContainer}>
-                    <span className={classes.arrow}></span>
-                </span>
+                    </S.Carousel>
+                </S.CarouselContainer>
+                <S.ArrowContainer onClick={handleScroll}>
+                    <S.Arrow></S.Arrow>
+                </S.ArrowContainer>
                 <Button text={translations.showmore} link='/realisations' onClick={handleWorksClick} />
-            </div>
+            </S.WorksContainer>
             <Separation />
 
             {/* ----- CONTACT PART --------------------------------------------------------- */}
-            <div className={classes.contact}>
+            <S.Contact>
                 <h2>{translations.getintouch}</h2>
                 <Button text={translations.sayhello} link='/contact' />
-            </div>
-        </div>
+            </S.Contact>
+        </S.Container>
     );
 };
+
+const S = {};
+S.Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 70px;
+
+    @media (min-width: 600px) {
+        flex-direction: row;
+        padding-bottom: 0;
+    }
+`;
+
+S.Hello = styled.span`
+    font-size: 50px;
+    margin-bottom: 50px;
+
+    @media (min-width: 600px) {
+        font-size: 150px;
+        margin-bottom: 0;
+        margin: 0 170px;
+    }
+`;
+
+S.Lily = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > h1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-weight: lighter;
+        font-size: 21px;
+        gap: 5px;
+        margin-bottom: 50px;
+        text-align: center;
+        line-height: 1.6;
+
+        & > span:first-child {
+            font-size: 35px;
+        }
+    }
+
+    @media (min-width: 600px) {
+        align-items: flex-start;
+
+        & > h1 {
+            font-size: 30px;
+            margin-bottom: 40px;
+            margin-right: 50px;
+            white-space: nowrap;
+            align-items: flex-start;
+
+            & > span:first-child {
+                font-size: 40px !important;
+                margin-bottom: 20px;
+            }
+
+            & > span:last-child {
+                display: flex;
+                gap: 10px;
+                align-self: center;
+            }
+
+            & .svg {
+                align-self: center;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &::after {
+                    content: url(/static/svg/activeMenu.svg);
+                    position: absolute;
+                    top: 20%;
+                    z-index: -1;
+                    transform: ${(props) => (props.lang === 'fr-FR' ? 'scale(1.5, 1)' : 'scale(1.1, 1)')};
+                    transition: 0.3s;
+                }
+            }
+        }
+    }
+`;
+
+S.Buttons = styled.div`
+    display: flex;
+    gap: 10px;
+`;
+
+S.Download = styled.a`
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid grey;
+    padding: 11px 25px;
+    font-family: Poppins;
+    font-size: 11px;
+    gap: 10px;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+
+    & > svg {
+        width: 15px;
+        height: auto;
+        filter: invert(1);
+
+        & > image {
+            width: 15px;
+            height: auto;
+        }
+    }
+
+    & > span {
+        line-height: 1;
+    }
+
+    @media (min-width: 600px) {
+        font-size: 13px;
+
+        & > svg {
+            width: 17px;
+
+            & > image {
+                width: 17px;
+            }
+        }
+    }
+`;
+
+S.Works = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 600px) {
+        align-items: flex-end;
+        margin-right: 250px;
+    }
+`;
+
+S.WorksText = styled.h2`
+    font-size: 30px;
+    text-align: center;
+    line-height: 1.5;
+
+    @media (min-width: 600px) {
+        font-size: 40px;
+        white-space: nowrap;
+        text-align: start;
+        display: flex;
+        flex-direction: column;
+    }
+`;
+
+S.BrushFrame = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    font-family: 'Poppins';
+    text-align: center;
+    margin-top: 55px;
+    font-weight: lighter;
+    margin-bottom: 70px;
+
+    & > svg {
+        position: absolute;
+    }
+
+    @media (min-width: 600px) {
+        font-size: 13px;
+
+        & > svg {
+            transform: scale(1.2);
+        }
+    }
+`;
+
+S.WorksContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+
+    @media (min-width: 600px) {
+        position: relative;
+        justify-content: space-between;
+
+        & .button {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px 25px;
+        }
+    }
+`;
+
+S.CarouselContainer = styled.div`
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+
+    @media (min-width: 600px) {
+        width: fit-content;
+        max-width: unset;
+        height: 100%;
+        margin-bottom: 15px;
+    }
+`;
+
+S.Carousel = styled.div`
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    height: 120px;
+    gap: 20px;
+
+    & img {
+        width: 200px;
+        height: 120px;
+    }
+
+    @media (min-width: 600px) {
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 100%;
+        gap: 10px;
+
+        & img {
+            width: 400px;
+            height: 220px;
+        }
+    }
+`;
+
+S.ArrowContainer = styled.span`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+
+    @media (min-width: 600px) {
+        width: 130px;
+        height: 50px;
+        flex-direction: column;
+        position: absolute;
+        cursor: pointer;
+        bottom: 0;
+        left: 0;
+        transform-origin: bottom left;
+        transform: rotate(90deg) translate(-100%, 130%);
+        margin-bottom: 62px;
+        margin-right: 20px;
+    }
+`;
+
+S.Arrow = styled.span`
+    width: 130px;
+    height: 0.5px;
+    background: #818181;
+    margin: 25px 25px 40px 0;
+    align-self: flex-end;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        right: -0.5px;
+        bottom: 0;
+        transform-origin: right bottom;
+        transform: rotate(-45deg);
+        width: 5px;
+        height: 5px;
+        border-right: 0.7px solid #818181;
+        border-bottom: 0.7px solid #818181;
+    }
+
+    @media (min-width: 600px) {
+        margin: 0;
+    }
+`;
+
+S.Contact = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > h2 {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+
+    @media (min-width: 600px) {
+        margin-right: 80px;
+
+        & > h2 {
+            font-size: 60px;
+            white-space: nowrap;
+            margin-bottom: 40px;
+        }
+    }
+`;
 
 export async function getStaticProps() {
     return {

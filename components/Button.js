@@ -1,49 +1,48 @@
-import { createUseStyles } from 'react-jss';
 import Link from 'next/link';
+import styled from 'styled-components';
 import Arrow from '@public/static/svg/arrow.svg';
 
-const useStyle = createUseStyles({
-    container: {
-        background: 'var(--color-pink)',
-        color: '#fff',
-        fill: '#fff',
-        fontSize: 11,
-        fontFamily: 'Poppins',
-        textDecoration: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '11px 25px',
-        justifyContent: 'center',
-        width: 'fit-content',
-        gap: 10,
-        lineHeight: 1,
-        minWidth: 90,
-
-        '& > svg': {
-            height: 17,
-        },
-        '@media (min-width: 600px)': {
-            fontSize: 13,
-            gap: 15,
-
-            '& > svg': {
-                height: 19,
-            },
-        },
-    },
-});
-
 const Button = ({ text, link, onClick }) => {
-    const classes = useStyle();
-
     return (
         <Link href={link}>
-            <a onClick={onClick} className={`${classes.container} button`}>
+            <S.Container onClick={onClick} className='button'>
                 {text}
                 <Arrow />
-            </a>
+            </S.Container>
         </Link>
     );
 };
+
+const S = {};
+S.Container = styled.a`
+    background: var(--color-pink);
+    color: #fff;
+    fill: #fff;
+    font-size: 11px;
+    font-family: Poppins;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 11px 25px;
+    justify-content: center;
+    width: fit-content;
+    gap: 10px;
+    line-height: 1;
+    min-width: 90px;
+    cursor: pointer;
+
+    > svg {
+        height: 17px;
+    }
+
+    @media (min-width: 600px) {
+        font-size: 13px;
+        gap: 15px;
+
+        > svg {
+            height: 19px;
+        }
+    }
+`;
 
 export default Button;

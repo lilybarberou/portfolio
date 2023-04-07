@@ -13,6 +13,12 @@ module.exports = withPWA({
     },
     swcMinify: true,
     reactStrictMode: true,
+    compiler: {
+        styledComponents: {
+            displayName: true,
+            ssr: true,
+        },
+    },
     images: {
         domains: ['raw.githubusercontent.com'],
     },

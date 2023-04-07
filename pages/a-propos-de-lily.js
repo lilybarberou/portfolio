@@ -1,154 +1,12 @@
 import { useEffect } from 'react';
 import Head from 'next/head';
-import { createUseStyles } from 'react-jss';
+import styled from 'styled-components';
 import Parallax, { t } from '@contexts/Utils';
 import AboutDev from '@containers/AboutDev';
 import AboutInfo from '@containers/AboutInfo';
 import Arrow from '@public/static/svg/arrow.svg';
 
-const useStyle = createUseStyles({
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-
-        '& > h1': {
-            fontSize: 'calc(11vw + 11px)',
-            fontWeight: 'lighter',
-            textAlign: 'center',
-            lineHeight: 1.4,
-            marginBottom: 75,
-        },
-        '@media (min-width: 600px)': {
-            flexDirection: 'row',
-
-            '& > h1': {
-                fontSize: 130,
-                whiteSpace: 'nowrap',
-                marginBottom: 0,
-                marginLeft: 100,
-                marginRight: 200,
-            },
-        },
-    },
-    switchBtn: {
-        display: 'flex',
-        gap: 25,
-        marginBottom: 70,
-
-        '& > button': {
-            background: 'var(--color-pink)',
-            border: '2px solid var(--color-pink)',
-            color: '#fff',
-            fill: '#fff',
-            fontSize: 11,
-            fontFamily: 'Poppins',
-            textDecoration: 'none',
-            display: 'flex',
-            alignItems: 'center',
-            padding: '11px 23px',
-            justifyContent: 'center',
-            width: 'fit-content',
-            gap: 10,
-            lineHeight: 1,
-            minWidth: 90,
-
-            '& > svg': {
-                transform: 'rotate(90deg) scaleY(1.1)',
-                height: 16,
-            },
-            '&.active': {
-                background: 'none',
-            },
-        },
-        '@media (min-width: 600px)': {
-            flexDirection: 'column',
-            marginBottom: 0,
-            marginRight: 180,
-            gap: 100,
-
-            '& > button': {
-                whiteSpace: 'nowrap',
-                fontSize: 14,
-                minWidth: 180,
-                gap: 15,
-                cursor: 'pointer',
-
-                '& > svg': {
-                    transform: 'rotate(0deg) scaleY(1.1) !important',
-                    height: 16,
-                },
-            },
-        },
-    },
-    content: {
-        display: 'none',
-        width: '100%',
-        padding: '0 50px',
-
-        '&.active': {
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-        },
-        '& > h2': {
-            display: 'flex',
-            flexDirection: 'column',
-        },
-        // front / back title
-        '& > h2:first-child': {
-            fontSize: 35,
-            textAlign: 'center',
-            lineHeight: 1.5,
-            marginBottom: 70,
-
-            '&[id="about-info-title"]': {
-                marginBottom: 0,
-            },
-        },
-        '@media (min-width: 600px)': {
-            height: '100%',
-
-            // front / back title
-            '&.active': {
-                flexDirection: 'row',
-            },
-            '& > h2:first-child': {
-                fontSize: 50,
-                marginBottom: 0,
-                marginRight: 150,
-                whiteSpace: 'nowrap',
-                textAlign: 'left',
-            },
-            '& > h2[id="about-info-title"]': {
-                '& > span': {
-                    display: 'flex',
-                    gap: 10,
-
-                    '& .svg': {
-                        alignSelf: 'center',
-                        position: 'relative',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-
-                        '&::after': {
-                            content: 'url(/static/svg/activeMenu.svg)',
-                            position: 'absolute',
-                            top: '12%',
-                            zIndex: -1,
-                            transform: (props) => (props.fr ? 'scale(1.1, 1.2)' : 'scale(2.4, 1.2)'),
-                            transition: '.3s',
-                        },
-                    },
-                },
-            },
-        },
-    },
-});
-
 const About = ({ lang }) => {
-    const classes = useStyle({ fr: lang === 'fr-FR' });
     const translations = t('about', lang);
 
     useEffect(() => {
@@ -187,7 +45,7 @@ const About = ({ lang }) => {
     };
 
     return (
-        <div className={classes.container} id='container'>
+        <S.Container id='container'>
             <Head>
                 <link rel='canonical' href='https://lilybarberou.fr/a-propos-de-lily' />
                 <meta property='og:title' content={`${translations.about} | Lily Barberou`} />
@@ -206,27 +64,177 @@ const About = ({ lang }) => {
             {/* ----- HEADER PART --------------------------------------------------------- */}
             <h1 dangerouslySetInnerHTML={{ __html: translations.aboutLily }}></h1>
 
-            <div className={classes.switchBtn}>
+            <S.SwitchBtn>
                 <button className='active' id='dev-btn' onClick={() => handleClick('dev')}>
                     {translations.lilyndev} <Arrow />
                 </button>
                 <button id='info-btn' onClick={() => handleClick('info')}>
                     {translations.whoislily} <Arrow />
                 </button>
-            </div>
+            </S.SwitchBtn>
 
             {/* ----- DEV PART --------------------------------------------------------- */}
-            <div className={`${classes.content} active dev-content`} id='dev'>
+            <S.Content className={`active dev-content`} id='dev' lang={lang}>
                 <AboutDev onClick={handleClick} translations={translations} lang={lang} />
-            </div>
+            </S.Content>
 
             {/* ----- INFO PART --------------------------------------------------------- */}
-            <div className={`${classes.content} info-content`} id='info'>
+            <S.Content className={`info-content`} id='info' lang={lang}>
                 <AboutInfo onClick={handleClick} translations={translations} />
-            </div>
-        </div>
+            </S.Content>
+        </S.Container>
     );
 };
+
+const S = {};
+S.Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > h1 {
+        font-size: calc(11vw + 11px);
+        font-weight: lighter;
+        text-align: center;
+        line-height: 1.4;
+        margin-bottom: 75px;
+    }
+
+    @media (min-width: 600px) {
+        flex-direction: row;
+
+        > h1 {
+            font-size: 130px;
+            white-space: nowrap;
+            margin-bottom: 0;
+            margin-left: 100px;
+            margin-right: 200px;
+        }
+    }
+`;
+
+S.SwitchBtn = styled.div`
+    display: flex;
+    gap: 25px;
+    margin-bottom: 70px;
+
+    > button {
+        background: var(--color-pink);
+        border: 2px solid var(--color-pink);
+        color: #fff;
+        fill: #fff;
+        font-size: 11px;
+        font-family: 'Poppins';
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        padding: 11px 23px;
+        justify-content: center;
+        width: fit-content;
+        gap: 10px;
+        line-height: 1;
+        min-width: 90px;
+
+        > svg {
+            transform: rotate(90deg) scaleY(1.1);
+            height: 16px;
+        }
+
+        &.active {
+            background: none;
+        }
+    }
+
+    @media (min-width: 600px) {
+        flex-direction: column;
+        margin-bottom: 0;
+        margin-right: 180px;
+        gap: 100px;
+
+        > button {
+            white-space: nowrap;
+            font-size: 14px;
+            min-width: 180px;
+            gap: 15px;
+            cursor: pointer;
+
+            > svg {
+                transform: rotate(0deg) scaleY(1.1) !important;
+                height: 16px;
+            }
+        }
+    }
+`;
+
+S.Content = styled.div`
+    display: none;
+    width: 100%;
+    padding: 0 50px;
+
+    &.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    > h2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* front / back title */
+    > h2:first-child {
+        font-size: 35px;
+        text-align: center;
+        line-height: 1.5;
+        margin-bottom: 70px;
+
+        &[id='about-info-title'] {
+            margin-bottom: 0;
+        }
+    }
+
+    @media (min-width: 600px) {
+        height: 100%;
+
+        /* front / back title */
+        &.active {
+            flex-direction: row;
+        }
+
+        > h2:first-child {
+            font-size: 50px;
+            margin-bottom: 0;
+            margin-right: 150px;
+            white-space: nowrap;
+            text-align: left;
+        }
+
+        > h2[id='about-info-title'] {
+            > span {
+                display: flex;
+                gap: 10px;
+
+                .svg {
+                    align-self: center;
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    ::after {
+                        content: url(/static/svg/activeMenu.svg);
+                        position: absolute;
+                        top: 12%;
+                        z-index: -1;
+                        transform: ${(props) => (props.lang === 'fr-FR' ? 'scale(1.1, 1.2)' : 'scale(2.4, 1.2)')};
+                        transition: 0.3s;
+                    }
+                }
+            }
+        }
+    }
+`;
 
 export async function getStaticProps() {
     return {

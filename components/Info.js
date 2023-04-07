@@ -1,28 +1,25 @@
-import { createUseStyles } from 'react-jss';
-
-const useStyle = createUseStyles({
-    info: {
-        width: 'fit-content',
-        padding: '8px 15px',
-        color: '#fff',
-        backgroundColor: 'var(--color-pink)',
-        whiteSpace: 'nowrap',
-        fontFamily: 'Poppins',
-        fontSize: 12,
-        transition: '.5s all',
-        zIndex: 10,
-        transitionTimingFunction: 'cubic-bezier(0.165, 0.84, 0.44, 1), cubic-bezier(0.165, 0.84, 0.44, 1)',
-
-        '@media (min-width: 600px)': {
-            fontSize: 15,
-        },
-    },
-});
+import styled from 'styled-components';
 
 const Info = ({ text = '' }) => {
-    const classes = useStyle();
-
-    return <p className={`${classes.info} info`}>{text}</p>;
+    return <S.Info className='info'>{text}</S.Info>;
 };
+
+const S = {};
+S.Info = styled.p`
+    width: fit-content;
+    padding: 8px 15px;
+    color: #fff;
+    background-color: var(--color-pink);
+    white-space: nowrap;
+    font-family: Poppins;
+    font-size: 12px;
+    transition: 0.5s all;
+    z-index: 10;
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1), cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    @media (min-width: 600px) {
+        font-size: 15px;
+    }
+`;
 
 export default Info;

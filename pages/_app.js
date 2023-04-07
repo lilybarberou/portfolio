@@ -1,38 +1,19 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { Provider, useSelector } from 'react-redux';
 import { store } from 'store';
+import { createGlobalStyle } from 'styled-components';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navigation from '@components/Navigation';
 import HorizontalWrapper from '@components/HorizontalWrapper';
-import '@styles/globals.scss';
 import { t } from '@contexts/Utils';
 import Script from 'next/script';
-import * as gtag from '../lib/gtag';
 
 function MyApp({ Component, pageProps }) {
-    const router = useRouter();
-
-    // remove server side style from react jss
     useEffect(() => {
-        const jssStyles = document.querySelector('#server-side-styles');
-        if (jssStyles) jssStyles.parentNode.removeChild(jssStyles);
-
         document.documentElement.lang = ['fr-FR', 'fr'].includes(navigator.language) ? 'fr-FR' : 'en-US';
     }, []);
-
-    // management for google analytics spa
-    useEffect(() => {
-        const handleRouteChange = (url) => {
-            gtag.pageview(url);
-        };
-        router.events.on('routeChangeComplete', handleRouteChange);
-        return () => {
-            router.events.off('routeChangeComplete', handleRouteChange);
-        };
-    }, [router.events]);
 
     // must be a component to get translation
     const MusicCursor = () => {
@@ -68,6 +49,7 @@ function MyApp({ Component, pageProps }) {
                     progress={undefined}
                     theme='dark'
                 />
+                <GlobalStyle />
                 <MusicCursor />
                 <HorizontalWrapper>
                     <Navigation />
@@ -79,3 +61,130 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
+
+const GlobalStyle = createGlobalStyle`
+    @font-face {
+        font-family: "Aboreto";
+        src: url("../static/fonts/Aboreto-Regular.ttf");
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Poppins";
+        src: url("../static/fonts/Poppins-Regular.ttf");
+        font-display: swap;
+    }
+
+    :root {
+        --color-grey: #818181;
+        --color-pink: #C15959;
+        --toastify-color-success: #C15959 !important;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    *::selection {
+        color: #fff;
+        background-color: var(--color-pink);
+    }
+
+    * {
+        margin:0;
+        padding:0;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Aboreto';
+        overflow-y: unset;
+    }
+
+    img {
+        object-fit: cover;
+    }
+
+    h2 {
+        font-weight: normal;
+        font-family: 'Aboreto';
+    }
+
+    .bnw {
+        filter: grayscale(100%);
+        transition: .5s all;
+        transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1), cubic-bezier(0.165, 0.84, 0.44, 1);
+
+        &:hover {
+            filter: grayscale(0%);
+        }
+    }
+
+    .app {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw; 
+        min-height: 100vh;
+        height: fit-content;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        scrollbar-width: none;
+        background: #1F1F1F;
+        color: #fff;
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        // desktop
+        @media(min-width: 600px) {
+            width: 100vh; 
+            height: 100vw;
+            transform-origin: top left;
+            transform: rotate(-90deg) translateX(-100vh);
+
+            .container {
+                width: fit-content;
+                flex-direction: row;
+                transform-origin: top left;
+                transform: rotate(90deg) translateY(-100vh);
+                padding: 0;
+                padding-top: 50px;
+                padding-bottom: 50px;
+                height: 100vh;
+            }
+        }
+    }
+
+
+    #musique-cursor {
+        display: none;
+
+        @media(min-width: 600px) {
+            display: block;
+            position: fixed;
+            padding: 10px 20px;
+            background: salmon;
+            color: #fff;
+            z-index: 10;
+            font-size: 14px;
+            font-family: 'Poppins';
+            opacity: 0;
+            transition: .3s opacity;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+    }
+
+    // toast overriding
+    .Toastify__toast-container {
+        width: 300px !important;
+        margin-left: auto !important;
+        margin-top: 15px !important;
+    }
+`;

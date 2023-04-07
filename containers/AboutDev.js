@@ -1,277 +1,11 @@
 import { useEffect } from 'react';
-import { createUseStyles } from 'react-jss';
+import styled from 'styled-components';
 import Parallax from '@contexts/Utils';
 import Separation from '@components/Separation';
 import BrushFrame from '@public/static/svg/brushFrame.svg';
 import Arrow from '@public/static/svg/arrow.svg';
 
-const useStyle = createUseStyles({
-    title: {
-        '@media (min-width: 600px)': {
-            marginRight: '280px !important',
-
-            '& > span': {
-                display: 'flex',
-                gap: 10,
-
-                '& .svg': {
-                    alignSelf: 'center',
-                    position: 'relative',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-
-                    '&::after': {
-                        content: 'url(/static/svg/activeMenu.svg)',
-                        position: 'absolute',
-                        top: '12%',
-                        zIndex: -1,
-                        transform: 'scale(1.6, 1.2)',
-                        transition: '.3s',
-                    },
-                },
-                '&:last-child .svg::after': {
-                    transform: 'scale(1.3, 1.2)',
-                },
-            },
-        },
-    },
-    devDesign: {
-        display: 'flex',
-        fontFamily: 'Poppins',
-        fontSize: 17,
-        gap: 40,
-
-        '& > div': {
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: 10,
-
-            '& > span': {
-                whiteSpace: 'nowrap',
-
-                '&:first-child': {
-                    color: 'var(--color-pink)',
-                    marginBottom: 15,
-                },
-            },
-        },
-        '& > svg': {
-            transform: 'scale(1, 1.1)',
-        },
-        '@media (min-width: 600px)': {
-            fontSize: 19,
-            alignItems: 'center',
-            gap: 80,
-            marginRight: 200,
-
-            '& > div': {
-                gap: 10,
-
-                '& > span:first-child': {
-                    marginBottom: '30px !important',
-                    fontSize: 22,
-                },
-            },
-            '& > svg': {
-                transform: 'scale(1.2, 1.5)',
-            },
-        },
-    },
-    text: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 30,
-        fontFamily: 'Poppins',
-        fontSize: 12,
-        width: '100%',
-        marginTop: 70,
-        padding: '0 20px',
-        boxSizing: 'border-box',
-
-        '& > p': {
-            maxWidth: 160,
-
-            '& > span': {
-                color: 'var(--color-pink)',
-            },
-            '&:nth-child(2)': {
-                alignSelf: 'flex-end',
-            },
-        },
-        '@media (min-width: 600px)': {
-            flexDirection: 'row',
-            gap: 100,
-            fontSize: 16,
-            marginTop: 0,
-            height: '50%',
-            width: 'fit-content',
-
-            '& > p': {
-                maxWidth: 220,
-                width: 220,
-            },
-        },
-    },
-    experienceTitle: {
-        '& > h2': {
-            fontSize: 40,
-            marginBottom: 15,
-        },
-
-        '@media (min-width: 600px)': {
-            width: 110,
-            marginRight: 100,
-            display: 'flex',
-            justifyContent: 'center',
-
-            '& > h2': {
-                transform: 'rotate(-90deg)',
-                fontSize: 'calc(14vh - 9px)',
-                pointerEvents: 'none',
-            },
-        },
-    },
-    experiences: {
-        '@media (min-width: 600px)': {
-            marginRight: 260,
-
-            '& + .separation': {
-                display: 'none',
-            },
-        },
-    },
-    experience: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        fontFamily: 'Poppins',
-        position: 'relative',
-        paddingBottom: 30,
-        paddingTop: 30,
-        width: 300,
-
-        '& > p:first-child': {
-            fontSize: 17,
-            display: 'flex',
-            justifyContent: 'space-between',
-            marginBottom: 5,
-            width: '100%',
-
-            '& > span:first-child': {
-                color: 'var(--color-pink)',
-            },
-        },
-        '& > p:last-child': {
-            fontSize: 12,
-            width: '100%',
-        },
-        '&::after': {
-            content: '""',
-            position: 'absolute',
-            bottom: 0,
-            height: 1,
-            backgroundColor: 'var(--color-grey)',
-            width: 180,
-        },
-        '&.last': {
-            paddingBottom: 0,
-            '&::after': {
-                display: 'none',
-            },
-        },
-        '@media (min-width: 600px)': {
-            paddingBottom: 40,
-            paddingTop: 40,
-
-            '& > p:first-child': {
-                fontSize: 18,
-            },
-            '& > p:last-child': {
-                fontSize: 13,
-            },
-            '&:first-child': {
-                paddingTop: 0,
-            },
-        },
-    },
-    footer: {
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-
-        '@media (min-width: 600px)': {
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: 300,
-            gap: 40,
-            marginRight: 100,
-        },
-    },
-    brushFrame: {
-        alignSelf: 'flex-start',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 11,
-        fontFamily: 'Poppins',
-        textAlign: 'center',
-        fontWeight: 'lighter',
-        margin: '20px 0 50px 40px',
-
-        '& > svg': {
-            position: 'absolute',
-            transform: 'scaleX(1.1)',
-        },
-        '@media (min-width: 600px)': {
-            whiteSpace: 'nowrap',
-            margin: 0,
-            marginRight: 400,
-            fontSize: 14,
-
-            '& > svg': {
-                position: 'absolute',
-                transform: 'scaleX(1.4)',
-            },
-        },
-    },
-    infoBtn: {
-        background: 'var(--color-pink)',
-        border: '2px solid var(--color-pink)',
-        color: '#fff',
-        fill: '#fff',
-        fontSize: 11,
-        fontFamily: 'Poppins',
-        textDecoration: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '11px 23px',
-        justifyContent: 'center',
-        width: 'fit-content',
-        gap: 10,
-        lineHeight: 1,
-        minWidth: 150,
-        alignSelf: 'flex-end',
-        marginBottom: 40,
-        marginRight: 20,
-
-        '& > svg': {
-            height: 17,
-        },
-        '@media (min-width: 600px)': {
-            alignSelf: 'flex-end',
-            fontSize: 14,
-            gap: 15,
-            minWidth: 215,
-            cursor: 'pointer',
-        },
-    },
-});
-
 const AboutDev = ({ onClick, translations, lang }) => {
-    const classes = useStyle();
-
     useEffect(() => {
         // ─── PARALLAX ─────────────────────────────────────────
         if (window.matchMedia('(min-width: 600px)').matches) {
@@ -331,26 +65,26 @@ const AboutDev = ({ onClick, translations, lang }) => {
     ];
 
     const renderExperiences = (obj) => (
-        <div className={classes.experiences}>
+        <S.Experiences>
             {obj.map((e, i) => (
-                <div key={i} className={`${classes.experience} ${i === obj.length - 1 ? 'last' : ''}`}>
+                <S.Experience key={i} className={`${i === obj.length - 1 ? 'last' : ''}`}>
                     <p>
                         <span>{e.company}</span>
                         <span>{e.duration}</span>
                     </p>
                     <p>{e.desc}</p>
-                </div>
+                </S.Experience>
             ))}
-        </div>
+        </S.Experiences>
     );
 
     return (
         <>
-            <h2 className={classes.title}>
+            <S.Title>
                 <span dangerouslySetInnerHTML={{ __html: translations.front }}></span>
                 <span dangerouslySetInnerHTML={{ __html: translations.back }}></span>
-            </h2>
-            <div className={classes.devDesign}>
+            </S.Title>
+            <S.DevDesign>
                 <div>
                     <span>Web Dev</span>
                     <span>Javascript</span>
@@ -439,41 +173,306 @@ const AboutDev = ({ onClick, translations, lang }) => {
                     <span>Illustrator</span>
                     <span>Brain Ideas</span>
                 </div>
-            </div>
+            </S.DevDesign>
 
             {/* ─── TEXTS ───────────────────────────────────────── */}
-            <div className={classes.text} id='texts'>
+            <S.Text id='texts'>
                 <p id='text1' dangerouslySetInnerHTML={{ __html: translations.text1 }}></p>
                 <p id='text2' dangerouslySetInnerHTML={{ __html: translations.text2 }}></p>
                 <p id='text3' dangerouslySetInnerHTML={{ __html: translations.text3 }}></p>
-            </div>
+            </S.Text>
             <Separation />
 
             {/* ─── EXPERIENCE ───────────────────────────────────────── */}
-            <div className={classes.experienceTitle} id='experience'>
+            <S.ExperienceTitle id='experience'>
                 <h2>{translations.experience}</h2>
-            </div>
+            </S.ExperienceTitle>
             {renderExperiences(lang === 'fr-FR' ? frExperience : enExperience)}
             <Separation />
 
             {/* ─── FOOTER ───────────────────────────────────────── */}
-            <div className={classes.footer}>
-                <div className={classes.brushFrame}>
+            <S.Footer>
+                <S.BrushFrame>
                     <p>{translations.apartdev}</p>
                     <BrushFrame />
-                </div>
-                <button
-                    className={classes.infoBtn}
+                </S.BrushFrame>
+                <S.InfoBtn
                     onClick={() => {
                         window.scrollTo(0, 0);
                         onClick('info');
                     }}
                 >
                     {translations.comesee} <Arrow />
-                </button>
-            </div>
+                </S.InfoBtn>
+            </S.Footer>
         </>
     );
 };
+
+const S = {};
+S.Title = styled.h2`
+    @media (min-width: 600px) {
+        margin-right: 280px !important;
+        & > span {
+            display: flex;
+            gap: 10;
+            & .svg {
+                align-self: center;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &::after {
+                    content: url(/static/svg/activeMenu.svg);
+                    position: absolute;
+                    top: 12%;
+                    z-index: -1;
+                    transform: scale(1.6, 1.2);
+                    transition: 0.3s;
+                }
+            }
+            &:last-child .svg::after {
+                transform: scale(1.3, 1.2);
+            }
+        }
+    }
+`;
+
+S.DevDesign = styled.div`
+    display: flex;
+    font-family: Poppins;
+    font-size: 17px;
+    gap: 40px;
+    & > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        & > span {
+            white-space: nowrap;
+            &:first-child {
+                color: var(--color-pink);
+                margin-bottom: 15px;
+            }
+        }
+    }
+    & > svg {
+        transform: scale(1, 1.1);
+    }
+    @media (min-width: 600px) {
+        font-size: 19px;
+        align-items: center;
+        gap: 80px;
+        margin-right: 200px;
+        & > div {
+            gap: 10px;
+            & > span:first-child {
+                margin-bottom: 30px !important;
+                font-size: 22px;
+            }
+        }
+        & > svg {
+            transform: scale(1.2, 1.5);
+        }
+    }
+`;
+
+S.Text = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-family: Poppins;
+    font-size: 12px;
+    width: 100%;
+    margin-top: 70px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    & > p {
+        max-width: 160px;
+        & > span {
+            color: var(--color-pink);
+        }
+        &:nth-child(2) {
+            align-self: flex-end;
+        }
+    }
+    @media (min-width: 600px) {
+        flex-direction: row;
+        gap: 100px;
+        font-size: 16px;
+        margin-top: 0;
+        height: 50%;
+        width: fit-content;
+        & > p {
+            max-width: 220px;
+            width: 220px;
+        }
+    }
+`;
+
+S.ExperienceTitle = styled.div`
+    & > h2 {
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+    @media (min-width: 600px) {
+        width: 110px;
+        margin-right: 100px;
+        display: flex;
+        justify-content: center;
+        & > h2 {
+            transform: rotate(-90deg);
+            font-size: calc(14vh - 9px);
+            pointer-events: none;
+        }
+    }
+`;
+
+S.Experiences = styled.div`
+    @media (min-width: 600px) {
+        margin-right: 260px;
+        & + .separation {
+            display: none;
+        }
+    }
+`;
+
+S.Experience = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Poppins';
+    position: relative;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    width: 300px;
+
+    & > p:first-child {
+        font-size: 17px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        width: 100%;
+
+        & > span:first-child {
+            color: var(--color-pink);
+        }
+    }
+
+    & > p:last-child {
+        font-size: 12px;
+        width: 100%;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        height: 1px;
+        background-color: var(--color-grey);
+        width: 180px;
+    }
+
+    &.last {
+        padding-bottom: 0;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    @media (min-width: 600px) {
+        padding-bottom: 40px;
+        padding-top: 40px;
+
+        & > p:first-child {
+            font-size: 18px;
+        }
+
+        & > p:last-child {
+            font-size: 13px;
+        }
+
+        &:first-child {
+            padding-top: 0;
+        }
+    }
+`;
+
+S.Footer = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @media (min-width: 600px) {
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        gap: 40px;
+        margin-right: 100px;
+    }
+`;
+
+S.BrushFrame = styled.div`
+    align-self: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    font-family: 'Poppins';
+    text-align: center;
+    font-weight: lighter;
+    margin: 20px 0 50px 40px;
+
+    & > svg {
+        position: absolute;
+        transform: scaleX(1.1);
+    }
+
+    @media (min-width: 600px) {
+        white-space: nowrap;
+        margin: 0;
+        margin-right: 400px;
+        font-size: 14px;
+
+        & > svg {
+            position: absolute;
+            transform: scaleX(1.4);
+        }
+    }
+`;
+
+S.InfoBtn = styled.button`
+    background: var(--color-pink);
+    border: 2px solid var(--color-pink);
+    color: #fff;
+    fill: #fff;
+    font-size: 11px;
+    font-family: 'Poppins';
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 11px 23px;
+    justify-content: center;
+    width: fit-content;
+    gap: 10px;
+    line-height: 1;
+    min-width: 150px;
+    align-self: flex-end;
+    margin-bottom: 40px;
+    margin-right: 20px;
+
+    & > svg {
+        height: 17px;
+    }
+
+    @media (min-width: 600px) {
+        align-self: flex-end;
+        font-size: 14px;
+        gap: 15px;
+        min-width: 215px;
+        cursor: pointer;
+    }
+`;
 
 export default AboutDev;

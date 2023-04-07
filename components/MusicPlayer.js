@@ -1,31 +1,8 @@
 import { useState, useEffect } from 'react';
-import { createUseStyles } from 'react-jss';
-
-const useStyle = createUseStyles({
-    container: {
-        display: 'flex',
-        alignItems: 'center',
-        fontSize: 12,
-
-        '& p': {
-            whiteSpace: 'nowrap',
-            cursor: 'pointer',
-            transition: '.3s color',
-
-            '&:hover': {
-                color: 'var(--color-pink)',
-            },
-        },
-
-        '@media (min-width: 600px)': {
-            fontSize: 15,
-        },
-    },
-});
+import styled from 'styled-components';
 
 const MusicPlayer = ({ opt }) => {
     const { title, file, index } = opt;
-    const classes = useStyle();
     const [audios, setAudios] = useState([]);
 
     useEffect(() => {
@@ -41,13 +18,34 @@ const MusicPlayer = ({ opt }) => {
     };
 
     return (
-        <div className={`${classes.container} music-player`}>
+        <S.Container className='music-player'>
             <p onClick={(e) => handleAudio(e)} id={`music-label-${index}`}>
                 {title}
             </p>
-            <audio src={file} preload="none"></audio>
-        </div>
+            <audio src={file} preload='none'></audio>
+        </S.Container>
     );
 };
+
+const S = {};
+S.Container = styled.div`
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+
+    & p {
+        white-space: nowrap;
+        cursor: pointer;
+        transition: 0.3s color;
+
+        &:hover {
+            color: var(--color-pink);
+        }
+    }
+
+    @media (min-width: 600px) {
+        font-size: 15px;
+    }
+`;
 
 export default MusicPlayer;

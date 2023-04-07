@@ -1,27 +1,24 @@
-import { createUseStyles } from 'react-jss';
-
-const useStyle = createUseStyles({
-    separation: {
-        height: 1,
-        width: '100%',
-        backgroundColor: 'var(--color-grey)',
-        marginTop: 70,
-        marginBottom: 70,
-
-        '@media (min-width: 600px)': {
-            width: 1,
-            height: '100%',
-            margin: '0',
-            marginLeft: 80,
-            marginRight: 80,
-        },
-    },
-});
+import styled from 'styled-components';
 
 const Separation = ({ id }) => {
-    const classes = useStyle();
-
-    return <div id={id} className={`${classes.separation} separation`}></div>;
+    return <S.Separation id={id} className={`separation`}></S.Separation>;
 };
+
+const S = {};
+S.Separation = styled.div`
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-grey);
+    margin-top: 70px;
+    margin-bottom: 70px;
+
+    @media (min-width: 600px) {
+        width: 1px;
+        height: 100%;
+        margin: 0;
+        margin-left: 80px;
+        margin-right: 80px;
+    }
+`;
 
 export default Separation;

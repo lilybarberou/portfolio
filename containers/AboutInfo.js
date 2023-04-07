@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import Image from 'next/future/image';
-import { createUseStyles } from 'react-jss';
+import styled from 'styled-components';
 import Parallax from '@contexts/Utils';
 import Separation from '@components/Separation';
 import Info from '@components/Info';
@@ -10,657 +10,7 @@ import Arrow from '@public/static/svg/arrow.svg';
 import * as i from '@public/static/imagesIndex';
 import { songs } from '@public/static/songs';
 
-const useStyle = createUseStyles({
-    gourmetContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        width: '100%',
-        padding: '0 20px',
-        boxSizing: 'border-box',
-
-        '& > img': {
-            width: 150,
-            height: 200,
-            alignSelf: 'flex-end',
-            marginRight: '5%',
-            transform: 'translateY(-100px)',
-            order: '3',
-        },
-
-        '@media (min-width: 600px)': {
-            position: 'relative',
-            flexDirection: 'row',
-            width: 'unset',
-            marginRight: 300,
-            height: '100%',
-
-            '& > img': {
-                position: 'absolute',
-                width: 240,
-                height: 380,
-                zIndex: '1',
-                bottom: '0',
-                right: -100,
-                order: 'unset',
-                marginRight: '0',
-                alignSelf: 'unset',
-                transform: 'unset',
-            },
-        },
-    },
-    gourmetImg: {
-        width: '100%',
-        height: 300,
-        order: '2',
-
-        '& > img': {
-            width: '100%',
-            height: '100%',
-        },
-        '@media (min-width: 600px)': {
-            width: 600,
-            height: 450,
-            top: '0',
-            marginLeft: 80,
-            zIndex: '0',
-            order: 'unset',
-            alignSelf: 'center',
-            position: 'absolute',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-
-            '& > img': {
-                width: '100%',
-                height: '100%',
-            },
-            '&::after': {
-                content: 'url(/static/svg/frameTop.svg)',
-                position: 'absolute',
-                zIndex: -1,
-                transform: 'scale(0.75, 0.75)',
-                transition: '.3s',
-                right: '-21%',
-                top: '-20.5%',
-            },
-        },
-    },
-    gourmetText: {
-        zIndex: '2',
-        order: '1',
-
-        '& h2': {
-            fontSize: 'calc(7vw + 11px)',
-        },
-        '& .info': {
-            transform: 'translate(-20px, 360px)',
-        },
-
-        '@media (min-width: 600px)': {
-            order: 'unset',
-
-            '& h2': {
-                fontSize: 120,
-            },
-            '& .info': {
-                transform: 'unset',
-                marginLeft: 20,
-            },
-        },
-    },
-    otakuContainer: {
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        marginBottom: 65,
-        width: '100%',
-        padding: '0 20px',
-        boxSizing: 'border-box',
-
-        '& > img': {
-            order: '3',
-            width: 120,
-            height: 170,
-            position: 'absolute',
-            transform: 'translate(0, 80px)',
-        },
-
-        '@media (min-width: 600px)': {
-            alignItems: 'center',
-            flexDirection: 'row',
-            justifyContent: 'flex-end',
-            marginRight: 50,
-            width: 830,
-            marginBottom: '0',
-            height: '100%',
-
-            '& > img': {
-                position: 'absolute',
-                width: 215,
-                height: 290,
-                bottom: 100,
-                left: '0',
-                zIndex: '1',
-                order: 'unset',
-            },
-        },
-    },
-    otakuImg: {
-        height: 300,
-        width: 'fit-content',
-        alignSelf: 'flex-end',
-        order: '2',
-
-        '& > img': {
-            width: '100%',
-            height: '100%',
-        },
-
-        '@media (min-width: 600px)': {
-            position: 'absolute',
-            bottom: 0,
-            height: 620,
-            width: 'auto',
-            right: 220,
-            marginLeft: 110,
-            zIndex: '0',
-            order: 'unset',
-
-            '& > img': {
-                height: '100%',
-                width: '100%',
-            },
-            '&::after': {
-                content: 'url(/static/svg/frameBottom.svg)',
-                position: 'absolute',
-                zIndex: -1,
-                transform: 'scale(0.75, 0.75)',
-                transition: '.3s',
-                right: '-12%',
-                top: '-13.5%',
-            },
-        },
-    },
-    otakuText: {
-        zIndex: '2',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        order: '1',
-
-        '& h2': {
-            fontSize: 'calc(7vw + 11px)',
-        },
-
-        '& .info': {
-            alignSelf: 'flex-start',
-            transform: 'translateY(360px)',
-        },
-
-        '@media (min-width: 600px)': {
-            order: 'unset',
-            alignItems: 'flex-end',
-
-            '& h2': {
-                fontSize: 120,
-            },
-            '& .info': {
-                alignSelf: 'unset',
-                transform: 'unset',
-            },
-        },
-    },
-    musicContainer: {
-        flexDirection: 'column',
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'center',
-
-        '@media (min-width: 600px)': {
-            flexDirection: 'row',
-            height: '100%',
-        },
-    },
-    musicText: {
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginBottom: 40,
-
-        '& h2': {
-            fontSize: 'calc(8vw + 7px)',
-            color: 'var(--color-pink)',
-        },
-
-        '& p': {
-            fontFamily: 'Poppins',
-            fontSize: 12,
-        },
-
-        '@media (min-width: 600px)': {
-            width: 'fit-content',
-            flexDirection: 'row-reverse',
-            transition: '.5s all',
-            transform: 'rotate(-180deg) translateY(-620px)',
-            marginBottom: '0',
-
-            '& h2': {
-                fontSize: 92,
-                writingMode: 'vertical-lr',
-                pointerEvents: 'none',
-            },
-
-            '& p': {
-                fontSize: 20,
-                writingMode: 'vertical-lr',
-                pointerEvents: 'none',
-            },
-        },
-    },
-    musicList: {
-        display: 'flex',
-        flexDirection: 'column',
-        height: 250,
-        justifyContent: 'space-around',
-        alignItems: 'center',
-
-        '@media (min-width: 600px)': {
-            alignItems: 'flex-start',
-            paddingLeft: 120,
-            height: '100%',
-        },
-    },
-    badContainer: {
-        display: 'flex',
-        alignItems: 'center',
-        flexDirection: 'column',
-        position: 'relative',
-        gap: 15,
-        height: 450,
-        marginBottom: 30,
-        width: '100%',
-
-        '& h2': {
-            fontSize: 'calc(7vw + 11px)',
-            color: '#fff',
-            zIndex: 10,
-        },
-        '& > .info': {
-            position: 'absolute',
-            top: 330,
-            right: 20,
-        },
-        '& > .info:nth-child(3)': {
-            marginTop: 45,
-            marginRight: 40,
-        },
-        '& img': {
-            position: 'absolute',
-            height: 'fit-content',
-            zIndex: '2',
-        },
-        // raquette
-        '& > img:nth-child(4)': {
-            width: 200,
-            top: 80,
-            left: '5%',
-        },
-        '& > img:nth-child(5)': {
-            display: 'none',
-            bottom: '0',
-            right: '45%',
-            transform: 'rotate(80deg)',
-        },
-        '& > img:nth-child(6)': {
-            display: 'none',
-            bottom: '15%',
-            left: '0',
-            transform: 'rotate(-60deg)',
-        },
-        // volant
-        '& > img:nth-child(7)': {
-            width: 70,
-            height: 'auto',
-            top: 120,
-            right: '20%',
-            transform: 'rotate(90deg)',
-        },
-
-        '@media (min-width: 600px)': {
-            alignItems: 'unset',
-            justifyContent: 'center',
-            width: 880,
-            padding: '0 200px',
-            marginBottom: '0',
-            height: '100%',
-
-            '& h2': {
-                fontSize: 100,
-            },
-
-            '& > .info': {
-                right: 'unset',
-                top: '65%',
-                left: '50%',
-            },
-
-            '& > .info:nth-child(3)': {
-                marginTop: 70,
-                marginLeft: 70,
-                marginRight: '0',
-            },
-
-            '& > img:nth-child(4)': {
-                top: '0',
-                left: '0',
-                width: 260,
-            },
-
-            '& > img:nth-child(5)': {
-                display: 'block',
-                width: 220,
-            },
-
-            '& > img:nth-child(6)': {
-                display: 'block',
-                width: 110,
-            },
-
-            '& > img:nth-child(7)': {
-                top: '10%',
-                width: 140,
-            },
-        },
-    },
-    gamesContainer: {
-        width: '100%',
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: 20,
-        padding: '0 20px',
-        boxSizing: 'border-box',
-
-        // elden ring
-        '& img:nth-child(2)': {
-            width: '100%',
-            height: 'fit-content',
-        },
-        // hollow knight
-        '& img:nth-child(3)': {
-            width: 'fit-content',
-            maxHeight: 300,
-        },
-
-        '@media (min-width: 600px)': {
-            width: 'fit-content',
-            height: '100%',
-            flexDirection: 'row',
-
-            '& img:nth-child(2)': {
-                maxHeight: 'unset',
-                marginTop: '0',
-                width: 'fit-content',
-                height: '90%',
-            },
-
-            '& img:nth-child(3)': {
-                width: 450,
-                maxHeight: 'unset',
-                height: '90%',
-            },
-        },
-    },
-    gamesText: {
-        zIndex: '2',
-        alignSelf: 'flex-start',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: 10,
-        marginBottom: 40,
-
-        '@media (min-width: 600px)': {
-            transform: 'translateX(-70px)',
-            gap: 15,
-            marginBottom: 0,
-            marginTop: 100,
-            position: 'absolute',
-        },
-    },
-    drawingsContainer: {
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        height: 955,
-        alignItems: 'center',
-        width: '100%',
-
-        '& h2': {
-            fontSize: 'calc(7vw + 11px)',
-        },
-
-        '& .info': {
-            position: 'absolute',
-            top: 260,
-            right: '0',
-            zIndex: '9',
-        },
-
-        '@media (min-width: 600px)': {
-            width: 2715,
-            display: 'block',
-            height: '100%',
-
-            '& h2': {
-                fontSize: 110,
-                position: 'absolute',
-                left: '0',
-                bottom: '10%',
-            },
-
-            '& .info': {
-                right: 'unset',
-                top: '50%',
-                left: 350,
-            },
-        },
-    },
-    drawings: {
-        '& img': {
-            position: 'absolute',
-        },
-
-        '& img:nth-child(2)': {
-            height: 'fit-content',
-            width: 150,
-            top: 110,
-            left: 0,
-            zIndex: '2',
-        },
-        '& img:nth-child(3)': {
-            height: 'fit-content',
-            width: 150,
-            top: 110,
-            right: 0,
-            zIndex: '3',
-        },
-        '& img:nth-child(4)': {
-            width: '50%',
-            height: 120,
-            top: 380,
-            right: '0',
-            zIndex: '4',
-        },
-        '& img:nth-child(5)': {
-            height: 'fit-content',
-            width: '60%',
-            top: 400,
-            left: '0',
-            zIndex: '10',
-        },
-        '& img:nth-child(6)': {
-            width: '50%',
-            height: 'fit-content',
-            top: 550,
-            right: '0',
-            zIndex: '7',
-        },
-        '& img:nth-child(7)': {
-            width: '55%',
-            height: 'fit-content',
-            top: 610,
-            left: '0',
-            zIndex: '6',
-        },
-        '& img:nth-child(8)': {
-            width: '70%',
-            height: 'fit-content',
-            top: 810,
-            right: '0',
-            zIndex: '7',
-        },
-        '@media (min-width: 600px)': {
-            '& img:nth-child(2)': {
-                width: 175,
-                height: 'fit-content',
-                top: '10%',
-                left: 490,
-            },
-            '& img:nth-child(3)': {
-                width: 175,
-                height: 'fit-content',
-                top: 'unset',
-                right: 'unset',
-                bottom: '10%',
-                left: 590,
-            },
-            '& img:nth-child(4)': {
-                width: 420,
-                height: 200,
-                right: 'unset',
-                top: '5%',
-                left: 860,
-            },
-            '& img:nth-child(5)': {
-                width: 380,
-                height: 370,
-                zIndex: '5',
-                top: 'unset',
-                bottom: 0,
-                left: 810,
-            },
-            '& img:nth-child(6)': {
-                width: 460,
-                height: 'auto',
-                maxHeight: '100%',
-                right: 'unset',
-                top: '0',
-                left: 1240,
-                zIndex: '6',
-            },
-            '& img:nth-child(7)': {
-                width: 460,
-                height: 'auto',
-                maxHeight: '100%',
-                top: 'unset',
-                bottom: '0',
-                left: 1740,
-                zIndex: '7',
-            },
-            '& img:nth-child(8)': {
-                width: 560,
-                height: 360,
-                right: 'unset',
-                top: '20%',
-                left: 2130,
-                zIndex: '8',
-            },
-        },
-    },
-    footer: {
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-
-        '@media (min-width: 600px)': {
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: 300,
-            gap: 40,
-            marginRight: 100,
-            marginLeft: 110,
-        },
-    },
-    brushFrame: {
-        alignSelf: 'flex-start',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 11,
-        fontFamily: 'Poppins',
-        textAlign: 'center',
-        fontWeight: 'lighter',
-        marginBottom: 50,
-        marginLeft: 40,
-        marginTop: 20,
-
-        '& > svg': {
-            position: 'absolute',
-            transform: 'scale(1.1, 1)',
-        },
-        '@media (min-width: 600px)': {
-            whiteSpace: 'nowrap',
-            margin: 0,
-            marginRight: 400,
-            fontSize: 14,
-
-            '& > svg': {
-                position: 'absolute',
-                transform: 'scaleX(1.4)',
-            },
-        },
-    },
-    devBtn: {
-        background: 'var(--color-pink)',
-        border: '2px solid var(--color-pink)',
-        color: '#fff',
-        fill: '#fff',
-        fontSize: 11,
-        fontFamily: 'Poppins',
-        textDecoration: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '11px 18px',
-        justifyContent: 'center',
-        width: 'fit-content',
-        gap: 10,
-        lineHeight: 1,
-        minWidth: 150,
-        alignSelf: 'flex-end',
-        marginBottom: 40,
-        marginRight: 20,
-
-        '& > svg': {
-            height: 17,
-        },
-        '@media (min-width: 600px)': {
-            alignSelf: 'flex-end',
-            fontSize: 14,
-            gap: 15,
-            minWidth: 215,
-            cursor: 'pointer',
-        },
-    },
-});
-
 const AboutInfo = ({ onClick, translations }) => {
-    const classes = useStyle();
-
     useEffect(() => {
         // ─── PARALLAX ─────────────────────────────────────────
         if (window.matchMedia('(min-width: 600px)').matches) {
@@ -830,43 +180,43 @@ const AboutInfo = ({ onClick, translations }) => {
             <h2 id='about-info-title' dangerouslySetInnerHTML={{ __html: translations.nutshell }}></h2>
             <Separation />
             {/* ──── GOURMET PART ──────────────────────────────────────────────────────────── */}
-            <section className={classes.gourmetContainer} id='gourmet'>
-                <div className={classes.gourmetImg}>
+            <S.GourmetContainer id='gourmet'>
+                <S.GourmetImg>
                     <Image className='bnw' src={i.Pho} alt='Pho' width={800} height={600} />
-                </div>
+                </S.GourmetImg>
                 <Image className='bnw' src={i.Glace} alt='Glace' width={300} height={480} />
-                <div className={classes.gourmetText}>
+                <S.GourmetText>
                     <h2>GOURMET</h2>
                     <Info text='Phô > Couscous > all' />
-                </div>
-            </section>
+                </S.GourmetText>
+            </S.GourmetContainer>
             {/* ──── OTAKU PART ──────────────────────────────────────────────────────────── */}
-            <section className={classes.otakuContainer} id='otaku'>
-                <div className={classes.otakuImg}>
+            <S.OtakuContainer id='otaku'>
+                <S.OtakuImg>
                     <Image className='bnw' src={i.Totoro} alt='Totoro' width={650} height={800} />
-                </div>
+                </S.OtakuImg>
                 <Image className='bnw' src={i.Bouba} alt='Bouba' width={270} height={360} />
-                <div className={classes.otakuText}>
+                <S.OtakuText>
                     <h2>OTAKU</h2>
                     <Info text={translations.bouba} />
-                </div>
-            </section>
+                </S.OtakuText>
+            </S.OtakuContainer>
             <Separation />
             {/* ──── MUSIC PART ──────────────────────────────────────────────────────────── */}
-            <section className={classes.musicContainer} id='musique'>
-                <div className={`${classes.musicText} title`}>
+            <S.MusicContainer id='musique'>
+                <S.MusicText className='title'>
                     <h2>{translations.melophile}</h2>
                     <p>{translations.reggae}</p>
-                </div>
-                <div className={classes.musicList}>
+                </S.MusicText>
+                <S.MusicList>
                     {songs.map((e, i) => (
                         <MusicPlayer opt={{ ...e, index: i }} key={i} />
                     ))}
-                </div>
-            </section>
+                </S.MusicList>
+            </S.MusicContainer>
             <Separation />
             {/* ──── BADMINTON PART ──────────────────────────────────────────────────────────── */}
-            <section className={classes.badContainer} id='badminton'>
+            <S.BadContainer id='badminton'>
                 <h2>{translations.addict}</h2>
                 <Info text={translations.justbad} />
                 <Info text={translations.sporty} />
@@ -874,21 +224,21 @@ const AboutInfo = ({ onClick, translations }) => {
                 <Image className='bnw' src={i.Racket} alt='Racket' width={300} height={300} />
                 <Image className='bnw' src={i.Volant} alt='Volant' width={140} height={126} />
                 <Image className='bnw' src={i.Volant2} alt='Volant' width={195} height={204} />
-            </section>
+            </S.BadContainer>
             {/* ──── VIDEO GAMES PART ──────────────────────────────────────────────────────────── */}
-            <section className={classes.gamesContainer} id='jeux-videos'>
-                <div className={classes.gamesText}>
+            <S.GamesContainer id='jeux-videos'>
+                <S.GamesText>
                     <Info text={translations.videogames} />
                     <Info text='LILY.GEEK = 100' />
-                </div>
+                </S.GamesText>
                 <Image className='bnw' src={i.EldenRing} alt='Elden Ring' width={1236} height={928} />
                 <Image className='bnw' src={i.HollowKnight} alt='Hollow Knight' width={1256} height={1440} />
-            </section>
+            </S.GamesContainer>
             <Separation />
             {/* ──── ARTIST PART ──────────────────────────────────────────────────────────── */}
-            <section className={classes.drawingsContainer} id='artiste'>
+            <S.DrawingsContainer id='artiste'>
                 <h2>{translations.artist}</h2>
-                <div className={classes.drawings} id='drawings'>
+                <S.Drawings id='drawings'>
                     <Info text={translations.complicated} />
                     <Image className='bnw' src={i.Dessin1} width={1236} height={1684} alt='Dessin' />
                     <Image className='bnw' src={i.Dessin2} width={1328} height={1740} alt='Dessin' />
@@ -897,27 +247,717 @@ const AboutInfo = ({ onClick, translations }) => {
                     <Image className='bnw' src={i.Dessin5} width={1920} height={2560} alt='Dessin' />
                     <Image className='bnw' src={i.Dessin6} width={1920} height={2560} alt='Dessin' />
                     <Image className='bnw' src={i.Dessin7} width={1402} height={944} alt='Dessin' />
-                </div>
-            </section>
+                </S.Drawings>
+            </S.DrawingsContainer>
             <Separation />
             {/* ──── FOOTER PART ──────────────────────────────────────────────────────────── */}
-            <div className={classes.footer} id='footer'>
-                <div className={classes.brushFrame}>
+            <S.Footer id='footer'>
+                <S.BrushFrame>
                     <p>{translations.theresdev}</p>
                     <BrushFrame />
-                </div>
-                <button
-                    className={classes.devBtn}
+                </S.BrushFrame>
+                <S.DevBtn
                     onClick={() => {
                         window.scrollTo(0, 0);
                         onClick('dev');
                     }}
                 >
                     {translations.whereithappens} <Arrow />
-                </button>
-            </div>
+                </S.DevBtn>
+            </S.Footer>
         </>
     );
 };
+
+const S = {};
+S.GourmetContainer = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    & > img {
+        width: 150px;
+        height: 200px;
+        align-self: flex-end;
+        margin-right: 5%;
+        transform: translateY(-100px);
+        order: 3;
+    }
+
+    @media (min-width: 600px) {
+        position: relative;
+        flex-direction: row;
+        width: unset;
+        margin-right: 300px;
+        height: 100%;
+
+        & > img {
+            position: absolute;
+            width: 240px;
+            height: 380px;
+            z-index: 1;
+            bottom: 0;
+            right: -100px;
+            order: unset;
+            margin-right: 0;
+            align-self: unset;
+            transform: unset;
+        }
+    }
+`;
+
+S.GourmetImg = styled.div`
+    width: 100%;
+    height: 300px;
+    order: 2;
+
+    & > img {
+        width: 100%;
+        height: 100%;
+    }
+
+    @media (min-width: 600px) {
+        width: 600px;
+        height: 450px;
+        top: 0;
+        margin-left: 80px;
+        z-index: 0;
+        order: unset;
+        align-self: center;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & > img {
+            width: 100%;
+            height: 100%;
+        }
+
+        &::after {
+            content: url(/static/svg/frameTop.svg);
+            position: absolute;
+            z-index: -1;
+            transform: scale(0.75);
+            transition: 0.3s;
+            right: -21%;
+            top: -20.5%;
+        }
+    }
+`;
+
+S.GourmetText = styled.div`
+    z-index: 2;
+    order: 1;
+
+    h2 {
+        font-size: calc(7vw + 11px);
+    }
+    .info {
+        transform: translate(-20px, 360px);
+    }
+
+    @media (min-width: 600px) {
+        order: unset;
+
+        h2 {
+            font-size: 120px;
+        }
+        .info {
+            transform: unset;
+            margin-left: 20px;
+        }
+    }
+`;
+
+S.OtakuContainer = styled.section`
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 65px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    & > img {
+        order: 3;
+        width: 120px;
+        height: 170px;
+        position: absolute;
+        transform: translateY(80px);
+    }
+
+    @media (min-width: 600px) {
+        align-items: center;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-right: 50px;
+        width: 830px;
+        margin-bottom: 0;
+        height: 100%;
+
+        & > img {
+            position: absolute;
+            width: 215px;
+            height: 290px;
+            bottom: 100px;
+            left: 0;
+            z-index: 1;
+            order: unset;
+        }
+    }
+`;
+
+S.OtakuImg = styled.div`
+    height: 300px;
+    width: fit-content;
+    align-self: flex-end;
+    order: 2;
+
+    & > img {
+        width: 100%;
+        height: 100%;
+    }
+
+    @media (min-width: 600px) {
+        position: absolute;
+        bottom: 0;
+        height: 620px;
+        width: auto;
+        right: 220px;
+        margin-left: 110px;
+        z-index: 0;
+        order: unset;
+
+        & > img {
+            height: 100%;
+            width: 100%;
+        }
+
+        &::after {
+            content: url(/static/svg/frameBottom.svg);
+            position: absolute;
+            z-index: -1;
+            transform: scale(0.75, 0.75);
+            transition: 0.3s;
+            right: -12%;
+            top: -13.5%;
+        }
+    }
+`;
+
+S.OtakuText = styled.div`
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 1;
+
+    & h2 {
+        font-size: calc(7vw + 11px);
+    }
+
+    & .info {
+        align-self: flex-start;
+        transform: translateY(360px);
+    }
+
+    @media (min-width: 600px) {
+        order: unset;
+        align-items: flex-end;
+
+        & h2 {
+            font-size: 120px;
+        }
+
+        & .info {
+            align-self: unset;
+            transform: unset;
+        }
+    }
+`;
+
+S.MusicContainer = styled.section`
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+
+    @media (min-width: 600px) {
+        flex-direction: row;
+        height: 100%;
+    }
+`;
+
+S.MusicText = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+
+    & h2 {
+        font-size: calc(8vw + 7px);
+        color: var(--color-pink);
+    }
+
+    & p {
+        font-family: Poppins;
+        font-size: 12px;
+    }
+
+    @media (min-width: 600px) {
+        width: fit-content;
+        flex-direction: row-reverse;
+        transition: 0.5s all;
+        transform: rotate(-180deg) translateY(-620px);
+        margin-bottom: 0;
+
+        & h2 {
+            font-size: 92px;
+            writing-mode: vertical-lr;
+            pointer-events: none;
+        }
+
+        & p {
+            font-size: 20px;
+            writing-mode: vertical-lr;
+            pointer-events: none;
+        }
+    }
+`;
+
+S.MusicList = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    justify-content: space-around;
+    align-items: center;
+
+    @media (min-width: 600px) {
+        align-items: flex-start;
+        padding-left: 120px;
+        height: 100%;
+    }
+`;
+
+S.BadContainer = styled.section`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    gap: 15px;
+    height: 450px;
+    margin-bottom: 30px;
+    width: 100%;
+
+    & h2 {
+        font-size: calc(7vw + 11px);
+        color: #fff;
+        z-index: 10;
+    }
+
+    & > .info {
+        position: absolute;
+        top: 330px;
+        right: 20px;
+    }
+
+    & > .info:nth-child(3) {
+        margin-top: 45px;
+        margin-right: 40px;
+    }
+
+    & img {
+        position: absolute;
+        height: fit-content;
+        z-index: 2;
+    }
+
+    /* raquette */
+    & > img:nth-child(4) {
+        width: 200px;
+        top: 80px;
+        left: 5%;
+    }
+
+    & > img:nth-child(5) {
+        display: none;
+        bottom: 0;
+        right: 45%;
+        transform: rotate(80deg);
+    }
+
+    & > img:nth-child(6) {
+        display: none;
+        bottom: 15%;
+        left: 0;
+        transform: rotate(-60deg);
+    }
+
+    /* volant */
+    & > img:nth-child(7) {
+        width: 70px;
+        height: auto;
+        top: 120px;
+        right: 20%;
+        transform: rotate(90deg);
+    }
+
+    @media (min-width: 600px) {
+        align-items: unset;
+        justify-content: center;
+        width: 880px;
+        padding: 0 200px;
+        margin-bottom: 0;
+        height: 100%;
+
+        & h2 {
+            font-size: 100px;
+        }
+
+        & > .info {
+            right: unset;
+            top: 65%;
+            left: 50%;
+        }
+
+        & > .info:nth-child(3) {
+            margin-top: 70px;
+            margin-left: 70px;
+            margin-right: 0;
+        }
+
+        & > img:nth-child(4) {
+            top: 0;
+            left: 0;
+            width: 260px;
+        }
+
+        & > img:nth-child(5) {
+            display: block;
+            width: 220px;
+        }
+
+        & > img:nth-child(6) {
+            display: block;
+            width: 110px;
+        }
+
+        & > img:nth-child(7) {
+            top: 10%;
+            width: 140px;
+        }
+    }
+`;
+
+S.GamesContainer = styled.section`
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    /* Elden Ring */
+    & img:nth-child(2) {
+        width: 100%;
+        height: fit-content;
+    }
+
+    /* Hollow Knight */
+    & img:nth-child(3) {
+        width: fit-content;
+        max-height: 300px;
+    }
+
+    @media (min-width: 600px) {
+        width: fit-content;
+        height: 100%;
+        flex-direction: row;
+
+        & img:nth-child(2) {
+            max-height: unset;
+            margin-top: 0;
+            width: fit-content;
+            height: 90%;
+        }
+
+        & img:nth-child(3) {
+            width: 450px;
+            max-height: unset;
+            height: 90%;
+        }
+    }
+`;
+
+S.GamesText = styled.div`
+    z-index: 2;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+
+    @media (min-width: 600px) {
+        transform: translateX(-70px);
+        gap: 15px;
+        margin-bottom: 0;
+        margin-top: 100px;
+        position: absolute;
+    }
+`;
+
+S.DrawingsContainer = styled.section`
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 955px;
+    align-items: center;
+    width: 100%;
+
+    & h2 {
+        font-size: calc(7vw + 11px);
+    }
+
+    & .info {
+        position: absolute;
+        top: 260px;
+        right: 0;
+        z-index: 9;
+    }
+
+    @media (min-width: 600px) {
+        width: 2715px;
+        display: block;
+        height: 100%;
+
+        & h2 {
+            font-size: 110px;
+            position: absolute;
+            left: 0;
+            bottom: 10%;
+        }
+
+        & .info {
+            right: unset;
+            top: 50%;
+            left: 350px;
+        }
+    }
+`;
+
+S.Drawings = styled.div`
+    & img {
+        position: absolute;
+    }
+
+    & img:nth-child(2) {
+        height: fit-content;
+        width: 150px;
+        top: 110px;
+        left: 0;
+        z-index: 2;
+    }
+
+    & img:nth-child(3) {
+        height: fit-content;
+        width: 150px;
+        top: 110px;
+        right: 0;
+        z-index: 3;
+    }
+
+    & img:nth-child(4) {
+        width: 50%;
+        height: 120px;
+        top: 380px;
+        right: 0;
+        z-index: 4;
+    }
+
+    & img:nth-child(5) {
+        height: fit-content;
+        width: 60%;
+        top: 400px;
+        left: 0;
+        z-index: 10;
+    }
+
+    & img:nth-child(6) {
+        width: 50%;
+        height: fit-content;
+        top: 550px;
+        right: 0;
+        z-index: 7;
+    }
+
+    & img:nth-child(7) {
+        width: 55%;
+        height: fit-content;
+        top: 610px;
+        left: 0;
+        z-index: 6;
+    }
+
+    & img:nth-child(8) {
+        width: 70%;
+        height: fit-content;
+        top: 810px;
+        right: 0;
+        z-index: 7;
+    }
+
+    @media (min-width: 600px) {
+        & img:nth-child(2) {
+            width: 175px;
+            height: fit-content;
+            top: 10%;
+            left: 490px;
+        }
+
+        & img:nth-child(3) {
+            width: 175px;
+            height: fit-content;
+            top: unset;
+            right: unset;
+            bottom: 10%;
+            left: 590px;
+        }
+
+        & img:nth-child(4) {
+            width: 420px;
+            height: 200px;
+            right: unset;
+            top: 5%;
+            left: 860px;
+        }
+
+        & img:nth-child(5) {
+            width: 380px;
+            height: 370px;
+            z-index: 5;
+            top: unset;
+            bottom: 0;
+            left: 810px;
+        }
+
+        & img:nth-child(6) {
+            width: 460px;
+            height: auto;
+            max-height: 100%;
+            right: unset;
+            top: 0;
+            left: 1240px;
+            z-index: 6;
+        }
+
+        & img:nth-child(7) {
+            width: 460px;
+            height: auto;
+            max-height: 100%;
+            top: unset;
+            bottom: 0;
+            left: 1740px;
+            z-index: 7;
+        }
+
+        & img:nth-child(8) {
+            width: 560px;
+            height: 360px;
+            right: unset;
+            top: 20%;
+            left: 2130px;
+            z-index: 8;
+        }
+    }
+`;
+
+S.Footer = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @media (min-width: 600px) {
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        gap: 40px;
+        margin-right: 100px;
+        margin-left: 110px;
+    }
+`;
+
+S.BrushFrame = styled.div`
+    align-self: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    font-family: 'Poppins';
+    text-align: center;
+    font-weight: lighter;
+    margin-bottom: 50px;
+    margin-left: 40px;
+    margin-top: 20px;
+
+    & > svg {
+        position: absolute;
+        transform: scale(1.1, 1);
+    }
+
+    @media (min-width: 600px) {
+        white-space: nowrap;
+        margin: 0;
+        margin-right: 400px;
+        font-size: 14px;
+
+        & > svg {
+            position: absolute;
+            transform: scaleX(1.4);
+        }
+    }
+`;
+
+S.DevBtn = styled.button`
+  background: var(--color-pink);
+  border: 2px solid var(--color-pink);
+  color: #fff;
+  fill: #fff;
+  font-size: 11px;
+  font-family: 'Poppins';
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 11px 18px;
+  justify-content: center;
+  width: fit-content;
+  gap: 10px;
+  line-height: 1;
+  min-width: 150px;
+  align-self: flex-end;
+  margin-bottom: 40px;
+  margin-right: 20px;
+
+  & > svg {
+    height: 17px;
+  }
+
+  @media (min-width: 600px) {
+    align-self: flex-end;
+    font-size: 14px;
+    gap: 15px;
+    min-width: 215px;
+    cursor: pointer;
+  }
+}
+`;
 
 export default AboutInfo;

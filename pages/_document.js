@@ -1,52 +1,50 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { SheetsRegistry, JssProvider, createGenerateId } from 'react-jss';
+import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
 
-class MyDocument extends Document {
-    static async getInitialProps(ctx) {
-        const registry = new SheetsRegistry();
-        const generateId = createGenerateId();
-        const originalRenderPage = ctx.renderPage;
+function Document() {
+    return (
+        <Html lang='fr-FR'>
+            <Head>
+                <meta charSet='utf-8' />
+                <meta name='theme-color' content='#232323' />
+                <link rel='manifest' href='/manifest.json' />
+                <link rel='icon' href='/favicon.ico' />
+                <link rel='apple-touch-icon' href='./apple-touch-icon.png' />
 
+                <meta property='og:image' content='https://raw.githubusercontent.com/Nahay/Assets/master/Portfolio/home.png' />
+                <meta property='og:type' content='website' />
+            </Head>
+            <body>
+                <Main />
+                <NextScript />
+            </body>
+        </Html>
+    );
+}
+
+Document.getInitialProps = async (ctx) => {
+    const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
+
+    try {
         ctx.renderPage = () =>
             originalRenderPage({
-                enhanceApp: (App) => (props) =>
-                    (
-                        <JssProvider registry={registry} generateId={generateId}>
-                            <App {...props} />
-                        </JssProvider>
-                    ),
+                enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
             });
 
-        const initialProps = await Document.getInitialProps(ctx);
+        const initialProps = await NextDocument.getInitialProps(ctx);
         return {
             ...initialProps,
             styles: (
                 <>
                     {initialProps.styles}
-                    <style id='server-side-styles'>{registry.toString()}</style>
+                    {sheet.getStyleElement()}
                 </>
             ),
         };
+    } finally {
+        sheet.seal();
     }
-    render() {
-        return (
-            <Html lang='fr-FR'>
-                <Head>
-                    <meta charSet='utf-8' />
-                    <meta name='theme-color' content='#232323' />
-                    <link rel='manifest' href='/manifest.json' />
-                    <link rel='icon' href='/favicon.ico' />
-                    <link rel='apple-touch-icon' href='./apple-touch-icon.png' />
+};
 
-                    <meta property='og:image' content='https://raw.githubusercontent.com/Nahay/Assets/master/Portfolio/home.png' />
-                    <meta property='og:type' content='website' />
-                </Head>
-                <body>
-                    <Main />
-                    <NextScript />
-                </body>
-            </Html>
-        );
-    }
-}
-export default MyDocument;
+export default Document;

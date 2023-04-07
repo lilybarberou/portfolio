@@ -1,31 +1,28 @@
-import { createUseStyles } from 'react-jss';
 import { useSelector } from 'react-redux';
-
-const useStyle = createUseStyles({
-    container: {
-        width: '100%',
-        height: '100%',
-        fontFamily: 'Aboreto',
-
-        '@media (min-width: 600px)': {
-            height: '100%',
-            width: 'fit-content',
-        },
-    },
-});
+import styled from 'styled-components';
 
 const HorizontalWrapper = ({ children }) => {
-    const classes = useStyle();
-
     // pass lang as props for children components
     const lang = useSelector((state) => state.lang.value);
     const content = children.map((e) => ({ ...e, props: { lang } }));
 
     return (
-        <div className="app">
-            <div className={`${classes.container} container`}>{content}</div>
+        <div className='app'>
+            <S.Container className='container'>{content}</S.Container>
         </div>
     );
 };
+
+const S = {};
+S.Container = styled.div`
+    width: 100%;
+    height: 100%;
+    font-family: Aboreto;
+
+    @media (min-width: 600px) {
+        height: 100%;
+        width: fit-content;
+    }
+`;
 
 export default HorizontalWrapper;
