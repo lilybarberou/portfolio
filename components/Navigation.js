@@ -154,8 +154,6 @@ S.Links = styled.div`
     > a {
         z-index: 2;
         white-space: nowrap;
-    }
-    > a:not(:first-child) {
         color: #fff;
         text-decoration: none;
         text-transform: uppercase;
@@ -180,7 +178,7 @@ S.Links = styled.div`
         }
     }
     @media (max-width: 600px) {
-        > a:first-child {
+        > span {
             display: none;
         }
     }
@@ -189,7 +187,7 @@ S.Links = styled.div`
         gap: 100px;
         align-items: center;
 
-        > a:not(:first-child) {
+        > a {
             transform: rotate(-90deg);
             font-family: Poppins;
             font-size: 14px;
@@ -201,7 +199,7 @@ S.Links = styled.div`
     }
 `;
 
-S.Logo = styled.a`
+S.Logo = styled.span`
     cursor: pointer;
 
     @media (min-width: 600px) {

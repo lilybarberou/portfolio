@@ -4,7 +4,7 @@ import Arrow from '@public/static/svg/arrow.svg';
 
 const Button = ({ text, link, onClick }) => {
     return (
-        <Link href={link}>
+        <Link passHref href={link}>
             <S.Container onClick={onClick} className='button'>
                 {text}
                 <Arrow />
