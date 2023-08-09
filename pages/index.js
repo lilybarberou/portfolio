@@ -11,7 +11,7 @@ import Download from '@public/static/svg/download.svg';
 
 const Home = ({ lang }) => {
     const translations = t('home', lang);
-    const cvLink = lang === 'fr-FR' ? process.env.CV_FR_LINK : process.env.CV_EN_LINK;
+    const cvLink = lang === 'fr-FR' ? process.env.NEXT_PUBLIC_CV_FR_LINK : process.env.NEXT_PUBLIC_CV_EN_LINK;
 
     useEffect(() => {
         // ─── PARALLAX ─────────────────────────────────────────
