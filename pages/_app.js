@@ -9,6 +9,7 @@ import Navigation from '@components/Navigation';
 import HorizontalWrapper from '@components/HorizontalWrapper';
 import { t } from '@contexts/Utils';
 import Script from 'next/script';
+import InitLang from '@components/InitLang';
 
 function MyApp({ Component, pageProps }) {
     useEffect(() => {
@@ -36,25 +37,27 @@ function MyApp({ Component, pageProps }) {
                 `}
             </Script>
             <Provider store={store}>
-                <Head>
-                    <meta name='viewport' content='width=device-width, initial-scale=1' />
-                </Head>
-                <ToastContainer
-                    position='top-right'
-                    autoClose={3500}
-                    hideProgressBar={false}
-                    closeOnClick={true}
-                    pauseOnHover={true}
-                    draggable={false}
-                    progress={undefined}
-                    theme='dark'
-                />
-                <GlobalStyle />
-                <MusicCursor />
-                <HorizontalWrapper>
-                    <Navigation />
-                    <Component {...pageProps} />
-                </HorizontalWrapper>
+                <InitLang>
+                    <Head>
+                        <meta name='viewport' content='width=device-width, initial-scale=1' />
+                    </Head>
+                    <ToastContainer
+                        position='top-right'
+                        autoClose={3500}
+                        hideProgressBar={false}
+                        closeOnClick={true}
+                        pauseOnHover={true}
+                        draggable={false}
+                        progress={undefined}
+                        theme='dark'
+                    />
+                    <GlobalStyle />
+                    <MusicCursor />
+                    <HorizontalWrapper>
+                        <Navigation />
+                        <Component {...pageProps} />
+                    </HorizontalWrapper>
+                </InitLang>
             </Provider>
         </>
     );
