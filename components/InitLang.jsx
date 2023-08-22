@@ -6,7 +6,6 @@ const InitLang = ({ children }) => {
     const [updated, setUpdated] = useState(false);
 
     useEffect(() => {
-        console.log('ok');
         setUpdated(true);
         const userLang = ['fr-FR', 'fr'].includes(navigator.language) ? 'fr-FR' : 'en-US';
         setLang(userLang);
