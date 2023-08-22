@@ -1,27 +1,22 @@
-import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-const MusicPlayer = ({ opt }) => {
-    const { title, file, index } = opt;
-    const [audios, setAudios] = useState([]);
-
-    useEffect(() => {
-        setAudios(document.querySelectorAll('.music-player audio'));
-    }, []);
+const MusicPlayer = (props) => {
+    const { title, file, musicList } = props;
 
     const handleAudio = (e) => {
-        const id = e.target.id;
-        const audio = document.querySelector(`#${id} + audio`);
+        const audio = e.target.nextElementSibling;
         const paused = audio.paused;
-        audios.forEach((e) => e.pause());
+
+        Array.from(musicList.current.children).forEach((musicPlayerContainer) => {
+            const audioTag = musicPlayerContainer.children[1];
+            audioTag.pause();
+        });
         paused ? audio.play() : audio.pause();
     };
 
     return (
-        <S.Container className='music-player'>
-            <p onClick={(e) => handleAudio(e)} id={`music-label-${index}`}>
-                {title}
-            </p>
+        <S.Container>
+            <p onClick={handleAudio}>{title}</p>
             <audio src={file} preload='none'></audio>
         </S.Container>
     );
@@ -33,7 +28,7 @@ S.Container = styled.div`
     align-items: center;
     font-size: 12px;
 
-    & p {
+    p {
         white-space: nowrap;
         cursor: pointer;
         transition: 0.3s color;

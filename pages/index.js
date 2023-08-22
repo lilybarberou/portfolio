@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/future/image';
@@ -8,9 +8,11 @@ import Separation from '@components/Separation';
 import Parallax, { t } from '@contexts/Utils';
 import BrushFrame from '@public/static/svg/brushFrame.svg';
 import Download from '@public/static/svg/download.svg';
+import works from '@contexts/works.json';
 
 const Home = ({ lang }) => {
     const translations = t('home', lang);
+    const carousel = useRef(null);
     const cvLink = lang === 'fr-FR' ? process.env.NEXT_PUBLIC_CV_FR_LINK : process.env.NEXT_PUBLIC_CV_EN_LINK;
 
     useEffect(() => {
@@ -34,28 +36,10 @@ const Home = ({ lang }) => {
         }
     }, [lang, translations]);
 
-    const works = [
-        {
-            img: 'https://raw.githubusercontent.com/lilybarberou/Assets/master/Blog/banner.png',
-            name: 'LilyScript',
-            link: '/realisations#lilyscript',
-        },
-        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/SpotYou/banner.png', name: 'SpotYou', link: '/realisations#spotyou' },
-        {
-            img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Charlemagne/Client/Accueil_Connecte.png',
-            name: 'Charlemagne',
-            link: '/realisations#charlemagne',
-        },
-        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Quote%20Wars/banner.png', name: 'Quote Wars', link: '/realisations#quotewars' },
-        { img: 'https://raw.githubusercontent.com/Nahay/Assets/master/Chat/banner.png', name: 'U Speak', link: '/realisations#uspeak' },
-    ];
-
     const handleScroll = () => {
-        const carousel = document.querySelector('#home-carousel');
-
         if (window.matchMedia('(max-width: 600px)').matches) {
-            carousel.scrollLeft = carousel.scrollLeft + 200;
-        } else carousel.scrollTop = carousel.scrollTop + 200;
+            carousel.current.scrollLeft = carousel.current.scrollLeft + 200;
+        } else carousel.current.scrollTop = carousel.current.scrollTop + 200;
     };
 
     const handleWorksClick = () => (document.querySelector('.app').scrollTop = 0);
@@ -101,7 +85,7 @@ const Home = ({ lang }) => {
             </S.Works>
             <S.WorksContainer>
                 <S.CarouselContainer>
-                    <S.Carousel id='home-carousel'>
+                    <S.Carousel id='home-carousel' ref={carousel}>
                         {works.map((e) => (
                             <Link key={e.name} href={e.link}>
                                 <a>

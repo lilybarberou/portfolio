@@ -1,0 +1,22 @@
+[
+    {
+        "company": "Olwe Développement",
+        "desc": "web dev full-stack react/node.js - designer",
+        "duration": "Now"
+    },
+    {
+        "company": "Lycée Charles Pointet",
+        "desc": "web dev full-stack react/node.js",
+        "duration": "2 months"
+    },
+    {
+        "company": "ITDM",
+        "desc": "web dev front - Wordpress",
+        "duration": "2 months"
+    },
+    {
+        "company": "Rainbow Studio",
+        "desc": "web dev front",
+        "duration": "1 month"
+    }
+]

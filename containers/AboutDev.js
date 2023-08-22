@@ -4,6 +4,7 @@ import Parallax from '@contexts/Utils';
 import Separation from '@components/Separation';
 import BrushFrame from '@public/static/svg/brushFrame.svg';
 import Arrow from '@public/static/svg/arrow.svg';
+import Experiences from '@components/Experiences';
 
 const AboutDev = ({ onClick, translations, lang }) => {
     useEffect(() => {
@@ -49,34 +50,6 @@ const AboutDev = ({ onClick, translations, lang }) => {
             });
         }
     }, []);
-
-    const frExperience = [
-        { company: 'Olwe Développement', desc: 'web dev full-stack react/node.js - designer', duration: 'Now' },
-        { company: 'Lycée Charles Pointet', desc: 'web dev full-stack react/node.js', duration: '2 mois' },
-        { company: 'ITDM', desc: 'web dev front - Wordpress', duration: '2 mois' },
-        { company: 'Rainbow Studio', desc: 'web dev front', duration: '1 mois' },
-    ];
-
-    const enExperience = [
-        { company: 'Olwe Développement', desc: 'web dev full-stack react/node.js - designer', duration: 'Now' },
-        { company: 'Lycée Charles Pointet', desc: 'web dev full-stack react/node.js', duration: '2 months' },
-        { company: 'ITDM', desc: 'web dev front - Wordpress', duration: '2 months' },
-        { company: 'Rainbow Studio', desc: 'web dev front', duration: '1 month' },
-    ];
-
-    const renderExperiences = (obj) => (
-        <S.Experiences>
-            {obj.map((e, i) => (
-                <S.Experience key={i} className={`${i === obj.length - 1 ? 'last' : ''}`}>
-                    <p>
-                        <span>{e.company}</span>
-                        <span>{e.duration}</span>
-                    </p>
-                    <p>{e.desc}</p>
-                </S.Experience>
-            ))}
-        </S.Experiences>
-    );
 
     return (
         <>
@@ -187,7 +160,7 @@ const AboutDev = ({ onClick, translations, lang }) => {
             <S.ExperienceTitle id='experience'>
                 <h2>{translations.experience}</h2>
             </S.ExperienceTitle>
-            {renderExperiences(lang === 'fr-FR' ? frExperience : enExperience)}
+            <Experiences lang={lang} />
             <Separation />
 
             {/* ─── FOOTER ───────────────────────────────────────── */}
@@ -324,77 +297,6 @@ S.ExperienceTitle = styled.div`
             transform: rotate(-90deg);
             font-size: calc(14vh - 9px);
             pointer-events: none;
-        }
-    }
-`;
-
-S.Experiences = styled.div`
-    @media (min-width: 600px) {
-        margin-right: 260px;
-        & + .separation {
-            display: none;
-        }
-    }
-`;
-
-S.Experience = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Poppins';
-    position: relative;
-    padding-bottom: 30px;
-    padding-top: 30px;
-    width: 300px;
-
-    & > p:first-child {
-        font-size: 17px;
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 5px;
-        width: 100%;
-
-        & > span:first-child {
-            color: var(--color-pink);
-        }
-    }
-
-    & > p:last-child {
-        font-size: 12px;
-        width: 100%;
-    }
-
-    &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        height: 1px;
-        background-color: var(--color-grey);
-        width: 180px;
-    }
-
-    &.last {
-        padding-bottom: 0;
-
-        &::after {
-            display: none;
-        }
-    }
-
-    @media (min-width: 600px) {
-        padding-bottom: 40px;
-        padding-top: 40px;
-
-        & > p:first-child {
-            font-size: 18px;
-        }
-
-        & > p:last-child {
-            font-size: 13px;
-        }
-
-        &:first-child {
-            padding-top: 0;
         }
     }
 `;

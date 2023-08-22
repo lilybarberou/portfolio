@@ -4,41 +4,46 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { switchLanguage } from '@slices/lang';
 import { t } from '@contexts/Utils';
+import { useRef } from 'react';
 
 const Navigation = ({ lang }) => {
     const router = useRouter();
     const dispatch = useDispatch();
+    const navigation = useRef(null);
+    const openIcon = useRef(null);
+    const closeIcon = useRef(null);
+    const mobileMenu = useRef(null);
     const translations = t('navigation', lang);
 
     const handleMobileMenu = (e, logo) => {
         if (window.matchMedia('(max-width: 600px)').matches) {
-            const active = document.querySelector('#navigation').classList.contains('active');
+            const active = navigation.current.classList.contains('active');
 
             // logo must not display menu
             if (logo && !active) return;
 
-            document.querySelector('#navigation').classList.toggle('active');
-            document.querySelector('#close').classList.toggle('active');
-            document.querySelector('#open').classList.toggle('active');
-            document.querySelector('#mobile-menu').classList.toggle('active');
+            navigation.current.classList.toggle('active');
+            closeIcon.current.classList.toggle('active');
+            openIcon.current.classList.toggle('active');
+            mobileMenu.current.classList.toggle('active');
             document.body.style.overflowY = active ? 'unset' : 'hidden';
         }
     };
 
     return (
-        <S.Container id='navigation'>
+        <S.Container ref={navigation}>
             <S.MobileNav>
                 <Link href='/'>
                     <span onClick={(e) => handleMobileMenu(e, true)}>L</span>
                 </Link>
-                <svg id='close' onClick={handleMobileMenu} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'>
+                <svg ref={closeIcon} onClick={handleMobileMenu} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'>
                     <path d='M317.7 402.3c3.125 3.125 3.125 8.188 0 11.31c-3.127 3.127-8.186 3.127-11.31 0L160 267.3l-146.3 146.3c-3.127 3.127-8.186 3.127-11.31 0c-3.125-3.125-3.125-8.188 0-11.31L148.7 256L2.344 109.7c-3.125-3.125-3.125-8.188 0-11.31s8.188-3.125 11.31 0L160 244.7l146.3-146.3c3.125-3.125 8.188-3.125 11.31 0s3.125 8.188 0 11.31L171.3 256L317.7 402.3z' />
                 </svg>
-                <svg className='active' id='open' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' onClick={handleMobileMenu}>
+                <svg className='active' ref={openIcon} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' onClick={handleMobileMenu}>
                     <path d='M0 88C0 83.58 3.582 80 8 80H440C444.4 80 448 83.58 448 88C448 92.42 444.4 96 440 96H8C3.582 96 0 92.42 0 88zM0 248C0 243.6 3.582 240 8 240H440C444.4 240 448 243.6 448 248C448 252.4 444.4 256 440 256H8C3.582 256 0 252.4 0 248zM440 416H8C3.582 416 0 412.4 0 408C0 403.6 3.582 400 8 400H440C444.4 400 448 403.6 448 408C448 412.4 444.4 416 440 416z' />
                 </svg>
             </S.MobileNav>
-            <S.Menu id='mobile-menu'>
+            <S.Menu ref={mobileMenu}>
                 <S.Links>
                     <Link href='/'>
                         <S.Logo className={`${router.pathname == '/' ? 'active' : ''}`}>L</S.Logo>

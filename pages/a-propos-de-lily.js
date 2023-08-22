@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
 import Parallax, { t } from '@contexts/Utils';
@@ -8,6 +8,10 @@ import Arrow from '@public/static/svg/arrow.svg';
 
 const About = ({ lang }) => {
     const translations = t('about', lang);
+    const dev = useRef(null);
+    const info = useRef(null);
+    const devBtn = useRef(null);
+    const infoBtn = useRef(null);
 
     useEffect(() => {
         // ─── PARALLAX ─────────────────────────────────────────
@@ -31,13 +35,13 @@ const About = ({ lang }) => {
     }, [lang, translations]);
 
     const handleClick = (el) => {
-        if (document.querySelector('#dev').classList.contains('active') && el === 'dev') return;
-        if (document.querySelector('#info').classList.contains('active') && el === 'info') return;
+        if (dev.current.classList.contains('active') && el === 'dev') return;
+        if (info.current.classList.contains('active') && el === 'info') return;
 
-        document.querySelector('#dev-btn').classList.toggle('active');
-        document.querySelector('#info-btn').classList.toggle('active');
-        document.querySelector('#dev').classList.toggle('active');
-        document.querySelector('#info').classList.toggle('active');
+        devBtn.current.classList.toggle('active');
+        infoBtn.current.classList.toggle('active');
+        dev.current.classList.toggle('active');
+        info.current.classList.toggle('active');
 
         // scroll to left on desktop
         if (window.matchMedia('(max-width: 600px)').matches) return;
@@ -65,21 +69,21 @@ const About = ({ lang }) => {
             <h1 dangerouslySetInnerHTML={{ __html: translations.aboutLily }}></h1>
 
             <S.SwitchBtn>
-                <button className='active' id='dev-btn' onClick={() => handleClick('dev')}>
+                <button className='active' ref={devBtn} onClick={() => handleClick('dev')}>
                     {translations.lilyndev} <Arrow />
                 </button>
-                <button id='info-btn' onClick={() => handleClick('info')}>
+                <button ref={infoBtn} onClick={() => handleClick('info')}>
                     {translations.whoislily} <Arrow />
                 </button>
             </S.SwitchBtn>
 
             {/* ----- DEV PART --------------------------------------------------------- */}
-            <S.Content className={`active dev-content`} id='dev' lang={lang}>
+            <S.Content className={`active dev-content`} ref={dev} lang={lang}>
                 <AboutDev onClick={handleClick} translations={translations} lang={lang} />
             </S.Content>
 
             {/* ----- INFO PART --------------------------------------------------------- */}
-            <S.Content className={`info-content`} id='info' lang={lang}>
+            <S.Content className={`info-content`} ref={info} lang={lang}>
                 <AboutInfo onClick={handleClick} translations={translations} />
             </S.Content>
         </S.Container>

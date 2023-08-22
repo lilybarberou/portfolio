@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
@@ -11,6 +11,7 @@ const Contact = ({ lang }) => {
     const translations = t('contact', lang);
     const [loading, setLoading] = useState(false);
     const [captcha, setCaptcha] = useState([]);
+    const form = useRef(null);
 
     useEffect(() => {
         setCaptcha([Math.floor(Math.random() * 10) + 1, Math.floor(Math.random() * 10) + 1]);
@@ -18,7 +19,7 @@ const Contact = ({ lang }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const data = getFormData('#form');
+        const data = getFormData(form.current);
 
         // check email
         if (!data.email.match(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/)) return toast.error(translations.invalidmail);
@@ -30,7 +31,7 @@ const Contact = ({ lang }) => {
         // send mail
         setLoading(true);
         emailjs
-            .sendForm('service_cxoxesr', 'TEMP', document.querySelector('#form'), 'user_YiCuJS7dEJZjxxcrfEK5I')
+            .sendForm('service_cxoxesr', 'TEMP', form.current, 'user_YiCuJS7dEJZjxxcrfEK5I')
             .then(
                 (res) => toast.success(translations.emailsent),
                 (err) => toast.error(t(translations.emailnotsent, lang))
@@ -63,7 +64,7 @@ const Contact = ({ lang }) => {
                 <h1>CONTACT</h1>
             </S.Title>
             <Separation />
-            <S.Form id='form' onSubmit={handleSubmit}>
+            <S.Form id='form' ref={form} onSubmit={handleSubmit}>
                 <div>
                     <div>
                         <label htmlFor='firstname'>{translations.firstname} *</label>
@@ -99,14 +100,14 @@ const Contact = ({ lang }) => {
                             <svg xmlns='http://www.w3.org/2000/svg' width='38' height='38' viewBox='0 0 38 38'>
                                 <defs>
                                     <linearGradient x1='8.042%' y1='0%' x2='65.682%' y2='23.865%' id='a'>
-                                        <stop stop-color='#fff' stop-opacity='0' offset='0%' />
-                                        <stop stop-color='#fff' stop-opacity='.631' offset='63.146%' />
-                                        <stop stop-color='#fff' offset='100%' />
+                                        <stop stopColor='#fff' stopOpacity='0' offset='0%' />
+                                        <stop stopColor='#fff' stopOpacity='.631' offset='63.146%' />
+                                        <stop stopColor='#fff' offset='100%' />
                                     </linearGradient>
                                 </defs>
-                                <g fill='none' fill-rule='evenodd'>
+                                <g fill='none' fillRule='evenodd'>
                                     <g transform='translate(1 1)'>
-                                        <path d='M36 18c0-9.94-8.06-18-18-18' id='Oval-2' stroke='url(#a)' stroke-width='2'>
+                                        <path d='M36 18c0-9.94-8.06-18-18-18' id='Oval-2' stroke='url(#a)' strokeWidth='2'>
                                             <animateTransform
                                                 attributeName='transform'
                                                 type='rotate'
@@ -221,7 +222,7 @@ S.Form = styled.form`
             width: 100%;
 
             > textarea {
-                padding: 10px;
+                padding: 10px !important;
                 min-height: 150px;
                 font-weight: lighter;
             }

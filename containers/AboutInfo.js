@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Image from 'next/future/image';
 import styled from 'styled-components';
 import Parallax from '@contexts/Utils';
@@ -11,7 +11,18 @@ import * as i from '@public/static/imagesIndex';
 import { songs } from '@public/static/songs';
 
 const AboutInfo = ({ onClick, translations }) => {
+    const musicList = useRef(null);
+    const musicContainer = useRef(null);
+
     useEffect(() => {
+        let cursor = document.querySelector('#musique-cursor');
+        const musicContainerRef = musicContainer.current;
+
+        const onMouseMove = (e) => {
+            cursor.style.left = e.pageX + 20 + 'px';
+            cursor.style.top = e.pageY + 15 + 'px';
+        };
+
         // ─── PARALLAX ─────────────────────────────────────────
         if (window.matchMedia('(min-width: 600px)').matches) {
             // ─── GOURMET ─────────────────────────────────────────
@@ -79,19 +90,11 @@ const AboutInfo = ({ onClick, translations }) => {
                 },
             });
 
-            let container = document.querySelector('#musique');
-            let cursor = document.querySelector('#musique-cursor');
-
-            const onMouseMove = (e) => {
-                cursor.style.left = e.pageX + 20 + 'px';
-                cursor.style.top = e.pageY + 15 + 'px';
-            };
-
             const toggleOpacity = (val) => (cursor.style.opacity = val);
 
-            container.addEventListener('mouseover', () => toggleOpacity(1));
-            container.addEventListener('mouseout', () => toggleOpacity(0));
-            container.addEventListener('mousemove', onMouseMove);
+            musicContainer.current.addEventListener('mouseover', () => toggleOpacity(1));
+            musicContainer.current.addEventListener('mouseout', () => toggleOpacity(0));
+            musicContainer.current.addEventListener('mousemove', onMouseMove);
 
             // ─── BADMINTON ─────────────────────────────────────────
             new Parallax({
@@ -173,6 +176,12 @@ const AboutInfo = ({ onClick, translations }) => {
                 },
             });
         }
+
+        return () => {
+            musicContainerRef.removeEventListener('mouseover', () => toggleOpacity(1));
+            musicContainerRef.removeEventListener('mouseout', () => toggleOpacity(0));
+            musicContainerRef.removeEventListener('mousemove', onMouseMove);
+        };
     }, []);
 
     return (
@@ -203,14 +212,14 @@ const AboutInfo = ({ onClick, translations }) => {
             </S.OtakuContainer>
             <Separation />
             {/* ──── MUSIC PART ──────────────────────────────────────────────────────────── */}
-            <S.MusicContainer id='musique'>
+            <S.MusicContainer id='musique' ref={musicContainer}>
                 <S.MusicText className='title'>
                     <h2>{translations.melophile}</h2>
                     <p>{translations.reggae}</p>
                 </S.MusicText>
-                <S.MusicList>
+                <S.MusicList ref={musicList}>
                     {songs.map((e, i) => (
-                        <MusicPlayer opt={{ ...e, index: i }} key={i} />
+                        <MusicPlayer {...e} musicList={musicList} key={i} />
                     ))}
                 </S.MusicList>
             </S.MusicContainer>
@@ -457,11 +466,11 @@ S.OtakuText = styled.div`
     align-items: center;
     order: 1;
 
-    & h2 {
+    h2 {
         font-size: calc(7vw + 11px);
     }
 
-    & .info {
+    .info {
         align-self: flex-start;
         transform: translateY(360px);
     }
@@ -470,11 +479,11 @@ S.OtakuText = styled.div`
         order: unset;
         align-items: flex-end;
 
-        & h2 {
+        h2 {
             font-size: 120px;
         }
 
-        & .info {
+        .info {
             align-self: unset;
             transform: unset;
         }
@@ -500,12 +509,12 @@ S.MusicText = styled.div`
     align-items: center;
     margin-bottom: 40px;
 
-    & h2 {
+    h2 {
         font-size: calc(8vw + 7px);
         color: var(--color-pink);
     }
 
-    & p {
+    p {
         font-family: Poppins;
         font-size: 12px;
     }
@@ -517,13 +526,13 @@ S.MusicText = styled.div`
         transform: rotate(-180deg) translateY(-620px);
         margin-bottom: 0;
 
-        & h2 {
+        h2 {
             font-size: 92px;
             writing-mode: vertical-lr;
             pointer-events: none;
         }
 
-        & p {
+        p {
             font-size: 20px;
             writing-mode: vertical-lr;
             pointer-events: none;
@@ -555,7 +564,7 @@ S.BadContainer = styled.section`
     margin-bottom: 30px;
     width: 100%;
 
-    & h2 {
+    h2 {
         font-size: calc(7vw + 11px);
         color: #fff;
         z-index: 10;
@@ -572,7 +581,7 @@ S.BadContainer = styled.section`
         margin-right: 40px;
     }
 
-    & img {
+    img {
         position: absolute;
         height: fit-content;
         z-index: 2;
@@ -616,7 +625,7 @@ S.BadContainer = styled.section`
         margin-bottom: 0;
         height: 100%;
 
-        & h2 {
+        h2 {
             font-size: 100px;
         }
 
@@ -666,13 +675,13 @@ S.GamesContainer = styled.section`
     box-sizing: border-box;
 
     /* Elden Ring */
-    & img:nth-child(2) {
+    img:nth-child(2) {
         width: 100%;
         height: fit-content;
     }
 
     /* Hollow Knight */
-    & img:nth-child(3) {
+    img:nth-child(3) {
         width: fit-content;
         max-height: 300px;
     }
@@ -682,14 +691,14 @@ S.GamesContainer = styled.section`
         height: 100%;
         flex-direction: row;
 
-        & img:nth-child(2) {
+        img:nth-child(2) {
             max-height: unset;
             margin-top: 0;
             width: fit-content;
             height: 90%;
         }
 
-        & img:nth-child(3) {
+        img:nth-child(3) {
             width: 450px;
             max-height: unset;
             height: 90%;
@@ -723,11 +732,11 @@ S.DrawingsContainer = styled.section`
     align-items: center;
     width: 100%;
 
-    & h2 {
+    h2 {
         font-size: calc(7vw + 11px);
     }
 
-    & .info {
+    .info {
         position: absolute;
         top: 260px;
         right: 0;
@@ -739,14 +748,14 @@ S.DrawingsContainer = styled.section`
         display: block;
         height: 100%;
 
-        & h2 {
+        h2 {
             font-size: 110px;
             position: absolute;
             left: 0;
             bottom: 10%;
         }
 
-        & .info {
+        .info {
             right: unset;
             top: 50%;
             left: 350px;
@@ -755,11 +764,11 @@ S.DrawingsContainer = styled.section`
 `;
 
 S.Drawings = styled.div`
-    & img {
+    img {
         position: absolute;
     }
 
-    & img:nth-child(2) {
+    img:nth-child(2) {
         height: fit-content;
         width: 150px;
         top: 110px;
@@ -767,7 +776,7 @@ S.Drawings = styled.div`
         z-index: 2;
     }
 
-    & img:nth-child(3) {
+    img:nth-child(3) {
         height: fit-content;
         width: 150px;
         top: 110px;
@@ -775,7 +784,7 @@ S.Drawings = styled.div`
         z-index: 3;
     }
 
-    & img:nth-child(4) {
+    img:nth-child(4) {
         width: 50%;
         height: 120px;
         top: 380px;
@@ -783,7 +792,7 @@ S.Drawings = styled.div`
         z-index: 4;
     }
 
-    & img:nth-child(5) {
+    img:nth-child(5) {
         height: fit-content;
         width: 60%;
         top: 400px;
@@ -791,7 +800,7 @@ S.Drawings = styled.div`
         z-index: 10;
     }
 
-    & img:nth-child(6) {
+    img:nth-child(6) {
         width: 50%;
         height: fit-content;
         top: 550px;
@@ -799,7 +808,7 @@ S.Drawings = styled.div`
         z-index: 7;
     }
 
-    & img:nth-child(7) {
+    img:nth-child(7) {
         width: 55%;
         height: fit-content;
         top: 610px;
@@ -807,7 +816,7 @@ S.Drawings = styled.div`
         z-index: 6;
     }
 
-    & img:nth-child(8) {
+    img:nth-child(8) {
         width: 70%;
         height: fit-content;
         top: 810px;
@@ -816,14 +825,14 @@ S.Drawings = styled.div`
     }
 
     @media (min-width: 600px) {
-        & img:nth-child(2) {
+        img:nth-child(2) {
             width: 175px;
             height: fit-content;
             top: 10%;
             left: 490px;
         }
 
-        & img:nth-child(3) {
+        img:nth-child(3) {
             width: 175px;
             height: fit-content;
             top: unset;
@@ -832,7 +841,7 @@ S.Drawings = styled.div`
             left: 590px;
         }
 
-        & img:nth-child(4) {
+        img:nth-child(4) {
             width: 420px;
             height: 200px;
             right: unset;
@@ -840,7 +849,7 @@ S.Drawings = styled.div`
             left: 860px;
         }
 
-        & img:nth-child(5) {
+        img:nth-child(5) {
             width: 380px;
             height: 370px;
             z-index: 5;
@@ -849,7 +858,7 @@ S.Drawings = styled.div`
             left: 810px;
         }
 
-        & img:nth-child(6) {
+        img:nth-child(6) {
             width: 460px;
             height: auto;
             max-height: 100%;
@@ -859,7 +868,7 @@ S.Drawings = styled.div`
             z-index: 6;
         }
 
-        & img:nth-child(7) {
+        img:nth-child(7) {
             width: 460px;
             height: auto;
             max-height: 100%;
@@ -869,7 +878,7 @@ S.Drawings = styled.div`
             z-index: 7;
         }
 
-        & img:nth-child(8) {
+        img:nth-child(8) {
             width: 560px;
             height: 360px;
             right: unset;
@@ -927,37 +936,36 @@ S.BrushFrame = styled.div`
 `;
 
 S.DevBtn = styled.button`
-  background: var(--color-pink);
-  border: 2px solid var(--color-pink);
-  color: #fff;
-  fill: #fff;
-  font-size: 11px;
-  font-family: 'Poppins';
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  padding: 11px 18px;
-  justify-content: center;
-  width: fit-content;
-  gap: 10px;
-  line-height: 1;
-  min-width: 150px;
-  align-self: flex-end;
-  margin-bottom: 40px;
-  margin-right: 20px;
-
-  & > svg {
-    height: 17px;
-  }
-
-  @media (min-width: 600px) {
+    background: var(--color-pink);
+    border: 2px solid var(--color-pink);
+    color: #fff;
+    fill: #fff;
+    font-size: 11px;
+    font-family: 'Poppins';
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 11px 18px;
+    justify-content: center;
+    width: fit-content;
+    gap: 10px;
+    line-height: 1;
+    min-width: 150px;
     align-self: flex-end;
-    font-size: 14px;
-    gap: 15px;
-    min-width: 215px;
-    cursor: pointer;
-  }
-}
+    margin-bottom: 40px;
+    margin-right: 20px;
+
+    & > svg {
+        height: 17px;
+    }
+
+    @media (min-width: 600px) {
+        align-self: flex-end;
+        font-size: 14px;
+        gap: 15px;
+        min-width: 215px;
+        cursor: pointer;
+    }
 `;
 
 export default AboutInfo;

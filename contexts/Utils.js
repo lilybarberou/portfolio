@@ -5,9 +5,8 @@ export const t = (key, lang = 'fr-FR') => {
     return lang === 'fr-FR' ? fr[key] : en[key];
 };
 
-export const getFormData = (el) => {
-    const form = document.querySelector(el);
-    const data = new FormData(form);
+export const getFormData = (formRef) => {
+    const data = new FormData(formRef);
 
     const obj = {};
     for (const i of data.entries()) {
