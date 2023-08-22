@@ -1,14 +1,13 @@
+import { useRef, useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import { switchLanguage } from '@slices/lang';
+import { Context } from '@pages/_app';
 import { t } from '@contexts/Utils';
-import { useRef } from 'react';
 
 const Navigation = ({ lang }) => {
     const router = useRouter();
-    const dispatch = useDispatch();
+    const { setLang } = useContext(Context);
     const navigation = useRef(null);
     const openIcon = useRef(null);
     const closeIcon = useRef(null);
@@ -67,13 +66,7 @@ const Navigation = ({ lang }) => {
                         Blog
                     </a>
                 </S.Links>
-                <S.Lang>
-                    {lang === 'fr-FR' ? (
-                        <span onClick={() => dispatch(switchLanguage('en-US'))}>EN</span>
-                    ) : (
-                        <span onClick={() => dispatch(switchLanguage('fr-FR'))}>FR</span>
-                    )}
-                </S.Lang>
+                <S.Lang>{lang === 'fr-FR' ? <span onClick={() => setLang('en-US')}>EN</span> : <span onClick={() => setLang('fr-FR')}>FR</span>}</S.Lang>
             </S.Menu>
         </S.Container>
     );

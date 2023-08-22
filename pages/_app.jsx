@@ -1,28 +1,22 @@
+import { useEffect, useState, createContext } from 'react';
 import Head from 'next/head';
-import { useEffect } from 'react';
-import { Provider, useSelector } from 'react-redux';
-import { store } from 'store';
+import Script from 'next/script';
 import { createGlobalStyle } from 'styled-components';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navigation from '@components/Navigation';
 import HorizontalWrapper from '@components/HorizontalWrapper';
-import { t } from '@contexts/Utils';
-import Script from 'next/script';
 import InitLang from '@components/InitLang';
+import MusicCursor from '@components/MusicCursor';
+
+export const Context = createContext();
 
 function MyApp({ Component, pageProps }) {
+    const [lang, setLang] = useState('fr-FR');
+
     useEffect(() => {
         document.documentElement.lang = ['fr-FR', 'fr'].includes(navigator.language) ? 'fr-FR' : 'en-US';
     }, []);
-
-    // must be a component to get translation
-    const MusicCursor = () => {
-        const lang = useSelector((state) => state.lang.value);
-        const text = t('clickonmusic', lang);
-
-        return <span id='musique-cursor'>{text}</span>;
-    };
 
     return (
         <>
@@ -36,7 +30,7 @@ function MyApp({ Component, pageProps }) {
                     gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}}');
                 `}
             </Script>
-            <Provider store={store}>
+            <Context.Provider value={{ lang, setLang }}>
                 <InitLang>
                     <Head>
                         <meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -58,7 +52,7 @@ function MyApp({ Component, pageProps }) {
                         <Component {...pageProps} />
                     </HorizontalWrapper>
                 </InitLang>
-            </Provider>
+            </Context.Provider>
         </>
     );
 }
