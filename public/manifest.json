@@ -1,6 +1,7 @@
 {
     "short_name": "Lily B | Portfolio",
     "name": "Lily Barberou | Portfolio",
+    "description": "Découvrez le portfolio de Lily Barberou, développeuse web full-stack spécialisée en React / Node.js. Réalisations et train de vie vous y attendent.",
     "icons": [
         {
             "src": "favicon-16x16.png",
