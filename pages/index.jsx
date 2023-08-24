@@ -50,7 +50,7 @@ const Home = ({ lang }) => {
                 <link rel='canonical' href='https://lilybarberou.fr/' />
                 <meta property='og:title' content='Lily Barberou | Portfolio' />
                 <meta property='og:url' content='https://lilybarberou.fr/' />
-                <meta property='og:image' content={`${process.env.NEXT_PUBLIC_SCREENSHOT_LINK}/lilybarberou.fr.png`} />
+                <meta property='og:image' content='https://api.lilybarberou.fr/assets/screenshots/lilybarberou.fr/lilybarberou.fr.png' />
                 <meta
                     property='og:description'
                     content='Découvrez le portfolio de Lily Barberou, développeuse web full-stack spécialisée en React / Node.js. Réalisations et train de vie vous y attendent.'
