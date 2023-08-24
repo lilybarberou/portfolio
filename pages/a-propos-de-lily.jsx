@@ -54,6 +54,7 @@ const About = ({ lang }) => {
                 <link rel='canonical' href='https://lilybarberou.fr/a-propos-de-lily' />
                 <meta property='og:title' content={`${translations.about} | Lily Barberou`} />
                 <meta property='og:url' content='https://lilybarberou.fr/a-propos-de-lily' />
+                <meta property='og:image' content={`${process.env.NEXT_PUBLIC_SCREENSHOT_LINK}/lilybarberou.fr-a-propos-de-lily.png`} />
                 <meta
                     property='og:description'
                     content='Apprenez-en plus sur Lily Barberou, que ce soit dans sa vie de développeuse web, ou encore ses passions, tout en un mot.'

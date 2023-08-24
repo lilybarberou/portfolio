@@ -60,6 +60,7 @@ const Works = ({ lang }) => {
                 <link rel='canonical' href='https://lilybarberou.fr/realisations' />
                 <meta property='og:title' content={`${translations.works} | Lily Barberou`} />
                 <meta property='og:url' content='https://lilybarberou.fr/realisations' />
+                <meta property='og:image' content={`${process.env.NEXT_PUBLIC_SCREENSHOT_LINK}/lilybarberou.fr-realisations.png`} />
                 <meta
                     property='og:description'
                     content='Découvrez les réalisations web de Lily Barberou, de son autoportrait au chat uspeak, plateforme de vente Charlemagne, API QuoteWars, etc...'

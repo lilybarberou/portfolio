@@ -50,6 +50,7 @@ const Contact = ({ lang }) => {
                 <link rel='canonical' href='https://lilybarberou.fr/contact' />
                 <meta property='og:title' content='Contact | Lily Barberou' />
                 <meta property='og:url' content='https://lilybarberou.fr/contact' />
+                <meta property='og:image' content={`${process.env.NEXT_PUBLIC_SCREENSHOT_LINK}/lilybarberou.fr-contact.png`} />
                 <meta
                     property='og:description'
                     content='Contactez Lily Barberou via le formulaire de contact, ou consultez ses réseaux sociaux Linkedin, Github et Discord.'

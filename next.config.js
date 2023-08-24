@@ -20,6 +20,6 @@ module.exports = withPWA({
         },
     },
     images: {
-        domains: ['raw.githubusercontent.com'],
+        domains: ['raw.githubusercontent.com', 'api.lilybarberou.fr'],
     },
 });
