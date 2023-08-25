@@ -18,7 +18,7 @@ const S = {};
 S.Container = styled.div`
     width: 100%;
     height: 100%;
-    font-family: Aboreto;
+    font-family: var(--aboreto);
 
     @media (min-width: 600px) {
         height: 100%;

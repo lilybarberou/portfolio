@@ -231,7 +231,7 @@ S.Form = styled.form`
             > label {
                 color: #fff;
                 font-size: 12px;
-                font-family: 'Poppins';
+                font-family: var(--poppins);
                 margin-bottom: 3px;
                 width: 100%;
             }
@@ -249,7 +249,7 @@ S.Form = styled.form`
             margin-bottom: 20px;
             padding: 0 10px;
             box-sizing: border-box;
-            font-family: 'Poppins';
+            font-family: var(--poppins);
 
             :focus {
                 border-color: var(--color-pink);

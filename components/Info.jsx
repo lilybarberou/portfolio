@@ -11,7 +11,7 @@ S.Info = styled.p`
     color: #fff;
     background-color: var(--color-pink);
     white-space: nowrap;
-    font-family: Poppins;
+    font-family: var(--poppins);
     font-size: 12px;
     transition: 0.5s all;
     z-index: 10;

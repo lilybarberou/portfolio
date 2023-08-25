@@ -515,7 +515,7 @@ S.MusicText = styled.div`
     }
 
     p {
-        font-family: Poppins;
+        font-family: var(--poppins);
         font-size: 12px;
     }
 
@@ -910,7 +910,7 @@ S.BrushFrame = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 11px;
-    font-family: 'Poppins';
+    font-family: var(--poppins);
     text-align: center;
     font-weight: lighter;
     margin-bottom: 50px;
@@ -941,7 +941,7 @@ S.DevBtn = styled.button`
     color: #fff;
     fill: #fff;
     font-size: 11px;
-    font-family: 'Poppins';
+    font-family: var(--poppins);
     text-decoration: none;
     display: flex;
     align-items: center;

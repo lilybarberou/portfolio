@@ -181,7 +181,7 @@ S.Links = styled.div`
 
         a:not(:first-child) {
             transform: rotate(-90deg);
-            font-family: Poppins;
+            font-family: var(--poppins);
             font-size: 14px;
 
             &.active::after {
@@ -214,7 +214,7 @@ S.Lang = styled.div`
     align-self: flex-start;
     gap: 15px;
     margin-top: 110px;
-    font-family: Poppins;
+    font-family: var(--poppins);
 
     > span {
         font-size: 16px;
@@ -229,7 +229,7 @@ S.Lang = styled.div`
     @media (min-width: 600px) {
         cursor: pointer;
         margin-top: 0;
-        font-family: Aboreto;
+        font-family: var(--aboreto);
         align-self: unset;
         gap: 25px;
 

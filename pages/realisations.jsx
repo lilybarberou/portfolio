@@ -132,7 +132,7 @@ S.Title = styled.div`
 
 S.Work = styled.div`
     width: 100%;
-    font-family: Poppins;
+    font-family: var(--poppins);
 
     > a > img {
         width: 100%;

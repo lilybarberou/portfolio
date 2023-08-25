@@ -129,7 +129,7 @@ S.SwitchBtn = styled.div`
         color: #fff;
         fill: #fff;
         font-size: 11px;
-        font-family: 'Poppins';
+        font-family: var(--poppins);
         text-decoration: none;
         display: flex;
         align-items: center;

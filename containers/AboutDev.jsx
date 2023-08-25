@@ -213,7 +213,7 @@ S.Title = styled.h2`
 
 S.DevDesign = styled.div`
     display: flex;
-    font-family: Poppins;
+    font-family: var(--poppins);
     font-size: 17px;
     gap: 40px;
     & > div {
@@ -254,7 +254,7 @@ S.Text = styled.div`
     display: flex;
     flex-direction: column;
     gap: 30px;
-    font-family: Poppins;
+    font-family: var(--poppins);
     font-size: 12px;
     width: 100%;
     margin-top: 70px;
@@ -321,7 +321,7 @@ S.BrushFrame = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 11px;
-    font-family: 'Poppins';
+    font-family: var(--poppins);
     text-align: center;
     font-weight: lighter;
     margin: 20px 0 50px 40px;
@@ -350,7 +350,7 @@ S.InfoBtn = styled.button`
     color: #fff;
     fill: #fff;
     font-size: 11px;
-    font-family: 'Poppins';
+    font-family: var(--poppins);
     text-decoration: none;
     display: flex;
     align-items: center;

@@ -36,7 +36,7 @@ S.Experience = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Poppins';
+    font-family: var(--poppins);
     position: relative;
     padding-bottom: 30px;
     padding-top: 30px;

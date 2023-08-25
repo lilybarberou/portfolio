@@ -208,7 +208,7 @@ S.Download = styled.a`
     align-items: center;
     border: 1px solid grey;
     padding: 11px 25px;
-    font-family: Poppins;
+    font-family: var(--poppins);
     font-size: 11px;
     gap: 10px;
     cursor: pointer;
@@ -272,7 +272,7 @@ S.BrushFrame = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 11px;
-    font-family: 'Poppins';
+    font-family: var(--poppins);
     text-align: center;
     margin-top: 55px;
     font-weight: lighter;

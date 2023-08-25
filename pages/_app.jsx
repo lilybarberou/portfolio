@@ -1,5 +1,6 @@
 import { useEffect, useState, createContext } from 'react';
 import Head from 'next/head';
+import localFont from 'next/font/local';
 import Script from 'next/script';
 import { createGlobalStyle } from 'styled-components';
 import { ToastContainer } from 'react-toastify';
@@ -10,6 +11,9 @@ import InitLang from '@components/InitLang';
 import MusicCursor from '@components/MusicCursor';
 
 export const Context = createContext();
+
+const aboreto = localFont({ src: '../public/static/fonts/Aboreto-Regular.ttf', variable: '--aboreto' });
+const poppins = localFont({ src: '../public/static/fonts/Poppins-Regular.ttf', variable: '--poppins' });
 
 function MyApp({ Component, pageProps }) {
     const [lang, setLang] = useState('fr-FR');
@@ -32,25 +36,27 @@ function MyApp({ Component, pageProps }) {
             </Script>
             <Context.Provider value={{ lang, setLang }}>
                 <InitLang>
-                    <Head>
-                        <meta name='viewport' content='width=device-width, initial-scale=1' />
-                    </Head>
-                    <ToastContainer
-                        position='top-right'
-                        autoClose={3500}
-                        hideProgressBar={false}
-                        closeOnClick={true}
-                        pauseOnHover={true}
-                        draggable={false}
-                        progress={undefined}
-                        theme='dark'
-                    />
-                    <GlobalStyle />
-                    <MusicCursor />
-                    <HorizontalWrapper>
-                        <Navigation />
-                        <Component {...pageProps} />
-                    </HorizontalWrapper>
+                    <div className={`${aboreto.variable} ${poppins.variable}`}>
+                        <Head>
+                            <meta name='viewport' content='width=device-width, initial-scale=1' />
+                        </Head>
+                        <ToastContainer
+                            position='top-right'
+                            autoClose={3500}
+                            hideProgressBar={false}
+                            closeOnClick={true}
+                            pauseOnHover={true}
+                            draggable={false}
+                            progress={undefined}
+                            theme='dark'
+                        />
+                        <GlobalStyle />
+                        <MusicCursor />
+                        <HorizontalWrapper>
+                            <Navigation />
+                            <Component {...pageProps} />
+                        </HorizontalWrapper>
+                    </div>
                 </InitLang>
             </Context.Provider>
         </>
@@ -60,7 +66,7 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 
 const GlobalStyle = createGlobalStyle`
-    @font-face {
+    /* @font-face {
         font-family: "Aboreto";
         src: url("../static/fonts/Aboreto-Regular.ttf");
         font-display: swap;
@@ -70,7 +76,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: "Poppins";
         src: url("../static/fonts/Poppins-Regular.ttf");
         font-display: swap;
-    }
+    } */
 
     :root {
         --color-grey: #818181;
@@ -94,7 +100,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        font-family: 'Aboreto';
+        font-family: var(--aboreto);
         overflow-y: unset;
     }
 
@@ -104,7 +110,7 @@ const GlobalStyle = createGlobalStyle`
 
     h2 {
         font-weight: normal;
-        font-family: 'Aboreto';
+        font-family: var(--aboreto);
     }
 
     .bnw {
@@ -170,7 +176,7 @@ const GlobalStyle = createGlobalStyle`
             color: #fff;
             z-index: 10;
             font-size: 14px;
-            font-family: 'Poppins';
+            font-family: var(--poppins);
             opacity: 0;
             transition: .3s opacity;
             white-space: nowrap;
