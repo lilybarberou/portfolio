@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import styled from 'styled-components';
 import Button from '@components/Button';
 import Separation from '@components/Separation';
@@ -89,9 +89,7 @@ const Home = ({ lang }) => {
                     <S.Carousel id='home-carousel' ref={carousel}>
                         {works.map((e) => (
                             <Link key={e.name} href={e.link}>
-                                <a>
-                                    <Image src={e.img} width='400' height='220' alt={e.name} className='bnw' />
-                                </a>
+                                <Image src={e.img} width='400' height='220' alt={e.name} className='bnw' />
                             </Link>
                         ))}
                     </S.Carousel>

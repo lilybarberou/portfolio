@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import styled from 'styled-components';
 import Parallax from '@contexts/Utils';
 import Separation from '@components/Separation';

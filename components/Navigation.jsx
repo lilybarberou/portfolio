@@ -32,8 +32,8 @@ const Navigation = ({ lang }) => {
     return (
         <S.Container ref={navigation}>
             <S.MobileNav>
-                <Link href='/'>
-                    <span onClick={(e) => handleMobileMenu(e, true)}>L</span>
+                <Link href='/' onClick={(e) => handleMobileMenu(e, true)}>
+                    L
                 </Link>
                 <svg ref={closeIcon} onClick={handleMobileMenu} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'>
                     <path d='M317.7 402.3c3.125 3.125 3.125 8.188 0 11.31c-3.127 3.127-8.186 3.127-11.31 0L160 267.3l-146.3 146.3c-3.127 3.127-8.186 3.127-11.31 0c-3.125-3.125-3.125-8.188 0-11.31L148.7 256L2.344 109.7c-3.125-3.125-3.125-8.188 0-11.31s8.188-3.125 11.31 0L160 244.7l146.3-146.3c3.125-3.125 8.188-3.125 11.31 0s3.125 8.188 0 11.31L171.3 256L317.7 402.3z' />
@@ -44,23 +44,17 @@ const Navigation = ({ lang }) => {
             </S.MobileNav>
             <S.Menu ref={mobileMenu}>
                 <S.Links>
-                    <Link href='/'>
-                        <S.Logo className={`${router.pathname == '/' ? 'active' : ''}`}>L</S.Logo>
+                    <S.Logo href='/' className={`${router.pathname == '/' ? 'active' : ''}`}>
+                        L
+                    </S.Logo>
+                    <Link href='/a-propos-de-lily' className={router.pathname == '/a-propos-de-lily' ? 'active' : ''} onClick={handleMobileMenu}>
+                        {translations.aboutme}
                     </Link>
-                    <Link href='/a-propos-de-lily'>
-                        <a className={router.pathname == '/a-propos-de-lily' ? 'active' : ''} onClick={handleMobileMenu}>
-                            {translations.aboutme}
-                        </a>
+                    <Link href='/realisations' className={router.pathname == '/realisations' ? 'active' : ''} onClick={handleMobileMenu}>
+                        {translations.works}
                     </Link>
-                    <Link href='/realisations'>
-                        <a className={router.pathname == '/realisations' ? 'active' : ''} onClick={handleMobileMenu}>
-                            {translations.works}
-                        </a>
-                    </Link>
-                    <Link href='/contact'>
-                        <a className={router.pathname == '/contact' ? 'active' : ''} onClick={handleMobileMenu}>
-                            CONTACT
-                        </a>
+                    <Link href='/contact' className={router.pathname == '/contact' ? 'active' : ''} onClick={handleMobileMenu}>
+                        CONTACT
                     </Link>
                     <a href='https://lilyscript.fr' target='_blank' rel='noreferrer'>
                         Blog
@@ -96,7 +90,7 @@ S.MobileNav = styled.div`
     margin-bottom: 100px;
 
     /* logo */
-    > span {
+    > a {
         padding: 0 15px;
         transition: 0.3s;
         font-size: 40px;
@@ -149,7 +143,7 @@ S.Links = styled.div`
     margin-top: 70px;
     gap: 40px;
 
-    > a {
+    a:not(:first-child) {
         z-index: 2;
         white-space: nowrap;
         color: #fff;
@@ -176,7 +170,7 @@ S.Links = styled.div`
         }
     }
     @media (max-width: 600px) {
-        > span {
+        a:first-child {
             display: none;
         }
     }
@@ -185,7 +179,7 @@ S.Links = styled.div`
         gap: 100px;
         align-items: center;
 
-        > a {
+        a:not(:first-child) {
             transform: rotate(-90deg);
             font-family: Poppins;
             font-size: 14px;
@@ -197,7 +191,7 @@ S.Links = styled.div`
     }
 `;
 
-S.Logo = styled.span`
+S.Logo = styled(Link)`
     cursor: pointer;
 
     @media (min-width: 600px) {

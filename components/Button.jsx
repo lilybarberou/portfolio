@@ -4,17 +4,15 @@ import Arrow from '@public/static/svg/arrow.svg';
 
 const Button = ({ text, link, onClick }) => {
     return (
-        <Link passHref href={link}>
-            <S.Container onClick={onClick} className='button'>
-                {text}
-                <Arrow />
-            </S.Container>
-        </Link>
+        <S.Container href={link} onClick={onClick} className='button'>
+            {text}
+            <Arrow />
+        </S.Container>
     );
 };
 
 const S = {};
-S.Container = styled.a`
+S.Container = styled(Link)`
     background: var(--color-pink);
     color: #fff;
     fill: #fff;

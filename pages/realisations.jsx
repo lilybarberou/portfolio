@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import Head from 'next/head';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import styled from 'styled-components';
 import Separation from '@components/Separation';
 import { t } from '@contexts/Utils';
