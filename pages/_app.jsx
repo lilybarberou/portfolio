@@ -66,18 +66,6 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 
 const GlobalStyle = createGlobalStyle`
-    /* @font-face {
-        font-family: "Aboreto";
-        src: url("../static/fonts/Aboreto-Regular.ttf");
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: "Poppins";
-        src: url("../static/fonts/Poppins-Regular.ttf");
-        font-display: swap;
-    } */
-
     :root {
         --color-grey: #818181;
         --color-pink: #C15959;
@@ -102,6 +90,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         font-family: var(--aboreto);
         overflow-y: unset;
+        background: #1F1F1F;
     }
 
     img {
@@ -133,7 +122,6 @@ const GlobalStyle = createGlobalStyle`
         overflow-x: hidden;
         overflow-y: scroll;
         scrollbar-width: none;
-        background: #1F1F1F;
         color: #fff;
 
         .container {
@@ -160,6 +148,11 @@ const GlobalStyle = createGlobalStyle`
                 padding-top: 50px;
                 padding-bottom: 50px;
                 height: 100vh;
+
+                @media (max-height: 680px) {
+                    padding-top: 20px;
+                    padding-bottom: 20px;
+                }
             }
         }
     }
