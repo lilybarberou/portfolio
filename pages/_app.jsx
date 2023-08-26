@@ -69,8 +69,8 @@ export default MyApp;
 const GlobalStyle = createGlobalStyle`
     :root {
         --color-grey: #818181;
-        --color-pink: #C15959;
-        --toastify-color-success: #C15959 !important;
+        --color-pink: #893333;
+        --toastify-color-success: #893333 !important;
     }
 
     ::-webkit-scrollbar {
