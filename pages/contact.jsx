@@ -265,7 +265,7 @@ S.Form = styled.form`
         > button {
             cursor: pointer;
             margin-top: 10px;
-            background: var(--color-pink);
+            background: var(--color-pink-darker);
             border: none;
             display: flex;
             align-items: center;
@@ -362,8 +362,8 @@ S.Social = styled.div`
 
         :hover,
         :focus {
-            border-color: var(--color-pink);
-            background: var(--color-pink);
+            border-color: var(--color-pink-darker);
+            background: var(--color-pink-darker);
         }
     }
 

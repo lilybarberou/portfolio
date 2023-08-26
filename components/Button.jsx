@@ -13,7 +13,7 @@ const Button = ({ text, link, onClick }) => {
 
 const S = {};
 S.Container = styled(Link)`
-    background: var(--color-pink);
+    background: var(--color-pink-darker);
     color: #fff;
     fill: #fff;
     font-size: 11px;

@@ -345,8 +345,8 @@ S.BrushFrame = styled.div`
 `;
 
 S.InfoBtn = styled.button`
-    background: var(--color-pink);
-    border: 2px solid var(--color-pink);
+    background: var(--color-pink-darker);
+    border: 2px solid var(--color-pink-darker);
     color: #fff;
     fill: #fff;
     font-size: 11px;

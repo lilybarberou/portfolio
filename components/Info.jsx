@@ -9,7 +9,7 @@ S.Info = styled.p`
     width: fit-content;
     padding: 8px 15px;
     color: #fff;
-    background-color: var(--color-pink);
+    background-color: var(--color-pink-darker);
     white-space: nowrap;
     font-family: var(--poppins);
     font-size: 12px;

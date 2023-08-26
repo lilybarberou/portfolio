@@ -203,7 +203,7 @@ S.Logo = styled(Link)`
 
         :hover,
         &.active {
-            background: var(--color-pink);
+            background: var(--color-pink-darker);
         }
     }
 `;
