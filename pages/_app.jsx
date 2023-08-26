@@ -1,6 +1,7 @@
 import { useEffect, useState, createContext } from 'react';
 import Head from 'next/head';
 import localFont from 'next/font/local';
+import { Poppins } from 'next/font/google';
 import Script from 'next/script';
 import { createGlobalStyle } from 'styled-components';
 import { ToastContainer } from 'react-toastify';
@@ -13,7 +14,7 @@ import MusicCursor from '@components/MusicCursor';
 export const Context = createContext();
 
 const aboreto = localFont({ src: '../public/static/fonts/Aboreto-Regular.ttf', variable: '--aboreto' });
-const poppins = localFont({ src: '../public/static/fonts/Poppins-Regular.ttf', variable: '--poppins' });
+const poppins = Poppins({ weight: '400', variable: '--poppins', subsets: ['latin'] });
 
 function MyApp({ Component, pageProps }) {
     const [lang, setLang] = useState('fr-FR');
