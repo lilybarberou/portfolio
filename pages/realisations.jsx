@@ -30,10 +30,10 @@ const Works = ({ lang }) => {
                 <h1 className={`${lang === 'fr-FR' ? '' : 'en'}`}>{translations.works}</h1>
             </S.Title>
             <Separation />
-            {Object.values(worksList)[0].map((work, i) => (
+            {worksList.map((work, i) => (
                 <Fragment key={i}>
                     <Work opt={work} lang={lang} />
-                    {i !== Object.values(worksList)[0].length - 1 && <Separation />}
+                    {i !== worksList.length - 1 && <Separation />}
                 </Fragment>
             ))}
         </S.Container>

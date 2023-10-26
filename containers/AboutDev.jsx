@@ -60,7 +60,7 @@ const AboutDev = ({ onClick, translations, lang }) => {
             <S.DevDesign>
                 <div>
                     <span>Web Dev</span>
-                    <span>Javascript</span>
+                    <span>Typescript</span>
                     <span>React</span>
                     <span>Next.js</span>
                     <span>Node.js</span>
