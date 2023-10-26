@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import BrushFrame from '@public/static/svg/brushFrame.svg';
 
 const Work = ({ opt, lang }) => {
-    const language = lang === 'fr-FR' ? 'fr' : 'en';
-    const title = opt.title ? opt.title : language === 'fr' ? opt.frTitle : opt.enTitle;
-    const desc = language === 'fr' ? opt.frDesc : opt.enDesc;
+    const title = opt.title ? opt.title : lang === 'fr' ? opt.frTitle : opt.enTitle;
+    const desc = lang === 'fr' ? opt.frDesc : opt.enDesc;
 
     return (
         <S.Work id={title.toLowerCase().replace(/\s/g, '')}>

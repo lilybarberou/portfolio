@@ -1,5 +1,5 @@
 import Home from "@views/Home";
 
 export default function Page() {
-    return <Home lang='fr'/>
+    return <Home lang='en'/>
 }

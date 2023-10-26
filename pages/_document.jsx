@@ -3,7 +3,7 @@ import { ServerStyleSheet } from 'styled-components';
 
 function Document() {
     return (
-        <Html lang='fr-FR'>
+        <Html lang='fr'>
             <Head>
                 <meta charSet='utf-8' />
                 <meta name='theme-color' content='#232323' />

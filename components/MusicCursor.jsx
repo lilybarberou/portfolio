@@ -1,10 +1,7 @@
-import { useContext } from 'react';
 import { t } from '@contexts/Utils';
-import { Context } from '@pages/_app';
 
 const MusicCursor = () => {
-    const { lang } = useContext(Context);
-    const text = t('clickonmusic', lang);
+    const text = t('clickonmusic', 'fr');
 
     return <span id='musique-cursor'>{text}</span>;
 };

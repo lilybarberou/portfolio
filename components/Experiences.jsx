@@ -3,7 +3,7 @@ import frExperiences from '@contexts/frExperiences.json';
 import enExperiences from '@contexts/enExperiences.json';
 
 const Experiences = ({ lang }) => {
-    const expObj = lang === 'fr-FR' ? frExperiences : enExperiences;
+    const expObj = lang === 'fr' ? frExperiences : enExperiences;
 
     return (
         <S.Experiences>

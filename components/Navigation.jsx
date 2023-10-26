@@ -1,18 +1,40 @@
-import { useRef, useContext } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import { Context } from '@pages/_app';
 import { t } from '@contexts/Utils';
 
-const Navigation = ({ lang }) => {
+const Navigation = () => {
     const router = useRouter();
-    const { setLang } = useContext(Context);
     const navigation = useRef(null);
     const openIcon = useRef(null);
     const closeIcon = useRef(null);
     const mobileMenu = useRef(null);
-    const translations = t('navigation', lang);
+    const pageIsEnlish = router.pathname.includes('/en');
+    const translations = t('navigation', pageIsEnlish ? 'en' : 'fr');
+
+    const linksByLang = [
+        {
+            fr: '/',
+            en: '/en'
+        },
+        {
+            fr: '/a-propos-de-lily',
+            en: '/en/about-me'
+        },
+        {
+            fr: '/realisations',
+            en: '/en/works'
+        },
+        {
+            fr: '/contact',
+            en: '/en/contact'
+        }
+    ]
+
+    const getLinkByLang = (index) => pageIsEnlish ? linksByLang[index].en : linksByLang[index].fr;
+
+    const linkIsActive = (index) => router.pathname == getLinkByLang(index) ? 'active' : '';
 
     const handleMobileMenu = (e, logo) => {
         if (window.matchMedia('(max-width: 600px)').matches) {
@@ -32,7 +54,7 @@ const Navigation = ({ lang }) => {
     return (
         <S.Container ref={navigation}>
             <S.MobileNav>
-                <Link href='/' onClick={(e) => handleMobileMenu(e, true)}>
+                <Link href={getLinkByLang(0)} onClick={(e) => handleMobileMenu(e, true)}>
                     L
                 </Link>
                 <svg ref={closeIcon} onClick={handleMobileMenu} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'>
@@ -44,23 +66,23 @@ const Navigation = ({ lang }) => {
             </S.MobileNav>
             <S.Menu ref={mobileMenu}>
                 <S.Links>
-                    <S.Logo href='/' className={`${router.pathname == '/' ? 'active' : ''}`}>
+                    <S.Logo href={getLinkByLang(0)} className={`${linkIsActive(0) ? 'active' : ''}`}>
                         L
                     </S.Logo>
-                    <Link href='/a-propos-de-lily' className={router.pathname == '/a-propos-de-lily' ? 'active' : ''} onClick={handleMobileMenu}>
+                    <Link href={getLinkByLang(1)} className={linkIsActive(1) ? 'active' : ''} onClick={handleMobileMenu}>
                         {translations.aboutme}
                     </Link>
-                    <Link href='/realisations' className={router.pathname == '/realisations' ? 'active' : ''} onClick={handleMobileMenu}>
+                    <Link href={getLinkByLang(2)} className={linkIsActive(2) ? 'active' : ''} onClick={handleMobileMenu}>
                         {translations.works}
                     </Link>
-                    <Link href='/contact' className={router.pathname == '/contact' ? 'active' : ''} onClick={handleMobileMenu}>
+                    <Link href={getLinkByLang(3)} className={linkIsActive(3) ? 'active' : ''} onClick={handleMobileMenu}>
                         CONTACT
                     </Link>
                     <a href='https://lilyscript.fr' target='_blank' rel='noreferrer'>
                         Blog
                     </a>
                 </S.Links>
-                <S.Lang>{lang === 'fr-FR' ? <span onClick={() => setLang('en-US')}>EN</span> : <span onClick={() => setLang('fr-FR')}>FR</span>}</S.Lang>
+                <S.Lang>{pageIsEnlish ? <Link href={process.env.NEXT_PUBLIC_DOMAIN}>FR</Link> : <Link href={process.env.NEXT_PUBLIC_DOMAIN + '/en'}>EN</Link>}</S.Lang>
             </S.Menu>
         </S.Container>
     );
@@ -216,9 +238,10 @@ S.Lang = styled.div`
     margin-top: 110px;
     font-family: var(--poppins);
 
-    > span {
+    > a {
         font-size: 16px;
         color: #fff;
+        text-decoration: none;
         transition: 0.3s;
 
         :hover {

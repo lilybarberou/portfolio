@@ -1,4 +1,3 @@
-import { useEffect, useState, createContext } from 'react';
 import Head from 'next/head';
 import localFont from 'next/font/local';
 import { Poppins } from 'next/font/google';
@@ -8,21 +7,12 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navigation from '@components/Navigation';
 import HorizontalWrapper from '@components/HorizontalWrapper';
-import InitLang from '@components/InitLang';
 import MusicCursor from '@components/MusicCursor';
-
-export const Context = createContext();
 
 const aboreto = localFont({ src: '../public/static/fonts/Aboreto-Regular.ttf', variable: '--aboreto' });
 const poppins = Poppins({ weight: '400', variable: '--poppins', subsets: ['latin'] });
 
 function MyApp({ Component, pageProps }) {
-    const [lang, setLang] = useState('fr-FR');
-
-    useEffect(() => {
-        document.documentElement.lang = ['fr-FR', 'fr'].includes(navigator.language) ? 'fr-FR' : 'en-US';
-    }, []);
-
     return (
         <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`} />
@@ -35,31 +25,27 @@ function MyApp({ Component, pageProps }) {
                     gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}}');
                 `}
             </Script>
-            <Context.Provider value={{ lang, setLang }}>
-                <InitLang>
-                    <div className={`${aboreto.variable} ${poppins.variable}`}>
-                        <Head>
-                            <meta name='viewport' content='width=device-width, initial-scale=1' />
-                        </Head>
-                        <ToastContainer
-                            position='top-right'
-                            autoClose={3500}
-                            hideProgressBar={false}
-                            closeOnClick={true}
-                            pauseOnHover={true}
-                            draggable={false}
-                            progress={undefined}
-                            theme='dark'
-                        />
-                        <GlobalStyle />
-                        <MusicCursor />
-                        <HorizontalWrapper>
-                            <Navigation />
-                            <Component {...pageProps} />
-                        </HorizontalWrapper>
-                    </div>
-                </InitLang>
-            </Context.Provider>
+            <div className={`${aboreto.variable} ${poppins.variable}`}>
+                <Head>
+                    <meta name='viewport' content='width=device-width, initial-scale=1' />
+                </Head>
+                <ToastContainer
+                    position='top-right'
+                    autoClose={3500}
+                    hideProgressBar={false}
+                    closeOnClick={true}
+                    pauseOnHover={true}
+                    draggable={false}
+                    progress={undefined}
+                    theme='dark'
+                />
+                <GlobalStyle />
+                <MusicCursor />
+                <HorizontalWrapper>
+                    <Navigation />
+                    <Component {...pageProps} />
+                </HorizontalWrapper>
+            </div>
         </>
     );
 }
