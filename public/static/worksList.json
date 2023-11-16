@@ -3,7 +3,7 @@
         "img": "https://raw.githubusercontent.com/lilybarberou/Assets/master/Blog/banner.png",
         "frTitle": "LilyScript",
         "enTitle": "LilyScript",
-        "techs": ["Next.js"],
+        "techs": ["Next.js", "MDX", "Sandpack"],
         "frDesc": "Un blog traitant de dev, pour les dev",
         "enDesc": "A dev blog, for devs",
         "github": "https://github.com/lilybarberou/blog-app",
@@ -13,7 +13,7 @@
         "img": "https://api.lilybarberou.fr/assets/screenshots/fillifree.lilybarberou.fr/fillifree.lilybarberou.fr.png",
         "frTitle": "Fillifree",
         "enTitle": "Fillifree",
-        "techs": ["Next.js"],
+        "techs": ["Next.js", "canvas", "pdf-lib"],
         "frDesc": "Une façon gratuite de protéger ses documents grâce à un filligrane.",
         "enDesc": "A free way to protect your documents with a watermark.",
         "url": "https://fillifree.lilybarberou.fr"
@@ -31,7 +31,7 @@
     {
         "img": "https://raw.githubusercontent.com/lilybarberou/Assets/master/Chat/banner.png",
         "title": "Uspeak",
-        "techs": ["React", "Socket.io"],
+        "techs": ["React", "Node.js", "Socket.io"],
         "frDesc": "Un chat en ligne pour parler avec des inconnus",
         "enDesc": "An online chat to speak with unknown people",
         "github": "https://github.com/lilybarberou/Chat",
