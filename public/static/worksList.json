@@ -1,5 +1,15 @@
 [
     {
+        "img": "https://api.lilybarberou.fr/assets/screenshots/kwikvote.app/kwikvote.app.png",
+        "frTitle": "KwikVote",
+        "enTitle": "Kwikvote",
+        "techs": ["Next.js", "Tailwind", "shadcn/ui", "Prisma"],
+        "frDesc": "Créez un sondage en quelques secondes et partagez-le avec vos amis",
+        "enDesc": "Create a poll in seconds and share it with your friends",
+        "github": "https://github.com/lilybarberou/kwikvote",
+        "url": "https://kwikvote.app"
+    },
+    {
         "img": "https://raw.githubusercontent.com/lilybarberou/Assets/master/Blog/banner.png",
         "frTitle": "LilyScript",
         "enTitle": "LilyScript",
@@ -14,8 +24,8 @@
         "frTitle": "Fillifree",
         "enTitle": "Fillifree",
         "techs": ["Next.js", "canvas", "pdf-lib"],
-        "frDesc": "Une façon gratuite de protéger ses documents grâce à un filligrane.",
-        "enDesc": "A free way to protect your documents with a watermark.",
+        "frDesc": "Une façon gratuite de protéger ses documents grâce à un filligrane",
+        "enDesc": "A free way to protect your documents with a watermark",
         "url": "https://fillifree.lilybarberou.fr"
     },
     {

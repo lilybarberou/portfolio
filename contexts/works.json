@@ -1,5 +1,10 @@
 [
     {
+        "img": "https://api.lilybarberou.fr/assets/screenshots/kwikvote.app/kwikvote.app.png",
+        "name": "KwikVote",
+        "link": "/realisations#kwikvote"
+    },
+    {
         "img": "https://raw.githubusercontent.com/lilybarberou/Assets/master/Blog/banner.png",
         "name": "LilyScript",
         "link": "/realisations#lilyscript"
@@ -23,10 +28,5 @@
         "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Quote%20Wars/banner.png",
         "name": "Quote Wars",
         "link": "/realisations#quotewars"
-    },
-    {
-        "img": "https://raw.githubusercontent.com/Nahay/Assets/master/Chat/banner.png",
-        "name": "U Speak",
-        "link": "/realisations#uspeak"
     }
 ]
