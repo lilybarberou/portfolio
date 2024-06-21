@@ -1,8 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
 import { Resend } from 'resend';
 import { z } from 'zod';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<{ success: boolean; message: string }>) {
+export default async function handler(req, res) {
   try {
     const body = await req.body;
     const data = emailSchema.parse(body);
