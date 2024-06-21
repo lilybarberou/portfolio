@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
-import emailjs from '@emailjs/browser';
 import { getFormData, t } from '@contexts/Utils';
 import Separation from '@components/Separation';
 import Arrow from '@public/static/svg/arrow.svg';
@@ -17,7 +16,7 @@ const Contact = ({ lang }) => {
         setCaptcha([Math.floor(Math.random() * 10) + 1, Math.floor(Math.random() * 10) + 1]);
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         const data = getFormData(form.current);
 
@@ -30,13 +29,21 @@ const Contact = ({ lang }) => {
 
         // send mail
         setLoading(true);
-        emailjs
-            .sendForm('service_cxoxesr', 'TEMP', form.current, 'user_YiCuJS7dEJZjxxcrfEK5I')
-            .then(
-                (res) => toast.success(translations.emailsent),
-                (err) => toast.error(t(translations.emailnotsent, lang))
-            )
-            .then(() => setLoading(false));
+        
+        const res = await fetch('/api/mail', {
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(resData => {
+            if (resData.success) toast.success(resData.message)
+            else toast.error(resData.message)
+        })
+        .catch(() => toast.error("L'email n'a pas pu être envoyé"))
+        .finally(() => setLoading(false));
     };
 
     const handleDiscordClick = () => {
