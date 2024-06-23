@@ -1,0 +1,27 @@
+[
+  {
+    "company": "Lumy",
+    "desc": "dev front next.js",
+    "duration": "since jan. 2024"
+  },
+  {
+    "company": "Olwe Développement",
+    "desc": "dev full-stack react/node.js - designer",
+    "duration": "1 year"
+  },
+  {
+    "company": "Lycée Charles Pointet",
+    "desc": "dev full-stack react/node.js",
+    "duration": "2 months"
+  },
+  {
+    "company": "ITDM",
+    "desc": "dev front - Wordpress",
+    "duration": "2 months"
+  },
+  {
+    "company": "Rainbow Studio",
+    "desc": "dev front",
+    "duration": "1 month"
+  }
+]
