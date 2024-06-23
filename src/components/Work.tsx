@@ -90,7 +90,7 @@ const S = {
       margin-bottom: 30px;
     }
 
-    :last-child {
+    &:last-child {
       margin-bottom: 30px;
     }
 
@@ -120,8 +120,6 @@ const S = {
 
       &:last-child {
         margin-right: 100px;
-      }
-      :last-child {
         margin-bottom: 0;
       }
     }
@@ -159,6 +157,8 @@ const S = {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 20px 0;
 
     // techs
     > div:first-child {

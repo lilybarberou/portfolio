@@ -129,6 +129,7 @@ const S = {
 
       > svg {
         transform: rotate(90deg) scaleY(1.1);
+        width: 16px;
         height: 16px;
       }
 

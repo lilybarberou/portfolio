@@ -15,7 +15,7 @@ export const HomeView = () => {
   const { lang } = useLang();
   const translations = t('home', lang);
   const carousel = useRef<HTMLDivElement>(null);
-  const cvLink = lang === 'fr-FR' ? process.env.NEXT_PUBLIC_CV_FR_LINK : process.env.NEXT_PUBLIC_CV_EN_LINK;
+  const cvLink = process.env.NEXT_PUBLIC_CV_FR_LINK;
 
   useEffect(() => {
     // ─── PARALLAX ─────────────────────────────────────────
