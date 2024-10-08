@@ -1,11 +1,11 @@
-import { PropsWithChildren } from 'react';
-import { Metadata } from 'next';
-import Script from 'next/script';
-import 'react-toastify/dist/ReactToastify.css';
-import { Navigation } from '@/components/Navigation';
 import { HorizontalWrapper } from '@/components/HorizontalWrapper';
 import { MusicCursor } from '@/components/MusicCursor';
+import { Navigation } from '@/components/Navigation';
 import { Providers } from '@/components/Providers';
+import { Metadata } from 'next';
+import Script from 'next/script';
+import { PropsWithChildren } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -27,6 +27,7 @@ export default function Layout({ children }: PropsWithChildren) {
                     gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}}');
                 `}
       </Script>
+      <Script src="https://cloud.umami.is/script.js" data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID} />
       <body>
         <Providers>
           <MusicCursor />
