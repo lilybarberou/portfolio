@@ -15,7 +15,8 @@ export const MusicPlayer = ({ title, file, musicList }: Props) => {
       const audioTag = musicPlayerContainer.children[1] as HTMLAudioElement;
       audioTag.pause();
     });
-    paused ? audio.play() : audio.pause();
+    if (paused) audio.play();
+    else audio.pause();
   };
 
   return (
