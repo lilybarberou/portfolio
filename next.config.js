@@ -4,7 +4,7 @@ const withPWA = require('@ducanh2912/next-pwa').default({
 
 module.exports = withPWA({
   images: {
-    remotePatterns: [{ hostname: 'api.lilybarberou.fr' }, { hostname: 'raw.githubusercontent.com' }],
+    remotePatterns: [{ hostname: 'raw.githubusercontent.com' }],
   },
   compiler: {
     styledComponents: true,
