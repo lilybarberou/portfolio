@@ -1,13 +1,13 @@
-import { useEffect, useRef } from 'react';
-import Image from 'next/image';
-import styled from 'styled-components';
-import { Parallax } from '@/lib/utils';
-import { Separation } from '@/components/Separation';
 import { Info } from '@/components/Info';
 import { MusicPlayer } from '@/components/MusicPlayer';
-import * as i from '@/lib/imagesIndex';
-import { songs } from '../../public/static/songs';
+import { Separation } from '@/components/Separation';
 import { ArrowIcon, BrushFrameIcon } from '@/lib/icons';
+import * as i from '@/lib/imagesIndex';
+import { Parallax } from '@/lib/utils';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { songs } from '../../public/static/songs';
 
 type Props = {
   onClick: (section: string) => void;
@@ -28,7 +28,7 @@ type Props = {
 };
 
 export const AboutInfo = ({ onClick, translations }: Props) => {
-  const musicList = useRef<HTMLDivElement>(null);
+  const [musicListElement, setMusicListElement] = useState<HTMLDivElement | null>(null);
 
   const onMouseMove = (e: React.MouseEvent) => {
     const cursor = document.querySelector('#musique-cursor') as HTMLSpanElement;
@@ -224,10 +224,8 @@ export const AboutInfo = ({ onClick, translations }: Props) => {
           <h2>{translations.melophile}</h2>
           <p>{translations.reggae}</p>
         </S.MusicText>
-        <S.MusicList ref={musicList}>
-          {songs.map((e, i) => (
-            <MusicPlayer {...e} musicList={musicList.current!} key={i} />
-          ))}
+        <S.MusicList ref={setMusicListElement}>
+          {!!musicListElement && songs.map((e, i) => <MusicPlayer {...e} musicList={musicListElement} key={i} />)}
         </S.MusicList>
       </S.MusicContainer>
       <Separation />
