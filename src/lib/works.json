@@ -1,16 +1,16 @@
 [
   {
-    "img": "/images/screenshots/kwikvote.app.png",
+    "img": "/images/screenshots/kwikvote.app.jpeg",
     "name": "KwikVote",
     "link": "/realisations#kwikvote"
   },
   {
-    "img": "https://raw.githubusercontent.com/lilybarberou/Assets/master/Blog/banner.png",
+    "img": "/images/screenshots/lilyscript.fr.jpeg",
     "name": "LilyScript",
     "link": "/realisations#lilyscript"
   },
   {
-    "img": "/images/screenshots/fillifree.lilybarberou.fr.png",
+    "img": "/images/screenshots/fillifree.lilybarberou.fr.jpeg",
     "name": "Fillifree",
     "link": "/realisations#fillifree"
   },

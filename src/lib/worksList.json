@@ -1,6 +1,6 @@
 [
   {
-    "img": "/images/screenshots/kwikvote.app.png",
+    "img": "/images/screenshots/kwikvote.app.jpeg",
     "frTitle": "KwikVote",
     "enTitle": "Kwikvote",
     "techs": ["Next.js", "Tailwind", "shadcn/ui", "Prisma"],
@@ -10,7 +10,7 @@
     "url": "https://kwikvote.app"
   },
   {
-    "img": "https://raw.githubusercontent.com/lilybarberou/Assets/master/Blog/banner.png",
+    "img": "/images/screenshots/lilyscript.fr.jpeg",
     "frTitle": "LilyScript",
     "enTitle": "LilyScript",
     "techs": ["Next.js", "MDX", "Sandpack"],
@@ -20,7 +20,7 @@
     "url": "https://lilyscript.fr"
   },
   {
-    "img": "/images/screenshots/fillifree.lilybarberou.fr.png",
+    "img": "/images/screenshots/fillifree.lilybarberou.fr.jpeg",
     "frTitle": "Fillifree",
     "enTitle": "Fillifree",
     "techs": ["Next.js", "canvas", "pdf-lib"],
@@ -82,14 +82,5 @@
     "enDesc": "Showcase website for a restaurant",
     "github": "https://github.com/lilybarberou/Scarlet",
     "url": "https://thescarlet.lilybarberou.fr"
-  },
-  {
-    "img": "https://raw.githubusercontent.com/lilybarberou/Assets/master/Old%20Portfolio/Portfolio_Home.png",
-    "title": "Portfolio V2",
-    "techs": ["React"],
-    "frDesc": "Ancienne version de mon portfolio",
-    "enDesc": "Old version of my portfolio",
-    "github": "https://github.com/lilybarberou/Portfolio-v1",
-    "url": "https://portfoliov2.lilybarberou.fr"
   }
 ]
