@@ -1,38 +1,39 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import styled from 'styled-components';
-import { Button } from '@/components/Button';
-import { Separation } from '@/components/Separation';
-import { Parallax, t } from '@/lib/utils';
-import works from '@/lib/works.json';
-import { BrushFrameIcon, DownloadIcon } from '@/lib/icons';
-import { useLang } from '@/components/Providers';
+import { Button } from "@/components/Button";
+import { useLang } from "@/components/Providers";
+import { Separation } from "@/components/Separation";
+import { env } from "@/lib/env";
+import { BrushFrameIcon, DownloadIcon } from "@/lib/icons";
+import { Parallax, t } from "@/lib/utils";
+import works from "@/lib/works.json";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useRef } from "react";
+import styled from "styled-components";
 
 export const HomeView = () => {
   const { lang } = useLang();
-  const translations = t('home', lang);
+  const translations = t("home", lang);
   const carousel = useRef<HTMLDivElement>(null);
-  const cvLink = process.env.NEXT_PUBLIC_CV_FR_LINK;
+  const cvLink = env.NEXT_PUBLIC_CV_FR_LINK;
 
   useEffect(() => {
     // ─── PARALLAX ─────────────────────────────────────────
-    if (window.matchMedia('(min-width: 600px)').matches) {
+    if (window.matchMedia("(min-width: 600px)").matches) {
       new Parallax({
-        reference: '#separation',
-        target: '#home-title > span',
+        reference: "#separation",
+        target: "#home-title > span",
         styles: {
-          transform: 'translateX(${-coef*100}px)',
+          transform: "translateX(${-coef*100}px)",
         },
       });
 
       new Parallax({
-        reference: '#home-carousel',
-        target: '#things-ive-built > span',
+        reference: "#home-carousel",
+        target: "#things-ive-built > span",
         styles: {
-          transform: 'translateX(${coef*100}px)',
+          transform: "translateX(${coef*100}px)",
         },
       });
     }
@@ -41,12 +42,12 @@ export const HomeView = () => {
   const handleScroll = () => {
     if (!carousel.current) return;
 
-    if (window.matchMedia('(max-width: 600px)').matches) {
+    if (window.matchMedia("(max-width: 600px)").matches) {
       carousel.current.scrollLeft = carousel.current.scrollLeft + 200;
     } else carousel.current.scrollTop = carousel.current.scrollTop + 200;
   };
 
-  const handleWorksClick = () => ((document.querySelector('.app') as HTMLDivElement).scrollTop = 0);
+  const handleWorksClick = () => ((document.querySelector(".app") as HTMLDivElement).scrollTop = 0);
 
   return (
     <S.Container>
@@ -176,7 +177,7 @@ const S = {
             position: absolute;
             top: 20%;
             z-index: -1;
-            transform: ${(props) => (props.lang === 'fr-FR' ? 'scale(1.5, 1)' : 'scale(1.1, 1)')};
+            transform: ${(props) => (props.lang === "fr-FR" ? "scale(1.5, 1)" : "scale(1.1, 1)")};
             transition: 0.3s;
           }
         }
@@ -357,7 +358,7 @@ const S = {
     position: relative;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       right: -0.5px;
       bottom: 0;

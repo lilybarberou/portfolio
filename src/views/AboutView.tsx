@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import { Parallax, t } from '@/lib/utils';
-import { AboutDev } from '@/containers/AboutDev';
-import { AboutInfo } from '@/containers/AboutInfo';
-import { useLang } from '@/components/Providers';
-import { ArrowIcon } from '@/lib/icons';
+import { useEffect, useRef } from "react";
+import styled from "styled-components";
+import { Parallax, t } from "@/lib/utils";
+import { AboutDev } from "@/containers/AboutDev";
+import { AboutInfo } from "@/containers/AboutInfo";
+import { useLang } from "@/components/Providers";
+import { ArrowIcon } from "@/lib/icons";
 
 export const AboutView = () => {
   const { lang } = useLang();
-  const translations = t('about', lang);
+  const translations = t("about", lang);
   const dev = useRef<HTMLDivElement>(null);
   const info = useRef<HTMLDivElement>(null);
   const devBtn = useRef<HTMLButtonElement>(null);
@@ -18,37 +18,37 @@ export const AboutView = () => {
 
   useEffect(() => {
     // ─── PARALLAX ─────────────────────────────────────────
-    if (window.matchMedia('(min-width: 600px)').matches) {
+    if (window.matchMedia("(min-width: 600px)").matches) {
       new Parallax({
-        reference: '.dev-content',
-        target: '.dev-content > h2 > span:first-child',
+        reference: ".dev-content",
+        target: ".dev-content > h2 > span:first-child",
         styles: {
-          transform: 'translateX(${coef*100}px)',
+          transform: "translateX(${coef*100}px)",
         },
       });
 
       new Parallax({
-        reference: '.info-content',
-        target: '.info-content > h2 > span:first-child',
+        reference: ".info-content",
+        target: ".info-content > h2 > span:first-child",
         styles: {
-          transform: 'translateX(${coef*50}px)',
+          transform: "translateX(${coef*50}px)",
         },
       });
     }
   }, [lang, translations]);
 
-  const handleClick = (el?: 'dev' | 'info') => {
-    if (dev.current?.classList.contains('active') && el === 'dev') return;
-    if (info.current?.classList.contains('active') && el === 'info') return;
+  const handleClick = (el?: "dev" | "info") => {
+    if (dev.current?.classList.contains("active") && el === "dev") return;
+    if (info.current?.classList.contains("active") && el === "info") return;
 
-    devBtn.current?.classList.toggle('active');
-    infoBtn.current?.classList.toggle('active');
-    dev.current?.classList.toggle('active');
-    info.current?.classList.toggle('active');
+    devBtn.current?.classList.toggle("active");
+    infoBtn.current?.classList.toggle("active");
+    dev.current?.classList.toggle("active");
+    info.current?.classList.toggle("active");
 
     // scroll to left on desktop
-    if (window.matchMedia('(max-width: 600px)').matches) return;
-    (document.querySelector('.app') as HTMLDivElement).scrollTop = 1300;
+    if (window.matchMedia("(max-width: 600px)").matches) return;
+    (document.querySelector(".app") as HTMLDivElement).scrollTop = 1300;
   };
 
   return (
@@ -57,10 +57,10 @@ export const AboutView = () => {
       <h1 dangerouslySetInnerHTML={{ __html: translations.aboutLily }}></h1>
 
       <S.SwitchBtn>
-        <button className="active" ref={devBtn} onClick={() => handleClick('dev')}>
+        <button className="active" ref={devBtn} onClick={() => handleClick("dev")}>
           {translations.lilyndev} <ArrowIcon />
         </button>
-        <button ref={infoBtn} onClick={() => handleClick('info')}>
+        <button ref={infoBtn} onClick={() => handleClick("info")}>
           {translations.whoislily} <ArrowIcon />
         </button>
       </S.SwitchBtn>
@@ -182,7 +182,7 @@ const S = {
       line-height: 1.5;
       margin-bottom: 70px;
 
-      &[id='about-info-title'] {
+      &[id="about-info-title"] {
         margin-bottom: 0;
       }
     }
@@ -203,7 +203,7 @@ const S = {
         text-align: left;
       }
 
-      > h2[id='about-info-title'] {
+      > h2[id="about-info-title"] {
         > span {
           display: flex;
           gap: 10px;
@@ -220,7 +220,7 @@ const S = {
               position: absolute;
               top: 12%;
               z-index: -1;
-              transform: ${(props) => (props.lang === 'fr-FR' ? 'scale(1.1, 1.2)' : 'scale(2.4, 1.2)')};
+              transform: ${(props) => (props.lang === "fr-FR" ? "scale(1.1, 1.2)" : "scale(2.4, 1.2)")};
               transition: 0.3s;
             }
           }

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { BrushFrameIcon } from '@/lib/icons';
-import Image from 'next/image';
-import styled from 'styled-components';
-import { useLang } from './Providers';
+import { BrushFrameIcon } from "@/lib/icons";
+import Image from "next/image";
+import styled from "styled-components";
+import { useLang } from "./Providers";
 
 type Props = {
   opt: {
@@ -21,12 +21,12 @@ type Props = {
 
 export const Work = ({ opt }: Props) => {
   const { lang } = useLang();
-  const language = lang === 'fr-FR' ? 'fr' : 'en';
-  const title = (opt.title ? opt.title : language === 'fr' ? opt.frTitle : opt.enTitle) as string;
-  const desc = language === 'fr' ? opt.frDesc : opt.enDesc;
+  const language = lang === "fr-FR" ? "fr" : "en";
+  const title = (opt.title ? opt.title : language === "fr" ? opt.frTitle : opt.enTitle) as string;
+  const desc = language === "fr" ? opt.frDesc : opt.enDesc;
 
   return (
-    <S.Work id={title.toLowerCase().replace(/\s/g, '')}>
+    <S.Work id={title.toLowerCase().replace(/\s/g, "")}>
       <a aria-label="Link to the website" href={opt.url} target="_blank" rel="noopener noreferrer">
         <Image src={opt.img} alt={title} width="560" height="240" className="bnw" />
       </a>

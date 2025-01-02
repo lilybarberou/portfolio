@@ -1,54 +1,54 @@
 {
-    "navigation": {
-        "aboutme": "About me",
-        "works": "Works"
-    },
-    "home": {
-        "webDev": "Web Developer",
-        "title": "<span>I'm Lily Barberou</span>Developer, designer<br /><span>Based in <span class='svg'>France</span></span>",
-        "knowmemore": "Know me more",
-        "somethings": "SOME THINGS<br /><span>I&apos;VE BUILT</span>",
-        "lovejsreact": "Well, I love Javascript,<br />I love React.",
-        "showmore": "Show more",
-        "getintouch": "GET IN TOUCH",
-        "sayhello": "Say Hello"
-    },
-    "about": {
-        "about": "About me",
-        "aboutLily": "ABOUT<br />LILY",
-        "lilyndev": "Lily and Dev",
-        "whoislily": "Who is Lily ?",
-        "front": "<span class='svg'>Front</span>",
-        "back": "And <span class='svg'>Back</span>",
-        "text1": "My interest in web development started when I was <span>13</span>, when I saw my father reading a course on <span>HTML & CSS</span> (Hello Matthieu Nebra!).",
-        "text2": "Who does not want to create a website in their image? <span>Think it</span> and <span>code it</span> - really - <span>from A to Z</span>? (sorry Wordpress).",
-        "text3": "Loving to rack my brain about pure development, while integrating it into <span>modern, attractive and above all dynamic interfaces</span>, I ended up specializing in the development of <span>web applications in React</span> (sorry Angular).",
-        "experience": "Experience",
-        "apartdev": "Got the dev, what else?",
-        "comesee": "Come see!",
-        "nutshell": "<span>LILY</span><span>IN A <span class='svg'>NUTSHELL</span></span>",
-        "bouba": "Bouba = best teddy bear",
-        "melophile": "MELOPHILE",
-        "reggae": "Except reggae",
-        "addict": "ADDICT",
-        "justbad": "To sport, well just badminton.",
-        "sporty": "LILY.SPORTY = 0",
-        "videogames": "Video games, all of them. Except FPS.",
-        "artist": "ARTIST",
-        "complicated": "Uh... We all had rocky start.",
-        "theresdev": "Of course there's dev",
-        "whereithappens": "Check it out"
-    },
-    "contact": {
-        "firstname": "Firstname",
-        "name": "Name",
-        "subject": "Subject",
-        "sendit": "Send it",
-        "emailsent": "Email sent!",
-        "emailnotsent": "Mail could not be sent.",
-        "invalidmail": "Mail invalid!",
-        "wronganswer": "Wrong answer!",
-        "discord": "Pseudo copied!"
-    },
-    "clickonmusic": "Click on a music !"
+  "navigation": {
+    "aboutme": "About me",
+    "works": "Works"
+  },
+  "home": {
+    "webDev": "Web Developer",
+    "title": "<span>I'm Lily Barberou</span>Developer, designer<br /><span>Based in <span class='svg'>France</span></span>",
+    "knowmemore": "Know me more",
+    "somethings": "SOME THINGS<br /><span>I&apos;VE BUILT</span>",
+    "lovejsreact": "Well, I love Javascript,<br />I love React.",
+    "showmore": "Show more",
+    "getintouch": "GET IN TOUCH",
+    "sayhello": "Say Hello"
+  },
+  "about": {
+    "about": "About me",
+    "aboutLily": "ABOUT<br />LILY",
+    "lilyndev": "Lily and Dev",
+    "whoislily": "Who is Lily ?",
+    "front": "<span class='svg'>Front</span>",
+    "back": "And <span class='svg'>Back</span>",
+    "text1": "My interest in web development started when I was <span>13</span>, when I saw my father reading a course on <span>HTML & CSS</span> (Hello Matthieu Nebra!).",
+    "text2": "Who does not want to create a website in their image? <span>Think it</span> and <span>code it</span> - really - <span>from A to Z</span>? (sorry Wordpress).",
+    "text3": "Loving to rack my brain about pure development, while integrating it into <span>modern, attractive and above all dynamic interfaces</span>, I ended up specializing in the development of <span>web applications in React</span> (sorry Angular).",
+    "experience": "Experience",
+    "apartdev": "Got the dev, what else?",
+    "comesee": "Come see!",
+    "nutshell": "<span>LILY</span><span>IN A <span class='svg'>NUTSHELL</span></span>",
+    "bouba": "Bouba = best teddy bear",
+    "melophile": "MELOPHILE",
+    "reggae": "Except reggae",
+    "addict": "ADDICT",
+    "justbad": "To sport, well just badminton.",
+    "sporty": "LILY.SPORTY = 0",
+    "videogames": "Video games, all of them. Except FPS.",
+    "artist": "ARTIST",
+    "complicated": "Uh... We all had rocky start.",
+    "theresdev": "Of course there's dev",
+    "whereithappens": "Check it out"
+  },
+  "contact": {
+    "firstname": "Firstname",
+    "name": "Name",
+    "subject": "Subject",
+    "sendit": "Send it",
+    "emailsent": "Email sent!",
+    "emailnotsent": "Mail could not be sent.",
+    "invalidmail": "Mail invalid!",
+    "wronganswer": "Wrong answer!",
+    "discord": "Pseudo copied!"
+  },
+  "clickonmusic": "Click on a music !"
 }

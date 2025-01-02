@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
-import styled from 'styled-components';
-import { Parallax } from '@/lib/utils';
-import { Separation } from '@/components/Separation';
-import { Experiences } from '@/components/Experiences';
-import { ArrowIcon, BrushFrameIcon } from '@/lib/icons';
+import { useEffect } from "react";
+import styled from "styled-components";
+import { Parallax } from "@/lib/utils";
+import { Separation } from "@/components/Separation";
+import { Experiences } from "@/components/Experiences";
+import { ArrowIcon, BrushFrameIcon } from "@/lib/icons";
 
 type Props = {
   onClick: (value: string) => void;
@@ -22,43 +22,43 @@ type Props = {
 export const AboutDev = ({ onClick, translations }: Props) => {
   useEffect(() => {
     // ─── PARALLAX ─────────────────────────────────────────
-    if (window.matchMedia('(min-width: 600px)').matches) {
+    if (window.matchMedia("(min-width: 600px)").matches) {
       // ─── BRUSH ─────────────────────────────────────────
       new Parallax({
-        reference: '.dev-content > h2 > span:first-child',
-        target: '#dev-design-brush',
+        reference: ".dev-content > h2 > span:first-child",
+        target: "#dev-design-brush",
         styles: {
-          transform: 'scaleY(${coef*1.7})',
+          transform: "scaleY(${coef*1.7})",
         },
       });
       // ─── TEXTS ─────────────────────────────────────────
       new Parallax({
-        reference: '#texts',
-        target: '#text1',
+        reference: "#texts",
+        target: "#text1",
         styles: {
-          transform: 'translateY(${coef*50}px)',
+          transform: "translateY(${coef*50}px)",
         },
       });
       new Parallax({
-        reference: '#texts',
-        target: '#text2',
+        reference: "#texts",
+        target: "#text2",
         styles: {
-          transform: 'translateY(${-coef*50}px)',
+          transform: "translateY(${-coef*50}px)",
         },
       });
       new Parallax({
-        reference: '#texts',
-        target: '#text3',
+        reference: "#texts",
+        target: "#text3",
         styles: {
-          transform: 'translateY(${coef*50}px)',
+          transform: "translateY(${coef*50}px)",
         },
       });
       // ─── EXPERIENCES ─────────────────────────────────────────
       new Parallax({
-        reference: '#experience',
-        target: '#experience > h2',
+        reference: "#experience",
+        target: "#experience > h2",
         styles: {
-          transform: 'rotate(-90deg) translateX(${coef*400-300}px)',
+          transform: "rotate(-90deg) translateX(${coef*400-300}px)",
         },
       });
     }
@@ -78,7 +78,14 @@ export const AboutDev = ({ onClick, translations }: Props) => {
           <span>Next.js</span>
           <span>Node.js</span>
         </div>
-        <svg id="dev-design-brush" width="30" height="172" viewBox="0 0 30 172" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          id="dev-design-brush"
+          width="30"
+          height="172"
+          viewBox="0 0 30 172"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M1.12371 5.10857C1.04913 2.43134 1.06515 0.185494 1.15958 0.117962C1.35515 -0.0222002 3.34131 -0.0425991 4.41393 0.0845377C5.04899 0.159857 5.13414 0.261105 5.13414 0.940537C5.13414 1.41808 5.0125 1.67773 4.81405 1.6235C4.63192 1.57367 4.49396 1.69557 4.49396 1.90666C4.49396 2.11775 4.63192 2.23965 4.81405 2.18981C5.02018 2.13347 5.13414 2.66311 5.13414 3.67638C5.13414 4.68965 5.02018 5.21929 4.81405 5.16295C4.638 5.11481 4.49175 4.80842 4.48919 4.48209C4.48631 4.15575 4.37039 3.80948 4.23115 3.71264C3.87937 3.46757 3.81982 7.36604 4.15816 8.49002C4.40271 9.3031 4.42928 9.20839 4.38447 7.67581C4.35662 6.72172 4.35823 5.94134 4.38768 5.94148C4.41744 5.94148 4.63768 5.90836 4.87742 5.86759C5.23721 5.80657 5.29645 6.20992 5.21643 8.16822C5.02981 12.7374 4.98884 13.0629 4.58969 13.123C4.32497 13.1631 4.17001 12.9034 4.09126 12.2867C4.02853 11.7949 3.92163 14.1956 3.85409 17.6218C3.78623 21.048 3.70495 25.0935 3.67294 26.612C3.64125 28.1304 3.59415 31.5547 3.56822 34.2218C3.52597 38.5894 3.33551 39.6925 2.78496 38.7612C2.68445 38.5908 2.67935 38.1927 2.77409 37.8763C2.86852 37.5599 2.80768 37.1418 2.63835 36.9471C2.38452 36.6549 2.29336 36.7905 2.11539 37.7258C1.74601 39.6651 1.70148 39.5175 1.65667 36.2038C1.62978 34.2059 1.73093 32.983 1.92331 32.983C2.10128 32.983 2.27667 33.7228 2.33428 34.7173C2.38966 35.6712 2.46616 34.811 2.50425 32.806C2.55835 29.9521 2.48667 29.168 2.1733 29.1958C1.94444 29.216 1.72803 29.0562 1.66753 28.8223C1.58399 28.4979 1.66657 28.4312 2.06764 28.4993C2.47672 28.5687 2.57341 28.4767 2.57341 28.0171C2.57341 27.5546 2.46938 27.4568 2.01325 27.4906C1.48671 27.5297 1.45114 27.1283 1.42106 20.7928C1.40345 17.086 1.31579 13.9961 1.22585 13.9263C1.1359 13.8564 1.17906 13.3532 1.32119 12.8081C1.46363 12.2631 1.5706 11.5623 1.55875 11.2508C1.53859 10.7139 1.52546 10.7066 1.30556 11.1092C1.1087 11.4695 1.03506 11.4947 0.819637 11.2756C0.680078 11.1334 0.722015 10.783 0.912789 10.4969C1.14453 10.1492 1.21461 8.36231 1.12371 5.10857Z"
             fill="#893333"
@@ -185,7 +192,7 @@ export const AboutDev = ({ onClick, translations }: Props) => {
         <S.InfoBtn
           onClick={() => {
             window.scrollTo(0, 0);
-            onClick('info');
+            onClick("info");
           }}
         >
           {translations.comesee} <ArrowIcon />

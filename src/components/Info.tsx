@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 type Props = {
   text?: string;
 };
 
-export const Info = ({ text = '' }: Props) => {
+export const Info = ({ text = "" }: Props) => {
   return <S.Info className="info">{text}</S.Info>;
 };
 

@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useRef } from 'react';
-import Link from 'next/link';
-import styled from 'styled-components';
-import { useLang } from '@/components/Providers';
-import { t } from '@/lib/utils';
-import { usePathname } from 'next/navigation';
+import { useRef } from "react";
+import Link from "next/link";
+import styled from "styled-components";
+import { useLang } from "@/components/Providers";
+import { t } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 export const Navigation = () => {
   const pathname = usePathname();
@@ -14,20 +14,20 @@ export const Navigation = () => {
   const openIcon = useRef<SVGSVGElement>(null);
   const closeIcon = useRef<SVGSVGElement>(null);
   const mobileMenu = useRef<HTMLDivElement>(null);
-  const translations = t('navigation', lang);
+  const translations = t("navigation", lang);
 
   const handleMobileMenu = (logo?: boolean) => {
-    if (window.matchMedia('(max-width: 600px)').matches) {
-      const active = navigation.current?.classList.contains('active');
+    if (window.matchMedia("(max-width: 600px)").matches) {
+      const active = navigation.current?.classList.contains("active");
 
       // logo must not display menu
       if (logo && !active) return;
 
-      navigation.current?.classList.toggle('active');
-      closeIcon.current?.classList.toggle('active');
-      openIcon.current?.classList.toggle('active');
-      mobileMenu.current?.classList.toggle('active');
-      document.body.style.overflowY = active ? 'unset' : 'hidden';
+      navigation.current?.classList.toggle("active");
+      closeIcon.current?.classList.toggle("active");
+      openIcon.current?.classList.toggle("active");
+      mobileMenu.current?.classList.toggle("active");
+      document.body.style.overflowY = active ? "unset" : "hidden";
     }
   };
 
@@ -37,32 +37,57 @@ export const Navigation = () => {
         <Link href="/" onClick={() => handleMobileMenu(true)}>
           L
         </Link>
-        <svg ref={closeIcon} onClick={() => handleMobileMenu()} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+        <svg
+          ref={closeIcon}
+          onClick={() => handleMobileMenu()}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 320 512"
+        >
           <path d="M317.7 402.3c3.125 3.125 3.125 8.188 0 11.31c-3.127 3.127-8.186 3.127-11.31 0L160 267.3l-146.3 146.3c-3.127 3.127-8.186 3.127-11.31 0c-3.125-3.125-3.125-8.188 0-11.31L148.7 256L2.344 109.7c-3.125-3.125-3.125-8.188 0-11.31s8.188-3.125 11.31 0L160 244.7l146.3-146.3c3.125-3.125 8.188-3.125 11.31 0s3.125 8.188 0 11.31L171.3 256L317.7 402.3z" />
         </svg>
-        <svg className="active" ref={openIcon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" onClick={() => handleMobileMenu()}>
+        <svg
+          className="active"
+          ref={openIcon}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"
+          onClick={() => handleMobileMenu()}
+        >
           <path d="M0 88C0 83.58 3.582 80 8 80H440C444.4 80 448 83.58 448 88C448 92.42 444.4 96 440 96H8C3.582 96 0 92.42 0 88zM0 248C0 243.6 3.582 240 8 240H440C444.4 240 448 243.6 448 248C448 252.4 444.4 256 440 256H8C3.582 256 0 252.4 0 248zM440 416H8C3.582 416 0 412.4 0 408C0 403.6 3.582 400 8 400H440C444.4 400 448 403.6 448 408C448 412.4 444.4 416 440 416z" />
         </svg>
       </S.MobileNav>
       <S.Menu ref={mobileMenu}>
         <S.Links>
-          <S.Logo href="/" className={`${pathname == '/' ? 'active' : ''}`}>
+          <S.Logo href="/" className={`${pathname == "/" ? "active" : ""}`}>
             L
           </S.Logo>
-          <Link href="/a-propos-de-lily" className={pathname == '/a-propos-de-lily' ? 'active' : ''} onClick={() => handleMobileMenu()}>
+          <Link
+            href="/a-propos-de-lily"
+            className={pathname == "/a-propos-de-lily" ? "active" : ""}
+            onClick={() => handleMobileMenu()}
+          >
             {translations.aboutme}
           </Link>
-          <Link href="/realisations" className={pathname == '/realisations' ? 'active' : ''} onClick={() => handleMobileMenu()}>
+          <Link
+            href="/realisations"
+            className={pathname == "/realisations" ? "active" : ""}
+            onClick={() => handleMobileMenu()}
+          >
             {translations.works}
           </Link>
-          <Link href="/contact" className={pathname == '/contact' ? 'active' : ''} onClick={() => handleMobileMenu()}>
+          <Link href="/contact" className={pathname == "/contact" ? "active" : ""} onClick={() => handleMobileMenu()}>
             CONTACT
           </Link>
           <a href="https://lilyscript.fr" target="_blank" rel="noreferrer">
             Blog
           </a>
         </S.Links>
-        <S.Lang>{lang === 'fr-FR' ? <span onClick={() => setLang('en-US')}>EN</span> : <span onClick={() => setLang('fr-FR')}>FR</span>}</S.Lang>
+        <S.Lang>
+          {lang === "fr-FR" ? (
+            <span onClick={() => setLang("en-US")}>EN</span>
+          ) : (
+            <span onClick={() => setLang("fr-FR")}>FR</span>
+          )}
+        </S.Lang>
       </S.Menu>
     </S.Container>
   );
@@ -110,7 +135,7 @@ const S = {
         display: block;
       }
 
-      &[id='close'] {
+      &[id="close"] {
         width: 25px;
       }
     }

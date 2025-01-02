@@ -1,16 +1,16 @@
-import styled from 'styled-components';
-import frExperiences from '@/lib/frExperiences.json';
-import enExperiences from '@/lib/enExperiences.json';
-import { useLang } from './Providers';
+import styled from "styled-components";
+import frExperiences from "@/lib/frExperiences.json";
+import enExperiences from "@/lib/enExperiences.json";
+import { useLang } from "./Providers";
 
 export const Experiences = () => {
   const { lang } = useLang();
-  const expObj = lang === 'fr-FR' ? frExperiences : enExperiences;
+  const expObj = lang === "fr-FR" ? frExperiences : enExperiences;
 
   return (
     <S.Experiences>
       {expObj.map((exp, i) => (
-        <S.Experience key={i} className={`${i === expObj.length - 1 ? 'last' : ''}`}>
+        <S.Experience key={i} className={`${i === expObj.length - 1 ? "last" : ""}`}>
           <p>
             <span>{exp.company}</span>
             <span>{exp.duration}</span>
@@ -60,7 +60,7 @@ const S = {
     }
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 0;
       height: 1px;

@@ -1,13 +1,13 @@
-import { Info } from '@/components/Info';
-import { MusicPlayer } from '@/components/MusicPlayer';
-import { Separation } from '@/components/Separation';
-import { ArrowIcon, BrushFrameIcon } from '@/lib/icons';
-import * as i from '@/lib/imagesIndex';
-import { Parallax } from '@/lib/utils';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { songs } from '../../public/static/songs';
+import { Info } from "@/components/Info";
+import { MusicPlayer } from "@/components/MusicPlayer";
+import { Separation } from "@/components/Separation";
+import { ArrowIcon, BrushFrameIcon } from "@/lib/icons";
+import * as i from "@/lib/imagesIndex";
+import { Parallax } from "@/lib/utils";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import { songs } from "../../public/static/songs";
 
 type Props = {
   onClick: (section: string) => void;
@@ -31,161 +31,161 @@ export const AboutInfo = ({ onClick, translations }: Props) => {
   const [musicListElement, setMusicListElement] = useState<HTMLDivElement | null>(null);
 
   const onMouseMove = (e: React.MouseEvent) => {
-    const cursor = document.querySelector('#musique-cursor') as HTMLSpanElement;
-    cursor.style.left = e.pageX + 20 + 'px';
-    cursor.style.top = e.pageY + 15 + 'px';
+    const cursor = document.querySelector("#musique-cursor") as HTMLSpanElement;
+    cursor.style.left = e.pageX + 20 + "px";
+    cursor.style.top = e.pageY + 15 + "px";
   };
 
   const toggleOpacity = (val: number) => {
-    const cursor = document.querySelector('#musique-cursor') as HTMLSpanElement;
+    const cursor = document.querySelector("#musique-cursor") as HTMLSpanElement;
     cursor.style.opacity = String(val);
   };
 
   useEffect(() => {
     // ─── PARALLAX ─────────────────────────────────────────
-    if (window.matchMedia('(min-width: 600px)').matches) {
+    if (window.matchMedia("(min-width: 600px)").matches) {
       // ─── GOURMET ─────────────────────────────────────────
       // pho
       new Parallax({
-        reference: '#gourmet',
-        target: '#gourmet > img:first-child',
+        reference: "#gourmet",
+        target: "#gourmet > img:first-child",
         styles: {
-          transform: 'translateX(${-coef*50}px)',
+          transform: "translateX(${-coef*50}px)",
         },
       });
 
       // glace
       new Parallax({
-        reference: '#gourmet',
-        target: '#gourmet > img:nth-child(2)',
+        reference: "#gourmet",
+        target: "#gourmet > img:nth-child(2)",
         styles: {
-          transform: 'translateX(${coef*50}px)',
+          transform: "translateX(${coef*50}px)",
         },
       });
 
       // info
       new Parallax({
-        reference: '#gourmet',
-        target: '#gourmet .info',
+        reference: "#gourmet",
+        target: "#gourmet .info",
         styles: {
-          transform: 'translateX(${coef*100}px)',
+          transform: "translateX(${coef*100}px)",
         },
       });
 
       // ─── OTAKU ─────────────────────────────────────────
       // totoro
       new Parallax({
-        reference: '#otaku',
-        target: '#otaku > img:first-child',
+        reference: "#otaku",
+        target: "#otaku > img:first-child",
         styles: {
-          transform: 'translateX(${coef*50}px)',
+          transform: "translateX(${coef*50}px)",
         },
       });
 
       // bouba
       new Parallax({
-        reference: '#otaku',
-        target: '#otaku > img:nth-child(2)',
+        reference: "#otaku",
+        target: "#otaku > img:nth-child(2)",
         styles: {
-          transform: 'translateX(${-coef*30}px)',
+          transform: "translateX(${-coef*30}px)",
         },
       });
 
       // info
       new Parallax({
-        reference: '#otaku',
-        target: '#otaku .info',
+        reference: "#otaku",
+        target: "#otaku .info",
         styles: {
-          transform: 'translateX(${coef*100}px)',
+          transform: "translateX(${coef*100}px)",
         },
       });
 
       // ─── MUSIC ─────────────────────────────────────────
       new Parallax({
-        reference: '#musique',
-        target: '#musique > .title',
+        reference: "#musique",
+        target: "#musique > .title",
         styles: {
-          transform: 'rotate(-180deg) translateY(${coef*500-400}px)',
+          transform: "rotate(-180deg) translateY(${coef*500-400}px)",
         },
       });
 
       // ─── BADMINTON ─────────────────────────────────────────
       new Parallax({
-        reference: '#badminton',
-        target: '#badminton > img:nth-child(4)',
+        reference: "#badminton",
+        target: "#badminton > img:nth-child(4)",
         styles: {
-          transform: 'rotate(${coef*100}deg)',
+          transform: "rotate(${coef*100}deg)",
         },
       });
       new Parallax({
-        reference: '#badminton',
-        target: '#badminton > img:nth-child(5)',
+        reference: "#badminton",
+        target: "#badminton > img:nth-child(5)",
         styles: {
-          transform: 'rotate(${coef*100-100}deg)',
+          transform: "rotate(${coef*100-100}deg)",
         },
       });
       new Parallax({
-        reference: '#badminton',
-        target: '#badminton > img:nth-child(6)',
+        reference: "#badminton",
+        target: "#badminton > img:nth-child(6)",
         styles: {
-          transform: 'translate(${-coef*100}px, ${-coef*100}px)',
+          transform: "translate(${-coef*100}px, ${-coef*100}px)",
         },
       });
       new Parallax({
-        reference: '#badminton',
-        target: '#badminton > img:nth-child(7)',
+        reference: "#badminton",
+        target: "#badminton > img:nth-child(7)",
         styles: {
-          transform: 'rotate(${coef*100}deg) translate(${-coef*100}px, ${-coef*100}px)',
+          transform: "rotate(${coef*100}deg) translate(${-coef*100}px, ${-coef*100}px)",
         },
       });
       new Parallax({
-        reference: '#badminton',
-        target: '#badminton > .info:nth-child(2)',
+        reference: "#badminton",
+        target: "#badminton > .info:nth-child(2)",
         styles: {
-          transform: 'translateX(${coef*50}px)',
+          transform: "translateX(${coef*50}px)",
         },
       });
       new Parallax({
-        reference: '#badminton',
-        target: '#badminton > .info:nth-child(3)',
+        reference: "#badminton",
+        target: "#badminton > .info:nth-child(3)",
         styles: {
-          transform: 'translateX(${coef*200}px)',
+          transform: "translateX(${coef*200}px)",
         },
       });
 
       // ─── VIDEO GAMES ─────────────────────────────────────────
       new Parallax({
-        reference: '#jeux-videos',
-        target: '#jeux-videos > div > .info:first-child',
+        reference: "#jeux-videos",
+        target: "#jeux-videos > div > .info:first-child",
         styles: {
-          transform: 'translateX(${coef*150}px)',
+          transform: "translateX(${coef*150}px)",
         },
       });
 
       new Parallax({
-        reference: '#jeux-videos',
-        target: '#jeux-videos > div > .info:last-child',
+        reference: "#jeux-videos",
+        target: "#jeux-videos > div > .info:last-child",
         styles: {
-          transform: 'translateX(${-coef*100}px)',
+          transform: "translateX(${-coef*100}px)",
         },
       });
 
       // ─── ARTIST ─────────────────────────────────────────
       // info
       new Parallax({
-        reference: '#artiste',
-        target: '#artiste .info',
+        reference: "#artiste",
+        target: "#artiste .info",
         styles: {
-          transform: 'translateX(${coef*150}px)',
+          transform: "translateX(${coef*150}px)",
         },
       });
 
       // last pic
       new Parallax({
-        reference: '#footer',
-        target: '#artiste img:nth-child(8)',
+        reference: "#footer",
+        target: "#artiste img:nth-child(8)",
         styles: {
-          transform: 'translateX(${coef*100}px)',
+          transform: "translateX(${coef*100}px)",
         },
       });
     }
@@ -219,7 +219,12 @@ export const AboutInfo = ({ onClick, translations }: Props) => {
       </S.OtakuContainer>
       <Separation />
       {/* ──── MUSIC PART ──────────────────────────────────────────────────────────── */}
-      <S.MusicContainer id="musique" onMouseOver={() => toggleOpacity(1)} onMouseOut={() => toggleOpacity(0)} onMouseMove={onMouseMove}>
+      <S.MusicContainer
+        id="musique"
+        onMouseOver={() => toggleOpacity(1)}
+        onMouseOut={() => toggleOpacity(0)}
+        onMouseMove={onMouseMove}
+      >
         <S.MusicText className="title">
           <h2>{translations.melophile}</h2>
           <p>{translations.reggae}</p>
@@ -273,7 +278,7 @@ export const AboutInfo = ({ onClick, translations }: Props) => {
         <S.DevBtn
           onClick={() => {
             window.scrollTo(0, 0);
-            onClick('dev');
+            onClick("dev");
           }}
         >
           {translations.whereithappens} <ArrowIcon />

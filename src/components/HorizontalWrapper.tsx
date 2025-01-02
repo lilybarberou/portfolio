@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React, { PropsWithChildren } from 'react';
-import styled from 'styled-components';
+import React, { PropsWithChildren } from "react";
+import styled from "styled-components";
 
 export const HorizontalWrapper = ({ children }: PropsWithChildren) => {
   return (

@@ -1,10 +1,10 @@
-import fr from '@/langs/fr.json';
-import en from '@/langs/en.json';
+import en from "@/langs/en.json";
+import fr from "@/langs/fr.json";
 
-export type Lang = 'fr-FR' | 'en-US';
+export type Lang = "fr-FR" | "en-US";
 
-export const t = <Key extends keyof typeof fr>(key: Key, lang: Lang = 'fr-FR'): (typeof fr)[Key] => {
-  return lang === 'fr-FR' ? fr[key] : en[key];
+export const t = <Key extends keyof typeof fr>(key: Key, lang: Lang = "fr-FR"): (typeof fr)[Key] => {
+  return lang === "fr-FR" ? fr[key] : en[key];
 };
 
 export const getFormData = (formRef: HTMLFormElement): Record<string, FormDataEntryValue> => {
@@ -35,11 +35,12 @@ export class Parallax {
     this.styles = data.styles;
 
     // set global transitions
-    this.target.style.transition = '.5s';
-    this.target.style.transitionTimingFunction = 'cubic-bezier(0.165, 0.84, 0.44, 1), cubic-bezier(0.165, 0.84, 0.44, 1)';
+    this.target.style.transition = ".5s";
+    this.target.style.transitionTimingFunction =
+      "cubic-bezier(0.165, 0.84, 0.44, 1), cubic-bezier(0.165, 0.84, 0.44, 1)";
 
-    document.querySelector('.app')?.addEventListener(
-      'scroll',
+    document.querySelector(".app")?.addEventListener(
+      "scroll",
       () => {
         this.applyStyles();
       },
@@ -55,7 +56,7 @@ export class Parallax {
     if (coef >= 1) coef = 1;
 
     for (const key in this.styles) {
-      this.target.style.setProperty(key, eval('`' + this.styles[key] + '`'));
+      this.target.style.setProperty(key, eval("`" + this.styles[key] + "`"));
     }
   }
 }

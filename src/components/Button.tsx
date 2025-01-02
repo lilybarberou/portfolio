@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { ArrowIcon } from '@/lib/icons';
-import Link from 'next/link';
-import styled from 'styled-components';
+import { ArrowIcon } from "@/lib/icons";
+import Link from "next/link";
+import styled from "styled-components";
 
 type Props = {
   text: string;

@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import { Fragment } from 'react';
-import styled from 'styled-components';
-import { Separation } from '@/components/Separation';
-import { Work } from '@/components/Work';
-import { t } from '@/lib/utils';
-import { useLang } from '@/components/Providers';
-import worksList from '@/lib/worksList.json';
+import { Fragment } from "react";
+import styled from "styled-components";
+import { Separation } from "@/components/Separation";
+import { Work } from "@/components/Work";
+import { t } from "@/lib/utils";
+import { useLang } from "@/components/Providers";
+import worksList from "@/lib/worksList.json";
 
 export const WorksView = () => {
   const { lang } = useLang();
-  const translations = t('navigation', lang);
+  const translations = t("navigation", lang);
 
   return (
     <S.Container>
       <S.Title>
-        <h1 className={`${lang === 'fr-FR' ? '' : 'en'}`}>{translations.works}</h1>
+        <h1 className={`${lang === "fr-FR" ? "" : "en"}`}>{translations.works}</h1>
       </S.Title>
       <Separation />
       {worksList.map((work, i) => (
