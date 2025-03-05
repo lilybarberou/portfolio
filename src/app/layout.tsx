@@ -28,7 +28,7 @@ export default function Layout({ children }: PropsWithChildren) {
                     gtag('config', '${env.NEXT_PUBLIC_GOOGLE_ANALYTICS}}');
                 `}
       </Script>
-      <Script src="https://cloud.umami.is/script.js" data-website-id={env.NEXT_PUBLIC_UMAMI_ID} />
+      <Script src="https://umami.lilybarberou.fr/script.js" data-website-id={env.NEXT_PUBLIC_UMAMI_ID} />
       <body>
         <Providers>
           <MusicCursor />
