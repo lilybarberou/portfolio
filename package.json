@@ -12,29 +12,32 @@
   },
   "dependencies": {
     "@ducanh2912/next-pwa": "^10.2.9",
-    "@t3-oss/env-nextjs": "^0.11.1",
-    "next": "15.2.1",
+    "@t3-oss/env-nextjs": "^0.13.11",
+    "next": "15.5.28",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-toastify": "^10.0.6",
     "resend": "^3.5.0",
-    "styled-components": "^6.1.13",
-    "zod": "^3.24.1"
+    "styled-components": "^6.6.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@types/node": "^20.17.11",
+    "@types/node": "^20.19.43",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
-    "eslint": "^9.17.0",
-    "eslint-config-next": "15.2.1",
-    "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.4.2",
-    "typescript": "^5.7.2"
+    "eslint": "^9.39.5",
+    "eslint-config-next": "15.5.28",
+    "eslint-config-prettier": "^9.1.2",
+    "prettier": "^3.9.10",
+    "typescript": "^5.9.3",
+    "webpack": "^5.112.2"
   },
   "pnpm": {
     "overrides": {
       "@types/react": "19.0.10",
-      "@types/react-dom": "19.0.4"
+      "@types/react-dom": "19.0.4",
+      "postcss": "^8.5.32",
+      "serialize-javascript": "^7.0.3"
     }
   }
 }
